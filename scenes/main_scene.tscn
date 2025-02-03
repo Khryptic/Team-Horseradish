@@ -1,3 +1,161 @@
-[gd_scene format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=2 format=3 uid="uid://c6usj5s4g5bdm"]
+
+[ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://peg.tscn" id="1_28fwh"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Pegs" type="Node" parent="."]
+
+[node name="Row" type="Node" parent="Pegs"]
+
+[node name="Peg" parent="Pegs/Row" instance=ExtResource("1_28fwh")]
+position = Vector2(45, 100)
+
+[node name="Peg2" parent="Pegs/Row" instance=ExtResource("1_28fwh")]
+position = Vector2(95, 100)
+
+[node name="Peg3" parent="Pegs/Row" instance=ExtResource("1_28fwh")]
+position = Vector2(145, 100)
+
+[node name="Peg4" parent="Pegs/Row" instance=ExtResource("1_28fwh")]
+position = Vector2(195, 100)
+
+[node name="Peg5" parent="Pegs/Row" instance=ExtResource("1_28fwh")]
+position = Vector2(245, 100)
+
+[node name="Peg6" parent="Pegs/Row" instance=ExtResource("1_28fwh")]
+position = Vector2(295, 100)
+
+[node name="Peg7" parent="Pegs/Row" instance=ExtResource("1_28fwh")]
+position = Vector2(345, 100)
+
+[node name="Peg8" parent="Pegs/Row" instance=ExtResource("1_28fwh")]
+position = Vector2(395, 100)
+
+[node name="Peg9" parent="Pegs/Row" instance=ExtResource("1_28fwh")]
+position = Vector2(445, 100)
+
+[node name="Peg10" parent="Pegs/Row" instance=ExtResource("1_28fwh")]
+position = Vector2(495, 100)
+
+[node name="Row2" type="Node" parent="Pegs"]
+
+[node name="Peg" parent="Pegs/Row2" instance=ExtResource("1_28fwh")]
+position = Vector2(45, 200)
+
+[node name="Peg2" parent="Pegs/Row2" instance=ExtResource("1_28fwh")]
+position = Vector2(95, 200)
+
+[node name="Peg3" parent="Pegs/Row2" instance=ExtResource("1_28fwh")]
+position = Vector2(145, 200)
+
+[node name="Peg4" parent="Pegs/Row2" instance=ExtResource("1_28fwh")]
+position = Vector2(195, 200)
+
+[node name="Peg5" parent="Pegs/Row2" instance=ExtResource("1_28fwh")]
+position = Vector2(245, 200)
+
+[node name="Peg6" parent="Pegs/Row2" instance=ExtResource("1_28fwh")]
+position = Vector2(295, 200)
+
+[node name="Peg7" parent="Pegs/Row2" instance=ExtResource("1_28fwh")]
+position = Vector2(345, 200)
+
+[node name="Peg8" parent="Pegs/Row2" instance=ExtResource("1_28fwh")]
+position = Vector2(395, 200)
+
+[node name="Peg9" parent="Pegs/Row2" instance=ExtResource("1_28fwh")]
+position = Vector2(445, 200)
+
+[node name="Peg10" parent="Pegs/Row2" instance=ExtResource("1_28fwh")]
+position = Vector2(495, 200)
+
+[node name="Row3" type="Node" parent="Pegs"]
+
+[node name="Peg" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
+position = Vector2(45, 300)
+
+[node name="Peg2" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
+position = Vector2(95, 300)
+
+[node name="Peg3" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
+position = Vector2(145, 300)
+
+[node name="Peg4" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
+position = Vector2(195, 300)
+
+[node name="Peg5" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
+position = Vector2(245, 300)
+
+[node name="Peg6" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
+position = Vector2(295, 300)
+
+[node name="Peg7" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
+position = Vector2(345, 300)
+
+[node name="Peg8" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
+position = Vector2(395, 300)
+
+[node name="Peg9" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
+position = Vector2(445, 300)
+
+[node name="Peg10" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
+position = Vector2(495, 300)
+
+[node name="Row4" type="Node" parent="Pegs"]
+
+[node name="Peg" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(70, 150)
+
+[node name="Peg2" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(120, 150)
+
+[node name="Peg3" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(170, 150)
+
+[node name="Peg4" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(220, 150)
+
+[node name="Peg5" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(270, 150)
+
+[node name="Peg6" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(320, 150)
+
+[node name="Peg7" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(370, 150)
+
+[node name="Peg8" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(420, 150)
+
+[node name="Peg9" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(470, 150)
+
+[node name="Row5" type="Node" parent="Pegs"]
+
+[node name="Peg" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
+position = Vector2(70, 250)
+
+[node name="Peg2" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
+position = Vector2(120, 250)
+
+[node name="Peg3" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
+position = Vector2(170, 250)
+
+[node name="Peg4" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
+position = Vector2(220, 250)
+
+[node name="Peg5" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
+position = Vector2(270, 250)
+
+[node name="Peg6" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
+position = Vector2(320, 250)
+
+[node name="Peg7" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
+position = Vector2(370, 250)
+
+[node name="Peg8" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
+position = Vector2(420, 250)
+
+[node name="Peg9" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
+position = Vector2(470, 250)
