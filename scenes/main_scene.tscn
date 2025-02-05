@@ -163,11 +163,9 @@ position = Vector2(420, 250)
 position = Vector2(470, 250)
 
 [node name="SoftBall" parent="." instance=ExtResource("2_t2uvm")]
+visible = false
 position = Vector2(233, 5)
 scale = Vector2(0.679996, 0.679996)
 
 [node name="BounceBall" parent="." instance=ExtResource("3_j3r7q")]
 position = Vector2(278, 16)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-2, -7, -1, 959, 542, 958, 541, -9)
