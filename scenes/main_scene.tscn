@@ -159,3 +159,19 @@ position = Vector2(420, 250)
 
 [node name="Peg9" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
 position = Vector2(470, 250)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 36
+text = "Score: XXX"
+
+[node name="LivesLabel" type="Label" parent="UI"]
+offset_left = 4.0
+offset_top = 894.0
+offset_right = 186.0
+offset_bottom = 944.0
+theme_override_font_sizes/font_size = 36
+text = "Lives: 3"
