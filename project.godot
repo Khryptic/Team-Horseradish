@@ -28,6 +28,10 @@ window/size/viewport_height=960
 
 project/assembly_name="Team Horseradish"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/softbody2d/plugin.cfg")
+
 [rendering]
 
 renderer/rendering_method="mobile"
