@@ -20,7 +20,7 @@ position = Vector2(95, 100)
 position = Vector2(145, 100)
 
 [node name="Peg4" parent="Pegs/Row" instance=ExtResource("1_28fwh")]
-position = Vector2(195, 100)
+position = Vector2(193, 99)
 
 [node name="Peg5" parent="Pegs/Row" instance=ExtResource("1_28fwh")]
 position = Vector2(245, 100)
@@ -55,10 +55,10 @@ position = Vector2(145, 200)
 position = Vector2(195, 200)
 
 [node name="Peg5" parent="Pegs/Row2" instance=ExtResource("1_28fwh")]
-position = Vector2(245, 200)
+position = Vector2(319, 151)
 
 [node name="Peg6" parent="Pegs/Row2" instance=ExtResource("1_28fwh")]
-position = Vector2(295, 200)
+position = Vector2(293, 203)
 
 [node name="Peg7" parent="Pegs/Row2" instance=ExtResource("1_28fwh")]
 position = Vector2(345, 200)
@@ -122,7 +122,7 @@ position = Vector2(220, 150)
 position = Vector2(270, 150)
 
 [node name="Peg6" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
-position = Vector2(320, 150)
+position = Vector2(246, 203)
 
 [node name="Peg7" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
 position = Vector2(370, 150)
@@ -167,5 +167,7 @@ position = Vector2(233, 5)
 scale = Vector2(0.679996, 0.679996)
 
 [node name="BounceBall" parent="." instance=ExtResource("3_j3r7q")]
-position = Vector2(288, 18)
-gravity_scale = 1.0
+position = Vector2(278, 16)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-2, -7, -1, 959, 542, 958, 541, -9)
