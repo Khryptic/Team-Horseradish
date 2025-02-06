@@ -3,6 +3,8 @@ extends Node2D
 @onready var trampoline_collision: CollisionShape2D = $Trampoline/CollisionShape2D
 @onready var trampoline_line: Line2D = $Trampoline/Line2D
 
+signal trampoline_drawn
+
 var trampoline_segment_collider: SegmentShape2D
 var trampoline_start: Vector2
 
