@@ -24,3 +24,4 @@ scale = Vector2(1.11784, 1.11784)
 shape = SubResource("CircleShape2D_spoja")
 
 [connection signal="area_entered" from="peg_sensor" to="peg_sensor" method="_on_area_entered"]
+[connection signal="body_entered" from="peg_sensor" to="peg_sensor" method="_on_body_entered"]

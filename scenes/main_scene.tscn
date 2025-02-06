@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=10 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://scenes/peg.tscn" id="1_28fwh"]
 [ext_resource type="Script" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
@@ -214,9 +214,6 @@ rotation = 1.5708
 position = Vector2(9.99982, -42)
 shape = SubResource("RectangleShape2D_c8x6e")
 
-[connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
-[connection signal="body_entered" from="Drawing Controller/Trampoline" to="Drawing Controller" method="_on_trampoline_body_entered"]
-[connection signal="body_entered" from="Bounds" to="." method="_on_bounds_body_entered"]
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer"]
@@ -236,3 +233,7 @@ offset_bottom = 945.0
 theme_override_font_sizes/font_size = 32
 text = "Lives: 3"
 script = ExtResource("5_8hi1r")
+
+[connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
+[connection signal="body_entered" from="Drawing Controller/Trampoline" to="Drawing Controller" method="_on_trampoline_body_entered"]
+[connection signal="body_entered" from="Bounds" to="." method="_on_bounds_body_entered"]

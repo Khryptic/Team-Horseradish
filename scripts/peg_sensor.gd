@@ -14,3 +14,10 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("ball"):
 		ScoreManager.add_points(1)
+		
+		
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("ball"):
+		ScoreManager.add_points(1)
