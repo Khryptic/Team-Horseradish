@@ -183,7 +183,7 @@ position = Vector2(420, 250)
 [node name="Peg9" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
 position = Vector2(470, 250)
 
-[node name="BounceBall" parent="." groups=["ball"] instance=ExtResource("3_j3r7q")]
+[node name="BounceBall" parent="." instance=ExtResource("3_j3r7q")]
 position = Vector2(269, 346)
 
 [node name="World Border" type="RigidBody2D" parent="."]
