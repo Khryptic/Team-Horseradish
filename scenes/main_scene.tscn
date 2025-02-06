@@ -4,6 +4,8 @@
 [ext_resource type="Script" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_wfcph"]
 [ext_resource type="PackedScene" uid="uid://dgbmfdltn82fg" path="res://scenes/bounce_ball.tscn" id="3_j3r7q"]
+[ext_resource type="Script" path="res://scripts/score_label.gd" id="4_6jsyi"]
+[ext_resource type="Script" path="res://scripts/lives_label.gd" id="5_8hi1r"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pc56j"]
 
@@ -215,3 +217,22 @@ shape = SubResource("RectangleShape2D_c8x6e")
 [connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="body_entered" from="Drawing Controller/Trampoline" to="Drawing Controller" method="_on_trampoline_body_entered"]
 [connection signal="body_entered" from="Bounds" to="." method="_on_bounds_body_entered"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 164.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 32
+text = "Score: XXX"
+script = ExtResource("4_6jsyi")
+
+[node name="LivesLabel" type="Label" parent="CanvasLayer"]
+offset_left = 2.0
+offset_top = 900.0
+offset_right = 164.0
+offset_bottom = 945.0
+theme_override_font_sizes/font_size = 32
+text = "Lives: 3"
+script = ExtResource("5_8hi1r")
