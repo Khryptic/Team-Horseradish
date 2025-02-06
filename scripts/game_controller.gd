@@ -20,6 +20,7 @@ func _respawn() -> void:
 	new_ball.position = $Respawn.global_position
 	new_ball.get_child(0).add_to_group("ball")
 	call_deferred("add_child", new_ball)
+	GameManager.lose_life()
 		
 	ball_ref = new_ball.get_child(0)
 
