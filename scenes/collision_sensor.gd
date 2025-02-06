@@ -10,8 +10,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
+# check when the area body is collided with
 func _on_area_entered(area: Area2D) -> void:
-#	when peg is entered add a point to point counter
-
-	pass # Replace with function body.
+	# add points when peg collides with ball
+	if area.is_in_group("ball"):
+		ScoreManager.addPoints(1)
+		

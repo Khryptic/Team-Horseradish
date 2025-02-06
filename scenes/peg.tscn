@@ -24,3 +24,4 @@ script = ExtResource("2_f381y")
 shape = SubResource("CircleShape2D_x5xkk")
 
 [connection signal="area_entered" from="Collision Sensor" to="Collision Sensor" method="_on_area_entered"]
+[connection signal="body_entered" from="Collision Sensor" to="Collision Sensor" method="_on_body_entered"]
