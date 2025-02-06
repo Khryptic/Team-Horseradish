@@ -2,27 +2,26 @@
 
 [ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://scenes/peg.tscn" id="1_28fwh"]
 [ext_resource type="Script" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
-[ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_ximus"]
+[ext_resource type="PackedScene" uid="uid://bwi5qc03k5ayp" path="res://scenes/ball.tscn" id="2_t2uvm"]
 [ext_resource type="PackedScene" uid="uid://dgbmfdltn82fg" path="res://scenes/bounce_ball.tscn" id="3_j3r7q"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_bsv77"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pc56j"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlm6n"]
-size = Vector2(17, 1241)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dd0l"]
+size = Vector2(18, 1099)
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_ximus")
 
 [node name="Drawing Controller" type="Node2D" parent="."]
-visible = false
 script = ExtResource("1_lq30c")
+trampoline_strength = 1000.0
 
-[node name="Trampoline" type="StaticBody2D" parent="Drawing Controller"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Trampoline"]
-shape = SubResource("SegmentShape2D_bsv77")
+[node name="Trampoline" type="Area2D" parent="Drawing Controller"]
 
 [node name="Line2D" type="Line2D" parent="Drawing Controller/Trampoline"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Trampoline"]
+shape = SubResource("SegmentShape2D_pc56j")
 
 [node name="Pegs" type="Node" parent="."]
 
@@ -180,39 +179,33 @@ position = Vector2(420, 250)
 [node name="Peg9" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
 position = Vector2(470, 250)
 
+[node name="SoftBall" parent="." instance=ExtResource("2_t2uvm")]
+position = Vector2(285, 6)
+scale = Vector2(0.679996, 0.679996)
+
 [node name="BounceBall" parent="." instance=ExtResource("3_j3r7q")]
-position = Vector2(276, 340)
+position = Vector2(208, 35)
 
-[node name="Bottom bounds" type="Area2D" parent="."]
-position = Vector2(546, 597)
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom bounds"]
-position = Vector2(-298, 613)
+[node name="World Border" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="World Border"]
+position = Vector2(2, 454)
+shape = SubResource("RectangleShape2D_7dd0l")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="World Border"]
+position = Vector2(232, -11)
 rotation = 1.5708
-shape = SubResource("RectangleShape2D_tlm6n")
-debug_color = Color(0, 0.6, 0.701961, 1)
+shape = SubResource("RectangleShape2D_7dd0l")
 
-[node name="Walls" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
-unique_name_in_owner = true
-position = Vector2(-2, 597)
-shape = SubResource("RectangleShape2D_tlm6n")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
-unique_name_in_owner = true
-position = Vector2(546, 597)
-shape = SubResource("RectangleShape2D_tlm6n")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
-unique_name_in_owner = true
-position = Vector2(286, -14)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World Border"]
+position = Vector2(283, 832)
 rotation = 1.5708
-shape = SubResource("RectangleShape2D_tlm6n")
+shape = SubResource("RectangleShape2D_7dd0l")
 
-[node name="Respawn Anchor" type="Node2D" parent="."]
-position = Vector2(274, 338)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Border"]
+position = Vector2(552, 461)
+shape = SubResource("RectangleShape2D_7dd0l")
 
-[connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
-[connection signal="area_entered" from="Bottom bounds" to="." method="_on_bottom_bounds_area_entered"]
-[connection signal="body_entered" from="Bottom bounds" to="." method="_on_bottom_bounds_body_entered"]
+[connection signal="body_entered" from="Drawing Controller/Trampoline" to="Drawing Controller" method="_on_trampoline_body_entered"]
