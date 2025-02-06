@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 	pass
 	
 func _on_score_updated(score: int):
-	text = "Score" + str(score)
+	text = "Score: " + str(score)
