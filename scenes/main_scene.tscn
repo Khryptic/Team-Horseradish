@@ -166,13 +166,11 @@ position = Vector2(420, 250)
 position = Vector2(470, 250)
 
 [node name="SoftBall" parent="." instance=ExtResource("2_t2uvm")]
-position = Vector2(285, 6)
+position = Vector2(289, 18)
 scale = Vector2(0.679996, 0.679996)
 
 [node name="BounceBall" parent="." instance=ExtResource("3_j3r7q")]
 position = Vector2(208, 35)
-
-[node name="RigidBody2D2" type="RigidBody2D" parent="."]
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 
