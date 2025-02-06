@@ -28,6 +28,10 @@ project/assembly_name="Team Horseradish"
 
 enabled=PackedStringArray("res://addons/softbody2d/plugin.cfg")
 
+[global_group]
+
+ball=""
+
 [input]
 
 Draw={
