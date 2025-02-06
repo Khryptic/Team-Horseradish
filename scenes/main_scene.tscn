@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bwi5qc03k5ayp" path="res://scenes/ball.tscn" id="2_t2uvm"]
 [ext_resource type="PackedScene" uid="uid://dgbmfdltn82fg" path="res://scenes/bounce_ball.tscn" id="3_j3r7q"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_bsv77"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pc56j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7dd0l"]
 size = Vector2(18, 1099)
@@ -14,13 +14,14 @@ size = Vector2(18, 1099)
 
 [node name="Drawing Controller" type="Node2D" parent="."]
 script = ExtResource("1_lq30c")
+trampoline_strength = 1000.0
 
-[node name="Trampoline" type="StaticBody2D" parent="Drawing Controller"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Trampoline"]
-shape = SubResource("SegmentShape2D_bsv77")
+[node name="Trampoline" type="Area2D" parent="Drawing Controller"]
 
 [node name="Line2D" type="Line2D" parent="Drawing Controller/Trampoline"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Trampoline"]
+shape = SubResource("SegmentShape2D_pc56j")
 
 [node name="Pegs" type="Node" parent="."]
 
@@ -206,3 +207,5 @@ shape = SubResource("RectangleShape2D_7dd0l")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World Border"]
 position = Vector2(552, 461)
 shape = SubResource("RectangleShape2D_7dd0l")
+
+[connection signal="body_entered" from="Drawing Controller/Trampoline" to="Drawing Controller" method="_on_trampoline_body_entered"]
