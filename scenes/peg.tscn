@@ -1,14 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4r8scy3ax4gh"]
+[gd_scene load_steps=5 format=3 uid="uid://b4r8scy3ax4gh"]
 
 [ext_resource type="Texture2D" uid="uid://dykxrufmhp6v1" path="res://assets/peg.png" id="1_qik34"]
+[ext_resource type="Script" path="res://scripts/peg_sensor.gd" id="2_f381y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v7ta1"]
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_x5xkk"]
+
+[node name="Peg" type="StaticBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.152926, 0.152926)
 texture = ExtResource("1_qik34")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.0396, 1.0396)
 shape = SubResource("CircleShape2D_v7ta1")
+
+[node name="Collision Sensor" type="Area2D" parent="."]
+script = ExtResource("2_f381y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision Sensor"]
+shape = SubResource("CircleShape2D_x5xkk")
+
+[connection signal="area_entered" from="Collision Sensor" to="Collision Sensor" method="_on_area_entered"]
+[connection signal="body_entered" from="Collision Sensor" to="Collision Sensor" method="_on_body_entered"]
