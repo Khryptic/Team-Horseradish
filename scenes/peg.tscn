@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b4r8scy3ax4gh"]
 
 [ext_resource type="Texture2D" uid="uid://dykxrufmhp6v1" path="res://assets/peg.png" id="1_qik34"]
-[ext_resource type="Script" path="res://scenes/collision_sensor.gd" id="2_f381y"]
+[ext_resource type="Script" path="res://scripts/peg_sensor.gd" id="2_f381y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v7ta1"]
 
