@@ -1,11 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://scenes/peg.tscn" id="1_28fwh"]
+[ext_resource type="Script" path="res://scripts/score_label.gd" id="2_h40lw"]
 [ext_resource type="PackedScene" uid="uid://bwi5qc03k5ayp" path="res://scenes/ball.tscn" id="2_t2uvm"]
 [ext_resource type="PackedScene" uid="uid://dgbmfdltn82fg" path="res://scenes/bounce_ball.tscn" id="3_j3r7q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7dd0l"]
 size = Vector2(18, 1099)
+[ext_resource type="Script" path="res://scripts/lives_label.gd" id="3_23jfe"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -167,6 +169,26 @@ position = Vector2(470, 250)
 
 [node name="SoftBall" parent="." instance=ExtResource("2_t2uvm")]
 position = Vector2(285, 6)
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 36
+text = "Score: XXX"
+script = ExtResource("2_h40lw")
+
+[node name="LivesLabel" type="Label" parent="UI"]
+offset_left = 4.0
+offset_top = 894.0
+offset_right = 186.0
+offset_bottom = 944.0
+theme_override_font_sizes/font_size = 36
+text = "Lives: 3"
+script = ExtResource("3_23jfe")
+
+[node name="Ball" parent="." instance=ExtResource("2_t2uvm")]
+position = Vector2(233, 5)
 scale = Vector2(0.679996, 0.679996)
 
 [node name="BounceBall" parent="." instance=ExtResource("3_j3r7q")]
