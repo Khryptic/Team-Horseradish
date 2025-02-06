@@ -186,7 +186,7 @@ position = Vector2(470, 250)
 [node name="BounceBall" parent="." groups=["ball"] instance=ExtResource("3_j3r7q")]
 position = Vector2(269, 346)
 
-[node name="World Border" type="RigidBody2D" parent="."]
+[node name="World Border" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="World Border"]
 position = Vector2(2, 454)
