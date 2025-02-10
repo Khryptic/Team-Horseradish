@@ -80,4 +80,6 @@ func _on_trampoline_body_entered(body: Node2D) -> void:
 		trampoline_lives -= 1
 		if (trampoline_lives <= 0):
 			trampoline_line.clear_points()
+			trampoline_segment_collider.a = Vector2(-10000, -10000)
+			trampoline_segment_collider.b = Vector2(-10000, -10000)
 		
