@@ -20,7 +20,7 @@ shape = SubResource("CircleShape2D_v7ta1")
 script = ExtResource("2_5mbo7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="peg_sensor"]
-scale = Vector2(1.11784, 1.11784)
+scale = Vector2(1.00331, 1.00331)
 shape = SubResource("CircleShape2D_spoja")
 
 [connection signal="area_entered" from="peg_sensor" to="peg_sensor" method="_on_area_entered"]
