@@ -57,9 +57,9 @@ func _process(_delta: float) -> void:
 		if (trampoline_length > 300):
 			trampoline_lives = 1
 		elif (trampoline_length > 200):
-			trampoline_lives = 2
+			trampoline_lives = 1
 		else:
-			trampoline_lives = 3
+			trampoline_lives = 1
 
 			
 		
