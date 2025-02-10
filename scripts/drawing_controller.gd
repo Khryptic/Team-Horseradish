@@ -20,6 +20,9 @@ func _process(_delta: float) -> void:
 		# Save starting pos of mouse
 		trampoline_start = mouse_pos
 		
+		#slow down time while drawing
+		Engine.time_scale = 0.1
+		
 	elif(Input.is_action_just_released("Draw")):
 		var mouse_pos := get_global_mouse_position()
 		
@@ -43,6 +46,10 @@ func _process(_delta: float) -> void:
 		trampoline_line.add_point(right_side)
 		
 		trampoline_drawn.emit()
+		
+		# Return to normal speed
+		Engine.time_scale = 1
+
 
 func _on_trampoline_body_entered(body: Node2D) -> void:
 	
