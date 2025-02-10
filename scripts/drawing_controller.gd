@@ -9,6 +9,8 @@ signal trampoline_drawn
 var trampoline_segment_collider: SegmentShape2D
 var trampoline_start: Vector2
 
+var trampoline_lives: int
+
 func _ready() -> void:
 	trampoline_segment_collider = trampoline_collision.shape
 
@@ -49,6 +51,18 @@ func _process(_delta: float) -> void:
 		
 		# Return to normal speed
 		Engine.time_scale = 1
+		
+		# set trampoline lives based off length of trampoline
+		var trampoline_length: int = (trampoline_segment_collider.a - trampoline_segment_collider.b).length()
+		if (trampoline_length > 300):
+			trampoline_lives = 1
+		elif (trampoline_length > 200):
+			trampoline_lives = 2
+		else:
+			trampoline_lives = 3
+
+			
+		
 
 
 func _on_trampoline_body_entered(body: Node2D) -> void:
@@ -61,3 +75,9 @@ func _on_trampoline_body_entered(body: Node2D) -> void:
 		
 		# Set the body's velocity
 		body.linear_velocity = segment_normal * trampoline_strength
+		
+		# delete trampoline
+		trampoline_lives -= 1
+		if (trampoline_lives <= 0):
+			trampoline_line.clear_points()
+		
