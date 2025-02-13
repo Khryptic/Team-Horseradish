@@ -1,7 +1,6 @@
 extends Node2D
 
 signal trampoline_drawn
-signal resetMult
 
 @export var trampoline_strength: float
 

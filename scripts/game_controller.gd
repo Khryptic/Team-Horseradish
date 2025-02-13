@@ -30,6 +30,7 @@ func _on_drawing_controller_trampoline_drawn() -> void:
 
 func _on_bounds_body_entered(body: Node2D) -> void:
 	if body.is_in_group("ball"):
+		ScoreManager.reset_mult_count()
 		body.call_deferred("free")
 		_respawn()
 		
