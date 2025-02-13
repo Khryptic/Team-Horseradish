@@ -145,7 +145,7 @@ offset_right = 164.0
 offset_bottom = 47.0
 theme_override_font_sizes/font_size = 32
 text = "Score: 0
-Mult: 0"
+Mult: 1x"
 script = ExtResource("4_6jsyi")
 
 [node name="LivesLabel" type="Label" parent="CanvasLayer"]
