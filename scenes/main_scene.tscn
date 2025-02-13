@@ -159,5 +159,7 @@ script = ExtResource("5_8hi1r")
 [connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="body_entered" from="Drawing Controller/Trampoline" to="Drawing Controller" method="_on_trampoline_body_entered"]
 [connection signal="body_entered" from="Bounds" to="." method="_on_bounds_body_entered"]
+[connection signal="body_entered" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_entered"]
+[connection signal="body_exited" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_exited"]
 [connection signal="mouse_entered" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_mouse_entered"]
 [connection signal="mouse_exited" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_mouse_exited"]

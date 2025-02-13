@@ -15,6 +15,8 @@ var is_trampoline_valid: bool # if the mouse is in drawing zone
 var is_current_trampoline_valid: bool # if the mouse was in drawing zone on mouse down
 # this is needed in case the player starts drawing outside of drawing zone and releases mouse in zone 
 
+var is_ball_in_drawing_zone: bool # if the ball is in the drawing zone, activate bullet time
+
 func _ready() -> void:
 	trampoline_segment_collider = trampoline_collision.shape
 
@@ -28,7 +30,8 @@ func _process(_delta: float) -> void:
 			trampoline_start = mouse_pos
 			
 			#slow down time while drawing
-			Engine.time_scale = 0.1
+			if (is_ball_in_drawing_zone):
+				Engine.time_scale = 0.1
 			
 			is_current_trampoline_valid = true
 		else:
@@ -101,3 +104,17 @@ func _on_trampoline_drawing_zone_mouse_exited() -> void:
 
 func _on_trampoline_drawing_zone_mouse_entered() -> void:
 	is_trampoline_valid = true
+
+
+
+func _on_trampoline_drawing_zone_body_entered(body: Node2D) -> void:
+	if body.is_in_group("ball"):
+		is_ball_in_drawing_zone = true
+	
+
+
+
+func _on_trampoline_drawing_zone_body_exited(body: Node2D) -> void:
+	if body.is_in_group("ball"):
+		is_ball_in_drawing_zone = false
+		Engine.time_scale = 1
