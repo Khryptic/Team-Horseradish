@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=11 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://scenes/peg.tscn" id="1_28fwh"]
 [ext_resource type="Script" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
@@ -15,7 +15,10 @@ size = Vector2(18, 1099)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c8x6e"]
 size = Vector2(17.0038, 1052)
 
-[node name="Game" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6bd5"]
+size = Vector2(634.999, 591.001)
+
+[node name="Node2D" type="Node2D"]
 script = ExtResource("1_wfcph")
 
 [node name="Drawing Controller" type="Node2D" parent="."]
@@ -124,6 +127,15 @@ rotation = 1.5708
 position = Vector2(9.99982, -42)
 shape = SubResource("RectangleShape2D_c8x6e")
 
+[node name="TrampolineDrawingZone" type="Area2D" parent="."]
+position = Vector2(287, 1001)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrampolineDrawingZone"]
+position = Vector2(-307.499, 15.5017)
+shape = SubResource("RectangleShape2D_i6bd5")
+debug_color = Color(1, 1, 1, 0.0392157)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer"]
@@ -132,8 +144,7 @@ offset_top = 2.0
 offset_right = 164.0
 offset_bottom = 47.0
 theme_override_font_sizes/font_size = 32
-text = "Score: 0
-Mult: 1x"
+text = "Score: XXX"
 script = ExtResource("4_6jsyi")
 
 [node name="LivesLabel" type="Label" parent="CanvasLayer"]
@@ -145,7 +156,10 @@ theme_override_font_sizes/font_size = 32
 text = "Lives: 3"
 script = ExtResource("5_8hi1r")
 
-[connection signal="resetMult" from="Drawing Controller" to="." method="_on_drawing_controller_reset_mult"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="body_entered" from="Drawing Controller/Trampoline" to="Drawing Controller" method="_on_trampoline_body_entered"]
 [connection signal="body_entered" from="Bounds" to="." method="_on_bounds_body_entered"]
+[connection signal="body_entered" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_entered"]
+[connection signal="body_exited" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_exited"]
+[connection signal="mouse_entered" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_mouse_entered"]
+[connection signal="mouse_exited" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_mouse_exited"]
