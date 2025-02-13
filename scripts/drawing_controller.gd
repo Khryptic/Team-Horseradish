@@ -85,4 +85,4 @@ func _on_trampoline_body_entered(body: Node2D) -> void:
 			trampoline_segment_collider.b = Vector2(-10000, -10000)
 		
 		# reset point multiplier
-		ScoreManager.ResetMult()
+		ScoreManager.reset_mult_count()
