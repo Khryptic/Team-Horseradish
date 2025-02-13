@@ -11,6 +11,7 @@ func _ready() -> void:
 	ball_ref = get_tree().get_first_node_in_group("ball").get_child(0)
 	ball_ref.add_to_group("ball")
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
@@ -31,3 +32,4 @@ func _on_bounds_body_entered(body: Node2D) -> void:
 	if body.is_in_group("ball"):
 		body.call_deferred("free")
 		_respawn()
+		
