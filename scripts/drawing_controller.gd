@@ -1,6 +1,7 @@
 extends Node2D
 
 signal trampoline_drawn
+signal resetMult
 
 @export var trampoline_strength: float
 
@@ -83,3 +84,5 @@ func _on_trampoline_body_entered(body: Node2D) -> void:
 			trampoline_segment_collider.a = Vector2(-10000, -10000)
 			trampoline_segment_collider.b = Vector2(-10000, -10000)
 		
+		# reset point multiplier
+		ScoreManager.ResetMult()

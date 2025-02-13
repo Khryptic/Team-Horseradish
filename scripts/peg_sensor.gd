@@ -1,5 +1,6 @@
 extends Area2D
 
+signal IncreaseMult
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,11 +14,11 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("ball"):
-		ScoreManager.add_points(1)
-		
-		
+		ScoreManager.increaseMult()
+		ScoreManager.add_points(1, ScoreManager.GetMult())
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("ball"):
-		ScoreManager.add_points(1)
+		ScoreManager.increaseMult()
+		ScoreManager.add_points(1, ScoreManager.GetMult())
