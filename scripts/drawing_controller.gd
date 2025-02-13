@@ -44,7 +44,8 @@ func _process(_delta: float) -> void:
 		
 	# Player is actively drawing
 	elif(Input.is_action_pressed("Draw")):
-		trampoline_line.set_point_position(1, get_global_mouse_position())
+		if (trampoline_line.points.size() > 0):
+			trampoline_line.set_point_position(1, get_global_mouse_position())
 		
 	# Player is finished drawing
 	elif(Input.is_action_just_released("Draw")):
@@ -69,8 +70,9 @@ func _process(_delta: float) -> void:
 			trampoline_segment_collider.b = right_side
 		
 			# Set trampoline sprite
-			trampoline_line.set_point_position(0, left_side)
-			trampoline_line.set_point_position(1, right_side)
+			trampoline_line.clear_points()
+			trampoline_line.add_point(left_side)
+			trampoline_line.add_point(right_side)
 			trampoline_line.default_color = Color(1, 1, 1, 1)
 			
 			trampoline_drawn.emit()
