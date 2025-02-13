@@ -32,6 +32,8 @@ trampoline_strength = 1000.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Trampoline"]
 shape = SubResource("SegmentShape2D_pc56j")
 
+[node name="Drawing Guide" type="Line2D" parent="Drawing Controller"]
+
 [node name="Pegs" type="Node" parent="."]
 
 [node name="Row" type="Node" parent="Pegs"]

@@ -6,9 +6,13 @@ signal trampoline_drawn
 
 @onready var trampoline_collision: CollisionShape2D = $Trampoline/CollisionShape2D
 @onready var trampoline_line: Line2D = $Trampoline/Line2D
+@onready var drawing_guide: Line2D = $"Drawing Guide"
+
 var trampoline_segment_collider: SegmentShape2D
 
 var trampoline_lives: int # how many times the ball can bounce on trampoline
+
+var starting_mouse_pos: Vector2 # where the player started drawing from
 
 var is_mouse_in_drawing_zone: bool # if the mouse is in drawing zone
 var is_start_point_in_drawing_zone: bool # if the mouse was in drawing zone on mouse down
@@ -26,12 +30,13 @@ func _process(_delta: float) -> void:
 	if(Input.is_action_just_pressed("Draw")):
 		if (is_mouse_in_drawing_zone):
 			var mouse_pos := get_global_mouse_position()
+			starting_mouse_pos = mouse_pos
 			
-			# Start drawing the trampoline's sprite
-			trampoline_line.clear_points()
-			trampoline_line.add_point(mouse_pos)
-			trampoline_line.add_point(mouse_pos)
-			trampoline_line.default_color = Color(1, 1, 1, 0.4)
+			# Show the drawing guide
+			drawing_guide.clear_points()
+			drawing_guide.add_point(mouse_pos)
+			drawing_guide.add_point(mouse_pos)
+			drawing_guide.default_color = Color(1, 1, 1, 0.4)
 			
 			#slow down time while drawing
 			if (is_ball_in_drawing_zone):
@@ -44,19 +49,22 @@ func _process(_delta: float) -> void:
 		
 	# Player is actively drawing
 	elif(Input.is_action_pressed("Draw")):
-		if (trampoline_line.points.size() > 0):
-			trampoline_line.set_point_position(1, get_global_mouse_position())
+		if (drawing_guide.points.size() > 0):
+			drawing_guide.set_point_position(1, get_global_mouse_position())
 		
 		# Trampoline is invalid
 		if (!is_mouse_in_drawing_zone or !is_start_point_in_drawing_zone):
-			trampoline_line.default_color = Color(1, 0, 0, 0.4)
+			drawing_guide.default_color = Color(1, 0.4, 0.4, 0.4)
 		else:
-			trampoline_line.default_color = Color(1, 1, 1, 0.4)
+			drawing_guide.default_color = Color(1, 1, 1, 0.4)
 		
 	# Player is finished drawing
 	elif(Input.is_action_just_released("Draw")):
 		# Return to normal speed
 		Engine.time_scale = 1
+			
+		drawing_guide.clear_points()
+			
 			
 		if (is_mouse_in_drawing_zone && is_start_point_in_drawing_zone):	
 			var mouse_pos := get_global_mouse_position()
@@ -64,12 +72,12 @@ func _process(_delta: float) -> void:
 			var right_side: Vector2
 			
 			# Check which direction the player drew the trampoline
-			if(trampoline_line.get_point_position(0).x < mouse_pos.x):
-				left_side = trampoline_line.get_point_position(0)
+			if(starting_mouse_pos.x < mouse_pos.x):
+				left_side = starting_mouse_pos
 				right_side = mouse_pos
 			else:
 				left_side = mouse_pos
-				right_side = trampoline_line.get_point_position(0)
+				right_side = starting_mouse_pos
 					
 			# Set trampoline collider
 			trampoline_segment_collider.a = left_side
