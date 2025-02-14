@@ -24,8 +24,8 @@ script = ExtResource("1_wfcph")
 [node name="Drawing Controller" type="Node2D" parent="."]
 script = ExtResource("1_lq30c")
 trampoline_strength = 1000.0
-large_length = 400
-med_length = 250
+large_length = null
+med_length = null
 
 [node name="Trampoline" type="Area2D" parent="Drawing Controller"]
 

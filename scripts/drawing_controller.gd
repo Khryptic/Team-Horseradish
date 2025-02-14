@@ -8,6 +8,9 @@ signal trampoline_drawn
 @onready var trampoline_line: Line2D = $Trampoline/Line2D
 @onready var drawing_guide: Line2D = $"Drawing Guide"
 
+@export var large_length: int = 300
+@export var med_length: int = 200
+
 var trampoline_segment_collider: SegmentShape2D
 
 var trampoline_lives: int # how many times the ball can bounce on trampoline
@@ -49,14 +52,15 @@ func _process(_delta: float) -> void:
 		
 	# Player is actively drawing
 	elif(Input.is_action_pressed("Draw")):
+		
 		if (drawing_guide.points.size() > 0):
 			drawing_guide.set_point_position(1, get_global_mouse_position())
 		
 		# Trampoline is invalid
 		if (!is_mouse_in_drawing_zone or !is_start_point_in_drawing_zone):
-			drawing_guide.default_color = Color(1, 0.4, 0.4, 0.4)
+			drawing_guide.default_color = Color(1, 0, 0, 0.4)
 		else:
-			drawing_guide.default_color = Color(1, 1, 1, 0.4)
+			drawing_guide.default_color = get_trampoline_color(get_trampoline_lives((starting_mouse_pos - get_global_mouse_position()).length()), 0.4)
 		
 	# Player is finished drawing
 	elif(Input.is_action_just_released("Draw")):
@@ -87,18 +91,15 @@ func _process(_delta: float) -> void:
 			trampoline_line.clear_points()
 			trampoline_line.add_point(left_side)
 			trampoline_line.add_point(right_side)
-			trampoline_line.default_color = Color(1, 1, 1, 1)
+			
+						# set trampoline lives based off length of trampoline
+			var trampoline_length: int = (trampoline_segment_collider.a - trampoline_segment_collider.b).length()
+			trampoline_lives = get_trampoline_lives(trampoline_length)
+			
+			#Get color for trampoline	
+			trampoline_line.default_color = get_trampoline_color(trampoline_lives, 1)
 			
 			trampoline_drawn.emit()
-			
-			# set trampoline lives based off length of trampoline
-			var trampoline_length: int = (trampoline_segment_collider.a - trampoline_segment_collider.b).length()
-			if (trampoline_length > 300):
-				trampoline_lives = 1
-			elif (trampoline_length > 200):
-				trampoline_lives = 1
-			else:
-				trampoline_lives = 1
 			
 		# Trampoline is invalid	
 		else:
@@ -148,3 +149,23 @@ func _on_trampoline_drawing_zone_body_exited(body: Node2D) -> void:
 	if body.is_in_group("ball"):
 		is_ball_in_drawing_zone = false
 		Engine.time_scale = 1
+
+func get_trampoline_color(lives: int, opacity: float) -> Color:
+	var new_color: Color
+	match lives:
+		3: 
+			new_color = Color(1, 1, 1, opacity)
+		2: 
+			new_color = Color(1, 1, 0, opacity)
+		1:
+			new_color = Color(0.9, 0.5, 0, opacity)
+	return new_color
+
+func get_trampoline_lives(length: int) -> int:
+	if (length > large_length):
+		return 1
+	elif (length > med_length):
+		return 2
+	else:
+		return 3
+	
