@@ -103,7 +103,8 @@ func _process(_delta: float) -> void:
 			
 		# Trampoline is invalid	
 		else:
-			trampoline_line.clear_points()
+			
+			drawing_guide.clear_points()
 			
 		# Emit the signal
 		trampoline_drawn.emit()
