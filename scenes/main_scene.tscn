@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=13 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://scenes/peg.tscn" id="1_28fwh"]
 [ext_resource type="Script" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dgbmfdltn82fg" path="res://scenes/bounce_ball.tscn" id="3_j3r7q"]
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="4_6jsyi"]
 [ext_resource type="Script" path="res://scripts/lives_label.gd" id="5_8hi1r"]
+[ext_resource type="Script" path="res://scenes/pause_menu.gd" id="7_l14nw"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pc56j"]
 
@@ -17,6 +18,8 @@ size = Vector2(17.0038, 1052)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6bd5"]
 size = Vector2(634.999, 591.001)
+
+[sub_resource type="Theme" id="Theme_p0sd6"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wfcph")
@@ -142,24 +145,127 @@ debug_color = Color(1, 1, 1, 0.0392157)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 164.0
-offset_bottom = 47.0
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 10.0
 theme_override_font_sizes/font_size = 32
 text = "Score: 0
 Mult: 1x"
 script = ExtResource("4_6jsyi")
 
-[node name="LivesLabel" type="Label" parent="CanvasLayer"]
-offset_left = 2.0
-offset_top = 900.0
-offset_right = 164.0
-offset_bottom = 945.0
+[node name="LivesLabel" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_bottom = -10.0
+grow_vertical = 0
 theme_override_font_sizes/font_size = 32
 text = "Lives: 3"
 script = ExtResource("5_8hi1r")
+
+[node name="PauseButton" type="Button" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -70.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 70.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "❙❙"
+
+[node name="Pause Menu" type="Panel" parent="CanvasLayer/UI"]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -157.0
+offset_right = 198.0
+offset_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_l14nw")
+
+[node name="PausedHeader" type="Panel" parent="CanvasLayer/UI/Pause Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -95.0
+offset_top = -39.0
+offset_right = 95.0
+offset_bottom = 30.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/Pause Menu/PausedHeader"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = -11.5
+offset_right = 28.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Paused"
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/UI/Pause Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -106.0
+offset_right = 150.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_p0sd6")
+theme_override_font_sizes/font_size = 30
+text = "Resume"
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/UI/Pause Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -2.0
+offset_right = 150.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_p0sd6")
+theme_override_font_sizes/font_size = 30
+text = "Restart"
 
 [connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="body_entered" from="Drawing Controller/Trampoline" to="Drawing Controller" method="_on_trampoline_body_entered"]
@@ -168,3 +274,6 @@ script = ExtResource("5_8hi1r")
 [connection signal="body_exited" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_exited"]
 [connection signal="mouse_entered" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_mouse_entered"]
 [connection signal="mouse_exited" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/UI/PauseButton" to="CanvasLayer/UI/Pause Menu" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Pause Menu/ResumeButton" to="CanvasLayer/UI/Pause Menu" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Pause Menu/RestartButton" to="CanvasLayer/UI/Pause Menu" method="_on_restart_button_pressed"]
