@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqey3g3tln4vc"]
+
+[ext_resource type="Script" path="res://scenes/floating_text.gd" id="1_0yydk"]
+
+[node name="FloatingText" type="Node2D"]
+script = ExtResource("1_0yydk")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -49.0
+offset_top = 12.0
+offset_right = 51.0
+offset_bottom = 37.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "200"
+horizontal_alignment = 1
+vertical_alignment = 1
