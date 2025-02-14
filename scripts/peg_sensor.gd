@@ -1,6 +1,7 @@
 extends Area2D
 
 var floating_text = preload("res://scenes/floating_text.tscn")
+signal peg_hit()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,6 +21,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("ball"):
 		_display_hit_text()
+		emit_signal("peg_hit")
 		ScoreManager.add_points(1, ScoreManager.get_mult())
 		ScoreManager.increase_mult()
 
