@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=39 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://scenes/peg.tscn" id="1_28fwh"]
 [ext_resource type="Script" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
@@ -7,6 +7,31 @@
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="4_6jsyi"]
 [ext_resource type="Script" path="res://scripts/lives_label.gd" id="5_8hi1r"]
 [ext_resource type="Script" path="res://scenes/pause_menu.gd" id="7_l14nw"]
+[ext_resource type="Texture2D" uid="uid://nmsfukoqg1fd" path="res://assets/animations/onboarding/frame_01.png" id="8_qn465"]
+[ext_resource type="Texture2D" uid="uid://dtis5qie62vpq" path="res://assets/animations/onboarding/frame_02.png" id="9_oamqr"]
+[ext_resource type="Texture2D" uid="uid://dbqxl2k3dj2nr" path="res://assets/animations/onboarding/frame_03.png" id="10_0olpm"]
+[ext_resource type="Texture2D" uid="uid://cwtn6l3vierxl" path="res://assets/animations/onboarding/frame_04.png" id="11_jfear"]
+[ext_resource type="Texture2D" uid="uid://csv76dhn5eelv" path="res://assets/animations/onboarding/frame_05.png" id="12_dclty"]
+[ext_resource type="Texture2D" uid="uid://ds32eaop42gjv" path="res://assets/animations/onboarding/frame_06.png" id="13_7wsyd"]
+[ext_resource type="Texture2D" uid="uid://dbpnk55nfqaa7" path="res://assets/animations/onboarding/frame_07.png" id="14_4ihjl"]
+[ext_resource type="Texture2D" uid="uid://barq4onq7ir1u" path="res://assets/animations/onboarding/frame_08.png" id="15_a47hc"]
+[ext_resource type="Texture2D" uid="uid://bjvd6bhcupalr" path="res://assets/animations/onboarding/frame_09.png" id="16_3q2wk"]
+[ext_resource type="Texture2D" uid="uid://bn71uxuhxl65u" path="res://assets/animations/onboarding/frame_10.png" id="17_aksj2"]
+[ext_resource type="Texture2D" uid="uid://d4ljcpi67s3xk" path="res://assets/animations/onboarding/frame_11.png" id="18_02l60"]
+[ext_resource type="Texture2D" uid="uid://cuv2xfh6sbo8n" path="res://assets/animations/onboarding/frame_12.png" id="19_dmf0w"]
+[ext_resource type="Texture2D" uid="uid://codphbcjtjn50" path="res://assets/animations/onboarding/frame_13.png" id="20_lknbj"]
+[ext_resource type="Texture2D" uid="uid://cqw52x6bgusid" path="res://assets/animations/onboarding/frame_14.png" id="21_1r15n"]
+[ext_resource type="Texture2D" uid="uid://c6komfudas2cs" path="res://assets/animations/onboarding/frame_15.png" id="22_ao3l2"]
+[ext_resource type="Texture2D" uid="uid://be62q6a6t3ee1" path="res://assets/animations/onboarding/frame_16.png" id="23_le7li"]
+[ext_resource type="Texture2D" uid="uid://c10srx6efe3wv" path="res://assets/animations/onboarding/frame_17.png" id="24_rlyuv"]
+[ext_resource type="Texture2D" uid="uid://dh83umwd2titk" path="res://assets/animations/onboarding/frame_18.png" id="25_v2vu4"]
+[ext_resource type="Texture2D" uid="uid://byppba4dfm12f" path="res://assets/animations/onboarding/frame_19.png" id="26_xyux1"]
+[ext_resource type="Texture2D" uid="uid://bp6emwgvyxnfm" path="res://assets/animations/onboarding/frame_20.png" id="27_xbwu8"]
+[ext_resource type="Texture2D" uid="uid://b83ekn367wbms" path="res://assets/animations/onboarding/frame_21.png" id="28_odf7m"]
+[ext_resource type="Texture2D" uid="uid://chtcuscufnh0" path="res://assets/animations/onboarding/frame_22.png" id="29_l7llg"]
+[ext_resource type="Texture2D" uid="uid://c3re1atccpbvu" path="res://assets/animations/onboarding/frame_23.png" id="30_6lvpr"]
+[ext_resource type="Texture2D" uid="uid://b7ibvt8eupdes" path="res://assets/animations/onboarding/frame_24.png" id="31_jcdlf"]
+[ext_resource type="Script" path="res://scenes/onboarding_animation.gd" id="32_lnep7"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pc56j"]
 
@@ -20,6 +45,86 @@ size = Vector2(17.0038, 1052)
 size = Vector2(634.999, 591.001)
 
 [sub_resource type="Theme" id="Theme_p0sd6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a07ey"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_qn465")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_oamqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0olpm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_jfear")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_dclty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7wsyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_4ihjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_a47hc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_3q2wk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_aksj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_02l60")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_dmf0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_lknbj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_1r15n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ao3l2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_le7li")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_rlyuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_v2vu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_xyux1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_xbwu8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_odf7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_l7llg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_6lvpr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_jcdlf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wfcph")
@@ -267,7 +372,18 @@ theme = SubResource("Theme_p0sd6")
 theme_override_font_sizes/font_size = 30
 text = "Restart"
 
+[node name="OnboardingAnimation" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="OnboardingAnimation"]
+position = Vector2(273, 671)
+rotation = -0.26455
+scale = Vector2(0.193919, 0.193919)
+sprite_frames = SubResource("SpriteFrames_a07ey")
+autoplay = "default"
+script = ExtResource("32_lnep7")
+
 [connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
+[connection signal="trampoline_drawn" from="Drawing Controller" to="OnboardingAnimation/AnimatedSprite2D" method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="body_entered" from="Drawing Controller/Trampoline" to="Drawing Controller" method="_on_trampoline_body_entered"]
 [connection signal="body_entered" from="Bounds" to="." method="_on_bounds_body_entered"]
 [connection signal="body_entered" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_entered"]
