@@ -74,6 +74,7 @@ func _process(_delta: float) -> void:
 			var mouse_pos := get_global_mouse_position()
 			var left_side: Vector2
 			var right_side: Vector2
+			is_start_point_in_drawing_zone = false
 			
 			# Check which direction the player drew the trampoline
 			if(starting_mouse_pos.x < mouse_pos.x):
@@ -142,6 +143,9 @@ func _on_trampoline_drawing_zone_mouse_entered() -> void:
 func _on_trampoline_drawing_zone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("ball"):
 		is_ball_in_drawing_zone = true
+		if (is_start_point_in_drawing_zone):
+			Engine.time_scale = 0.1
+		
 	
 
 
