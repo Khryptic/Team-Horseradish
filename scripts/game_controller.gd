@@ -10,6 +10,8 @@ var new_ball
 func _ready() -> void:
 	ball_ref = get_tree().get_first_node_in_group("ball").get_child(0)
 	ball_ref.add_to_group("ball")
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
