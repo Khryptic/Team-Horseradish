@@ -1,0 +1,150 @@
+[gd_scene load_steps=10 format=3 uid="uid://c6usj5s4g5bdm"]
+
+[ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://scenes/peg.tscn" id="1_28fwh"]
+[ext_resource type="Script" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
+[ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_wfcph"]
+[ext_resource type="PackedScene" uid="uid://dgbmfdltn82fg" path="res://scenes/bounce_ball.tscn" id="3_j3r7q"]
+[ext_resource type="Script" path="res://scripts/score_label.gd" id="4_6jsyi"]
+[ext_resource type="Script" path="res://scripts/lives_label.gd" id="5_8hi1r"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pc56j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dd0l"]
+size = Vector2(18, 1099)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8x6e"]
+size = Vector2(17.0038, 1052)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_wfcph")
+
+[node name="Drawing Controller" type="Node2D" parent="."]
+script = ExtResource("1_lq30c")
+trampoline_strength = 1000.0
+
+[node name="Trampoline" type="Area2D" parent="Drawing Controller"]
+
+[node name="Line2D" type="Line2D" parent="Drawing Controller/Trampoline"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Trampoline"]
+shape = SubResource("SegmentShape2D_pc56j")
+
+[node name="Pegs" type="Node" parent="."]
+
+[node name="Row" type="Node" parent="Pegs"]
+
+[node name="Peg2" parent="Pegs/Row" instance=ExtResource("1_28fwh")]
+position = Vector2(95, 100)
+
+[node name="Peg9" parent="Pegs/Row" instance=ExtResource("1_28fwh")]
+position = Vector2(445, 100)
+
+[node name="Row2" type="Node" parent="Pegs"]
+
+[node name="Peg6" parent="Pegs/Row2" instance=ExtResource("1_28fwh")]
+position = Vector2(293, 203)
+
+[node name="Row3" type="Node" parent="Pegs"]
+
+[node name="Peg2" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
+position = Vector2(70, 300)
+
+[node name="Peg4" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
+position = Vector2(120, 300)
+
+[node name="Peg7" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
+position = Vector2(419, 301)
+
+[node name="Peg9" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
+position = Vector2(469, 301)
+
+[node name="Row4" type="Node" parent="Pegs"]
+
+[node name="Peg" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(70, 150)
+
+[node name="Peg2" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(120, 150)
+
+[node name="Peg5" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(270, 150)
+
+[node name="Peg6" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(246, 203)
+
+[node name="Peg8" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(420, 150)
+
+[node name="Peg9" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(470, 150)
+
+[node name="Row5" type="Node" parent="Pegs"]
+
+[node name="Peg" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
+position = Vector2(45, 250)
+
+[node name="Peg2" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
+position = Vector2(95, 250)
+
+[node name="Peg5" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
+position = Vector2(270, 250)
+
+[node name="Peg8" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
+position = Vector2(444, 251)
+
+[node name="Peg9" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
+position = Vector2(494, 251)
+
+[node name="BounceBall" parent="." groups=["ball"] instance=ExtResource("3_j3r7q")]
+position = Vector2(269, 346)
+
+[node name="World Border" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="World Border"]
+position = Vector2(-8, 454)
+shape = SubResource("RectangleShape2D_7dd0l")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="World Border"]
+position = Vector2(232, -11)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_7dd0l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Border"]
+position = Vector2(552, 461)
+shape = SubResource("RectangleShape2D_7dd0l")
+
+[node name="Respawn" type="Node2D" parent="."]
+position = Vector2(274, 346)
+
+[node name="Bounds" type="Area2D" parent="."]
+position = Vector2(287, 1001)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(9.99982, -42)
+shape = SubResource("RectangleShape2D_c8x6e")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 164.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 32
+text = "Score: XXX"
+script = ExtResource("4_6jsyi")
+
+[node name="LivesLabel" type="Label" parent="CanvasLayer"]
+offset_left = 2.0
+offset_top = 900.0
+offset_right = 164.0
+offset_bottom = 945.0
+theme_override_font_sizes/font_size = 32
+text = "Lives: 3"
+script = ExtResource("5_8hi1r")
+
+[connection signal="resetMult" from="Drawing Controller" to="." method="_on_drawing_controller_reset_mult"]
+[connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
+[connection signal="body_entered" from="Drawing Controller/Trampoline" to="Drawing Controller" method="_on_trampoline_body_entered"]
+[connection signal="body_entered" from="Bounds" to="." method="_on_bounds_body_entered"]
