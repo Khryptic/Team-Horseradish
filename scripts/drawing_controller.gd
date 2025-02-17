@@ -121,8 +121,9 @@ func _on_trampoline_body_entered(body: Node2D) -> void:
 		# Set the body's velocity
 		body.linear_velocity = segment_normal * trampoline_strength
 		
-		# delete trampoline
+		# Remove a trampoline life
 		trampoline_lives -= 1
+		trampoline_line.default_color = get_trampoline_color(trampoline_lives, 1)
 		if (trampoline_lives <= 0):
 			trampoline_line.clear_points()
 			trampoline_segment_collider.a = Vector2(-10000, -10000)
