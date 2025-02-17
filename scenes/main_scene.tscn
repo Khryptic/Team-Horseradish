@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=40 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://scenes/peg.tscn" id="1_28fwh"]
 [ext_resource type="Script" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
