@@ -16,8 +16,8 @@ size = Vector2(18, 1099)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c8x6e"]
 size = Vector2(17.0038, 1052)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6bd5"]
-size = Vector2(634.999, 591.001)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_astr8"]
+normal = Vector2(-1, 0)
 
 [sub_resource type="Theme" id="Theme_p0sd6"]
 
@@ -139,8 +139,8 @@ position = Vector2(287, 1001)
 rotation = 1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TrampolineDrawingZone"]
-position = Vector2(-307.499, 15.5017)
-shape = SubResource("RectangleShape2D_i6bd5")
+position = Vector2(-593, 15.5027)
+shape = SubResource("WorldBoundaryShape2D_astr8")
 debug_color = Color(1, 1, 1, 0.0392157)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
