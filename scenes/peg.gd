@@ -24,3 +24,4 @@ func _turn_off_light():
 func _remove_peg():
 	if(is_light_on):
 		queue_free()
+		PegManager._update_peg_count()

@@ -1,6 +1,5 @@
-[gd_scene load_steps=40 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=39 format=3 uid="uid://c6usj5s4g5bdm"]
 
-[ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://scenes/peg.tscn" id="1_28fwh"]
 [ext_resource type="Script" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_wfcph"]
 [ext_resource type="PackedScene" uid="uid://dgbmfdltn82fg" path="res://scenes/bounce_ball.tscn" id="3_j3r7q"]
@@ -144,72 +143,6 @@ med_length = 250
 shape = SubResource("SegmentShape2D_pc56j")
 
 [node name="Drawing Guide" type="Line2D" parent="Drawing Controller"]
-
-[node name="Pegs" type="Node" parent="."]
-
-[node name="Row" type="Node" parent="Pegs"]
-
-[node name="Peg2" parent="Pegs/Row" instance=ExtResource("1_28fwh")]
-position = Vector2(95, 100)
-
-[node name="Peg9" parent="Pegs/Row" instance=ExtResource("1_28fwh")]
-position = Vector2(445, 100)
-
-[node name="Row2" type="Node" parent="Pegs"]
-
-[node name="Peg6" parent="Pegs/Row2" instance=ExtResource("1_28fwh")]
-position = Vector2(293, 203)
-
-[node name="Row3" type="Node" parent="Pegs"]
-
-[node name="Peg2" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
-position = Vector2(70, 300)
-
-[node name="Peg4" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
-position = Vector2(120, 300)
-
-[node name="Peg7" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
-position = Vector2(419, 301)
-
-[node name="Peg9" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
-position = Vector2(469, 301)
-
-[node name="Row4" type="Node" parent="Pegs"]
-
-[node name="Peg" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
-position = Vector2(70, 150)
-
-[node name="Peg2" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
-position = Vector2(120, 150)
-
-[node name="Peg5" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
-position = Vector2(270, 150)
-
-[node name="Peg6" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
-position = Vector2(246, 203)
-
-[node name="Peg8" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
-position = Vector2(420, 150)
-
-[node name="Peg9" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
-position = Vector2(470, 150)
-
-[node name="Row5" type="Node" parent="Pegs"]
-
-[node name="Peg" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
-position = Vector2(45, 250)
-
-[node name="Peg2" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
-position = Vector2(95, 250)
-
-[node name="Peg5" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
-position = Vector2(270, 250)
-
-[node name="Peg8" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
-position = Vector2(444, 251)
-
-[node name="Peg9" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
-position = Vector2(494, 251)
 
 [node name="BounceBall" parent="." groups=["ball"] instance=ExtResource("3_j3r7q")]
 position = Vector2(269, 346)

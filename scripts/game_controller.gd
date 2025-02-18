@@ -11,6 +11,7 @@ func _ready() -> void:
 	ball_ref = get_tree().get_first_node_in_group("ball").get_child(0)
 	ball_ref.add_to_group("ball")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	_add_random_set_of_pegs()
 
 
 
@@ -36,4 +37,6 @@ func _on_bounds_body_entered(body: Node2D) -> void:
 		body.call_deferred("free")
 		_respawn()
 		GameManager.clear_on_pegs()
-		
+
+func _add_random_set_of_pegs():
+	PegManager._add_pegs_to_scene()
