@@ -1,0 +1,402 @@
+[gd_scene load_steps=40 format=3 uid="uid://c6usj5s4g5bdm"]
+
+[ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://scenes/peg.tscn" id="1_28fwh"]
+[ext_resource type="Script" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
+[ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_wfcph"]
+[ext_resource type="PackedScene" uid="uid://dgbmfdltn82fg" path="res://scenes/bounce_ball.tscn" id="3_j3r7q"]
+[ext_resource type="Script" path="res://scripts/score_label.gd" id="4_6jsyi"]
+[ext_resource type="Script" path="res://scripts/lives_label.gd" id="5_8hi1r"]
+[ext_resource type="Texture2D" uid="uid://ubykiqhlxd4g" path="res://assets/dotted line.png" id="5_1815f"]
+[ext_resource type="Script" path="res://scenes/pause_menu.gd" id="7_l14nw"]
+[ext_resource type="Texture2D" uid="uid://nmsfukoqg1fd" path="res://assets/animations/onboarding/frame_01.png" id="8_qn465"]
+[ext_resource type="Texture2D" uid="uid://dtis5qie62vpq" path="res://assets/animations/onboarding/frame_02.png" id="9_oamqr"]
+[ext_resource type="Texture2D" uid="uid://dbqxl2k3dj2nr" path="res://assets/animations/onboarding/frame_03.png" id="10_0olpm"]
+[ext_resource type="Texture2D" uid="uid://cwtn6l3vierxl" path="res://assets/animations/onboarding/frame_04.png" id="11_jfear"]
+[ext_resource type="Texture2D" uid="uid://csv76dhn5eelv" path="res://assets/animations/onboarding/frame_05.png" id="12_dclty"]
+[ext_resource type="Texture2D" uid="uid://ds32eaop42gjv" path="res://assets/animations/onboarding/frame_06.png" id="13_7wsyd"]
+[ext_resource type="Texture2D" uid="uid://dbpnk55nfqaa7" path="res://assets/animations/onboarding/frame_07.png" id="14_4ihjl"]
+[ext_resource type="Texture2D" uid="uid://barq4onq7ir1u" path="res://assets/animations/onboarding/frame_08.png" id="15_a47hc"]
+[ext_resource type="Texture2D" uid="uid://bjvd6bhcupalr" path="res://assets/animations/onboarding/frame_09.png" id="16_3q2wk"]
+[ext_resource type="Texture2D" uid="uid://bn71uxuhxl65u" path="res://assets/animations/onboarding/frame_10.png" id="17_aksj2"]
+[ext_resource type="Texture2D" uid="uid://d4ljcpi67s3xk" path="res://assets/animations/onboarding/frame_11.png" id="18_02l60"]
+[ext_resource type="Texture2D" uid="uid://cuv2xfh6sbo8n" path="res://assets/animations/onboarding/frame_12.png" id="19_dmf0w"]
+[ext_resource type="Texture2D" uid="uid://codphbcjtjn50" path="res://assets/animations/onboarding/frame_13.png" id="20_lknbj"]
+[ext_resource type="Texture2D" uid="uid://cqw52x6bgusid" path="res://assets/animations/onboarding/frame_14.png" id="21_1r15n"]
+[ext_resource type="Texture2D" uid="uid://c6komfudas2cs" path="res://assets/animations/onboarding/frame_15.png" id="22_ao3l2"]
+[ext_resource type="Texture2D" uid="uid://be62q6a6t3ee1" path="res://assets/animations/onboarding/frame_16.png" id="23_le7li"]
+[ext_resource type="Texture2D" uid="uid://c10srx6efe3wv" path="res://assets/animations/onboarding/frame_17.png" id="24_rlyuv"]
+[ext_resource type="Texture2D" uid="uid://dh83umwd2titk" path="res://assets/animations/onboarding/frame_18.png" id="25_v2vu4"]
+[ext_resource type="Texture2D" uid="uid://byppba4dfm12f" path="res://assets/animations/onboarding/frame_19.png" id="26_xyux1"]
+[ext_resource type="Texture2D" uid="uid://bp6emwgvyxnfm" path="res://assets/animations/onboarding/frame_20.png" id="27_xbwu8"]
+[ext_resource type="Texture2D" uid="uid://b83ekn367wbms" path="res://assets/animations/onboarding/frame_21.png" id="28_odf7m"]
+[ext_resource type="Texture2D" uid="uid://chtcuscufnh0" path="res://assets/animations/onboarding/frame_22.png" id="29_l7llg"]
+[ext_resource type="Texture2D" uid="uid://c3re1atccpbvu" path="res://assets/animations/onboarding/frame_23.png" id="30_6lvpr"]
+[ext_resource type="Texture2D" uid="uid://b7ibvt8eupdes" path="res://assets/animations/onboarding/frame_24.png" id="31_jcdlf"]
+[ext_resource type="Script" path="res://scenes/onboarding_animation.gd" id="32_lnep7"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pc56j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dd0l"]
+size = Vector2(18, 1099)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8x6e"]
+size = Vector2(17.0038, 1052)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_astr8"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="Theme" id="Theme_p0sd6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a07ey"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_qn465")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_oamqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0olpm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_jfear")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_dclty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7wsyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_4ihjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_a47hc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_3q2wk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_aksj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_02l60")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_dmf0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_lknbj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_1r15n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ao3l2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_le7li")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_rlyuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_v2vu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_xyux1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_xbwu8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_odf7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_l7llg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_6lvpr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_jcdlf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_wfcph")
+
+[node name="Drawing Controller" type="Node2D" parent="."]
+script = ExtResource("1_lq30c")
+trampoline_strength = 1000.0
+large_length = 400
+med_length = 250
+
+[node name="Trampoline" type="Area2D" parent="Drawing Controller"]
+
+[node name="Line2D" type="Line2D" parent="Drawing Controller/Trampoline"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Trampoline"]
+shape = SubResource("SegmentShape2D_pc56j")
+
+[node name="Drawing Guide" type="Line2D" parent="Drawing Controller"]
+
+[node name="Pegs" type="Node" parent="."]
+
+[node name="Row" type="Node" parent="Pegs"]
+
+[node name="Peg2" parent="Pegs/Row" instance=ExtResource("1_28fwh")]
+position = Vector2(95, 100)
+
+[node name="Peg9" parent="Pegs/Row" instance=ExtResource("1_28fwh")]
+position = Vector2(445, 100)
+
+[node name="Row2" type="Node" parent="Pegs"]
+
+[node name="Peg6" parent="Pegs/Row2" instance=ExtResource("1_28fwh")]
+position = Vector2(293, 203)
+
+[node name="Row3" type="Node" parent="Pegs"]
+
+[node name="Peg2" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
+position = Vector2(70, 300)
+
+[node name="Peg4" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
+position = Vector2(120, 300)
+
+[node name="Peg7" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
+position = Vector2(419, 301)
+
+[node name="Peg9" parent="Pegs/Row3" instance=ExtResource("1_28fwh")]
+position = Vector2(469, 301)
+
+[node name="Row4" type="Node" parent="Pegs"]
+
+[node name="Peg" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(70, 150)
+
+[node name="Peg2" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(120, 150)
+
+[node name="Peg5" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(270, 150)
+
+[node name="Peg6" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(246, 203)
+
+[node name="Peg8" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(420, 150)
+
+[node name="Peg9" parent="Pegs/Row4" instance=ExtResource("1_28fwh")]
+position = Vector2(470, 150)
+
+[node name="Row5" type="Node" parent="Pegs"]
+
+[node name="Peg" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
+position = Vector2(45, 250)
+
+[node name="Peg2" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
+position = Vector2(95, 250)
+
+[node name="Peg5" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
+position = Vector2(270, 250)
+
+[node name="Peg8" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
+position = Vector2(444, 251)
+
+[node name="Peg9" parent="Pegs/Row5" instance=ExtResource("1_28fwh")]
+position = Vector2(494, 251)
+
+[node name="BounceBall" parent="." groups=["ball"] instance=ExtResource("3_j3r7q")]
+position = Vector2(269, 346)
+
+[node name="World Border" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="World Border"]
+position = Vector2(-8, 454)
+shape = SubResource("RectangleShape2D_7dd0l")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="World Border"]
+position = Vector2(232, -11)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_7dd0l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Border"]
+position = Vector2(552, 461)
+shape = SubResource("RectangleShape2D_7dd0l")
+
+[node name="Respawn" type="Node2D" parent="."]
+position = Vector2(274, 346)
+
+[node name="Bounds" type="Area2D" parent="."]
+position = Vector2(287, 1001)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(9.99982, -42)
+shape = SubResource("RectangleShape2D_c8x6e")
+
+[node name="TrampolineDrawingZone" type="Area2D" parent="."]
+position = Vector2(287, 400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrampolineDrawingZone"]
+rotation = 1.57079
+shape = SubResource("WorldBoundaryShape2D_astr8")
+debug_color = Color(1, 1, 1, 0.0392157)
+
+[node name="Line2D" type="Line2D" parent="TrampolineDrawingZone"]
+points = PackedVector2Array(-500, 0, 500, 0)
+width = 4.0
+default_color = Color(1, 1, 1, 0.498039)
+texture = ExtResource("5_1815f")
+texture_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 10.0
+theme_override_font_sizes/font_size = 32
+text = "Score: 0
+Mult: 1x"
+script = ExtResource("4_6jsyi")
+
+[node name="LivesLabel" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_bottom = -10.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Lives: 3"
+script = ExtResource("5_8hi1r")
+
+[node name="PauseButton" type="Button" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -70.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 70.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "❙❙"
+
+[node name="Pause Menu" type="Panel" parent="CanvasLayer/UI"]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -157.0
+offset_right = 198.0
+offset_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_l14nw")
+
+[node name="PausedHeader" type="Panel" parent="CanvasLayer/UI/Pause Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -95.0
+offset_top = -39.0
+offset_right = 95.0
+offset_bottom = 30.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/Pause Menu/PausedHeader"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = -11.5
+offset_right = 28.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Paused"
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/UI/Pause Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -106.0
+offset_right = 150.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_p0sd6")
+theme_override_font_sizes/font_size = 30
+text = "Resume"
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/UI/Pause Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -2.0
+offset_right = 150.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_p0sd6")
+theme_override_font_sizes/font_size = 30
+text = "Restart"
+
+[node name="OnboardingAnimation" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="OnboardingAnimation"]
+position = Vector2(273, 671)
+rotation = -0.26455
+scale = Vector2(0.193919, 0.193919)
+sprite_frames = SubResource("SpriteFrames_a07ey")
+autoplay = "default"
+script = ExtResource("32_lnep7")
+
+[connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
+[connection signal="trampoline_drawn" from="Drawing Controller" to="OnboardingAnimation/AnimatedSprite2D" method="_on_drawing_controller_trampoline_drawn"]
+[connection signal="body_entered" from="Drawing Controller/Trampoline" to="Drawing Controller" method="_on_trampoline_body_entered"]
+[connection signal="body_entered" from="Bounds" to="." method="_on_bounds_body_entered"]
+[connection signal="body_entered" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_entered"]
+[connection signal="body_exited" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_exited"]
+[connection signal="mouse_entered" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_mouse_entered"]
+[connection signal="mouse_exited" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/UI/PauseButton" to="CanvasLayer/UI/Pause Menu" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Pause Menu/ResumeButton" to="CanvasLayer/UI/Pause Menu" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Pause Menu/RestartButton" to="CanvasLayer/UI/Pause Menu" method="_on_restart_button_pressed"]

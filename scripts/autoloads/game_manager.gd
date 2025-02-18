@@ -1,6 +1,7 @@
 extends Node
 
 signal lives_changed(new_lives)
+signal clear_pegs()
 
 var lives: int = 3
 
@@ -16,3 +17,7 @@ func _process(_delta: float) -> void:
 func lose_life():
 	lives -= 1
 	emit_signal("lives_changed", lives)
+
+func clear_on_pegs():
+	emit_signal("clear_pegs")
+	

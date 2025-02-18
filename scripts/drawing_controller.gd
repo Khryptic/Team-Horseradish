@@ -131,6 +131,9 @@ func _on_trampoline_body_entered(body: Node2D) -> void:
 		
 		# reset point multiplier
 		ScoreManager.reset_mult_count()
+		
+		# tell game manager ball has bounced (used for clearing pegs)
+		GameManager.clear_on_pegs()
 
 
 func _on_trampoline_drawing_zone_mouse_exited() -> void:

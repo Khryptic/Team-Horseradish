@@ -35,4 +35,5 @@ func _on_bounds_body_entered(body: Node2D) -> void:
 		ScoreManager.reset_mult_count()
 		body.call_deferred("free")
 		_respawn()
+		GameManager.clear_on_pegs()
 		
