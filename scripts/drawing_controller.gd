@@ -94,7 +94,7 @@ func _process(_delta: float) -> void:
 			trampoline_line.add_point(right_side)
 			
 						# set trampoline lives based off length of trampoline
-			var trampoline_length: int = (trampoline_segment_collider.a - trampoline_segment_collider.b).length()
+			var trampoline_length: int = (trampoline_segment_collider.a - trampoline_segment_collider.b).length() as int
 			trampoline_lives = get_trampoline_lives(trampoline_length)
 			
 			#Get color for trampoline	
