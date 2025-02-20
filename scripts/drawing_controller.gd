@@ -74,7 +74,6 @@ func _process(_delta: float) -> void:
 			var mouse_pos := get_global_mouse_position()
 			var left_side: Vector2
 			var right_side: Vector2
-			is_start_point_in_drawing_zone = false
 			
 			# Check which direction the player drew the trampoline
 			if(starting_mouse_pos.x < mouse_pos.x):
@@ -106,6 +105,9 @@ func _process(_delta: float) -> void:
 		# Trampoline is invalid	
 		else:
 			drawing_guide.clear_points()
+					
+		is_start_point_in_drawing_zone = false
+
 
 func _on_trampoline_body_entered(body: Node2D) -> void:
 	
