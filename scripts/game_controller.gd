@@ -14,7 +14,6 @@ func _ready() -> void:
 	_add_random_set_of_pegs()
 
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
