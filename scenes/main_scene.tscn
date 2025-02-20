@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=40 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="Script" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_wfcph"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="4_6jsyi"]
 [ext_resource type="Script" path="res://scripts/lives_label.gd" id="5_8hi1r"]
 [ext_resource type="Texture2D" uid="uid://ubykiqhlxd4g" path="res://assets/dotted line.png" id="5_1815f"]
+[ext_resource type="Script" path="res://scenes/game_over_label.gd" id="5_ufrqt"]
 [ext_resource type="Script" path="res://scenes/pause_menu.gd" id="7_l14nw"]
 [ext_resource type="Texture2D" uid="uid://nmsfukoqg1fd" path="res://assets/animations/onboarding/frame_01.png" id="8_qn465"]
 [ext_resource type="Texture2D" uid="uid://dtis5qie62vpq" path="res://assets/animations/onboarding/frame_02.png" id="9_oamqr"]
@@ -163,7 +164,7 @@ position = Vector2(552, 461)
 shape = SubResource("RectangleShape2D_7dd0l")
 
 [node name="Respawn" type="Node2D" parent="."]
-position = Vector2(274, 346)
+position = Vector2(269, 346)
 
 [node name="Bounds" type="Area2D" parent="."]
 position = Vector2(287, 1001)
@@ -198,6 +199,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Game Over!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_ufrqt")
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer/UI"]
 layout_mode = 1
@@ -242,10 +263,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -198.0
-offset_top = -157.0
-offset_right = 198.0
-offset_bottom = 157.0
+offset_left = -194.0
+offset_top = -173.0
+offset_right = 202.0
+offset_bottom = 141.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_l14nw")
