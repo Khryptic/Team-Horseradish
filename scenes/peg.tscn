@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://b4r8scy3ax4gh"]
 
 [ext_resource type="Script" path="res://scenes/peg.gd" id="1_qelap"]
-[ext_resource type="Texture2D" uid="uid://dykxrufmhp6v1" path="res://assets/peg.png" id="1_qik34"]
 [ext_resource type="Script" path="res://scripts/peg_sensor.gd" id="2_5mbo7"]
+[ext_resource type="Texture2D" uid="uid://bxrrcrdmvu6tk" path="res://assets/SP_Peg_01e.PNG" id="2_358lv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v7ta1"]
 
@@ -12,8 +12,9 @@
 script = ExtResource("1_qelap")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.152926, 0.152926)
-texture = ExtResource("1_qik34")
+position = Vector2(-3.57628e-07, -3.57628e-07)
+scale = Vector2(0.175439, 0.175439)
+texture = ExtResource("2_358lv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_v7ta1")
