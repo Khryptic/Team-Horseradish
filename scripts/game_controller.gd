@@ -20,16 +20,20 @@ func _process(_delta: float) -> void:
 	pass
 
 func _respawn() -> void:
+	GameManager.lose_life()
+	
+	if(GameManager.lives <= 0):
+		return
+	
 	new_ball = ball_prefab.instantiate()
 	new_ball.position = $Respawn.global_position
 	new_ball.get_child(0).add_to_group("ball")
 	call_deferred("add_child", new_ball)
-	GameManager.lose_life()
 		
 	ball_ref = new_ball.get_child(0)
 
 func _on_drawing_controller_trampoline_drawn() -> void:
-	ball_ref.setFreeze(false)
+	if(ball_ref != null): ball_ref.setFreeze(false)
 
 func _on_bounds_body_entered(body: Node2D) -> void:
 	if body.is_in_group("ball"):
