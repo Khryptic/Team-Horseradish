@@ -235,6 +235,7 @@ text = "❙❙"
 
 [node name="Pause Menu" type="Panel" parent="CanvasLayer/UI"]
 process_mode = 2
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
