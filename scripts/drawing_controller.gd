@@ -99,16 +99,13 @@ func _process(_delta: float) -> void:
 			
 			#Get color for trampoline	
 			trampoline_line.default_color = get_trampoline_color(trampoline_lives, 1)
-			
+						
+			# Emit the signal
 			trampoline_drawn.emit()
 			
 		# Trampoline is invalid	
 		else:
-			
 			drawing_guide.clear_points()
-			
-		# Emit the signal
-		trampoline_drawn.emit()
 
 func _on_trampoline_body_entered(body: Node2D) -> void:
 	
