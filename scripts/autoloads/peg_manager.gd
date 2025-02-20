@@ -4,6 +4,7 @@ var all_peg_layouts = []
 var current_peg_layout = [] 
 var unlit_pegs: int
 var current_pegs = []
+var current_layout_number: int = 99999
 
 func _ready() -> void:
 	_load_peg_layouts()
@@ -27,8 +28,14 @@ func _add_pegs_to_scene():
 		print("No peg layouts available.")
 		return
 
-	# Select a random peg layout
-	current_peg_layout= all_peg_layouts[randi() % all_peg_layouts.size()]
+	# Random layout
+	var randomNum: int = randi() % (all_peg_layouts.size() - 1)
+	
+	# make sure is not the same layout as last one
+	if (randomNum >= current_layout_number):
+		randomNum += 1
+	current_peg_layout= all_peg_layouts[randomNum]
+	current_layout_number = randomNum;
 	unlit_pegs = current_peg_layout.size()
 
 	# Instantiate pegs in the scene
