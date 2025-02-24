@@ -4,7 +4,9 @@ signal trampoline_drawn
 
 @onready var trampoline: Trampoline = $"Trampoline"
 @onready var drawing_guide: Line2D = $"Drawing Guide"
+@onready var red_x: Sprite2D = $"Drawing Guide/Red X"
 
+@export var drawing_zone: Area2D
 @export var large_length: int = 300
 @export var med_length: int = 200
 
@@ -43,14 +45,26 @@ func _process(_delta: float) -> void:
 	# Player is actively drawing
 	elif(Input.is_action_pressed("Draw")):
 		
-		if (drawing_guide.points.size() > 0):
-			drawing_guide.set_point_position(1, get_global_mouse_position())
+		var mouse_pos := get_global_mouse_position()
+		var end_point := get_trampoline_endpoint(starting_mouse_pos, mouse_pos)
+		var trampoline_length := (starting_mouse_pos - end_point).length()
+
+		if (drawing_guide.points.size() >= 2):
+			drawing_guide.points[1] = end_point
 		
-		# Trampoline is invalid
-		if (!is_mouse_in_drawing_zone or !is_start_point_in_drawing_zone):
+		if (!is_start_point_in_drawing_zone):
+			# Trampoline is invalid
 			drawing_guide.default_color = Trampoline.get_trampoline_color(0, 0.4)
 		else:
-			drawing_guide.default_color = Trampoline.get_trampoline_color(get_trampoline_lives((starting_mouse_pos - get_global_mouse_position()).length()), 0.4)
+			# Trampoline is valid
+			drawing_guide.default_color = Trampoline.get_trampoline_color(get_trampoline_lives(trampoline_length), 0.4)
+
+			# Put the X over the trampoline endpoint
+			if (!is_mouse_in_drawing_zone):
+				if(!red_x.visible): red_x.visible = true
+				red_x.global_position = end_point
+			else:
+				if(red_x.visible): red_x.visible = false
 		
 	# Player is finished drawing
 	elif(Input.is_action_just_released("Draw")):
@@ -58,7 +72,6 @@ func _process(_delta: float) -> void:
 		Engine.time_scale = 1
 			
 		drawing_guide.clear_points()
-			
 			
 		if (is_mouse_in_drawing_zone && is_start_point_in_drawing_zone):	
 			var mouse_pos := get_global_mouse_position()
@@ -90,15 +103,11 @@ func _on_trampoline_drawing_zone_mouse_exited() -> void:
 func _on_trampoline_drawing_zone_mouse_entered() -> void:
 	is_mouse_in_drawing_zone = true
 
-
-
 func _on_trampoline_drawing_zone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("ball"):
 		is_ball_in_drawing_zone = true
 		if (is_start_point_in_drawing_zone):
 			Engine.time_scale = 0.1
-
-
 
 func _on_trampoline_drawing_zone_body_exited(body: Node2D) -> void:
 	if body.is_in_group("ball"):
@@ -112,3 +121,16 @@ func get_trampoline_lives(length: float) -> int:
 		return 2
 	else:
 		return 3
+
+func intersection_with_horizontal_line(point_a: Vector2, point_b: Vector2, y: float) -> Vector2:
+	
+	# Two point formula for a line solved for X. Since the Y is known, we can calculate the X to get the intercept.
+	var x: float = (y - point_a.y) * (point_b.x - point_a.x) / (point_b.y - point_a.y) + point_a.x
+	
+	return Vector2(x, y)
+
+func get_trampoline_endpoint(start_pos, mouse_pos) -> Vector2:
+	if (!is_mouse_in_drawing_zone and is_start_point_in_drawing_zone):
+		return intersection_with_horizontal_line(start_pos, mouse_pos, drawing_zone.global_position.y)
+
+	return mouse_pos

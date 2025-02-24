@@ -1,10 +1,11 @@
-[gd_scene load_steps=41 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=42 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="Script" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_wfcph"]
 [ext_resource type="Script" path="res://scenes/trampoline.gd" id="3_0votk"]
 [ext_resource type="PackedScene" uid="uid://dgbmfdltn82fg" path="res://scenes/bounce_ball.tscn" id="3_j3r7q"]
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="4_6jsyi"]
+[ext_resource type="Texture2D" uid="uid://bak37mkleqku4" path="res://assets/Red_X.png" id="4_dl6a1"]
 [ext_resource type="Script" path="res://scripts/lives_label.gd" id="5_8hi1r"]
 [ext_resource type="Texture2D" uid="uid://ubykiqhlxd4g" path="res://assets/dotted line.png" id="5_1815f"]
 [ext_resource type="Script" path="res://scenes/game_over_label.gd" id="5_ufrqt"]
@@ -131,8 +132,9 @@ animations = [{
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wfcph")
 
-[node name="Drawing Controller" type="Node2D" parent="."]
+[node name="Drawing Controller" type="Node2D" parent="." node_paths=PackedStringArray("drawing_zone")]
 script = ExtResource("1_lq30c")
+drawing_zone = NodePath("../TrampolineDrawingZone")
 large_length = 400
 med_length = 250
 
@@ -146,6 +148,12 @@ trampoline_strength = 1200.0
 shape = SubResource("SegmentShape2D_pc56j")
 
 [node name="Drawing Guide" type="Line2D" parent="Drawing Controller"]
+
+[node name="Red X" type="Sprite2D" parent="Drawing Controller/Drawing Guide"]
+visible = false
+position = Vector2(-100, -100)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_dl6a1")
 
 [node name="BounceBall" parent="." groups=["ball"] instance=ExtResource("3_j3r7q")]
 position = Vector2(269, 346)
