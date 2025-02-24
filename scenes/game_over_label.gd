@@ -6,3 +6,10 @@ func _ready() -> void:
 
 func on_game_over():
 	visible = true
+	$Timer.start()
+
+func _on_timer_timeout() -> void:
+	get_tree().reload_current_scene()
+	ScoreManager.score = 0
+	ScoreManager.reset_mult_count()
+	GameManager.lives = 3 # Replace with function body.
