@@ -35,7 +35,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	
 	# check if bullet time is running out
-	print(bullet_time_since_activation)
+	print(Engine.time_scale)
 	bullet_time_since_activation += _delta * (1 / Engine.time_scale)
 	if (bullet_time_since_activation >= bullet_time_duration):
 		# if bullet time duration has passed, tween back
