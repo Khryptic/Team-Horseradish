@@ -17,5 +17,8 @@ func _on_restart_button_pressed():
 	get_tree().reload_current_scene()
 	ScoreManager.score = 0
 	ScoreManager.reset_mult_count()
-	$"../../../Drawing Controller".trampoline_segment_collider.a = Vector2(-10000, -10000)
-	$"../../../Drawing Controller".trampoline_segment_collider.b = Vector2(-10000, -10000)
+	GameManager.lives = 3
+	
+	# Commented out due to error when restarting; not sure if this is still necessary
+	#$"../../../Drawing Controller".trampoline_segment_collider.a = Vector2(-10000, -10000)
+	#$"../../../Drawing Controller".trampoline_segment_collider.b = Vector2(-10000, -10000)

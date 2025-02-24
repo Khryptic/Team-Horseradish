@@ -11,5 +11,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
+# Resets lives text and the lives counter
 func _on_lives_changed(lives: int):
-	text = "Lives: " + str(lives) 
+	text = "Lives: " + str(lives)
