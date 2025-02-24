@@ -135,8 +135,7 @@ script = ExtResource("1_wfcph")
 [node name="Drawing Controller" type="Node2D" parent="." node_paths=PackedStringArray("drawing_zone")]
 script = ExtResource("1_lq30c")
 drawing_zone = NodePath("../TrampolineDrawingZone")
-large_length = 400
-med_length = 250
+max_trampoline_length = 301
 
 [node name="Trampoline" type="Area2D" parent="Drawing Controller"]
 script = ExtResource("3_0votk")

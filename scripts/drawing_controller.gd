@@ -70,7 +70,7 @@ func _while_mouse_down():
 		drawing_guide.default_color = Trampoline.get_trampoline_color(get_trampoline_lives(trampoline_length), 0.4)
 
 		# Put the X over the trampoline endpoint
-		if (!is_mouse_in_drawing_zone):
+		if (end_point.y <= drawing_zone.global_position.y):
 			if(!red_x.visible): red_x.visible = true
 			red_x.global_position = end_point
 		else:
