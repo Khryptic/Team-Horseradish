@@ -11,6 +11,11 @@ signal trampoline_drawn
 @export var large_length: int = 300
 @export var med_length: int = 200
 
+@export var bullet_time_scale: float = 0.1
+@export var bullet_time_duration: float = 1
+@export var bullet_time_fade_to_normal = 0.5
+var bullet_time_since_activation = 0
+
 var trampoline_segment_collider: SegmentShape2D
 
 var trampoline_lives: int # how many times the ball can bounce on trampoline
@@ -29,6 +34,18 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	
+	# check if bullet time is running out
+	print(bullet_time_since_activation)
+	bullet_time_since_activation += _delta * (1 / Engine.time_scale)
+	if (bullet_time_since_activation >= bullet_time_duration):
+		# if bullet time duration has passed, tween back
+		# to full speed based off bullet_time_fade_to_normal
+		var time : float = bullet_time_since_activation - bullet_time_duration
+		var percent_of_tween_complete : float = 1 + ((time-bullet_time_fade_to_normal)/bullet_time_fade_to_normal)
+		var distance_tweened : float = 1 - bullet_time_scale
+		var time_scale : float = bullet_time_scale + percent_of_tween_complete * distance_tweened
+		Engine.time_scale = clamp(time_scale,bullet_time_scale,1)
+		
 	# Player started drawing
 	if(Input.is_action_just_pressed("Draw")):
 		if (is_mouse_in_drawing_zone):
@@ -43,7 +60,8 @@ func _process(_delta: float) -> void:
 			
 			#slow down time while drawing
 			if (is_ball_in_drawing_zone):
-				Engine.time_scale = 0.1
+				Engine.time_scale = bullet_time_scale
+				bullet_time_since_activation = 0 
 			
 			is_start_point_in_drawing_zone = true
 		else:
@@ -66,6 +84,7 @@ func _process(_delta: float) -> void:
 	elif(Input.is_action_just_released("Draw")):
 		# Return to normal speed
 		Engine.time_scale = 1
+		bullet_time_since_activation = 999
 			
 		drawing_guide.clear_points()
 			
@@ -147,7 +166,8 @@ func _on_trampoline_drawing_zone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("ball"):
 		is_ball_in_drawing_zone = true
 		if (is_start_point_in_drawing_zone):
-			Engine.time_scale = 0.1
+			Engine.time_scale = bullet_time_scale
+			bullet_time_since_activation = 0
 		
 	
 

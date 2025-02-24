@@ -135,6 +135,9 @@ script = ExtResource("1_lq30c")
 trampoline_strength = 1000.0
 large_length = 400
 med_length = 250
+bullet_time_scale = 0.2
+bullet_time_duration = 2.0
+bullet_time_fade_to_normal = 1.0
 
 [node name="Trampoline" type="Area2D" parent="Drawing Controller"]
 
