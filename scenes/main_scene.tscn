@@ -1,7 +1,8 @@
-[gd_scene load_steps=40 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=41 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="Script" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_wfcph"]
+[ext_resource type="Script" path="res://scenes/trampoline.gd" id="3_0votk"]
 [ext_resource type="PackedScene" uid="uid://dgbmfdltn82fg" path="res://scenes/bounce_ball.tscn" id="3_j3r7q"]
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="4_6jsyi"]
 [ext_resource type="Script" path="res://scripts/lives_label.gd" id="5_8hi1r"]
@@ -132,11 +133,12 @@ script = ExtResource("1_wfcph")
 
 [node name="Drawing Controller" type="Node2D" parent="."]
 script = ExtResource("1_lq30c")
-trampoline_strength = 1000.0
 large_length = 400
 med_length = 250
 
 [node name="Trampoline" type="Area2D" parent="Drawing Controller"]
+script = ExtResource("3_0votk")
+trampoline_strength = 1200.0
 
 [node name="Line2D" type="Line2D" parent="Drawing Controller/Trampoline"]
 
@@ -343,9 +345,9 @@ sprite_frames = SubResource("SpriteFrames_a07ey")
 autoplay = "default"
 script = ExtResource("32_lnep7")
 
-[connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="OnboardingAnimation/AnimatedSprite2D" method="_on_drawing_controller_trampoline_drawn"]
-[connection signal="body_entered" from="Drawing Controller/Trampoline" to="Drawing Controller" method="_on_trampoline_body_entered"]
+[connection signal="trampoline_drawn" from="Drawing Controller" to="BounceBall" method="freezeBall" binds= [false]]
+[connection signal="body_entered" from="Drawing Controller/Trampoline" to="Drawing Controller/Trampoline" method="_on_body_entered"]
 [connection signal="body_entered" from="Bounds" to="." method="_on_bounds_body_entered"]
 [connection signal="body_entered" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_entered"]
 [connection signal="body_exited" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_exited"]
