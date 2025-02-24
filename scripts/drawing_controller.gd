@@ -7,6 +7,7 @@ signal trampoline_drawn
 @onready var red_x: Sprite2D = $"Drawing Guide/Red X"
 
 @export var drawing_zone: Area2D
+@export var max_trampoline_length: int = 300
 @export var large_length: int = 300
 @export var med_length: int = 200
 
@@ -23,52 +24,60 @@ func _process(_delta: float) -> void:
 	
 	# Player started drawing
 	if(Input.is_action_just_pressed("Draw")):
-		if (is_mouse_in_drawing_zone):
-			var mouse_pos := get_global_mouse_position()
-			starting_mouse_pos = mouse_pos
-			
-			# Show the drawing guide
-			drawing_guide.clear_points()
-			drawing_guide.add_point(mouse_pos)
-			drawing_guide.add_point(mouse_pos)
-			drawing_guide.default_color = Color(1, 1, 1, 0.4)
-			
-			#slow down time while drawing
-			if (is_ball_in_drawing_zone):
-				Engine.time_scale = 0.1
-			
-			is_start_point_in_drawing_zone = true
-		else:
-			# if started drawing outside zone
-			is_start_point_in_drawing_zone = false
+		_on_mouse_down()
 		
 	# Player is actively drawing
 	elif(Input.is_action_pressed("Draw")):
-		
-		var mouse_pos := get_global_mouse_position()
-		var end_point := get_trampoline_endpoint(starting_mouse_pos, mouse_pos)
-		var trampoline_length := (starting_mouse_pos - end_point).length()
-
-		if (drawing_guide.points.size() >= 2):
-			drawing_guide.points[1] = end_point
-		
-		if (!is_start_point_in_drawing_zone):
-			# Trampoline is invalid
-			drawing_guide.default_color = Trampoline.get_trampoline_color(0, 0.4)
-		else:
-			# Trampoline is valid
-			drawing_guide.default_color = Trampoline.get_trampoline_color(get_trampoline_lives(trampoline_length), 0.4)
-
-			# Put the X over the trampoline endpoint
-			if (!is_mouse_in_drawing_zone):
-				if(!red_x.visible): red_x.visible = true
-				red_x.global_position = end_point
-			else:
-				if(red_x.visible): red_x.visible = false
+		_while_mouse_down()
 		
 	# Player is finished drawing
 	elif(Input.is_action_just_released("Draw")):
-		# Return to normal speed
+		_on_mouse_released()
+
+func _on_mouse_down():
+	if (is_mouse_in_drawing_zone):
+		var mouse_pos := get_global_mouse_position()
+		starting_mouse_pos = mouse_pos
+		
+		# Show the drawing guide
+		drawing_guide.clear_points()
+		drawing_guide.add_point(mouse_pos)
+		drawing_guide.add_point(mouse_pos)
+		drawing_guide.default_color = Color(1, 1, 1, 0.4)
+		
+		#slow down time while drawing
+		if (is_ball_in_drawing_zone):
+			Engine.time_scale = 0.1
+		
+		is_start_point_in_drawing_zone = true
+	else:
+		# if started drawing outside zone
+		is_start_point_in_drawing_zone = false
+
+func _while_mouse_down():
+	var mouse_pos := get_global_mouse_position()
+	var end_point := get_trampoline_endpoint(starting_mouse_pos, mouse_pos)
+	var trampoline_length := (starting_mouse_pos - end_point).length()
+
+	if (drawing_guide.points.size() >= 2):
+		drawing_guide.points[1] = end_point
+	
+	if (!is_start_point_in_drawing_zone):
+		# Trampoline is invalid
+		drawing_guide.default_color = Trampoline.get_trampoline_color(0, 0.4)
+	else:
+		# Trampoline is valid
+		drawing_guide.default_color = Trampoline.get_trampoline_color(get_trampoline_lives(trampoline_length), 0.4)
+
+		# Put the X over the trampoline endpoint
+		if (!is_mouse_in_drawing_zone):
+			if(!red_x.visible): red_x.visible = true
+			red_x.global_position = end_point
+		else:
+			if(red_x.visible): red_x.visible = false
+
+func _on_mouse_released():
+	# Return to normal speed
 		Engine.time_scale = 1
 			
 		drawing_guide.clear_points()
@@ -130,8 +139,24 @@ func intersection_with_horizontal_line(point_a: Vector2, point_b: Vector2, y: fl
 	
 	return Vector2(x, y)
 
-func get_trampoline_endpoint(start_pos, mouse_pos) -> Vector2:
-	if (!is_mouse_in_drawing_zone and is_start_point_in_drawing_zone):
-		return intersection_with_horizontal_line(start_pos, mouse_pos, drawing_zone.global_position.y)
+func get_trampoline_endpoint(start_pos: Vector2, mouse_pos: Vector2) -> Vector2:
+	
+	var end_point := mouse_pos
+	var shortest_length_squared := (mouse_pos - start_pos).length_squared()
 
-	return mouse_pos
+	# Trampoline is above drawing zone
+	if (!is_mouse_in_drawing_zone and is_start_point_in_drawing_zone):
+		end_point = intersection_with_horizontal_line(start_pos, mouse_pos, drawing_zone.global_position.y)
+		shortest_length_squared = (end_point - start_pos).length_squared()
+
+	# Trampoline is too long
+	if (mouse_pos - start_pos).length_squared() > max_trampoline_length * max_trampoline_length:
+		var direction: Vector2 = (mouse_pos - start_pos).normalized()
+		var length_squared := max_trampoline_length * max_trampoline_length
+		
+		# If this is the shortest length yet, this is the end point
+		if(length_squared < shortest_length_squared):
+			shortest_length_squared = length_squared
+			end_point = start_pos + direction * max_trampoline_length
+
+	return end_point
