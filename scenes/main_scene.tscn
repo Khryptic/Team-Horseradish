@@ -152,7 +152,7 @@ shape = SubResource("SegmentShape2D_pc56j")
 [node name="Red X" type="Sprite2D" parent="Drawing Controller/Drawing Guide"]
 visible = false
 position = Vector2(-100, -100)
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.04, 0.04)
 texture = ExtResource("4_dl6a1")
 
 [node name="BounceBall" parent="." groups=["ball"] instance=ExtResource("3_j3r7q")]
