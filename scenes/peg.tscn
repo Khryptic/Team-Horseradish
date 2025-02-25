@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4r8scy3ax4gh"]
+[gd_scene load_steps=9 format=3 uid="uid://b4r8scy3ax4gh"]
 
 [ext_resource type="Script" path="res://scenes/peg.gd" id="1_qelap"]
 [ext_resource type="Script" path="res://scripts/peg_sensor.gd" id="2_5mbo7"]
@@ -7,6 +7,42 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_v7ta1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_spoja"]
+
+[sub_resource type="Animation" id="Animation_pj18k"]
+resource_name = "ball_hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.175439, 0.175439), Vector2(0.225, 0.225), Vector2(0.175439, 0.175439)]
+}
+
+[sub_resource type="Animation" id="Animation_40v21"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.175439, 0.175439)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_603km"]
+_data = {
+"RESET": SubResource("Animation_40v21"),
+"ball_hit": SubResource("Animation_pj18k")
+}
 
 [node name="StaticBody2D" type="StaticBody2D"]
 script = ExtResource("1_qelap")
@@ -25,6 +61,11 @@ script = ExtResource("2_5mbo7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="peg_sensor"]
 scale = Vector2(1.00331, 1.00331)
 shape = SubResource("CircleShape2D_spoja")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_603km")
+}
 
 [connection signal="area_entered" from="peg_sensor" to="peg_sensor" method="_on_area_entered"]
 [connection signal="body_entered" from="peg_sensor" to="peg_sensor" method="_on_body_entered"]
