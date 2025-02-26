@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 var is_light_on : bool = false
 
 # Load different peg textures
@@ -14,7 +16,7 @@ var random_sprite = peg_sprites[randi() % peg_sprites.size()]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	get_node("peg_sensor").peg_hit.connect(_turn_off_light)
+	get_node("peg_sensor").peg_hit.connect(_on_peg_hit)
 	GameManager.clear_pegs.connect(_remove_peg)
 
 	# Get random peg sprite
@@ -22,12 +24,15 @@ func _ready() -> void:
 
 
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
 
-func _turn_off_light():
+func _on_peg_hit():
+
+	animation_player.stop()
+	animation_player.play("ball_hit")
+
 	get_node("Sprite2D").self_modulate = Color8(80, 80, 80, 255)
 
 	is_light_on = true
