@@ -30,6 +30,7 @@ func _process(_delta: float) -> void:
 
 func _on_peg_hit():
 
+	animation_player.stop()
 	animation_player.play("ball_hit")
 
 	get_node("Sprite2D").self_modulate = Color8(80, 80, 80, 255)

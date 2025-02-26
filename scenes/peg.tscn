@@ -8,21 +8,6 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_spoja"]
 
-[sub_resource type="Animation" id="Animation_pj18k"]
-resource_name = "ball_hit"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0.175439, 0.175439), Vector2(0.225, 0.225), Vector2(0.175439, 0.175439)]
-}
-
 [sub_resource type="Animation" id="Animation_40v21"]
 length = 0.001
 tracks/0/type = "value"
@@ -36,6 +21,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.175439, 0.175439)]
+}
+
+[sub_resource type="Animation" id="Animation_pj18k"]
+resource_name = "ball_hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(0.175439, 0.175439), Vector2(0.225, 0.225), Vector2(0.16, 0.16), Vector2(0.18, 0.18), Vector2(0.17, 0.17), Vector2(0.177, 0.177), Vector2(0.175, 0.175)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_603km"]
