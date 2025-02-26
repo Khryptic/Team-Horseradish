@@ -137,9 +137,9 @@ script = ExtResource("1_lq30c")
 drawing_zone = NodePath("../TrampolineDrawingZone")
 max_trampoline_length = 301
 med_length = 250
-bullet_time_scale = 0.15
-bullet_time_duration = 0.5
-bullet_time_fade_to_normal = 2.0
+bullet_time_scale = 0.2
+bullet_time_duration = 0.25
+bullet_time_fade_to_normal = 1.0
 
 [node name="Trampoline" type="Area2D" parent="Drawing Controller"]
 script = ExtResource("3_0votk")
