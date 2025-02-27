@@ -3,7 +3,7 @@ extends Area2D
 var floating_text = preload("res://scenes/floating_text.tscn")
 signal peg_hit()
 
-var points_worth : int = 10
+@export var points_worth : int = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

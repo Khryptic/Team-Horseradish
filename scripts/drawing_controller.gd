@@ -28,7 +28,7 @@ var is_mouse_in_drawing_zone: bool # if the mouse is in drawing zone
 var is_start_point_in_drawing_zone: bool # if the mouse was in drawing zone on mouse down
 # this is needed in case the player starts drawing outside of drawing zone and releases mouse in zone 
 
-var is_ball_in_drawing_zone: bool # if the ball is in the drawing zone, activate bullet time
+#var is_ball_in_drawing_zone: bool # if the ball is in the drawing zone, activate bullet time
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -143,21 +143,21 @@ func _on_trampoline_drawing_zone_mouse_exited() -> void:
 func _on_trampoline_drawing_zone_mouse_entered() -> void:
 	is_mouse_in_drawing_zone = true
 
-func _on_trampoline_drawing_zone_body_entered(body: Node2D) -> void:
-	if body.is_in_group("ball"):
-		is_ball_in_drawing_zone = true
-		if (is_start_point_in_drawing_zone):
-			Engine.time_scale = bullet_time_scale
-			bullet_time_since_activation = 0
+#func _on_trampoline_drawing_zone_body_entered(body: Node2D) -> void:
+	#if body.is_in_group("ball"):
+		#is_ball_in_drawing_zone = true
+		#if (is_start_point_in_drawing_zone):
+			#Engine.time_scale = bullet_time_scale
+			#bullet_time_since_activation = 0
 		
 	
 
 
 
-func _on_trampoline_drawing_zone_body_exited(body: Node2D) -> void:
-	if body.is_in_group("ball"):
-		is_ball_in_drawing_zone = false
-		Engine.time_scale = 1
+#func _on_trampoline_drawing_zone_body_exited(body: Node2D) -> void:
+	#if body.is_in_group("ball"):
+		#is_ball_in_drawing_zone = false
+		#Engine.time_scale = 1
 
 func get_trampoline_lives(length: float) -> int:
 	if (length > large_length):
