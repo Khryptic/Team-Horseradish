@@ -2,7 +2,7 @@ extends StaticBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-var is_light_on : bool = false
+var is_light_on : bool = true
 
 # Load different peg textures
 const peg_yellow = preload("res://assets/SP_Peg_01a.PNG")
@@ -35,10 +35,12 @@ func _on_peg_hit():
 
 	get_node("Sprite2D").self_modulate = Color8(80, 80, 80, 255)
 
-	is_light_on = true
-	get_node("peg_sensor").points_worth = 1
+	if is_light_on:
+		get_node("peg_sensor").points_worth /= 10
+	is_light_on = false
+	
 
 func _remove_peg():
-	if(is_light_on):
+	if(!is_light_on):
 		queue_free()
 		PegManager._update_peg_count()
