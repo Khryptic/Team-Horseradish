@@ -74,9 +74,8 @@ func _on_mouse_down():
 		drawing_guide.default_color = Color(1, 1, 1, 0.4)
 		
 		#slow down time while drawing
-		if (is_ball_in_drawing_zone):
-			Engine.time_scale = bullet_time_scale
-			bullet_time_since_activation = 0 
+		Engine.time_scale = bullet_time_scale
+		bullet_time_since_activation = 0 
 		
 		is_start_point_in_drawing_zone = true
 	else:

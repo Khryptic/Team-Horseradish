@@ -137,13 +137,13 @@ script = ExtResource("1_wfcph")
 
 [node name="Drawing Controller" type="Node2D" parent="." node_paths=PackedStringArray("drawing_zone")]
 script = ExtResource("1_lq30c")
-drawing_zone = NodePath("../TrampolineDrawingZone")
 max_trampoline_length = 301
 large_length = null
 med_length = 250
 bullet_time_scale = 0.2
 bullet_time_duration = 0.25
 bullet_time_fade_to_normal = 1.0
+drawing_zone = NodePath("../TrampolineDrawingZone")
 
 [node name="Trampoline" type="Area2D" parent="Drawing Controller"]
 script = ExtResource("3_0votk")
@@ -374,8 +374,6 @@ sprite_frames = SubResource("SpriteFrames_a07ey")
 autoplay = "default"
 script = ExtResource("32_lnep7")
 
-[connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
-[connection signal="trampoline_drawn" from="Drawing Controller" to="OnboardingAnimation/AnimatedSprite2D" method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="body_entered" from="Drawing Controller/Trampoline" to="Drawing Controller/Trampoline" method="_on_body_entered"]
 [connection signal="body_entered" from="Bounds" to="." method="_on_bounds_body_entered"]
 [connection signal="body_entered" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_entered"]
