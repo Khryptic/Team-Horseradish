@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var sprite: Sprite2D = $AnimationScale/Sprite2D
 
 var is_light_on : bool = false
 
@@ -20,7 +21,7 @@ func _ready() -> void:
 	GameManager.clear_pegs.connect(_remove_peg)
 
 	# Get random peg sprite
-	get_node("Sprite2D").set_texture(random_sprite)
+	sprite.set_texture(random_sprite)
 
 
 
@@ -33,7 +34,7 @@ func _on_peg_hit():
 	animation_player.stop()
 	animation_player.play("ball_hit")
 
-	get_node("Sprite2D").self_modulate = Color8(80, 80, 80, 255)
+	sprite.self_modulate = Color8(80, 80, 80, 255)
 
 	is_light_on = true
 	get_node("peg_sensor").points_worth = 1
