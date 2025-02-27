@@ -13,8 +13,8 @@ var lives: int:
 		lives = value
 		line.default_color = get_trampoline_color(lives, 1)
 		if (lives <= 0):
-			point_a = Vector2(-10000, -10000)
-			point_b = Vector2(-10000, -10000)
+			reset()
+			
 	get: return lives
 
 var point_a: Vector2:
@@ -30,6 +30,10 @@ var point_b: Vector2:
 		line.points[1] = value
 	get:
 		return collider_shape.b
+
+func reset():
+	point_a = Vector2(-10000, -10000)
+	point_b = Vector2(-10000, -10000)
 
 func _ready() -> void:
 	line.add_point(Vector2(-10000, -10000))

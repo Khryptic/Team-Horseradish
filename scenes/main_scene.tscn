@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=44 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="Script" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_wfcph"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dgbmfdltn82fg" path="res://scenes/bounce_ball.tscn" id="3_j3r7q"]
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="4_6jsyi"]
 [ext_resource type="Texture2D" uid="uid://bak37mkleqku4" path="res://assets/Red_X.png" id="4_dl6a1"]
+[ext_resource type="Script" path="res://scenes/drawing_guide.gd" id="4_pd01j"]
 [ext_resource type="Script" path="res://scripts/lives_label.gd" id="5_8hi1r"]
 [ext_resource type="Texture2D" uid="uid://ubykiqhlxd4g" path="res://assets/dotted line.png" id="5_1815f"]
 [ext_resource type="Script" path="res://scenes/game_over_label.gd" id="5_ufrqt"]
@@ -37,6 +38,8 @@
 [ext_resource type="Script" path="res://scenes/onboarding_animation.gd" id="32_lnep7"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pc56j"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_yviod"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7dd0l"]
 size = Vector2(18, 1099)
@@ -150,13 +153,19 @@ trampoline_strength = 1200.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Trampoline"]
 shape = SubResource("SegmentShape2D_pc56j")
 
-[node name="Drawing Guide" type="Line2D" parent="Drawing Controller"]
+[node name="Drawing Guide" type="Area2D" parent="Drawing Controller"]
+script = ExtResource("4_pd01j")
 
 [node name="Red X" type="Sprite2D" parent="Drawing Controller/Drawing Guide"]
 visible = false
 position = Vector2(-100, -100)
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("4_dl6a1")
+
+[node name="Line2D" type="Line2D" parent="Drawing Controller/Drawing Guide"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Drawing Guide"]
+shape = SubResource("SegmentShape2D_yviod")
 
 [node name="BounceBall" parent="." groups=["ball"] instance=ExtResource("3_j3r7q")]
 position = Vector2(269, 346)

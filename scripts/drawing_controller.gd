@@ -3,7 +3,7 @@ extends Node2D
 signal trampoline_drawn
 
 @onready var trampoline: Trampoline = $"Trampoline"
-@onready var drawing_guide: Line2D = $"Drawing Guide"
+@onready var drawing_guide: Trampoline = $"Drawing Guide"
 @onready var red_x: Sprite2D = $"Drawing Guide/Red X"
 
 @export var drawing_zone: Area2D
@@ -49,9 +49,8 @@ func _process(_delta: float) -> void:
 			starting_mouse_pos = mouse_pos
 			
 			# Show the drawing guide
-			drawing_guide.clear_points()
-			drawing_guide.add_point(mouse_pos)
-			drawing_guide.add_point(mouse_pos)
+			drawing_guide.point_a = mouse_pos
+			drawing_guide.point_b = mouse_pos
 			drawing_guide.default_color = Color(1, 1, 1, 0.4)
 			
 			#slow down time while drawing
@@ -78,9 +77,8 @@ func _on_mouse_down():
 		starting_mouse_pos = mouse_pos
 		
 		# Show the drawing guide
-		drawing_guide.clear_points()
-		drawing_guide.add_point(mouse_pos)
-		drawing_guide.add_point(mouse_pos)
+		drawing_guide.point_a = mouse_pos
+		drawing_guide.point_b = mouse_pos
 		drawing_guide.default_color = Color(1, 1, 1, 0.4)
 		
 		#slow down time while drawing
@@ -97,8 +95,7 @@ func _while_mouse_down():
 	var end_point := get_trampoline_endpoint(starting_mouse_pos, mouse_pos)
 	var trampoline_length := (starting_mouse_pos - end_point).length()
 
-	if (drawing_guide.points.size() >= 2):
-		drawing_guide.points[1] = end_point
+	drawing_guide.point_b = end_point
 	
 	if (!is_start_point_in_drawing_zone):
 		# Trampoline is invalid
@@ -119,7 +116,7 @@ func _on_mouse_released():
 		Engine.time_scale = 1
 		bullet_time_since_activation = 999
 			
-		drawing_guide.clear_points()
+		drawing_guide.reset()
 		if(red_x.visible): red_x.visible = false
 			
 		if (is_start_point_in_drawing_zone):	
@@ -142,7 +139,7 @@ func _on_mouse_released():
 			
 		# Trampoline is invalid	
 		else:
-			drawing_guide.clear_points()
+			drawing_guide.reset()
 					
 		is_start_point_in_drawing_zone = false
 
