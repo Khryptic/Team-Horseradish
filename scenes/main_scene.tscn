@@ -1,9 +1,10 @@
-[gd_scene load_steps=44 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=45 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="Script" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_wfcph"]
 [ext_resource type="Script" path="res://scenes/trampoline.gd" id="3_0votk"]
 [ext_resource type="PackedScene" uid="uid://dgbmfdltn82fg" path="res://scenes/bounce_ball.tscn" id="3_j3r7q"]
+[ext_resource type="Texture2D" uid="uid://dscog867r3ecm" path="res://assets/trampoline.png" id="4_4fsx8"]
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="4_6jsyi"]
 [ext_resource type="Texture2D" uid="uid://bak37mkleqku4" path="res://assets/Red_X.png" id="4_dl6a1"]
 [ext_resource type="Script" path="res://scenes/drawing_guide.gd" id="4_pd01j"]
@@ -137,13 +138,13 @@ script = ExtResource("1_wfcph")
 
 [node name="Drawing Controller" type="Node2D" parent="." node_paths=PackedStringArray("drawing_zone")]
 script = ExtResource("1_lq30c")
-drawing_zone = NodePath("../TrampolineDrawingZone")
 max_trampoline_length = 301
 large_length = null
 med_length = 250
 bullet_time_scale = 0.2
 bullet_time_duration = 0.25
 bullet_time_fade_to_normal = 1.0
+drawing_zone = NodePath("../TrampolineDrawingZone")
 
 [node name="Trampoline" type="Area2D" parent="Drawing Controller"]
 script = ExtResource("3_0votk")
@@ -155,12 +156,19 @@ crit_upper_percentage = 0.7
 
 [node name="Line2D" type="Line2D" parent="Drawing Controller/Trampoline"]
 scale = Vector2(1.01169, 1)
+texture = ExtResource("4_4fsx8")
+texture_mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Trampoline"]
 shape = SubResource("SegmentShape2D_pc56j")
 
 [node name="Drawing Guide" type="Area2D" parent="Drawing Controller"]
 script = ExtResource("4_pd01j")
+trampoline_strength = 1200.0
+normal_speed_mult = 1.0
+crit_speed_mult = 0.6
+crit_lower_percentage = 0.3
+crit_upper_percentage = 0.7
 
 [node name="Red X" type="Sprite2D" parent="Drawing Controller/Drawing Guide"]
 visible = false
@@ -377,6 +385,7 @@ script = ExtResource("32_lnep7")
 [connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="OnboardingAnimation/AnimatedSprite2D" method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="body_entered" from="Drawing Controller/Trampoline" to="Drawing Controller/Trampoline" method="_on_body_entered"]
+[connection signal="body_entered" from="Drawing Controller/Drawing Guide" to="Drawing Controller/Drawing Guide" method="_on_body_entered"]
 [connection signal="body_entered" from="Bounds" to="." method="_on_bounds_body_entered"]
 [connection signal="body_entered" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_entered"]
 [connection signal="body_exited" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_exited"]
