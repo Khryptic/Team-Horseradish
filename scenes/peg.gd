@@ -20,11 +20,6 @@ func _ready() -> void:
 	get_node("peg_sensor").peg_hit.connect(_on_peg_hit)
 	GameManager.clear_pegs.connect(_remove_peg)
 
-	if (sprite == null):
-		printerr("Sprite is null!!!")
-		print_stack()
-		return
-
 	# Get random peg sprite
 	sprite.set_texture(random_sprite)
 
