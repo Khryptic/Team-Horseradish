@@ -144,8 +144,13 @@ bullet_time_fade_to_normal = 1.0
 [node name="Trampoline" type="Area2D" parent="Drawing Controller"]
 script = ExtResource("3_0votk")
 trampoline_strength = 1200.0
+normal_speed_mult = 0.6
+crit_speed_mult = 1.0
+crit_lower_percentage = 0.3
+crit_upper_percentage = 0.7
 
 [node name="Line2D" type="Line2D" parent="Drawing Controller/Trampoline"]
+scale = Vector2(1.01169, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Trampoline"]
 shape = SubResource("SegmentShape2D_pc56j")
