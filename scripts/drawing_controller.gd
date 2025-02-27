@@ -22,6 +22,8 @@ var trampoline_lives: int # how many times the ball can bounce on trampoline
 
 var starting_mouse_pos: Vector2 # where the player started drawing from
 
+var _is_mouse_down: bool
+
 var is_mouse_in_drawing_zone: bool # if the mouse is in drawing zone
 var is_start_point_in_drawing_zone: bool # if the mouse was in drawing zone on mouse down
 # this is needed in case the player starts drawing outside of drawing zone and releases mouse in zone 
@@ -31,6 +33,13 @@ var is_ball_in_drawing_zone: bool # if the ball is in the drawing zone, activate
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	
+	# Double-check that the player is still drawing to prevent false-positives
+	if(!Input.is_action_pressed("Draw")):
+		_is_mouse_down = false
+
+	if(_is_mouse_down):
+		_while_mouse_down()
+
 	# check if bullet time is running out
 	bullet_time_since_activation += _delta * (1 / Engine.time_scale)
 	if (bullet_time_since_activation >= bullet_time_duration):
@@ -42,16 +51,16 @@ func _process(_delta: float) -> void:
 		var time_scale : float = bullet_time_scale + percent_of_tween_complete * distance_tweened
 		Engine.time_scale = clamp(time_scale,bullet_time_scale,1)
 		
+func _unhandled_input(event: InputEvent) -> void:
+
 	# Player started drawing
-	if(Input.is_action_just_pressed("Draw")):
+	if(event.is_action_pressed("Draw")):
+		_is_mouse_down = true
 		_on_mouse_down()
 		
-	# Player is actively drawing
-	elif(Input.is_action_pressed("Draw")):
-		_while_mouse_down()
-		
 	# Player is finished drawing
-	elif(Input.is_action_just_released("Draw")):
+	elif(event.is_action_released("Draw")):
+		_is_mouse_down = false
 		_on_mouse_released()
 
 func _on_mouse_down():
