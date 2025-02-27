@@ -87,15 +87,16 @@ func _while_mouse_down():
 	var mouse_pos := get_global_mouse_position()
 	var end_point := get_trampoline_endpoint(starting_mouse_pos, mouse_pos)
 	var trampoline_length := (starting_mouse_pos - end_point).length()
-
-	drawing_guide.point_b = end_point
 	
 	if (!is_start_point_in_drawing_zone):
+
 		# Trampoline is invalid
 		drawing_guide.default_color = Trampoline.get_trampoline_color(0, 0.4)
 	else:
+		
 		# Trampoline is valid
 		drawing_guide.default_color = Trampoline.get_trampoline_color(get_trampoline_lives(trampoline_length), 0.4)
+		drawing_guide.point_b = end_point
 
 		# Put the X over the trampoline endpoint
 		if (end_point.y <= drawing_zone.global_position.y):

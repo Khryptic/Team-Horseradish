@@ -139,6 +139,7 @@ script = ExtResource("1_wfcph")
 script = ExtResource("1_lq30c")
 drawing_zone = NodePath("../TrampolineDrawingZone")
 max_trampoline_length = 301
+large_length = null
 med_length = 250
 bullet_time_scale = 0.2
 bullet_time_duration = 0.25
