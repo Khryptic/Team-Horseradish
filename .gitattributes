@@ -1,1 +1,7 @@
+# Set the default behavior to automatically normalize line endings.
 * text=auto
+
+# Explicitly declare text files you want to always normalize and convert to LF upon checkout.
+*.gd text eol=lf
+*.cfg text eol=lf
+*.tscn text eol=lf
