@@ -44,24 +44,7 @@ func _process(_delta: float) -> void:
 		
 	# Player started drawing
 	if(Input.is_action_just_pressed("Draw")):
-		if (is_mouse_in_drawing_zone):
-			var mouse_pos := get_global_mouse_position()
-			starting_mouse_pos = mouse_pos
-			
-			# Show the drawing guide
-			drawing_guide.point_a = mouse_pos
-			drawing_guide.point_b = mouse_pos
-			drawing_guide.default_color = Color(1, 1, 1, 0.4)
-			
-			#slow down time while drawing
-			if (is_ball_in_drawing_zone):
-				Engine.time_scale = bullet_time_scale
-				bullet_time_since_activation = 0 
-			
-			is_start_point_in_drawing_zone = true
-		else:
-			# if started drawing outside zone
-			is_start_point_in_drawing_zone = false
+		_on_mouse_down()
 		
 	# Player is actively drawing
 	elif(Input.is_action_pressed("Draw")):
@@ -83,7 +66,8 @@ func _on_mouse_down():
 		
 		#slow down time while drawing
 		if (is_ball_in_drawing_zone):
-			Engine.time_scale = 0.1
+			Engine.time_scale = bullet_time_scale
+			bullet_time_since_activation = 0 
 		
 		is_start_point_in_drawing_zone = true
 	else:
