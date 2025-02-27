@@ -1,6 +1,10 @@
 class_name Trampoline extends Area2D
 
 @export var trampoline_strength: float
+@export var normal_speed_mult: float
+@export var crit_speed_mult: float
+@export var crit_lower_percentage: float
+@export var crit_upper_percentage: float
 
 @onready var collider: CollisionShape2D = $CollisionShape2D
 @onready var line: Line2D = $Line2D
@@ -39,13 +43,16 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if(body is RigidBody2D):
-		
 		# Calculate normal to the trampoline
 		var segment_vec := point_b - point_a
 		var segment_normal := Vector2(segment_vec.y, -segment_vec.x).normalized()
 		
 		# Set the body's velocity
-		body.linear_velocity = segment_normal * trampoline_strength
+		if(body.global_position > lerp(line.get_point_position(0), line.get_point_position(1), crit_lower_percentage) && 
+		body.global_position < lerp(line.get_point_position(0), line.get_point_position(1), crit_upper_percentage)):
+			body.linear_velocity = segment_normal * trampoline_strength * crit_speed_mult
+		else:
+			body.linear_velocity = segment_normal * trampoline_strength * normal_speed_mult
 		
 		# Remove a trampoline life
 		lives -= 1
