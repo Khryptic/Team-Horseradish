@@ -31,7 +31,7 @@ func _respawn() -> void:
 		
 	ball_ref = new_ball.get_child(0)
 
-func _on_drawing_controller_trampoline_drawn() -> void:
+func _on_drawing_controller_trampoline_drawn(_trampoline: Trampoline) -> void:
 	if(ball_ref != null): ball_ref.setFreeze(false)
 
 func _on_bounds_body_entered(body: Node2D) -> void:

@@ -1,10 +1,9 @@
 extends Node2D
 
-signal trampoline_drawn
+signal trampoline_drawn(trampoline: Trampoline)
 
 @onready var trampoline: Trampoline = $"Trampoline"
 @onready var drawing_guide: Trampoline = $"Drawing Guide"
-@onready var red_x: Sprite2D = $"Drawing Guide/Red X"
 
 @export var drawing_zone: Area2D
 @export var max_trampoline_length: int = 300
@@ -98,11 +97,11 @@ func _while_mouse_down():
 		drawing_guide.point_b = end_point
 
 		# Put the X over the trampoline endpoint
-		if (end_point.y <= drawing_zone.global_position.y):
-			if(!red_x.visible): red_x.visible = true
-			red_x.global_position = end_point
-		else:
-			if(red_x.visible): red_x.visible = false
+		#if (end_point.y <= drawing_zone.global_position.y):
+		# 	if(!red_x.visible): red_x.visible = true
+		#	red_x.global_position = end_point
+		#else:
+		#	if(red_x.visible): red_x.visible = false
 
 func _on_mouse_released():
 	# Return to normal speed
@@ -110,7 +109,7 @@ func _on_mouse_released():
 		bullet_time_since_activation = 999
 			
 		drawing_guide.reset()
-		if(red_x.visible): red_x.visible = false
+		#if(red_x.visible): red_x.visible = false
 			
 		if (is_start_point_in_drawing_zone):	
 			var end_point := get_trampoline_endpoint(starting_mouse_pos, get_global_mouse_position())
@@ -128,7 +127,7 @@ func _on_mouse_released():
 			trampoline.lives = get_trampoline_lives(trampoline_length)
 						
 			# Emit the signal
-			trampoline_drawn.emit()
+			trampoline_drawn.emit(trampoline)
 			
 		# Trampoline is invalid	
 		else:
@@ -166,13 +165,6 @@ func get_trampoline_lives(length: float) -> int:
 	else:
 		return 3
 
-func intersection_with_horizontal_line(point_a: Vector2, point_b: Vector2, y: float) -> Vector2:
-	
-	# Two point formula for a line solved for X. Since the Y is known, we can calculate the X to get the intercept.
-	var x: float = (y - point_a.y) * (point_b.x - point_a.x) / (point_b.y - point_a.y) + point_a.x
-	
-	return Vector2(x, y)
-
 func get_trampoline_endpoint(start_pos: Vector2, mouse_pos: Vector2) -> Vector2:
 	
 	var end_point := mouse_pos
@@ -180,7 +172,7 @@ func get_trampoline_endpoint(start_pos: Vector2, mouse_pos: Vector2) -> Vector2:
 
 	# Trampoline is above drawing zone
 	if (!is_mouse_in_drawing_zone and is_start_point_in_drawing_zone):
-		end_point = intersection_with_horizontal_line(start_pos, mouse_pos, drawing_zone.global_position.y)
+		end_point = Math.intersection_with_horizontal_line(start_pos, mouse_pos, drawing_zone.global_position.y)
 		shortest_length_squared = (end_point - start_pos).length_squared()
 
 	# Trampoline is too long

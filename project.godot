@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 ScoreManager="*res://scripts/autoloads/score_manager.gd"
 GameManager="*res://scripts/autoloads/game_manager.gd"
 PegManager="*res://scripts/autoloads/peg_manager.gd"
+Math="*res://scripts/autoloads/math.gd"
 
 [display]
 

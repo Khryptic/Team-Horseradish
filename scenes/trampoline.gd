@@ -46,26 +46,27 @@ func _ready() -> void:
 	collider_shape = collider.shape
 
 func _on_body_entered(body: Node2D) -> void:
-	if(body is RigidBody2D):
-		# Calculate normal to the trampoline
-		var segment_vec := point_b - point_a
-		var segment_normal := Vector2(segment_vec.y, -segment_vec.x).normalized()
-		
-		# Set the body's velocity
-		if(body.global_position > lerp(line.get_point_position(0), line.get_point_position(1), crit_lower_percentage) && 
-		body.global_position < lerp(line.get_point_position(0), line.get_point_position(1), crit_upper_percentage)):
-			body.linear_velocity = segment_normal * trampoline_strength * crit_speed_mult
-		else:
-			body.linear_velocity = segment_normal * trampoline_strength * normal_speed_mult
-		
-		# Remove a trampoline life
-		lives -= 1
-		
-		# reset point multiplier
-		ScoreManager.reset_mult_count()
-		
-		# tell game manager ball has bounced (used for clearing pegs)
-		GameManager.clear_on_pegs()
+	if(!body is RigidBody2D): return
+	
+	# Calculate normal to the trampoline
+	var segment_vec := point_b - point_a
+	var segment_normal := Vector2(segment_vec.y, -segment_vec.x).normalized()
+	
+	# Set the body's velocity
+	if(body.global_position > lerp(line.get_point_position(0), line.get_point_position(1), crit_lower_percentage) && 
+	body.global_position < lerp(line.get_point_position(0), line.get_point_position(1), crit_upper_percentage)):
+		body.linear_velocity = segment_normal * trampoline_strength * crit_speed_mult
+	else:
+		body.linear_velocity = segment_normal * trampoline_strength * normal_speed_mult
+	
+	# Remove a trampoline life
+	lives -= 1
+	
+	# reset point multiplier
+	ScoreManager.reset_mult_count()
+	
+	# tell game manager ball has bounced (used for clearing pegs)
+	GameManager.clear_on_pegs()
 
 
 static func get_trampoline_color(remaining_lives: int, opacity: float) -> Color:
