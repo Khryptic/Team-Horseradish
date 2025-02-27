@@ -9,7 +9,7 @@ var current_layout_number: int = 99999
 func _ready() -> void:
 	_load_peg_layouts()
 
-# Loads peg layouts from an external JSON file
+# Loads peg layouts from JSON file
 func _load_peg_layouts():
 	var file = FileAccess.open("res://scripts/pegs.json", FileAccess.READ)
 	if file:
@@ -34,15 +34,28 @@ func _add_pegs_to_scene():
 	# make sure is not the same layout as last one
 	if (randomNum >= current_layout_number):
 		randomNum += 1
-	current_peg_layout= all_peg_layouts[randomNum]
+	current_peg_layout = all_peg_layouts[randomNum]
 	current_layout_number = randomNum;
-	unlit_pegs = current_peg_layout.size()
+	unlit_pegs = 0
 
-	# Instantiate pegs in the scene
-	for peg_data in current_peg_layout:
-		var peg = preload("res://scenes/peg.tscn").instantiate()
-		peg.position = Vector2(peg_data.x, peg_data.y)
-		get_tree().current_scene.add_child(peg)
+	# Instantiate default pegs in the scene
+	# copy this code but change current_peg_layout.x and peg = preload() to desired peg type
+	if "pegs" in current_peg_layout:
+		var default_pegs = current_peg_layout.pegs
+		unlit_pegs += default_pegs.size()
+		for peg_location in default_pegs:
+			var peg = preload("res://scenes/peg.tscn").instantiate()
+			peg.position = Vector2(peg_location.x, peg_location.y)
+			get_tree().current_scene.add_child(peg)
+		
+	# Instantiate all mega pegs in the scene
+	if "mega_pegs" in current_peg_layout:
+		var mega_pegs = current_peg_layout.mega_pegs
+		unlit_pegs += mega_pegs.size()
+		for peg_location in mega_pegs:
+			var peg = preload("res://scenes/mega_peg.tscn").instantiate()
+			peg.position = Vector2(peg_location.x, peg_location.y)
+			get_tree().current_scene.add_child(peg)
 		
 
 func _update_peg_count():
