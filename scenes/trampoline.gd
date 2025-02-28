@@ -13,8 +13,6 @@ class_name Trampoline extends Node2D
 
 var hitbox_shape: RectangleShape2D
 
-var is_coyote_time_active: bool = false
-
 # how many times the ball can bounce on trampoline
 var lives: int:
 	set(value):
@@ -87,16 +85,16 @@ func _on_body_entered(body: Node2D) -> void:
 	# tell game manager ball has bounced (used for clearing pegs)
 	GameManager.clear_on_pegs()
 
-func _on_body_exited(body: Node2D) -> void:	
-	if(!body is RigidBody2D): return
-	
-	if(is_coyote_time_active):
-		is_coyote_time_active = false
-		hitbox_height = 1
-
 func _on_trampoline_drawn(_trampoline: Trampoline) -> void:
-	is_coyote_time_active = true
+	
+	# Activate coyote time
 	hitbox_height = coyote_time_distance
+
+	# Wait until next frame
+	await get_tree().create_timer(0).timeout
+
+	# Deactivate coyote time
+	hitbox_height = 1
 
 static func get_trampoline_color(remaining_lives: int, opacity: float) -> Color:
 
