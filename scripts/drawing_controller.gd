@@ -3,7 +3,7 @@ extends Node2D
 signal trampoline_drawn(trampoline: Trampoline)
 
 @onready var trampoline: Trampoline = $"Trampoline"
-@onready var drawing_guide: Trampoline = $"Drawing Guide"
+@onready var drawing_guide: Area2D = $"Drawing Guide"
 
 @export var drawing_zone: Area2D
 @export var max_trampoline_length: int = 300

@@ -1,15 +1,19 @@
-class_name Trampoline extends Area2D
+class_name Trampoline extends Node2D
 
 @export var trampoline_strength: float
+@export var coyote_time_distance: float
 @export var normal_speed_mult: float
 @export var crit_speed_mult: float
 @export var crit_lower_percentage: float
 @export var crit_upper_percentage: float
 
-@onready var collider: CollisionShape2D = $CollisionShape2D
+@onready var area2d: Area2D = $Area2D
+@onready var hitbox: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var line: Line2D = $Line2D
 
-var collider_shape: SegmentShape2D
+var overlapping_ball: RigidBody2D = null
+
+var hitbox_shape: RectangleShape2D
 
 # how many times the ball can bounce on trampoline
 var lives: int:
@@ -23,30 +27,54 @@ var lives: int:
 
 var point_a: Vector2:
 	set(value):
-		collider_shape.a = value
+		point_a = value
 		line.points[0] = value
+		update_hitbox()
 	get:
-		return collider_shape.a
+		return point_a
 
 var point_b: Vector2:
 	set(value):
-		collider_shape.b = value
+		point_b = value
 		line.points[1] = value
+		update_hitbox()
 	get:
-		return collider_shape.b
+		return point_b
+
+## Sets the hitbox height, keeping the top aligned with the trampoline
+var hitbox_height: float:
+	set(value):
+		hitbox_shape.size.y = value
+		hitbox.position.y = value / 2
+	get:
+		return hitbox_shape.size.y
 
 func reset():
 	point_a = Vector2(-10000, -10000)
 	point_b = Vector2(-10000, -10000)
 
+func update_hitbox():
+	area2d.global_position = lerp(point_a, point_b, 0.5)
+	area2d.rotation = atan2(point_b.y - point_a.y, point_b.x - point_a.x)
+	hitbox_shape.size.x = point_a.distance_to(point_b)
+
 func _ready() -> void:
 	line.add_point(Vector2(-10000, -10000))
 	line.add_point(Vector2(-10000, -10000))
+	hitbox_shape = hitbox.shape
+	hitbox_height = coyote_time_distance
 
-	collider_shape = collider.shape
+func _process(delta: float) -> void:
+
+	# If the ball was overlapping but now is not, deactivate coyote time
+	if(overlapping_ball != null && !area2d.overlaps_body(overlapping_ball)):
+		overlapping_ball = null
+		hitbox_height = 5
 
 func _on_body_entered(body: Node2D) -> void:
 	if(!body is RigidBody2D): return
+
+	overlapping_ball = body
 	
 	# Calculate normal to the trampoline
 	var segment_vec := point_b - point_a
@@ -68,6 +96,20 @@ func _on_body_entered(body: Node2D) -> void:
 	# tell game manager ball has bounced (used for clearing pegs)
 	GameManager.clear_on_pegs()
 
+func _on_trampoline_drawn(_trampoline: Trampoline) -> void:
+	
+	# Activate coyote time
+	hitbox_height = coyote_time_distance
+
+	# Wait a physics frame
+	await get_tree().create_timer(0).timeout
+	await get_tree().physics_frame
+
+	# If the ball is not overlapping the trampoline, deactivate coyote time instantly
+	if (overlapping_ball == null):
+
+		# Deactivate coyote time instantly
+		hitbox_height = 5
 
 static func get_trampoline_color(remaining_lives: int, opacity: float) -> Color:
 

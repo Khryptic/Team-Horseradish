@@ -38,9 +38,9 @@
 [ext_resource type="Texture2D" uid="uid://b7ibvt8eupdes" path="res://assets/animations/onboarding/frame_24.png" id="31_jcdlf"]
 [ext_resource type="Script" path="res://scenes/onboarding_animation.gd" id="32_lnep7"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_pc56j"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3krh7"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_yviod"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_nw457"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7dd0l"]
 size = Vector2(18, 1099)
@@ -140,15 +140,15 @@ script = ExtResource("1_wfcph")
 script = ExtResource("1_lq30c")
 drawing_zone = NodePath("../TrampolineDrawingZone")
 max_trampoline_length = 301
-large_length = null
 med_length = 250
 bullet_time_scale = 0.2
 bullet_time_duration = 0.25
 bullet_time_fade_to_normal = 1.0
 
-[node name="Trampoline" type="Area2D" parent="Drawing Controller"]
+[node name="Trampoline" type="Node2D" parent="Drawing Controller"]
 script = ExtResource("3_0votk")
 trampoline_strength = 1200.0
+coyote_time_distance = 50.0
 normal_speed_mult = 0.6
 crit_speed_mult = 1.0
 crit_lower_percentage = 0.3
@@ -159,17 +159,13 @@ scale = Vector2(1.01169, 1)
 texture = ExtResource("4_4fsx8")
 texture_mode = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Trampoline"]
-shape = SubResource("SegmentShape2D_pc56j")
+[node name="Area2D" type="Area2D" parent="Drawing Controller/Trampoline"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Trampoline/Area2D"]
+shape = SubResource("RectangleShape2D_3krh7")
 
 [node name="Drawing Guide" type="Area2D" parent="Drawing Controller"]
 script = ExtResource("4_pd01j")
-coyote_time_distance = 40.0
-trampoline_strength = 1200.0
-normal_speed_mult = 1.0
-crit_speed_mult = 0.6
-crit_lower_percentage = 0.3
-crit_upper_percentage = 0.7
 
 [node name="Red X" type="Sprite2D" parent="Drawing Controller/Drawing Guide"]
 visible = false
@@ -180,7 +176,7 @@ texture = ExtResource("4_dl6a1")
 [node name="Line2D" type="Line2D" parent="Drawing Controller/Drawing Guide"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Drawing Guide"]
-shape = SubResource("SegmentShape2D_yviod")
+shape = SubResource("SegmentShape2D_nw457")
 
 [node name="BounceBall" parent="." groups=["ball"] instance=ExtResource("3_j3r7q")]
 position = Vector2(269, 346)
@@ -233,6 +229,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -4.0
+offset_right = 5.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -384,9 +384,11 @@ autoplay = "default"
 script = ExtResource("32_lnep7")
 
 [connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
+[connection signal="trampoline_drawn" from="Drawing Controller" to="Drawing Controller/Trampoline" method="_on_trampoline_drawn"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="Drawing Controller/Drawing Guide" method="_on_trampoline_drawn"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="OnboardingAnimation/AnimatedSprite2D" method="_on_drawing_controller_trampoline_drawn"]
-[connection signal="body_entered" from="Drawing Controller/Trampoline" to="Drawing Controller/Trampoline" method="_on_body_entered"]
+[connection signal="body_entered" from="Drawing Controller/Trampoline/Area2D" to="Drawing Controller/Trampoline" method="_on_body_entered"]
+[connection signal="body_exited" from="Drawing Controller/Trampoline/Area2D" to="Drawing Controller/Trampoline" method="_on_body_exited"]
 [connection signal="body_entered" from="Drawing Controller/Drawing Guide" to="Drawing Controller/Drawing Guide" method="_on_body_entered"]
 [connection signal="body_entered" from="Bounds" to="." method="_on_bounds_body_entered"]
 [connection signal="body_entered" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_entered"]
