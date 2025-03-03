@@ -43,6 +43,7 @@ enabled=PackedStringArray("res://addons/softbody2d/plugin.cfg")
 
 ball=""
 trampoline=""
+killzone=""
 
 [input]
 

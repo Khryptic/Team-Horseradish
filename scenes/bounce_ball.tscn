@@ -9,6 +9,9 @@
 friction = 0.8
 bounce = 0.8
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kyilt"]
+radius = 13.0
+
 [sub_resource type="Curve" id="Curve_xvils"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.497585, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -30,9 +33,6 @@ damping_max = 4.0
 scale_min = 0.18
 scale_max = 0.24
 alpha_curve = SubResource("CurveTexture_cxyn0")
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_kyilt"]
-radius = 13.0
 
 [sub_resource type="Curve" id="Curve_hfhmg"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.502415, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -140,6 +140,11 @@ physics_material_override = SubResource("PhysicsMaterial_nkdlc")
 gravity_scale = 0.6
 angular_velocity = 0.00174533
 
+[node name="Area2D" type="Area2D" parent="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Area2D"]
+shape = SubResource("CircleShape2D_kyilt")
+
 [node name="SmokeParticles" type="GPUParticles2D" parent="RigidBody2D"]
 z_index = -2
 emitting = false
@@ -172,3 +177,5 @@ root_node = NodePath("../RigidBody2D")
 libraries = {
 "": SubResource("AnimationLibrary_y2su1")
 }
+
+[connection signal="area_entered" from="RigidBody2D/Area2D" to="." method="_on_area_entered"]

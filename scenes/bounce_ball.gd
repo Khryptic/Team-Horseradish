@@ -1,5 +1,7 @@
 class_name Ball extends Node2D
 
+signal ball_died
+
 @export var maxFallSpeed: float
 
 @onready var rigidbody: RigidBody2D = $RigidBody2D
@@ -13,6 +15,12 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if(smoke_particles.emitting):
 		smoke_particles.global_rotation = 0;
+
+func _on_area_entered(area: Node2D) -> void:
+	if(!area.is_in_group("killzone")): return
+	
+	ball_died.emit()
+	queue_free()
 
 func setFreeze(isFrozen: bool) -> void:
 	rigidbody.set_deferred("freeze", isFrozen)
