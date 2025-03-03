@@ -43,6 +43,8 @@ enabled=PackedStringArray("res://addons/softbody2d/plugin.cfg")
 [global_group]
 
 ball=""
+trampoline=""
+killzone=""
 
 [input]
 
