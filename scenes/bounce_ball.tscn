@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgbmfdltn82fg"]
+[gd_scene load_steps=11 format=3 uid="uid://dgbmfdltn82fg"]
 
-[ext_resource type="Script" path="res://scenes/rigid_body_2d.gd" id="1_ct707"]
 [ext_resource type="Script" path="res://scenes/bounce_ball.gd" id="1_fptfq"]
 [ext_resource type="Texture2D" uid="uid://bes0x54t2wx71" path="res://assets/temp_ball.png" id="1_jt1pw"]
+[ext_resource type="Texture2D" uid="uid://ciqn4q06eejde" path="res://assets/star.png" id="4_iya0n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nkdlc"]
 friction = 0.8
@@ -11,15 +11,48 @@ bounce = 0.8
 [sub_resource type="CircleShape2D" id="CircleShape2D_kyilt"]
 radius = 13.0
 
-[node name="Node2D2" type="Node2D"]
-script = ExtResource("1_fptfq")
+[sub_resource type="Curve" id="Curve_hfhmg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.502415, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[sub_resource type="CurveTexture" id="CurveTexture_w6cb0"]
+texture_mode = 1
+curve = SubResource("Curve_hfhmg")
+
+[sub_resource type="Curve" id="Curve_7res2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yy43t"]
+texture_mode = 1
+curve = SubResource("Curve_7res2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a6wr1"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -1, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 0, 0)
+angle_min = 1.07288e-05
+angle_max = 360.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = -1.60933e-05
+radial_velocity_min = 300.0
+radial_velocity_max = 700.0
+radial_velocity_curve = SubResource("CurveTexture_yy43t")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.15
+scale_max = 0.25
+alpha_curve = SubResource("CurveTexture_w6cb0")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_fptfq")
+maxFallSpeed = 550.0
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." groups=["ball"]]
 physics_material_override = SubResource("PhysicsMaterial_nkdlc")
 gravity_scale = 0.6
 angular_velocity = 0.00174533
-script = ExtResource("1_ct707")
-maxFallSpeed = 550.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CircleShape2D_kyilt")
@@ -27,3 +60,14 @@ shape = SubResource("CircleShape2D_kyilt")
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 scale = Vector2(0.390625, 0.390625)
 texture = ExtResource("1_jt1pw")
+
+[node name="StarParticles" type="GPUParticles2D" parent="RigidBody2D"]
+position = Vector2(1, 201)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_a6wr1")
+texture = ExtResource("4_iya0n")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 0

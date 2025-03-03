@@ -1,18 +1,14 @@
 extends Node2D
 
 @onready var ball_prefab = preload("res://scenes/bounce_ball.tscn")
+@onready var respawn_point = $Respawn
 
-var ballStart: Vector2
-var ball_ref
-var new_ball
+@export var ball_ref: Ball
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	ball_ref = get_tree().get_first_node_in_group("ball").get_child(0)
-	ball_ref.add_to_group("ball")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	_add_random_set_of_pegs()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -24,12 +20,11 @@ func _respawn() -> void:
 	if(GameManager.lives <= 0):
 		return
 	
-	new_ball = ball_prefab.instantiate()
-	new_ball.position = $Respawn.global_position
-	new_ball.get_child(0).add_to_group("ball")
+	var new_ball := ball_prefab.instantiate()
+	new_ball.position = respawn_point.global_position
 	call_deferred("add_child", new_ball)
-		
-	ball_ref = new_ball.get_child(0)
+
+	ball_ref = new_ball
 
 func _on_drawing_controller_trampoline_drawn(_trampoline: Trampoline) -> void:
 	if(ball_ref != null): ball_ref.setFreeze(false)

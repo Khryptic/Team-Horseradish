@@ -133,8 +133,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("ball_ref")]
 script = ExtResource("1_wfcph")
+ball_ref = NodePath("BounceBall")
 
 [node name="Drawing Controller" type="Node2D" parent="." node_paths=PackedStringArray("drawing_zone")]
 script = ExtResource("1_lq30c")
@@ -178,7 +179,7 @@ texture = ExtResource("4_dl6a1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Drawing Guide"]
 shape = SubResource("SegmentShape2D_nw457")
 
-[node name="BounceBall" parent="." groups=["ball"] instance=ExtResource("3_j3r7q")]
+[node name="BounceBall" parent="." instance=ExtResource("3_j3r7q")]
 position = Vector2(269, 346)
 
 [node name="World Border" type="StaticBody2D" parent="."]
