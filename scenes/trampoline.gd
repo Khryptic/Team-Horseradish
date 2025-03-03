@@ -96,6 +96,9 @@ func _on_body_entered(body: Node2D) -> void:
 	# tell game manager ball has bounced (used for clearing pegs)
 	GameManager.clear_on_pegs()
 
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.TRAMPOLINE_BOUNCE)
+
+
 func _on_trampoline_drawn(_trampoline: Trampoline) -> void:
 	
 	# Activate coyote time

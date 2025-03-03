@@ -22,6 +22,7 @@ ScoreManager="*res://scripts/autoloads/score_manager.gd"
 GameManager="*res://scripts/autoloads/game_manager.gd"
 PegManager="*res://scripts/autoloads/peg_manager.gd"
 Math="*res://scripts/autoloads/math.gd"
+AudioManager="*res://scenes/audio_manager.tscn"
 
 [display]
 
