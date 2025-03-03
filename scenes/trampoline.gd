@@ -62,6 +62,9 @@ func _on_body_entered(body: Node2D) -> void:
 		
 		# tell game manager ball has bounced (used for clearing pegs)
 		GameManager.clear_on_pegs()
+		
+		# Play bounce sound effect
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.TRAMPOLINE_BOUNCE)
 
 
 static func get_trampoline_color(remaining_lives: int, opacity: float) -> Color:
