@@ -1,12 +1,12 @@
-[gd_scene load_steps=45 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=53 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="Script" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_wfcph"]
 [ext_resource type="Script" path="res://scenes/trampoline.gd" id="3_0votk"]
 [ext_resource type="PackedScene" uid="uid://dgbmfdltn82fg" path="res://scenes/bounce_ball.tscn" id="3_j3r7q"]
-[ext_resource type="Texture2D" uid="uid://dscog867r3ecm" path="res://assets/trampoline.png" id="4_4fsx8"]
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="4_6jsyi"]
 [ext_resource type="Texture2D" uid="uid://bak37mkleqku4" path="res://assets/Red_X.png" id="4_dl6a1"]
+[ext_resource type="Texture2D" uid="uid://btptsh5gf68i6" path="res://assets/animations/trampoline/A_Trampoline_Frame1_01a.PNG" id="4_jkquj"]
 [ext_resource type="Script" path="res://scenes/drawing_guide.gd" id="4_pd01j"]
 [ext_resource type="Script" path="res://scripts/lives_label.gd" id="5_8hi1r"]
 [ext_resource type="Texture2D" uid="uid://ubykiqhlxd4g" path="res://assets/dotted line.png" id="5_1815f"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dbqxl2k3dj2nr" path="res://assets/animations/onboarding/frame_03.png" id="10_0olpm"]
 [ext_resource type="Texture2D" uid="uid://cwtn6l3vierxl" path="res://assets/animations/onboarding/frame_04.png" id="11_jfear"]
 [ext_resource type="Texture2D" uid="uid://csv76dhn5eelv" path="res://assets/animations/onboarding/frame_05.png" id="12_dclty"]
+[ext_resource type="Texture2D" uid="uid://3owkmw8ye8b" path="res://assets/SP_Pause_01a.PNG" id="12_eatnr"]
 [ext_resource type="Texture2D" uid="uid://ds32eaop42gjv" path="res://assets/animations/onboarding/frame_06.png" id="13_7wsyd"]
 [ext_resource type="Texture2D" uid="uid://dbpnk55nfqaa7" path="res://assets/animations/onboarding/frame_07.png" id="14_4ihjl"]
 [ext_resource type="Texture2D" uid="uid://barq4onq7ir1u" path="res://assets/animations/onboarding/frame_08.png" id="15_a47hc"]
@@ -37,6 +38,13 @@
 [ext_resource type="Texture2D" uid="uid://c3re1atccpbvu" path="res://assets/animations/onboarding/frame_23.png" id="30_6lvpr"]
 [ext_resource type="Texture2D" uid="uid://b7ibvt8eupdes" path="res://assets/animations/onboarding/frame_24.png" id="31_jcdlf"]
 [ext_resource type="Script" path="res://scenes/onboarding_animation.gd" id="32_lnep7"]
+[ext_resource type="Texture2D" uid="uid://b6kjy6bhs11s3" path="res://assets/SP_Background_01a.PNG" id="38_8gekx"]
+[ext_resource type="Texture2D" uid="uid://cyiq31v2tmbq6" path="res://assets/SP_Backboard_01a.PNG" id="39_54u4h"]
+[ext_resource type="Texture2D" uid="uid://ooapla6txu0v" path="res://assets/SP_Decor_Top_01a.PNG" id="40_ju2fr"]
+[ext_resource type="Texture2D" uid="uid://ncy6mrf7a5xh" path="res://assets/SP_Scorebar_01a.PNG" id="42_n15j5"]
+[ext_resource type="Texture2D" uid="uid://blwl0qcafaeka" path="res://assets/SP_Lives_01a.PNG" id="43_68d3q"]
+[ext_resource type="Texture2D" uid="uid://bupyoo1432yvs" path="res://assets/SP_Decor_R_01a.PNG" id="44_mpve1"]
+[ext_resource type="Texture2D" uid="uid://duv6b4jdjqwds" path="res://assets/SP_Decor_L_01a.PNG" id="45_d64rk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3krh7"]
 
@@ -156,7 +164,7 @@ crit_upper_percentage = 0.7
 
 [node name="Line2D" type="Line2D" parent="Drawing Controller/Trampoline"]
 scale = Vector2(1.01169, 1)
-texture = ExtResource("4_4fsx8")
+texture = ExtResource("4_jkquj")
 texture_mode = 2
 
 [node name="Area2D" type="Area2D" parent="Drawing Controller/Trampoline"]
@@ -286,13 +294,14 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -70.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = 70.0
+offset_left = -116.0
+offset_top = 11.0
+offset_right = -44.0
+offset_bottom = 71.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 30
-text = "❙❙"
+icon = ExtResource("12_eatnr")
+flat = true
 
 [node name="Pause Menu" type="Panel" parent="CanvasLayer/UI"]
 process_mode = 2
@@ -382,6 +391,42 @@ scale = Vector2(0.193919, 0.193919)
 sprite_frames = SubResource("SpriteFrames_a07ey")
 autoplay = "default"
 script = ExtResource("32_lnep7")
+
+[node name="Game Art" type="Node2D" parent="."]
+
+[node name="SpBackground01a" type="Sprite2D" parent="Game Art"]
+z_index = -5
+position = Vector2(269, 494)
+texture = ExtResource("38_8gekx")
+
+[node name="SpBackboard01a" type="Sprite2D" parent="Game Art"]
+z_index = -4
+position = Vector2(270, 216)
+texture = ExtResource("39_54u4h")
+
+[node name="SpDecorTop01a" type="Sprite2D" parent="Game Art"]
+z_index = 1
+position = Vector2(274, -19)
+texture = ExtResource("40_ju2fr")
+
+[node name="SpScorebar01a" type="Sprite2D" parent="Game Art"]
+z_index = 1
+position = Vector2(88, 21)
+scale = Vector2(1.28199, 1)
+texture = ExtResource("42_n15j5")
+
+[node name="SpLives01a" type="Sprite2D" parent="Game Art"]
+z_index = 1
+position = Vector2(273, 28)
+texture = ExtResource("43_68d3q")
+
+[node name="SpDecorR01a" type="Sprite2D" parent="Game Art"]
+position = Vector2(509, 787)
+texture = ExtResource("44_mpve1")
+
+[node name="SpDecorL01a" type="Sprite2D" parent="Game Art"]
+position = Vector2(29, 787)
+texture = ExtResource("45_d64rk")
 
 [connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="Drawing Controller/Trampoline" method="_on_trampoline_drawn"]

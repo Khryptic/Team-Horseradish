@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/rigid_body_2d.gd" id="1_ct707"]
 [ext_resource type="Script" path="res://scenes/bounce_ball.gd" id="1_fptfq"]
-[ext_resource type="Texture2D" uid="uid://bes0x54t2wx71" path="res://assets/temp_ball.png" id="1_jt1pw"]
+[ext_resource type="Texture2D" uid="uid://b8n8uohq25vie" path="res://assets/SP_Ball_01a.PNG" id="3_nqx68"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nkdlc"]
 friction = 0.8
@@ -25,5 +25,4 @@ maxFallSpeed = 550.0
 shape = SubResource("CircleShape2D_kyilt")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-scale = Vector2(0.390625, 0.390625)
-texture = ExtResource("1_jt1pw")
+texture = ExtResource("3_nqx68")
