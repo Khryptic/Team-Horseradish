@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgbmfdltn82fg"]
+[gd_scene load_steps=20 format=3 uid="uid://dgbmfdltn82fg"]
 
-[ext_resource type="Script" path="res://scenes/rigid_body_2d.gd" id="1_ct707"]
 [ext_resource type="Script" path="res://scenes/bounce_ball.gd" id="1_fptfq"]
-[ext_resource type="Texture2D" uid="uid://b8n8uohq25vie" path="res://assets/SP_Ball_01a.PNG" id="3_nqx68"]
+[ext_resource type="Texture2D" uid="uid://bes0x54t2wx71" path="res://assets/temp_ball.png" id="1_jt1pw"]
+[ext_resource type="Texture2D" uid="uid://r4vxdfyqksup" path="res://assets/Smoke Particle.png" id="2_hopmu"]
+[ext_resource type="Texture2D" uid="uid://ciqn4q06eejde" path="res://assets/star.png" id="4_iya0n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nkdlc"]
 friction = 0.8
@@ -11,18 +12,178 @@ bounce = 0.8
 [sub_resource type="CircleShape2D" id="CircleShape2D_kyilt"]
 radius = 13.0
 
-[node name="Node2D2" type="Node2D"]
-script = ExtResource("1_fptfq")
+[sub_resource type="Curve" id="Curve_xvils"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.497585, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[sub_resource type="CurveTexture" id="CurveTexture_cxyn0"]
+texture_mode = 1
+curve = SubResource("Curve_xvils")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_amtwl"]
+particle_flag_disable_z = true
+angle_min = -9.99999
+angle_max = 10.0
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+damping_min = 4.0
+damping_max = 4.0
+scale_min = 0.18
+scale_max = 0.24
+alpha_curve = SubResource("CurveTexture_cxyn0")
+
+[sub_resource type="Curve" id="Curve_hfhmg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.502415, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_w6cb0"]
+texture_mode = 1
+curve = SubResource("Curve_hfhmg")
+
+[sub_resource type="Gradient" id="Gradient_ywrrx"]
+offsets = PackedFloat32Array(0, 0.346369, 0.793296)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.72549, 0.321569, 1, 1, 0.486727, 0.323542, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s1cdt"]
+gradient = SubResource("Gradient_ywrrx")
+
+[sub_resource type="Curve" id="Curve_xnljg"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_oalo6"]
+curve = SubResource("Curve_xnljg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a6wr1"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+angle_min = 1.07288e-05
+angle_max = 360.0
+direction = Vector3(0, -1, 0)
+spread = 35.0
+initial_velocity_min = 250.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 0, 0)
+damping_max = 3.0
+damping_curve = SubResource("CurveTexture_oalo6")
+scale_min = 0.15
+scale_max = 0.25
+color_ramp = SubResource("GradientTexture1D_s1cdt")
+alpha_curve = SubResource("CurveTexture_w6cb0")
+
+[sub_resource type="Animation" id="Animation_4nnho"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SmokeParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ruwum"]
+resource_name = "crit"
+length = 0.25
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../StarParticles")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SmokeParticles")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SmokeParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y2su1"]
+_data = {
+"RESET": SubResource("Animation_4nnho"),
+"crit": SubResource("Animation_ruwum")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_fptfq")
+maxFallSpeed = 550.0
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." groups=["ball"]]
 physics_material_override = SubResource("PhysicsMaterial_nkdlc")
 gravity_scale = 0.6
 angular_velocity = 0.00174533
-script = ExtResource("1_ct707")
-maxFallSpeed = 550.0
+
+[node name="Area2D" type="Area2D" parent="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Area2D"]
+shape = SubResource("CircleShape2D_kyilt")
+
+[node name="SmokeParticles" type="GPUParticles2D" parent="RigidBody2D"]
+z_index = -2
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_amtwl")
+texture = ExtResource("2_hopmu")
+lifetime = 0.4
+one_shot = true
+preprocess = 0.01
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CircleShape2D_kyilt")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-texture = ExtResource("3_nqx68")
+scale = Vector2(0.390625, 0.390625)
+texture = ExtResource("1_jt1pw")
+
+[node name="StarParticles" type="GPUParticles2D" parent="."]
+z_index = -1
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_a6wr1")
+texture = ExtResource("4_iya0n")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../RigidBody2D")
+libraries = {
+"": SubResource("AnimationLibrary_y2su1")
+}
+
+[connection signal="area_entered" from="RigidBody2D/Area2D" to="." method="_on_area_entered"]
