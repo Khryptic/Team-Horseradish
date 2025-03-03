@@ -148,10 +148,10 @@ bullet_time_fade_to_normal = 1.0
 
 [node name="Trampoline" type="Node2D" parent="Drawing Controller"]
 script = ExtResource("3_0votk")
-trampoline_strength = 1200.0
+trampoline_strength = 1000.0
 coyote_time_distance = 50.0
-normal_speed_mult = 0.6
-crit_speed_mult = 1.0
+normal_speed_mult = 1.0
+crit_speed_mult = 1.2
 crit_lower_percentage = 0.3
 crit_upper_percentage = 0.7
 
