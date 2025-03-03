@@ -407,7 +407,7 @@ texture = ExtResource("39_54u4h")
 
 [node name="SpDecorTop01a" type="Sprite2D" parent="Game Art"]
 z_index = 1
-position = Vector2(274, -19)
+position = Vector2(274, -30)
 texture = ExtResource("40_ju2fr")
 
 [node name="SpScorebar01a" type="Sprite2D" parent="Game Art"]
