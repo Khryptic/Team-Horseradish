@@ -40,6 +40,6 @@ func crit() -> void:
 	animation_player.stop()
 	animation_player.play("crit")
 
-func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	if(state.linear_velocity.y >= maxFallSpeed):
-		state.linear_velocity.y = maxFallSpeed
+func _physics_process(_delta: float) -> void:
+	if(rigidbody.linear_velocity.y >= maxFallSpeed):
+		rigidbody.linear_velocity.y = maxFallSpeed
