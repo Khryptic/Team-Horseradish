@@ -133,8 +133,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("ball_ref")]
 script = ExtResource("1_wfcph")
+ball_ref = NodePath("BounceBall")
 
 [node name="Drawing Controller" type="Node2D" parent="." node_paths=PackedStringArray("drawing_zone")]
 script = ExtResource("1_lq30c")
@@ -147,10 +148,10 @@ bullet_time_fade_to_normal = 1.0
 
 [node name="Trampoline" type="Node2D" parent="Drawing Controller"]
 script = ExtResource("3_0votk")
-trampoline_strength = 1200.0
+trampoline_strength = 1000.0
 coyote_time_distance = 50.0
-normal_speed_mult = 0.6
-crit_speed_mult = 1.0
+normal_speed_mult = 1.0
+crit_speed_mult = 1.2
 crit_lower_percentage = 0.3
 crit_upper_percentage = 0.7
 
@@ -159,7 +160,7 @@ scale = Vector2(1.01169, 1)
 texture = ExtResource("4_4fsx8")
 texture_mode = 2
 
-[node name="Area2D" type="Area2D" parent="Drawing Controller/Trampoline"]
+[node name="Area2D" type="Area2D" parent="Drawing Controller/Trampoline" groups=["trampoline"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Trampoline/Area2D"]
 shape = SubResource("RectangleShape2D_3krh7")
@@ -178,7 +179,7 @@ texture = ExtResource("4_dl6a1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Drawing Guide"]
 shape = SubResource("SegmentShape2D_nw457")
 
-[node name="BounceBall" parent="." groups=["ball"] instance=ExtResource("3_j3r7q")]
+[node name="BounceBall" parent="." instance=ExtResource("3_j3r7q")]
 position = Vector2(269, 346)
 
 [node name="World Border" type="StaticBody2D" parent="."]
@@ -199,11 +200,11 @@ shape = SubResource("RectangleShape2D_7dd0l")
 [node name="Respawn" type="Node2D" parent="."]
 position = Vector2(269, 346)
 
-[node name="Bounds" type="Area2D" parent="."]
+[node name="Killzone" type="Area2D" parent="." groups=["killzone"]]
 position = Vector2(287, 1001)
 rotation = 1.5708
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(9.99982, -42)
 shape = SubResource("RectangleShape2D_c8x6e")
 
@@ -390,7 +391,6 @@ script = ExtResource("32_lnep7")
 [connection signal="body_entered" from="Drawing Controller/Trampoline/Area2D" to="Drawing Controller/Trampoline" method="_on_body_entered"]
 [connection signal="body_exited" from="Drawing Controller/Trampoline/Area2D" to="Drawing Controller/Trampoline" method="_on_body_exited"]
 [connection signal="body_entered" from="Drawing Controller/Drawing Guide" to="Drawing Controller/Drawing Guide" method="_on_body_entered"]
-[connection signal="body_entered" from="Bounds" to="." method="_on_bounds_body_entered"]
 [connection signal="body_entered" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_entered"]
 [connection signal="body_exited" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_exited"]
 [connection signal="mouse_entered" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_mouse_entered"]

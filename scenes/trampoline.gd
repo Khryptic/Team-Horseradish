@@ -11,7 +11,7 @@ class_name Trampoline extends Node2D
 @onready var hitbox: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var line: Line2D = $Line2D
 
-var overlapping_ball: RigidBody2D = null
+var overlapping_ball_body: RigidBody2D = null
 
 var hitbox_shape: RectangleShape2D
 
@@ -67,14 +67,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 
 	# If the ball was overlapping but now is not, deactivate coyote time
-	if(overlapping_ball != null && !area2d.overlaps_body(overlapping_ball)):
-		overlapping_ball = null
+	if(overlapping_ball_body != null && !area2d.overlaps_body(overlapping_ball_body)):
+		overlapping_ball_body = null
 		hitbox_height = 5
 
 func _on_body_entered(body: Node2D) -> void:
-	if(!body is RigidBody2D): return
+	if(!body.is_in_group("ball")): return
 
-	overlapping_ball = body
+	overlapping_ball_body = body
+	var ball: Ball = body.get_parent()
 	
 	# Calculate normal to the trampoline
 	var segment_vec := point_b - point_a
@@ -84,6 +85,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if(body.global_position > lerp(line.get_point_position(0), line.get_point_position(1), crit_lower_percentage) && 
 	body.global_position < lerp(line.get_point_position(0), line.get_point_position(1), crit_upper_percentage)):
 		body.linear_velocity = segment_normal * trampoline_strength * crit_speed_mult
+		ball.crit()
 	else:
 		body.linear_velocity = segment_normal * trampoline_strength * normal_speed_mult
 	
@@ -96,6 +98,9 @@ func _on_body_entered(body: Node2D) -> void:
 	# tell game manager ball has bounced (used for clearing pegs)
 	GameManager.clear_on_pegs()
 
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.TRAMPOLINE_BOUNCE)
+
+
 func _on_trampoline_drawn(_trampoline: Trampoline) -> void:
 	
 	# Activate coyote time
@@ -106,7 +111,7 @@ func _on_trampoline_drawn(_trampoline: Trampoline) -> void:
 	await get_tree().physics_frame
 
 	# If the ball is not overlapping the trampoline, deactivate coyote time instantly
-	if (overlapping_ball == null):
+	if (overlapping_ball_body == null):
 
 		# Deactivate coyote time instantly
 		hitbox_height = 5
