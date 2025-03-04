@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=46 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="Script" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_wfcph"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="4_6jsyi"]
 [ext_resource type="Texture2D" uid="uid://bak37mkleqku4" path="res://assets/Red_X.png" id="4_dl6a1"]
 [ext_resource type="Script" path="res://scenes/drawing_guide.gd" id="4_pd01j"]
+[ext_resource type="Texture2D" uid="uid://drl4af3onpptn" path="res://assets/trampoline_crit.png" id="5_4wq5l"]
 [ext_resource type="Script" path="res://scripts/lives_label.gd" id="5_8hi1r"]
 [ext_resource type="Texture2D" uid="uid://ubykiqhlxd4g" path="res://assets/dotted line.png" id="5_1815f"]
 [ext_resource type="Script" path="res://scenes/game_over_label.gd" id="5_ufrqt"]
@@ -152,8 +153,10 @@ trampoline_strength = 1000.0
 coyote_time_distance = 50.0
 normal_speed_mult = 1.0
 crit_speed_mult = 1.2
-crit_lower_percentage = 0.3
-crit_upper_percentage = 0.7
+crit_lower_percentage = 0.35
+crit_upper_percentage = 0.65
+trampoline_texture = ExtResource("4_4fsx8")
+trampoline_crit_texture = ExtResource("5_4wq5l")
 
 [node name="Line2D" type="Line2D" parent="Drawing Controller/Trampoline"]
 scale = Vector2(1.01169, 1)

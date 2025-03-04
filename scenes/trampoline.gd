@@ -7,6 +7,9 @@ class_name Trampoline extends Node2D
 @export var crit_lower_percentage: float
 @export var crit_upper_percentage: float
 
+@export var trampoline_texture: Texture2D
+@export var trampoline_crit_texture: Texture2D
+
 @onready var area2d: Area2D = $Area2D
 @onready var hitbox: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var line: Line2D = $Line2D
@@ -86,6 +89,9 @@ func _on_body_entered(body: Node2D) -> void:
 	body.global_position < lerp(line.get_point_position(0), line.get_point_position(1), crit_upper_percentage)):
 		body.linear_velocity = segment_normal * trampoline_strength * crit_speed_mult
 		ball.crit()
+		line.texture = trampoline_crit_texture
+		await get_tree().create_timer(0.15).timeout
+		line.texture = trampoline_texture
 	else:
 		body.linear_velocity = segment_normal * trampoline_strength * normal_speed_mult
 	
