@@ -167,6 +167,7 @@ preprocess = 0.01
 shape = SubResource("CircleShape2D_kyilt")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(0.8125, 0.8125)
 texture = ExtResource("3_pvrn1")
 
 [node name="StarParticles" type="GPUParticles2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=52 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="Script" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_wfcph"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://btptsh5gf68i6" path="res://assets/animations/trampoline/A_Trampoline_Frame1_01a.PNG" id="4_jkquj"]
 [ext_resource type="Script" path="res://scenes/drawing_guide.gd" id="4_pd01j"]
 [ext_resource type="Script" path="res://scripts/lives_label.gd" id="5_8hi1r"]
-[ext_resource type="Texture2D" uid="uid://ubykiqhlxd4g" path="res://assets/dotted line.png" id="5_1815f"]
 [ext_resource type="Script" path="res://scenes/game_over_label.gd" id="5_ufrqt"]
 [ext_resource type="Script" path="res://scenes/pause_menu.gd" id="7_l14nw"]
 [ext_resource type="Texture2D" uid="uid://nmsfukoqg1fd" path="res://assets/animations/onboarding/frame_01.png" id="8_qn465"]
@@ -165,6 +164,7 @@ crit_upper_percentage = 0.7
 
 [node name="Line2D" type="Line2D" parent="Drawing Controller/Trampoline"]
 scale = Vector2(1.01169, 1)
+width = 50.0
 texture = ExtResource("4_jkquj")
 texture_mode = 2
 
@@ -220,16 +220,10 @@ shape = SubResource("RectangleShape2D_c8x6e")
 position = Vector2(287, 400)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TrampolineDrawingZone"]
+position = Vector2(0, -3)
 rotation = 1.57079
 shape = SubResource("WorldBoundaryShape2D_astr8")
 debug_color = Color(1, 1, 1, 0.0392157)
-
-[node name="Line2D" type="Line2D" parent="TrampolineDrawingZone"]
-points = PackedVector2Array(-500, 0, 500, 0)
-width = 4.0
-default_color = Color(1, 1, 1, 0.498039)
-texture = ExtResource("5_1815f")
-texture_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
