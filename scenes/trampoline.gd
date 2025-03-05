@@ -64,7 +64,7 @@ func _ready() -> void:
 	hitbox_shape = hitbox.shape
 	hitbox_height = coyote_time_distance
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 
 	# If the ball was overlapping but now is not, deactivate coyote time
 	if(overlapping_ball_body != null && !area2d.overlaps_body(overlapping_ball_body)):
