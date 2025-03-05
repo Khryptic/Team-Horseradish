@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b4r8scy3ax4gh"]
 
-[ext_resource type="Script" path="res://scenes/peg.gd" id="1_qelap"]
-[ext_resource type="Script" path="res://scripts/peg_sensor.gd" id="2_5mbo7"]
+[ext_resource type="Script" uid="uid://0px015qt4a8q" path="res://scenes/peg.gd" id="1_qelap"]
+[ext_resource type="Script" uid="uid://djyrt5rvwu58r" path="res://scripts/peg_sensor.gd" id="2_5mbo7"]
 [ext_resource type="Texture2D" uid="uid://bxrrcrdmvu6tk" path="res://assets/SP_Peg_01e.PNG" id="2_358lv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v7ta1"]
@@ -29,8 +29,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_603km"]
 _data = {
-"RESET": SubResource("Animation_40v21"),
-"ball_hit": SubResource("Animation_pj18k")
+&"RESET": SubResource("Animation_40v21"),
+&"ball_hit": SubResource("Animation_pj18k")
 }
 
 [node name="StaticBody2D" type="StaticBody2D"]

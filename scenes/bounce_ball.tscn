@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://dgbmfdltn82fg"]
 
-[ext_resource type="Script" path="res://scenes/bounce_ball.gd" id="1_fptfq"]
+[ext_resource type="Script" uid="uid://8rc6608bm1lk" path="res://scenes/bounce_ball.gd" id="1_fptfq"]
 [ext_resource type="Texture2D" uid="uid://r4vxdfyqksup" path="res://assets/Smoke Particle.png" id="2_hopmu"]
 [ext_resource type="Texture2D" uid="uid://b8n8uohq25vie" path="res://assets/SP_Ball_01a.PNG" id="3_pvrn1"]
 [ext_resource type="Texture2D" uid="uid://ciqn4q06eejde" path="res://assets/star.png" id="4_iya0n"]
@@ -135,8 +135,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y2su1"]
 _data = {
-"RESET": SubResource("Animation_4nnho"),
-"crit": SubResource("Animation_ruwum")
+&"RESET": SubResource("Animation_4nnho"),
+&"crit": SubResource("Animation_ruwum")
 }
 
 [node name="Node2D" type="Node2D"]
@@ -157,11 +157,11 @@ shape = SubResource("CircleShape2D_kyilt")
 z_index = -2
 emitting = false
 amount = 20
-process_material = SubResource("ParticleProcessMaterial_amtwl")
 texture = ExtResource("2_hopmu")
 lifetime = 0.4
 one_shot = true
 preprocess = 0.01
+process_material = SubResource("ParticleProcessMaterial_amtwl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CircleShape2D_kyilt")
@@ -173,17 +173,17 @@ texture = ExtResource("3_pvrn1")
 [node name="StarParticles" type="GPUParticles2D" parent="."]
 z_index = -1
 emitting = false
-process_material = SubResource("ParticleProcessMaterial_a6wr1")
 texture = ExtResource("4_iya0n")
 lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_a6wr1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../RigidBody2D")
 libraries = {
-"": SubResource("AnimationLibrary_y2su1")
+&"": SubResource("AnimationLibrary_y2su1")
 }
 
 [connection signal="area_entered" from="RigidBody2D/Area2D" to="." method="_on_area_entered"]
