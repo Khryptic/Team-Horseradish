@@ -4,6 +4,7 @@ signal trampoline_drawn(trampoline: Trampoline)
 
 @onready var trampoline: Trampoline = $"Trampoline"
 @onready var drawing_guide: Area2D = $"Drawing Guide"
+@onready var mouse_raycast: RayCast2D = $"MouseRayCast"
 
 @export var drawing_zone: Area2D
 @export var max_trampoline_length: int = 300
@@ -66,7 +67,7 @@ func _on_mouse_down():
 	if (is_mouse_in_drawing_zone):
 		var mouse_pos := get_global_mouse_position()
 		starting_mouse_pos = mouse_pos
-		
+
 		# Show the drawing guide
 		drawing_guide.point_a = mouse_pos
 		drawing_guide.point_b = mouse_pos
@@ -170,9 +171,18 @@ func get_trampoline_endpoint(start_pos: Vector2, mouse_pos: Vector2) -> Vector2:
 	var end_point := mouse_pos
 	var shortest_length_squared := (mouse_pos - start_pos).length_squared()
 
-	# Trampoline is above drawing zone
+	# Mouse has left the drawing zone
 	if (!is_mouse_in_drawing_zone and is_start_point_in_drawing_zone):
-		end_point = Math.intersection_with_horizontal_line(start_pos, mouse_pos, drawing_zone.global_position.y)
+
+		# Cast a ray to find the edge of the drawing zone
+		mouse_raycast.global_position = mouse_pos
+		mouse_raycast.target_position = start_pos - mouse_pos
+		mouse_raycast.force_raycast_update()
+
+		if(mouse_raycast.is_colliding()):
+			end_point = mouse_raycast.get_collision_point()
+
+		# Update shortest length
 		shortest_length_squared = (end_point - start_pos).length_squared()
 
 	# Trampoline is too long

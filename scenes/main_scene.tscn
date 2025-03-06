@@ -185,6 +185,13 @@ texture = ExtResource("4_dl6a1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Drawing Guide"]
 shape = SubResource("SegmentShape2D_nw457")
 
+[node name="MouseRayCast" type="RayCast2D" parent="Drawing Controller"]
+position = Vector2(-72, 21)
+enabled = false
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
 [node name="BounceBall" parent="." instance=ExtResource("3_j3r7q")]
 position = Vector2(269, 346)
 
@@ -216,6 +223,7 @@ shape = SubResource("RectangleShape2D_c8x6e")
 
 [node name="TrampolineDrawingZone" type="Area2D" parent="."]
 position = Vector2(287, 400)
+collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TrampolineDrawingZone"]
 position = Vector2(0, -3)
