@@ -47,3 +47,8 @@ func _remove_peg():
 	if(!is_light_on):
 		queue_free()
 		PegManager._update_peg_count()
+
+func increase_size():
+	$AnimationScale/Sprite2D.scale = Vector2(1.5, 1.5) * $AnimationScale/Sprite2D.scale
+	$CollisionShape2D.scale = Vector2(1.5, 1.5) * $AnimationScale/Sprite2D.scale
+	$peg_sensor/CollisionShape2D.scale = Vector2(1.5, 1.5) * $AnimationScale/Sprite2D.scale

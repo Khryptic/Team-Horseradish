@@ -33,7 +33,7 @@ _data = {
 &"ball_hit": SubResource("Animation_pj18k")
 }
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[node name="StaticBody2D" type="StaticBody2D" groups=["peg"]]
 script = ExtResource("1_qelap")
 
 [node name="AnimationScale" type="Node2D" parent="."]

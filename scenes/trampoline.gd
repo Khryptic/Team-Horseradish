@@ -91,14 +91,17 @@ func _on_body_entered(body: Node2D) -> void:
 	else:
 		body.linear_velocity = segment_normal * trampoline_strength * normal_speed_mult
 		
-	# Add some bias if trampoline is too steep
+	# Add some bias if trampoline is too steeo
 	var segment_angle = segment_vec.angle()
 	if (segment_angle >= abs(deg_to_rad(45.0)) && segment_angle <= abs(deg_to_rad(90.0))):
+		# Impulse must be a negtive or else the ball will shoot downwards
 		body.apply_impulse(Vector2(0.0, added_impulse))
-		print(body.linear_velocity)
 		
 	# Remove a trampoline life
 	lives -= 1
+	
+	# Check for last peg
+	$"../..".increase_final_peg_size()
 	
 	# reset point multiplier
 	ScoreManager.reset_mult_count()
