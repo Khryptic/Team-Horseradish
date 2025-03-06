@@ -10,6 +10,7 @@ class_name Trampoline extends Node2D
 @onready var area2d: Area2D = $Area2D
 @onready var hitbox: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var line: Line2D = $Line2D
+@onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 
 var overlapping_ball_body: RigidBody2D = null
 
@@ -20,8 +21,10 @@ var lives: int:
 	set(value):
 		lives = value
 		line.default_color = get_trampoline_color(lives, 1)
-		if (lives <= 0):
-			reset()
+		animation.self_modulate = get_trampoline_color(lives, 1)
+		# if (lives <= 0):
+		# 	reset()
+		# Moved this to _on_animation_finished()
 			
 	get: return lives
 
@@ -30,6 +33,7 @@ var point_a: Vector2:
 		point_a = value
 		line.points[0] = value
 		update_hitbox()
+		update_sprite()
 	get:
 		return point_a
 
@@ -38,6 +42,7 @@ var point_b: Vector2:
 		point_b = value
 		line.points[1] = value
 		update_hitbox()
+		update_sprite()
 	get:
 		return point_b
 
@@ -57,6 +62,11 @@ func update_hitbox():
 	area2d.global_position = lerp(point_a, point_b, 0.5)
 	area2d.rotation = atan2(point_b.y - point_a.y, point_b.x - point_a.x)
 	hitbox_shape.size.x = point_a.distance_to(point_b)
+
+func update_sprite():
+	animation.global_position = lerp(point_a, point_b, 0.5)
+	animation.rotation = atan2(point_b.y - point_a.y, point_b.x - point_a.x)
+	animation.scale.x = point_a.distance_to(point_b) / 437 ## 437 is the length of the trampoline asset
 
 func _ready() -> void:
 	line.add_point(Vector2(-10000, -10000))
@@ -86,8 +96,10 @@ func _on_body_entered(body: Node2D) -> void:
 	body.global_position < lerp(line.get_point_position(0), line.get_point_position(1), crit_upper_percentage)):
 		body.linear_velocity = segment_normal * trampoline_strength * crit_speed_mult
 		ball.crit()
+		animation.play("Crit")
 	else:
 		body.linear_velocity = segment_normal * trampoline_strength * normal_speed_mult
+		animation.play("Bounce")
 	
 	# Remove a trampoline life
 	lives -= 1
@@ -126,3 +138,11 @@ static func get_trampoline_color(remaining_lives: int, opacity: float) -> Color:
 	}
 
 	return trampoline_colors[remaining_lives]
+
+func _on_animation_finished():
+
+	# reset if required after playing animation
+	if (lives <= 0):
+			reset()
+
+	animation.play("Static")

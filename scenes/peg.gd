@@ -11,8 +11,7 @@ const peg_blue = preload("res://assets/SP_Peg_01b.PNG")
 const peg_red = preload("res://assets/SP_Peg_01c.PNG")
 const peg_green = preload("res://assets/SP_Peg_01d.PNG")
 const peg_purple = preload("res://assets/SP_Peg_01e.PNG")
-const peg_white = preload("res://assets/SP_Peg_01f.PNG")
-var peg_sprites = [peg_yellow, peg_blue, peg_red, peg_green, peg_purple, peg_white]
+var peg_sprites = [peg_yellow, peg_blue, peg_red, peg_green, peg_purple]
 var random_sprite = peg_sprites[randi() % peg_sprites.size()]
 
 # Called when the node enters the scene tree for the first time.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=59 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="Script" uid="uid://2js5lt72ualx" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" uid="uid://clxxj87sfihfh" path="res://scripts/game_controller.gd" id="1_wfcph"]
@@ -6,14 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://dgbmfdltn82fg" path="res://scenes/bounce_ball.tscn" id="3_j3r7q"]
 [ext_resource type="Script" uid="uid://b4ct6ueroj65m" path="res://scripts/score_label.gd" id="4_6jsyi"]
 [ext_resource type="Texture2D" uid="uid://bak37mkleqku4" path="res://assets/Red_X.png" id="4_dl6a1"]
-[ext_resource type="Texture2D" uid="uid://btptsh5gf68i6" path="res://assets/animations/trampoline/A_Trampoline_Frame1_01a.PNG" id="4_jkquj"]
+[ext_resource type="Texture2D" uid="uid://btptsh5gf68i6" path="res://assets/animations/trampoline/SP_Trampoline_Frame1_01a.PNG" id="4_jix7a"]
 [ext_resource type="Script" uid="uid://bb088g00pxb0s" path="res://scenes/drawing_guide.gd" id="4_pd01j"]
+[ext_resource type="Texture2D" uid="uid://dxtrnt3f30q80" path="res://assets/animations/trampoline/SP_Trampoline_Frame4_01a.PNG" id="5_8dxha"]
 [ext_resource type="Script" uid="uid://b1cpknm80nuw" path="res://scripts/lives_label.gd" id="5_8hi1r"]
 [ext_resource type="Script" uid="uid://b5mtusnk4rv3g" path="res://scenes/game_over_label.gd" id="5_ufrqt"]
+[ext_resource type="Texture2D" uid="uid://bpexar6iilhar" path="res://assets/animations/trampoline/SP_Trampoline_Frame5_01a.PNG" id="6_j4epa"]
 [ext_resource type="Script" uid="uid://bqu2vmr40ikb2" path="res://scenes/pause_menu.gd" id="7_l14nw"]
+[ext_resource type="Texture2D" uid="uid://bwbrwopbu87cc" path="res://assets/animations/trampoline/SP_Trampoline_Frame6_01a.PNG" id="7_ruju6"]
+[ext_resource type="Texture2D" uid="uid://d3pvyk74f7kwv" path="res://assets/animations/trampoline/SP_Trampoline_Frame7_01a.PNG" id="8_5nybl"]
 [ext_resource type="Texture2D" uid="uid://nmsfukoqg1fd" path="res://assets/animations/onboarding/frame_01.png" id="8_qn465"]
+[ext_resource type="Texture2D" uid="uid://cg36sknb2leqe" path="res://assets/animations/trampoline/SP_Trampoline_Frame2_01a.PNG" id="9_cq0lk"]
 [ext_resource type="Texture2D" uid="uid://dtis5qie62vpq" path="res://assets/animations/onboarding/frame_02.png" id="9_oamqr"]
 [ext_resource type="Texture2D" uid="uid://dbqxl2k3dj2nr" path="res://assets/animations/onboarding/frame_03.png" id="10_0olpm"]
+[ext_resource type="Texture2D" uid="uid://ckjhmp5xryrl1" path="res://assets/animations/trampoline/SP_Trampoline_Frame3_01a.PNG" id="10_j2yw6"]
 [ext_resource type="Texture2D" uid="uid://cwtn6l3vierxl" path="res://assets/animations/onboarding/frame_04.png" id="11_jfear"]
 [ext_resource type="Texture2D" uid="uid://csv76dhn5eelv" path="res://assets/animations/onboarding/frame_05.png" id="12_dclty"]
 [ext_resource type="Texture2D" uid="uid://3owkmw8ye8b" path="res://assets/SP_Pause_01a.PNG" id="12_eatnr"]
@@ -46,6 +52,63 @@
 [ext_resource type="Texture2D" uid="uid://duv6b4jdjqwds" path="res://assets/SP_Decor_L_01a.PNG" id="45_d64rk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3krh7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8pjrr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jix7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8dxha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_j4epa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ruju6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5nybl")
+}],
+"loop": false,
+"name": &"Bounce",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jix7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cq0lk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_j2yw6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8dxha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_j4epa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ruju6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5nybl")
+}],
+"loop": false,
+"name": &"Crit",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jix7a")
+}],
+"loop": true,
+"name": &"Static",
+"speed": 12.0
+}]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_nw457"]
 
@@ -164,14 +227,17 @@ crit_upper_percentage = 0.7
 
 [node name="Line2D" type="Line2D" parent="Drawing Controller/Trampoline"]
 scale = Vector2(1.01169, 1)
-width = 50.0
-texture = ExtResource("4_jkquj")
-texture_mode = 2
+width = 0.0
+default_color = Color(1, 1, 1, 0)
 
 [node name="Area2D" type="Area2D" parent="Drawing Controller/Trampoline" groups=["trampoline"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Trampoline/Area2D"]
 shape = SubResource("RectangleShape2D_3krh7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Drawing Controller/Trampoline"]
+sprite_frames = SubResource("SpriteFrames_8pjrr")
+animation = &"Crit"
 
 [node name="Drawing Guide" type="Area2D" parent="Drawing Controller"]
 script = ExtResource("4_pd01j")
@@ -429,6 +495,7 @@ texture = ExtResource("45_d64rk")
 [connection signal="trampoline_drawn" from="Drawing Controller" to="OnboardingAnimation/AnimatedSprite2D" method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="body_entered" from="Drawing Controller/Trampoline/Area2D" to="Drawing Controller/Trampoline" method="_on_body_entered"]
 [connection signal="body_exited" from="Drawing Controller/Trampoline/Area2D" to="Drawing Controller/Trampoline" method="_on_body_exited"]
+[connection signal="animation_finished" from="Drawing Controller/Trampoline/AnimatedSprite2D" to="Drawing Controller/Trampoline" method="_on_animation_finished"]
 [connection signal="body_entered" from="Drawing Controller/Drawing Guide" to="Drawing Controller/Drawing Guide" method="_on_body_entered"]
 [connection signal="body_entered" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_entered"]
 [connection signal="body_exited" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_exited"]

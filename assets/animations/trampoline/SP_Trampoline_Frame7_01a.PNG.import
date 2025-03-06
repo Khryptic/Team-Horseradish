@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpexar6iilhar"
-path="res://.godot/imported/A_Trampoline_Frame5_01a.PNG-3bd1c431b7776b7dda69c815dc0a1499.ctex"
+uid="uid://d3pvyk74f7kwv"
+path="res://.godot/imported/SP_Trampoline_Frame7_01a.PNG-412e4c5062eae272c974c9f8d946293a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/animations/trampoline/A_Trampoline_Frame5_01a.PNG"
-dest_files=["res://.godot/imported/A_Trampoline_Frame5_01a.PNG-3bd1c431b7776b7dda69c815dc0a1499.ctex"]
+source_file="res://assets/animations/trampoline/SP_Trampoline_Frame7_01a.PNG"
+dest_files=["res://.godot/imported/SP_Trampoline_Frame7_01a.PNG-412e4c5062eae272c974c9f8d946293a.ctex"]
 
 [params]
 
