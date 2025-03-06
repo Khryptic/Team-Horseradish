@@ -100,6 +100,9 @@ func _on_body_entered(body: Node2D) -> void:
 	# Remove a trampoline life
 	lives -= 1
 	
+	# Check for last peg
+	$"../..".increase_final_peg_size()
+	
 	# reset point multiplier
 	ScoreManager.reset_mult_count()
 	

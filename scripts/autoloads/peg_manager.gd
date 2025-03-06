@@ -24,6 +24,7 @@ func _load_peg_layouts():
 
 # Adds a new list of pegs to the scene
 func _add_pegs_to_scene():
+	$".".set_deferred("has_increased", false)
 	if all_peg_layouts.is_empty():
 		print("No peg layouts available.")
 		return
@@ -61,7 +62,4 @@ func _add_pegs_to_scene():
 func _update_peg_count():
 	unlit_pegs -= 1
 	if (unlit_pegs <= 0):
-		call_deferred("_add_pegs_to_scene")
-		
-
-		
+		call_deferred("_add_pegs_to_scene")		
