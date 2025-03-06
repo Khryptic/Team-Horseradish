@@ -44,7 +44,7 @@ func _add_random_set_of_pegs():
 	PegManager._add_pegs_to_scene()
 	
 func increase_final_peg_size():
-	if (PegManager.unlit_pegs > 1 && has_increased == false):
+	if (PegManager.unlit_pegs == 1 && has_increased == false):
 		var peg = get_tree().get_nodes_in_group("peg")[0]
 		peg.increase_size()
 		has_increased = true
