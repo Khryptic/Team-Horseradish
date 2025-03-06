@@ -7,6 +7,8 @@ class_name Trampoline extends Node2D
 @export var crit_lower_percentage: float
 @export var crit_upper_percentage: float
 
+@export var added_impulse: float
+
 @onready var area2d: Area2D = $Area2D
 @onready var hitbox: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var line: Line2D = $Line2D
@@ -88,7 +90,13 @@ func _on_body_entered(body: Node2D) -> void:
 		ball.crit()
 	else:
 		body.linear_velocity = segment_normal * trampoline_strength * normal_speed_mult
-	
+		
+	# Add some bias if trampoline is too steep
+	var segment_angle = segment_vec.angle()
+	if (segment_angle >= abs(deg_to_rad(45.0)) && segment_angle <= abs(deg_to_rad(90.0))):
+		body.apply_impulse(Vector2(0.0, added_impulse))
+		print(body.linear_velocity)
+		
 	# Remove a trampoline life
 	lives -= 1
 	

@@ -158,6 +158,7 @@ normal_speed_mult = 1.0
 crit_speed_mult = 1.2
 crit_lower_percentage = 0.3
 crit_upper_percentage = 0.7
+added_impulse = -500.0
 
 [node name="Line2D" type="Line2D" parent="Drawing Controller/Trampoline"]
 scale = Vector2(1.01169, 1)
