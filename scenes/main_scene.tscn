@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://2js5lt72ualx" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" uid="uid://clxxj87sfihfh" path="res://scripts/game_controller.gd" id="1_wfcph"]
 [ext_resource type="Script" uid="uid://bhxr8msyhd47i" path="res://scenes/trampoline.gd" id="3_0votk"]
-[ext_resource type="PackedScene" uid="uid://dgbmfdltn82fg" path="res://scenes/bounce_ball.tscn" id="3_j3r7q"]
 [ext_resource type="Script" uid="uid://b4ct6ueroj65m" path="res://scripts/score_label.gd" id="4_6jsyi"]
 [ext_resource type="Texture2D" uid="uid://bak37mkleqku4" path="res://assets/Red_X.png" id="4_dl6a1"]
 [ext_resource type="Texture2D" uid="uid://btptsh5gf68i6" path="res://assets/animations/trampoline/A_Trampoline_Frame1_01a.PNG" id="4_jkquj"]
@@ -15,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dtis5qie62vpq" path="res://assets/animations/onboarding/frame_02.png" id="9_oamqr"]
 [ext_resource type="Texture2D" uid="uid://dbqxl2k3dj2nr" path="res://assets/animations/onboarding/frame_03.png" id="10_0olpm"]
 [ext_resource type="Texture2D" uid="uid://cwtn6l3vierxl" path="res://assets/animations/onboarding/frame_04.png" id="11_jfear"]
+[ext_resource type="Texture2D" uid="uid://b8n8uohq25vie" path="res://assets/SP_Ball_01a.PNG" id="11_segjr"]
 [ext_resource type="Texture2D" uid="uid://csv76dhn5eelv" path="res://assets/animations/onboarding/frame_05.png" id="12_dclty"]
 [ext_resource type="Texture2D" uid="uid://3owkmw8ye8b" path="res://assets/SP_Pause_01a.PNG" id="12_eatnr"]
 [ext_resource type="Texture2D" uid="uid://ds32eaop42gjv" path="res://assets/animations/onboarding/frame_06.png" id="13_7wsyd"]
@@ -140,9 +140,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("ball_ref")]
+[node name="Game" type="Node2D"]
 script = ExtResource("1_wfcph")
-ball_ref = NodePath("BounceBall")
 
 [node name="Drawing Controller" type="Node2D" parent="." node_paths=PackedStringArray("drawing_zone")]
 script = ExtResource("1_lq30c")
@@ -187,9 +186,6 @@ texture = ExtResource("4_dl6a1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Drawing Guide"]
 shape = SubResource("SegmentShape2D_nw457")
 
-[node name="BounceBall" parent="." instance=ExtResource("3_j3r7q")]
-position = Vector2(269, 346)
-
 [node name="World Border" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="World Border"]
@@ -206,7 +202,7 @@ position = Vector2(552, 461)
 shape = SubResource("RectangleShape2D_7dd0l")
 
 [node name="Respawn" type="Node2D" parent="."]
-position = Vector2(269, 346)
+position = Vector2(270, 350)
 
 [node name="Killzone" type="Area2D" parent="." groups=["killzone"]]
 position = Vector2(287, 1001)
@@ -272,17 +268,40 @@ text = "Score: 0
 Mult: 1x"
 script = ExtResource("4_6jsyi")
 
-[node name="LivesLabel" type="Label" parent="CanvasLayer/UI"]
+[node name="LivesLabel" type="Label" parent="CanvasLayer/UI" node_paths=PackedStringArray("lives_icons")]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_bottom = -10.0
+offset_top = -960.0
+offset_right = 113.0
+offset_bottom = -915.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 32
-text = "Lives: 3"
 script = ExtResource("5_8hi1r")
+lives_icons = [NodePath("life_icon1"), NodePath("life_icon2"), NodePath("life_icon3")]
+life_icon_end_tween = Vector2(270, 350)
+tween_duration = 1
+
+[node name="life_icon1" type="Sprite2D" parent="CanvasLayer/UI/LivesLabel"]
+position = Vector2(234, 31)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("11_segjr")
+
+[node name="life_icon2" type="Sprite2D" parent="CanvasLayer/UI/LivesLabel"]
+position = Vector2(269, 31)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("11_segjr")
+
+[node name="life_icon3" type="Sprite2D" parent="CanvasLayer/UI/LivesLabel"]
+position = Vector2(304, 31)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("11_segjr")
+
+[node name="Delay" type="Timer" parent="CanvasLayer/UI/LivesLabel"]
+one_shot = true
+autostart = true
+ignore_time_scale = true
 
 [node name="PauseButton" type="Button" parent="CanvasLayer/UI"]
 layout_mode = 1
@@ -435,6 +454,7 @@ texture = ExtResource("45_d64rk")
 [connection signal="mouse_entered" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_mouse_entered"]
 [connection signal="mouse_exited" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_mouse_exited"]
 [connection signal="timeout" from="CanvasLayer/UI/GameOverLabel/Timer" to="CanvasLayer/UI/GameOverLabel" method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/UI/LivesLabel/Delay" to="CanvasLayer/UI/LivesLabel" method="_tween_life_icon_to_starting_position"]
 [connection signal="pressed" from="CanvasLayer/UI/PauseButton" to="CanvasLayer/UI/Pause Menu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Pause Menu/ResumeButton" to="CanvasLayer/UI/Pause Menu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Pause Menu/RestartButton" to="CanvasLayer/UI/Pause Menu" method="_on_restart_button_pressed"]

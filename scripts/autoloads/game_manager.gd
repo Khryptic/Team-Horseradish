@@ -1,8 +1,9 @@
 extends Node
 
-signal lives_changed(new_lives)
+signal lives_changed()
 signal clear_pegs()
 signal game_over()
+signal respawn_ball()
 
 var lives: int = 3
 
@@ -17,10 +18,17 @@ func _process(_delta: float) -> void:
 	
 func lose_life():
 	lives -= 1
-	lives_changed.emit(lives)
+	lives_changed.emit()
 	
 	if(lives <= 0):
 		game_over.emit()
 
 func clear_on_pegs():
 	clear_pegs.emit()
+	
+func start_new_level():
+	lives = 3
+	lives_changed.emit()
+	
+func emit_respawn_ball():
+	respawn_ball.emit()

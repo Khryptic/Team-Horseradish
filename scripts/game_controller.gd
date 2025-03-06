@@ -9,7 +9,10 @@ extends Node2D
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	_add_random_set_of_pegs()
-	ball_ref.connect("ball_died", _on_ball_died)
+	GameManager.start_new_level
+	GameManager.respawn_ball.connect(_spawn_ball)
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -20,17 +23,15 @@ func _spawn_ball() -> void:
 	var new_ball := ball_prefab.instantiate()
 	new_ball.position = respawn_point.global_position
 	call_deferred("add_child", new_ball)
-
 	new_ball.connect("ball_died", _on_ball_died)
-
 	ball_ref = new_ball
+
 
 func _on_ball_died() -> void:
 
 	GameManager.lose_life()
 	if(GameManager.lives <= 0): return
 
-	_spawn_ball()
 	ScoreManager.reset_mult_count()
 	GameManager.clear_on_pegs()
 
