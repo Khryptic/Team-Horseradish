@@ -43,7 +43,6 @@ func _on_peg_hit():
 	is_light_on = false
 	
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PEG_HIT)
-	
 
 func _remove_peg():
 	if(!is_light_on):

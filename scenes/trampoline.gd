@@ -17,6 +17,8 @@ var overlapping_ball_body: RigidBody2D = null
 
 var hitbox_shape: RectangleShape2D
 
+signal increase_final_peg_size()
+
 # how many times the ball can bounce on trampoline
 var lives: int:
 	set(value):
@@ -101,7 +103,7 @@ func _on_body_entered(body: Node2D) -> void:
 	lives -= 1
 	
 	# Check for last peg
-	$"../..".increase_final_peg_size()
+	increase_final_peg_size.emit()
 	
 	# reset point multiplier
 	ScoreManager.reset_mult_count()
