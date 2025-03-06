@@ -5,14 +5,11 @@ extends Node2D
 
 @export var ball_ref: Ball
 
-var has_increased: bool
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	_add_random_set_of_pegs()
 	ball_ref.connect("ball_died", _on_ball_died)
-	has_increased = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -42,9 +39,9 @@ func _on_drawing_controller_trampoline_drawn(_trampoline: Trampoline) -> void:
 
 func _add_random_set_of_pegs():
 	PegManager._add_pegs_to_scene()
-	
-func increase_final_peg_size():
-	if (PegManager.unlit_pegs == 1 && has_increased == false):
+
+func _on_trampoline_increase_final_peg_size() -> void:
+	if (PegManager.unlit_pegs == 1 && PegManager.has_peg_increased_size == false):
 		var peg = get_tree().get_nodes_in_group("peg")[0]
 		peg.increase_size()
-		has_increased = true
+		PegManager.has_peg_increased_size = true
