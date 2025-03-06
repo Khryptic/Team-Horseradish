@@ -2,6 +2,7 @@ extends StaticBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $AnimationScale/Sprite2D
+@export var final_peg_scaler: float
 
 var is_light_on : bool = true
 
@@ -13,6 +14,7 @@ const peg_green = preload("res://assets/SP_Peg_01d.PNG")
 const peg_purple = preload("res://assets/SP_Peg_01e.PNG")
 var peg_sprites = [peg_yellow, peg_blue, peg_red, peg_green, peg_purple]
 var random_sprite = peg_sprites[randi() % peg_sprites.size()]
+var peg_scaler: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,8 +23,8 @@ func _ready() -> void:
 
 	# Get random peg sprite
 	sprite.set_texture(random_sprite)
-
-
+	
+	peg_scaler = Vector2(final_peg_scaler, final_peg_scaler)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -40,9 +42,13 @@ func _on_peg_hit():
 	is_light_on = false
 	
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PEG_HIT)
-	
 
 func _remove_peg():
 	if(!is_light_on):
 		queue_free()
 		PegManager._update_peg_count()
+
+func increase_size():
+	$AnimationScale/Sprite2D.scale = $AnimationScale/Sprite2D.scale * peg_scaler
+	$CollisionShape2D.scale = $AnimationScale/Sprite2D.scale * peg_scaler
+	$peg_sensor/CollisionShape2D.scale = $AnimationScale/Sprite2D.scale * peg_scaler

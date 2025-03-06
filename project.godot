@@ -54,6 +54,11 @@ Draw={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Ball Physics"
+2d_physics/layer_2="Drawing Zone"
+
 [rendering]
 
 renderer/rendering_method="mobile"

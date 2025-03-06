@@ -4,8 +4,10 @@ signal trampoline_drawn(trampoline: Trampoline)
 
 @onready var trampoline: Trampoline = $"Trampoline"
 @onready var drawing_guide: Area2D = $"Drawing Guide"
+@onready var mouse_raycast: RayCast2D = $"MouseRayCast"
+@onready var drawing_zone: Area2D = $"TrampolineDrawingZone"
+@onready var drawing_zone_polygon: Polygon2D = $"TrampolineDrawingZone/Polygon2D"
 
-@export var drawing_zone: Area2D
 @export var max_trampoline_length: int = 300
 @export var large_length: int = 300
 @export var med_length: int = 200
@@ -20,6 +22,7 @@ var trampoline_segment_collider: SegmentShape2D
 var trampoline_lives: int # how many times the ball can bounce on trampoline
 
 var starting_mouse_pos: Vector2 # where the player started drawing from
+var old_mouse_pos: Vector2 # the mouse pos from the previous frame
 
 var _is_mouse_down: bool
 
@@ -63,14 +66,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		_on_mouse_released()
 
 func _on_mouse_down():
-	if (is_mouse_in_drawing_zone):
-		var mouse_pos := get_global_mouse_position()
-		starting_mouse_pos = mouse_pos
+	
+	var mouse_pos := get_global_mouse_position()
+	starting_mouse_pos = mouse_pos
+
+	# Show the drawing guide
+	drawing_guide.point_a = mouse_pos
+	drawing_guide.point_b = mouse_pos
+	drawing_guide.default_color = Color(1, 1, 1, 0.4)
 		
-		# Show the drawing guide
-		drawing_guide.point_a = mouse_pos
-		drawing_guide.point_b = mouse_pos
-		drawing_guide.default_color = Color(1, 1, 1, 0.4)
+	if (is_mouse_in_drawing_zone):
 		
 		#slow down time while drawing
 		Engine.time_scale = bullet_time_scale
@@ -83,15 +88,28 @@ func _on_mouse_down():
 
 func _while_mouse_down():
 	var mouse_pos := get_global_mouse_position()
-	var end_point := get_trampoline_endpoint(starting_mouse_pos, mouse_pos)
-	var trampoline_length := (starting_mouse_pos - end_point).length()
-	
-	if (!is_start_point_in_drawing_zone):
 
-		# Trampoline is invalid
-		drawing_guide.default_color = Trampoline.get_trampoline_color(0, 0.4)
+	# Find new start position if mouse is outside drawing zone
+	if (!is_start_point_in_drawing_zone):
+		
+		# Check if mouse has entered the drawing zone
+		mouse_raycast.global_position = mouse_pos
+		mouse_raycast.target_position = old_mouse_pos - mouse_pos
+		mouse_raycast.force_raycast_update()
+		
+		# Mouse has entered drawing zone. Set start point to the edge of the zone
+		if(mouse_raycast.is_colliding()):
+			starting_mouse_pos = mouse_raycast.get_collision_point()
+			is_start_point_in_drawing_zone = true
+			drawing_guide.point_a = starting_mouse_pos
+			drawing_guide.point_b = starting_mouse_pos
+			drawing_guide.default_color = Color(1, 1, 1, 0.4)
+
 	else:
 		
+		var end_point := get_trampoline_endpoint(starting_mouse_pos, mouse_pos)
+		var trampoline_length := (starting_mouse_pos - end_point).length()
+
 		# Trampoline is valid
 		drawing_guide.default_color = Trampoline.get_trampoline_color(get_trampoline_lives(trampoline_length), 0.4)
 		drawing_guide.point_b = end_point
@@ -102,6 +120,8 @@ func _while_mouse_down():
 		#	red_x.global_position = end_point
 		#else:
 		#	if(red_x.visible): red_x.visible = false
+
+	old_mouse_pos = mouse_pos
 
 func _on_mouse_released():
 	# Return to normal speed
@@ -170,9 +190,18 @@ func get_trampoline_endpoint(start_pos: Vector2, mouse_pos: Vector2) -> Vector2:
 	var end_point := mouse_pos
 	var shortest_length_squared := (mouse_pos - start_pos).length_squared()
 
-	# Trampoline is above drawing zone
+	# Mouse has left the drawing zone
 	if (!is_mouse_in_drawing_zone and is_start_point_in_drawing_zone):
-		end_point = Math.intersection_with_horizontal_line(start_pos, mouse_pos, drawing_zone.global_position.y)
+
+		# Cast a ray to find the edge of the drawing zone
+		mouse_raycast.global_position = mouse_pos
+		mouse_raycast.target_position = start_pos - mouse_pos
+		mouse_raycast.force_raycast_update()
+
+		if(mouse_raycast.is_colliding()):
+			end_point = mouse_raycast.get_collision_point()
+
+		# Update shortest length
 		shortest_length_squared = (end_point - start_pos).length_squared()
 
 	# Trampoline is too long
@@ -186,3 +215,4 @@ func get_trampoline_endpoint(start_pos: Vector2, mouse_pos: Vector2) -> Vector2:
 			end_point = start_pos + direction * max_trampoline_length
 
 	return end_point
+	

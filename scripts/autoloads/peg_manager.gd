@@ -5,6 +5,7 @@ var current_peg_layout = []
 var unlit_pegs: int
 var current_pegs = []
 var current_layout_number: int = 99999
+var has_peg_increased_size: bool = false
 
 func _ready() -> void:
 	_load_peg_layouts()
@@ -24,6 +25,7 @@ func _load_peg_layouts():
 
 # Adds a new list of pegs to the scene
 func _add_pegs_to_scene():
+	has_peg_increased_size = false
 	if all_peg_layouts.is_empty():
 		print("No peg layouts available.")
 		return
@@ -61,7 +63,4 @@ func _add_pegs_to_scene():
 func _update_peg_count():
 	unlit_pegs -= 1
 	if (unlit_pegs <= 0):
-		call_deferred("_add_pegs_to_scene")
-		
-
-		
+		call_deferred("_add_pegs_to_scene")		

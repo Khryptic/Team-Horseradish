@@ -7,6 +7,8 @@ class_name Trampoline extends Node2D
 @export var crit_lower_percentage: float
 @export var crit_upper_percentage: float
 
+@export var added_impulse: float
+
 @onready var area2d: Area2D = $Area2D
 @onready var hitbox: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var line: Line2D = $Line2D
@@ -15,6 +17,8 @@ class_name Trampoline extends Node2D
 var overlapping_ball_body: RigidBody2D = null
 
 var hitbox_shape: RectangleShape2D
+
+signal increase_final_peg_size()
 
 # how many times the ball can bounce on trampoline
 var lives: int:
@@ -74,7 +78,7 @@ func _ready() -> void:
 	hitbox_shape = hitbox.shape
 	hitbox_height = coyote_time_distance
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 
 	# If the ball was overlapping but now is not, deactivate coyote time
 	if(overlapping_ball_body != null && !area2d.overlaps_body(overlapping_ball_body)):
@@ -101,8 +105,18 @@ func _on_body_entered(body: Node2D) -> void:
 		body.linear_velocity = segment_normal * trampoline_strength * normal_speed_mult
 		animation.play("Bounce")
 	
+		
+	# Add some bias if trampoline is too steeo
+	var segment_angle = segment_vec.angle()
+	if (segment_angle >= abs(deg_to_rad(45.0)) && segment_angle <= abs(deg_to_rad(90.0))):
+		# Impulse must be a negtive or else the ball will shoot downwards
+		body.apply_impulse(Vector2(0.0, added_impulse))
+		
 	# Remove a trampoline life
 	lives -= 1
+	
+	# Check for last peg
+	increase_final_peg_size.emit()
 	
 	# reset point multiplier
 	ScoreManager.reset_mult_count()
