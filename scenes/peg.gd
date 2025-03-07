@@ -49,6 +49,7 @@ func _remove_peg():
 		PegManager._update_peg_count()
 
 func increase_size():
-	$AnimationScale/Sprite2D.scale = $AnimationScale/Sprite2D.scale * peg_scaler
-	$CollisionShape2D.scale = $AnimationScale/Sprite2D.scale * peg_scaler
-	$peg_sensor/CollisionShape2D.scale = $AnimationScale/Sprite2D.scale * peg_scaler
+	$AnimationScale/Sprite2D.scale *= peg_scaler
+	$CollisionShape2D.scale *= peg_scaler
+	$peg_sensor/CollisionShape2D.scale *= peg_scaler
+	
