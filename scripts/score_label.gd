@@ -12,5 +12,5 @@ func _process(_delta: float) -> void:
 	pass
 	
 func _on_score_updated(score: int, mult: int):
-	text = """Score: %s
+	text = """%s pts
 	Mult: %sx""" %[score, mult]

@@ -334,7 +334,7 @@ layout_mode = 1
 anchors_preset = -1
 offset_left = 10.0
 theme_override_font_sizes/font_size = 32
-text = "Score: 0
+text = "0 Pts
 Mult: 1x"
 script = ExtResource("4_6jsyi")
 
