@@ -267,6 +267,11 @@ collide_with_bodies = false
 
 [node name="World Border" type="StaticBody2D" parent="."]
 
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="World Border"]
+position = Vector2(50, 861)
+rotation = -0.285068
+shape = SubResource("RectangleShape2D_7dd0l")
+
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="World Border"]
 position = Vector2(-8, 454)
 shape = SubResource("RectangleShape2D_7dd0l")
@@ -278,6 +283,11 @@ shape = SubResource("RectangleShape2D_7dd0l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World Border"]
 position = Vector2(552, 461)
+shape = SubResource("RectangleShape2D_7dd0l")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="World Border"]
+position = Vector2(494, 833)
+rotation = 0.273296
 shape = SubResource("RectangleShape2D_7dd0l")
 
 [node name="Respawn" type="Node2D" parent="."]
