@@ -148,7 +148,8 @@ func _on_mouse_released():
 						
 			# Emit the signal
 			trampoline_drawn.emit(trampoline)
-			
+			GameManager.clear_on_pegs()
+			ScoreManager.reset_mult_count()			
 		# Trampoline is invalid	
 		else:
 			drawing_guide.reset()
