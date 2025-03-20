@@ -135,7 +135,7 @@ func _on_mouse_released():
 			var end_point := get_trampoline_endpoint(starting_mouse_pos, get_global_mouse_position())
 
 			# Check which direction the player drew the trampoline
-			if ( end_point.x - starting_mouse_pos.x < 10):
+			if (absf(end_point.x - starting_mouse_pos.x) < 10):
 				return
 			
 			elif(starting_mouse_pos.x < end_point.x):
