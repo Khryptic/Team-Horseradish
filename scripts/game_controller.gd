@@ -16,6 +16,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	print(DisplayServer.window_get_size())
 	pass
 
 func _spawn_ball() -> void:

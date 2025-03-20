@@ -348,41 +348,6 @@ text = "0 Pts
 Mult: 1x"
 script = ExtResource("4_6jsyi")
 
-[node name="LivesLabel" type="Label" parent="CanvasLayer/UI" node_paths=PackedStringArray("lives_icons")]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -960.0
-offset_right = 113.0
-offset_bottom = -915.0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 32
-script = ExtResource("5_8hi1r")
-lives_icons = [NodePath("life_icon1"), NodePath("life_icon2"), NodePath("life_icon3")]
-life_icon_end_tween = Vector2(270, 350)
-tween_duration = 1
-
-[node name="life_icon1" type="Sprite2D" parent="CanvasLayer/UI/LivesLabel"]
-position = Vector2(234, 31)
-scale = Vector2(0.8125, 0.8125)
-texture = ExtResource("11_segjr")
-
-[node name="life_icon2" type="Sprite2D" parent="CanvasLayer/UI/LivesLabel"]
-position = Vector2(269, 31)
-scale = Vector2(0.8125, 0.8125)
-texture = ExtResource("11_segjr")
-
-[node name="life_icon3" type="Sprite2D" parent="CanvasLayer/UI/LivesLabel"]
-position = Vector2(304, 31)
-scale = Vector2(0.8125, 0.8125)
-texture = ExtResource("11_segjr")
-
-[node name="Delay" type="Timer" parent="CanvasLayer/UI/LivesLabel"]
-one_shot = true
-autostart = true
-ignore_time_scale = true
-
 [node name="PauseButton" type="Button" parent="CanvasLayer/UI"]
 layout_mode = 1
 anchors_preset = 1
@@ -476,6 +441,39 @@ theme = SubResource("Theme_p0sd6")
 theme_override_font_sizes/font_size = 30
 text = "Restart"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI"]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LivesLabel" type="Label" parent="CanvasLayer/UI/HBoxContainer" node_paths=PackedStringArray("lives_icons")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+script = ExtResource("5_8hi1r")
+lives_icons = [NodePath("life_icon1"), NodePath("life_icon2"), NodePath("life_icon3")]
+life_icon_end_tween = Vector2(270, 350)
+tween_duration = 1
+
+[node name="life_icon1" type="Sprite2D" parent="CanvasLayer/UI/HBoxContainer/LivesLabel"]
+position = Vector2(234, 31)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("11_segjr")
+
+[node name="life_icon2" type="Sprite2D" parent="CanvasLayer/UI/HBoxContainer/LivesLabel"]
+position = Vector2(269, 31)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("11_segjr")
+
+[node name="life_icon3" type="Sprite2D" parent="CanvasLayer/UI/HBoxContainer/LivesLabel"]
+position = Vector2(304, 31)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("11_segjr")
+
+[node name="Delay" type="Timer" parent="CanvasLayer/UI/HBoxContainer/LivesLabel"]
+one_shot = true
+autostart = true
+ignore_time_scale = true
+
 [node name="OnboardingAnimation" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="OnboardingAnimation"]
@@ -536,7 +534,7 @@ texture = ExtResource("45_d64rk")
 [connection signal="animation_finished" from="Drawing Controller/Trampoline/AnimatedSprite2D" to="Drawing Controller/Trampoline" method="_on_animation_finished"]
 [connection signal="body_entered" from="Drawing Controller/Drawing Guide" to="Drawing Controller/Drawing Guide" method="_on_body_entered"]
 [connection signal="timeout" from="CanvasLayer/UI/GameOverLabel/Timer" to="CanvasLayer/UI/GameOverLabel" method="_on_timer_timeout"]
-[connection signal="timeout" from="CanvasLayer/UI/LivesLabel/Delay" to="CanvasLayer/UI/LivesLabel" method="_tween_life_icon_to_starting_position"]
 [connection signal="pressed" from="CanvasLayer/UI/PauseButton" to="CanvasLayer/UI/Pause Menu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Pause Menu/ResumeButton" to="CanvasLayer/UI/Pause Menu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Pause Menu/RestartButton" to="CanvasLayer/UI/Pause Menu" method="_on_restart_button_pressed"]
+[connection signal="timeout" from="CanvasLayer/UI/HBoxContainer/LivesLabel/Delay" to="CanvasLayer/UI/HBoxContainer/LivesLabel" method="_tween_life_icon_to_starting_position"]
