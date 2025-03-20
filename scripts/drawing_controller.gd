@@ -131,11 +131,14 @@ func _on_mouse_released():
 		drawing_guide.reset()
 		#if(red_x.visible): red_x.visible = false
 			
-		if (is_start_point_in_drawing_zone):	
+		if (is_start_point_in_drawing_zone):
 			var end_point := get_trampoline_endpoint(starting_mouse_pos, get_global_mouse_position())
-			
+
 			# Check which direction the player drew the trampoline
-			if(starting_mouse_pos.x < end_point.x):
+			if ( end_point.x - starting_mouse_pos.x < 10):
+				return
+			
+			elif(starting_mouse_pos.x < end_point.x):
 				trampoline.point_a = starting_mouse_pos
 				trampoline.point_b = end_point
 			else:
