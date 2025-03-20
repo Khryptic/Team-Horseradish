@@ -212,12 +212,10 @@ bullet_time_duration = 0.25
 bullet_time_fade_to_normal = 1.0
 
 [node name="TrampolineDrawingZone" type="Area2D" parent="Drawing Controller"]
-position = Vector2(287, 400)
 collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Drawing Controller/TrampolineDrawingZone"]
-position = Vector2(0, -3)
-polygon = PackedVector2Array(-327, 0, 290, 0, 290, 110, 130, 680, -170, 680, -327, 110)
+polygon = PackedVector2Array(-40, 400, 577, 400, 577, 520, 389, 1180, 151, 1180, -40, 520)
 
 [node name="Trampoline" type="Node2D" parent="Drawing Controller"]
 script = ExtResource("3_0votk")
@@ -526,8 +524,6 @@ texture = ExtResource("45_d64rk")
 [connection signal="trampoline_drawn" from="Drawing Controller" to="OnboardingAnimation/AnimatedSprite2D" method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="body_entered" from="Drawing Controller/TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_entered"]
 [connection signal="body_exited" from="Drawing Controller/TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_exited"]
-[connection signal="mouse_entered" from="Drawing Controller/TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_mouse_entered"]
-[connection signal="mouse_exited" from="Drawing Controller/TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_mouse_exited"]
 [connection signal="increase_final_peg_size" from="Drawing Controller/Trampoline" to="." method="_on_trampoline_increase_final_peg_size"]
 [connection signal="body_entered" from="Drawing Controller/Trampoline/Area2D" to="Drawing Controller/Trampoline" method="_on_body_entered"]
 [connection signal="body_exited" from="Drawing Controller/Trampoline/Area2D" to="Drawing Controller/Trampoline" method="_on_body_exited"]

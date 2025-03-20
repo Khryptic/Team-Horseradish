@@ -6,7 +6,7 @@ signal trampoline_drawn(trampoline: Trampoline)
 @onready var drawing_guide: Area2D = $"Drawing Guide"
 @onready var mouse_raycast: RayCast2D = $"MouseRayCast"
 @onready var drawing_zone: Area2D = $"TrampolineDrawingZone"
-@onready var drawing_zone_polygon: Polygon2D = $"TrampolineDrawingZone/Polygon2D"
+@onready var drawing_zone_polygon: CollisionPolygon2D = $"TrampolineDrawingZone/CollisionPolygon2D"
 
 @export var max_trampoline_length: int = 300
 @export var large_length: int = 300
@@ -26,15 +26,14 @@ var old_mouse_pos: Vector2 # the mouse pos from the previous frame
 
 var _is_mouse_down: bool
 
-var is_mouse_in_drawing_zone: bool # if the mouse is in drawing zone
-var is_start_point_in_drawing_zone: bool # if the mouse was in drawing zone on mouse down
+var is_start_point_in_drawing_zone: bool = false # if the mouse was in drawing zone on mouse down
 # this is needed in case the player starts drawing outside of drawing zone and releases mouse in zone 
 
 #var is_ball_in_drawing_zone: bool # if the ball is in the drawing zone, activate bullet time
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	
+
 	# Double-check that the player is still drawing to prevent false-positives
 	if(!Input.is_action_pressed("Draw")):
 		_is_mouse_down = false
@@ -74,7 +73,9 @@ func _on_mouse_down():
 	drawing_guide.point_a = mouse_pos
 	drawing_guide.point_b = mouse_pos
 	drawing_guide.default_color = Color(1, 1, 1, 0.4)
-		
+	
+	var is_mouse_in_drawing_zone: bool = Geometry2D.is_point_in_polygon(mouse_pos, drawing_zone_polygon.polygon)
+	
 	if (is_mouse_in_drawing_zone):
 		
 		#slow down time while drawing
@@ -89,6 +90,8 @@ func _on_mouse_down():
 func _while_mouse_down():
 	var mouse_pos := get_global_mouse_position()
 
+	var is_mouse_in_drawing_zone: bool = Geometry2D.is_point_in_polygon(mouse_pos, drawing_zone_polygon.polygon)
+
 	# Find new start position if mouse is outside drawing zone
 	if (!is_start_point_in_drawing_zone):
 		
@@ -96,9 +99,9 @@ func _while_mouse_down():
 		mouse_raycast.global_position = mouse_pos
 		mouse_raycast.target_position = old_mouse_pos - mouse_pos
 		mouse_raycast.force_raycast_update()
-		
+				
 		# Mouse has entered drawing zone. Set start point to the edge of the zone
-		if(mouse_raycast.is_colliding()):
+		if(mouse_raycast.is_colliding() and is_mouse_in_drawing_zone):
 			starting_mouse_pos = mouse_raycast.get_collision_point()
 			is_start_point_in_drawing_zone = true
 			drawing_guide.point_a = starting_mouse_pos
@@ -124,45 +127,43 @@ func _while_mouse_down():
 	old_mouse_pos = mouse_pos
 
 func _on_mouse_released():
+
 	# Return to normal speed
-		Engine.time_scale = 1
-		bullet_time_since_activation = 999
-			
-		drawing_guide.reset()
-		#if(red_x.visible): red_x.visible = false
-			
-		if (is_start_point_in_drawing_zone):
-			var end_point := get_trampoline_endpoint(starting_mouse_pos, get_global_mouse_position())
+	Engine.time_scale = 1
+	bullet_time_since_activation = 999
+		
+	drawing_guide.reset()
+	#if(red_x.visible): red_x.visible = false
+		
+	if (is_start_point_in_drawing_zone):
+		
+		var end_point := get_trampoline_endpoint(starting_mouse_pos, get_global_mouse_position())
 
-			# Check which direction the player drew the trampoline
-			if (absf(end_point.x - starting_mouse_pos.x) < 10):
-				return
-			
-			elif(starting_mouse_pos.x < end_point.x):
-				trampoline.point_a = starting_mouse_pos
-				trampoline.point_b = end_point
-			else:
-				trampoline.point_a = end_point
-				trampoline.point_b = starting_mouse_pos
-			
-			# set trampoline lives based off length of trampoline
-			var trampoline_length: float = (trampoline.point_a - trampoline.point_b).length()
-			trampoline.lives = get_trampoline_lives(trampoline_length)
-						
-			# Emit the signal
-			trampoline_drawn.emit(trampoline)
-			
-		# Trampoline is invalid	
+		# Prevent trampoline from being too small
+		if (absf(end_point.x - starting_mouse_pos.x) < 10):
+			is_start_point_in_drawing_zone = false
+			return
+		
+		# Check which direction the player drew the trampoline
+		elif(starting_mouse_pos.x < end_point.x):
+			trampoline.point_a = starting_mouse_pos
+			trampoline.point_b = end_point
 		else:
-			drawing_guide.reset()
+			trampoline.point_a = end_point
+			trampoline.point_b = starting_mouse_pos
+		
+		# set trampoline lives based off length of trampoline
+		var trampoline_length: float = (trampoline.point_a - trampoline.point_b).length()
+		trampoline.lives = get_trampoline_lives(trampoline_length)
 					
+		# Emit the signal
+		trampoline_drawn.emit(trampoline)
+
 		is_start_point_in_drawing_zone = false
-
-func _on_trampoline_drawing_zone_mouse_exited() -> void:
-	is_mouse_in_drawing_zone = false
-
-func _on_trampoline_drawing_zone_mouse_entered() -> void:
-	is_mouse_in_drawing_zone = true
+		
+	# Trampoline is invalid	
+	else:
+		drawing_guide.reset()
 
 #func _on_trampoline_drawing_zone_body_entered(body: Node2D) -> void:
 	#if body.is_in_group("ball"):
@@ -170,10 +171,6 @@ func _on_trampoline_drawing_zone_mouse_entered() -> void:
 		#if (is_start_point_in_drawing_zone):
 			#Engine.time_scale = bullet_time_scale
 			#bullet_time_since_activation = 0
-		
-	
-
-
 
 #func _on_trampoline_drawing_zone_body_exited(body: Node2D) -> void:
 	#if body.is_in_group("ball"):
@@ -192,6 +189,8 @@ func get_trampoline_endpoint(start_pos: Vector2, mouse_pos: Vector2) -> Vector2:
 	
 	var end_point := mouse_pos
 	var shortest_length_squared := (mouse_pos - start_pos).length_squared()
+
+	var is_mouse_in_drawing_zone: bool = Geometry2D.is_point_in_polygon(mouse_pos, drawing_zone_polygon.polygon)
 
 	# Mouse has left the drawing zone
 	if (!is_mouse_in_drawing_zone and is_start_point_in_drawing_zone):
@@ -218,4 +217,3 @@ func get_trampoline_endpoint(start_pos: Vector2, mouse_pos: Vector2) -> Vector2:
 			end_point = start_pos + direction * max_trampoline_length
 
 	return end_point
-	
