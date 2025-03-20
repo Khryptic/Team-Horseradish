@@ -42,7 +42,7 @@ func _add_random_set_of_pegs():
 	PegManager._add_pegs_to_scene()
 
 func _on_trampoline_increase_final_peg_size() -> void:
-	if (PegManager.unlit_pegs == 1 && PegManager.has_peg_increased_size == false):
-		var peg = get_tree().get_nodes_in_group("peg")[0]
+	if (PegManager.current_pegs.size() == 1 && PegManager.has_peg_increased_size == false):
+		var peg = PegManager.current_pegs[0]
 		peg.increase_size()
 		PegManager.has_peg_increased_size = true
