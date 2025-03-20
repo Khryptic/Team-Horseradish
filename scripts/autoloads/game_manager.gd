@@ -9,6 +9,7 @@ var lives: int = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	ProjectSettings.set_setting("display/window/size/window_height_override", DisplayServer.screen_get_size()[0])
 	pass # Replace with function body.
 
 
