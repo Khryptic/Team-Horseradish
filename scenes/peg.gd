@@ -39,6 +39,7 @@ func _on_peg_hit():
 
 	if is_light_on:
 		get_node("peg_sensor").points_worth /= 10
+		PegManager.unlight_peg()
 	is_light_on = false
 	
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PEG_HIT)
@@ -46,7 +47,7 @@ func _on_peg_hit():
 func _remove_peg():
 	if(!is_light_on):
 		queue_free()
-		PegManager._update_peg_count()
+		PegManager._remove_peg(self) #tell peg manager to stop keeping reference of this peg bcus its dead now
 
 func increase_size():
 	$AnimationScale/Sprite2D.scale *= peg_scaler

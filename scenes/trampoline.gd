@@ -77,6 +77,7 @@ func _ready() -> void:
 	line.add_point(Vector2(-10000, -10000))
 	hitbox_shape = hitbox.shape
 	hitbox_height = coyote_time_distance
+	
 
 func _process(_delta: float) -> void:
 
@@ -117,12 +118,6 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	# Check for last peg
 	increase_final_peg_size.emit()
-	
-	# reset point multiplier
-	ScoreManager.reset_mult_count()
-	
-	# tell game manager ball has bounced (used for clearing pegs)
-	GameManager.clear_on_pegs()
 
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.TRAMPOLINE_BOUNCE)
 

@@ -9,7 +9,4 @@ func on_game_over():
 	$Timer.start()
 
 func _on_timer_timeout() -> void:
-	get_tree().reload_current_scene()
-	ScoreManager.score = 0
-	ScoreManager.reset_mult_count()
-	GameManager.lives = 3 # Replace with function body.
+	GameManager.start_new_level()

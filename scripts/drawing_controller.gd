@@ -65,7 +65,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		_on_mouse_released()
 
 func _on_mouse_down():
-	
+	if GameManager.CURRENT_STATE != GameManager.GAME_STATE.PLAYING:
+		return
 	var mouse_pos := get_global_mouse_position()
 	starting_mouse_pos = mouse_pos
 
@@ -88,6 +89,9 @@ func _on_mouse_down():
 		is_start_point_in_drawing_zone = false
 
 func _while_mouse_down():
+	if GameManager.CURRENT_STATE != GameManager.GAME_STATE.PLAYING:
+		return
+		
 	var mouse_pos := get_global_mouse_position()
 
 	var is_mouse_in_drawing_zone: bool = Geometry2D.is_point_in_polygon(mouse_pos, drawing_zone_polygon.polygon)
@@ -127,6 +131,8 @@ func _while_mouse_down():
 	old_mouse_pos = mouse_pos
 
 func _on_mouse_released():
+	if GameManager.CURRENT_STATE != GameManager.GAME_STATE.PLAYING:
+		return
 
 	# Return to normal speed
 	Engine.time_scale = 1
@@ -160,6 +166,8 @@ func _on_mouse_released():
 		trampoline_drawn.emit(trampoline)
 
 		is_start_point_in_drawing_zone = false
+		GameManager.clear_on_pegs()
+		ScoreManager.reset_mult_count()		
 		
 	# Trampoline is invalid	
 	else:

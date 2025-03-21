@@ -11,8 +11,10 @@ signal ball_died
 
 func _ready() -> void:
 	setFreeze(true)
+	GameManager.round_clear.connect(tween_to_spawn_point)
 
 func _process(_delta: float) -> void:
+		
 	if(smoke_particles.emitting):
 		smoke_particles.global_rotation = 0;
 
@@ -43,3 +45,14 @@ func crit() -> void:
 func _physics_process(_delta: float) -> void:
 	if(rigidbody.linear_velocity.y >= maxFallSpeed):
 		rigidbody.linear_velocity.y = maxFallSpeed
+		
+func tween_to_spawn_point():
+	var tween = rigidbody.create_tween()
+	var end_point: Vector2 = Vector2(0,0) # REPLACE WITH REFERENCE
+	tween.tween_property(rigidbody, "position", end_point, 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_callback(_on_tween_finished)
+
+
+func _on_tween_finished():
+	setFreeze(true)
+		

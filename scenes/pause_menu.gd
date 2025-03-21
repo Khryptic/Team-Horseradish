@@ -17,6 +17,7 @@ func _on_restart_button_pressed():
 	get_tree().reload_current_scene()
 	ScoreManager.score = 0
 	ScoreManager.reset_mult_count()
+	PegManager.reset()
 	GameManager.lives = 3
 	
 	# Commented out due to error when restarting; not sure if this is still necessary
