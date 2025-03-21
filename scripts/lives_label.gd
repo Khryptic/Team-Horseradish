@@ -12,7 +12,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-func _tween_life_icon_to_starting_position():
+func _tween_life_icon_to_starting_position(): # THIS CAN / NEEDS TO BE REPLACED WITH SOMETHING BETTER IN THE FUTURE 
 	if is_instance_valid(lives_icons[(GameManager.lives - 1)]):
 		var life_icon : Sprite2D = lives_icons[(GameManager.lives - 1)]
 		var tween = life_icon.create_tween()

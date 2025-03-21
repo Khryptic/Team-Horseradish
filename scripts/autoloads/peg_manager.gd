@@ -5,6 +5,7 @@ var current_peg_layout = []
 var unlit_pegs: int
 var current_pegs = []
 var current_layout_number: int = 99999
+var lit_pegs: int
 
 var has_peg_increased_size: bool = false
 
@@ -26,8 +27,18 @@ func _process(delta: float) -> void:
 			if (pegs_added >= current_pegs.size()):
 				break;
 			time_since_last_peg_added -= peg_spawn_delay;
-			get_tree().current_scene.add_child(current_pegs[pegs_added])
-			pegs_added += 1
+			if (is_instance_valid(current_pegs[pegs_added])):
+				get_tree().current_scene.add_child(current_pegs[pegs_added])
+				pegs_added += 1
+	if (pegs_added == current_pegs.size()):
+		GameManager.start_round()
+
+func reset():
+	current_pegs.clear()
+	unlit_pegs = 0
+	lit_pegs = 0
+	pegs_added = 0
+		
 
 	
 # Loads peg layouts from JSON file
@@ -45,6 +56,7 @@ func _load_peg_layouts():
 
 # Queues new list of pegs to be added to the scene
 func _add_pegs_to_scene():
+	
 	if all_peg_layouts.is_empty():
 		print("No peg layouts available.")
 		return
@@ -81,6 +93,7 @@ func _add_pegs_to_scene():
 			
 	
 	peg_spawn_delay = PEG_SPAWNING_DURATION / current_pegs.size()
+	lit_pegs = current_pegs.size()
 	
 		
 func _remove_peg(peg : StaticBody2D):
@@ -88,3 +101,8 @@ func _remove_peg(peg : StaticBody2D):
 	if (current_pegs.size() <= 0):
 		call_deferred("_add_pegs_to_scene")
 		has_peg_increased_size = false
+		
+func unlight_peg():
+	lit_pegs -= 1
+	if (lit_pegs == 0):
+		GameManager.emit_round_clear()

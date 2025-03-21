@@ -39,6 +39,7 @@ func _on_peg_hit():
 
 	if is_light_on:
 		get_node("peg_sensor").points_worth /= 10
+		PegManager.unlight_peg()
 	is_light_on = false
 	
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PEG_HIT)

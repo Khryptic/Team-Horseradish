@@ -66,7 +66,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		_on_mouse_released()
 
 func _on_mouse_down():
-	
+	if GameManager.CURRENT_STATE != GameManager.GAME_STATE.PLAYING:
+		return
 	var mouse_pos := get_global_mouse_position()
 	starting_mouse_pos = mouse_pos
 
@@ -87,6 +88,9 @@ func _on_mouse_down():
 		is_start_point_in_drawing_zone = false
 
 func _while_mouse_down():
+	if GameManager.CURRENT_STATE != GameManager.GAME_STATE.PLAYING:
+		return
+		
 	var mouse_pos := get_global_mouse_position()
 
 	# Find new start position if mouse is outside drawing zone
@@ -124,37 +128,40 @@ func _while_mouse_down():
 	old_mouse_pos = mouse_pos
 
 func _on_mouse_released():
+	if GameManager.CURRENT_STATE != GameManager.GAME_STATE.PLAYING:
+		return
+
 	# Return to normal speed
-		Engine.time_scale = 1
-		bullet_time_since_activation = 999
-			
-		drawing_guide.reset()
-		#if(red_x.visible): red_x.visible = false
-			
-		if (is_start_point_in_drawing_zone):	
-			var end_point := get_trampoline_endpoint(starting_mouse_pos, get_global_mouse_position())
-			
-			# Check which direction the player drew the trampoline
-			if(starting_mouse_pos.x < end_point.x):
-				trampoline.point_a = starting_mouse_pos
-				trampoline.point_b = end_point
-			else:
-				trampoline.point_a = end_point
-				trampoline.point_b = starting_mouse_pos
-			
-			# set trampoline lives based off length of trampoline
-			var trampoline_length: float = (trampoline.point_a - trampoline.point_b).length()
-			trampoline.lives = get_trampoline_lives(trampoline_length)
-						
-			# Emit the signal
-			trampoline_drawn.emit(trampoline)
-			GameManager.clear_on_pegs()
-			ScoreManager.reset_mult_count()			
-		# Trampoline is invalid	
+	Engine.time_scale = 1
+	bullet_time_since_activation = 999
+		
+	drawing_guide.reset()
+	#if(red_x.visible): red_x.visible = false
+		
+	if (is_start_point_in_drawing_zone):	
+		var end_point := get_trampoline_endpoint(starting_mouse_pos, get_global_mouse_position())
+		
+		# Check which direction the player drew the trampoline
+		if(starting_mouse_pos.x < end_point.x):
+			trampoline.point_a = starting_mouse_pos
+			trampoline.point_b = end_point
 		else:
-			drawing_guide.reset()
+			trampoline.point_a = end_point
+			trampoline.point_b = starting_mouse_pos
+		
+		# set trampoline lives based off length of trampoline
+		var trampoline_length: float = (trampoline.point_a - trampoline.point_b).length()
+		trampoline.lives = get_trampoline_lives(trampoline_length)
 					
-		is_start_point_in_drawing_zone = false
+		# Emit the signal
+		trampoline_drawn.emit(trampoline)
+		GameManager.clear_on_pegs()
+		ScoreManager.reset_mult_count()			
+	# Trampoline is invalid	
+	else:
+		drawing_guide.reset()
+				
+	is_start_point_in_drawing_zone = false
 
 func _on_trampoline_drawing_zone_mouse_exited() -> void:
 	is_mouse_in_drawing_zone = false
