@@ -203,6 +203,9 @@ animations = [{
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wfcph")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(269, 494)
+
 [node name="Drawing Controller" type="Node2D" parent="."]
 script = ExtResource("1_lq30c")
 max_trampoline_length = 301
@@ -346,6 +349,12 @@ text = "0 Pts
 Mult: 1x"
 script = ExtResource("4_6jsyi")
 
+[node name="SpScorebar01a" type="Sprite2D" parent="CanvasLayer/UI/ScoreLabel"]
+z_index = -1
+position = Vector2(73, 25)
+scale = Vector2(1.28199, 1)
+texture = ExtResource("42_n15j5")
+
 [node name="PauseButton" type="Button" parent="CanvasLayer/UI"]
 layout_mode = 1
 anchors_preset = 1
@@ -472,6 +481,11 @@ one_shot = true
 autostart = true
 ignore_time_scale = true
 
+[node name="SpLives01a" type="Sprite2D" parent="CanvasLayer/UI/HBoxContainer"]
+z_index = -1
+position = Vector2(268, 32)
+texture = ExtResource("43_68d3q")
+
 [node name="OnboardingAnimation" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="OnboardingAnimation"]
@@ -499,23 +513,12 @@ z_index = 1
 position = Vector2(274, -30)
 texture = ExtResource("40_ju2fr")
 
-[node name="SpScorebar01a" type="Sprite2D" parent="Game Art"]
-z_index = 1
-position = Vector2(88, 21)
-scale = Vector2(1.28199, 1)
-texture = ExtResource("42_n15j5")
-
-[node name="SpLives01a" type="Sprite2D" parent="Game Art"]
-z_index = 1
-position = Vector2(273, 28)
-texture = ExtResource("43_68d3q")
-
 [node name="SpDecorR01a" type="Sprite2D" parent="Game Art"]
 position = Vector2(509, 787)
 texture = ExtResource("44_mpve1")
 
 [node name="SpDecorL01a" type="Sprite2D" parent="Game Art"]
-position = Vector2(29, 787)
+position = Vector2(29, 786)
 texture = ExtResource("45_d64rk")
 
 [connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
