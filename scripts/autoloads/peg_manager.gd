@@ -30,8 +30,8 @@ func _process(delta: float) -> void:
 			if (is_instance_valid(current_pegs[pegs_added])):
 				get_tree().current_scene.add_child(current_pegs[pegs_added])
 				pegs_added += 1
-	if (pegs_added == current_pegs.size()):
-		GameManager.start_round()
+		if (pegs_added == current_pegs.size()):
+			GameManager.start_round()
 
 func reset():
 	current_pegs.clear()

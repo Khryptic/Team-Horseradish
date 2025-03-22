@@ -38,7 +38,7 @@ func clear_on_pegs():
 	
 func start_new_level():
 	CURRENT_STATE = GAME_STATE.TRANSITION
-	
+
 	lives = 3
 	lives_changed.emit()
 	get_tree().reload_current_scene()

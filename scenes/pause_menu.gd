@@ -18,7 +18,7 @@ func _on_restart_button_pressed():
 	ScoreManager.score = 0
 	ScoreManager.reset_mult_count()
 	PegManager.reset()
-	GameManager.lives = 3
+	GameManager.start_new_level()
 	
 	# Commented out due to error when restarting; not sure if this is still necessary
 	#$"../../../Drawing Controller".trampoline_segment_collider.a = Vector2(-10000, -10000)
