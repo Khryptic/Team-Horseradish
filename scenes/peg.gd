@@ -38,7 +38,7 @@ func _on_peg_hit():
 	sprite.self_modulate = Color8(80, 80, 80, 255)
 
 	if is_light_on:
-		get_node("peg_sensor").points_worth /= 10
+		ScoreManager.increase_mult(1)
 		PegManager.unlight_peg()
 	is_light_on = false
 	

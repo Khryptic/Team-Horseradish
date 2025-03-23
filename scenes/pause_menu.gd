@@ -15,7 +15,7 @@ func _on_restart_button_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED) # confines mouse to window
 	get_tree().paused = false
 	get_tree().reload_current_scene()
-	ScoreManager.score = 0
+	ScoreManager.total_score = 0
 	ScoreManager.reset_mult_count()
 	PegManager.reset()
 	GameManager.start_new_level()

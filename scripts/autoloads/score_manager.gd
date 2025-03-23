@@ -1,10 +1,10 @@
 extends Node
 
-signal score_updated(new_score)
+signal multiply_score_just_earned(mult_score_just_earned)
 
-var score: int = 0
-var mult: int = 1
-
+var total_score: int = 0
+var mult = 1;
+var score_just_earned: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,19 +17,21 @@ func _process(_delta: float) -> void:
 
 # Point multiplier functions
 func add_points(amount: int, mult: int):
-	score += amount * mult
-	emit_signal("score_updated", score, mult)
+	score_just_earned += amount
 	
 func reset_mult_text():
-	emit_signal("score_updated", score, get_mult())
-
+	pass
 func get_mult():
 	return mult
 	
-func increase_mult():
-	mult += 1
+func increase_mult(amount: int):
+	mult += amount
 	reset_mult_text()
 
 func reset_mult_count():
+	emit_signal("multiply_score_just_earned", score_just_earned * mult)
+	total_score += score_just_earned * mult
+	score_just_earned = 0
 	mult = 1
 	reset_mult_text()
+	

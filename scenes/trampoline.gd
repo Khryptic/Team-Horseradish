@@ -145,8 +145,10 @@ static func get_trampoline_color(remaining_lives: int, opacity: float) -> Color:
 		1: Color(0.9, 0.5, 0, opacity),
 		0: Color(1, 0, 0, opacity)
 	}
-
-	return trampoline_colors[remaining_lives]
+	
+	if (remaining_lives >= 0 && remaining_lives <= 3):
+		return trampoline_colors[remaining_lives]
+	return trampoline_colors[0]
 
 func _on_animation_finished():
 
