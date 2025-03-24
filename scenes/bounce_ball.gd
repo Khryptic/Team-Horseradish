@@ -47,6 +47,7 @@ func _physics_process(_delta: float) -> void:
 		rigidbody.linear_velocity.y = maxFallSpeed
 		
 func tween_to_spawn_point():
+	rigidbody.set_collision_layer_value(1,false)
 	var tween = rigidbody.create_tween()
 	var end_point: Vector2 = Vector2(0,0) # REPLACE WITH REFERENCE
 	tween.tween_property(rigidbody, "position", end_point, 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
@@ -54,5 +55,6 @@ func tween_to_spawn_point():
 
 
 func _on_tween_finished():
+	rigidbody.set_collision_layer_value(1,true)
 	setFreeze(true)
-		
+	
