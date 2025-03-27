@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bh1w2lowvxtp2"]
+
+[ext_resource type="FontFile" uid="uid://bcryx6xxqb257" path="res://assets/text/budmo jiggler.otf" id="1_48uqm"]
+
+[resource]
+default_font = ExtResource("1_48uqm")
+default_font_size = 200
+Button/colors/font_color = Color(0.968627, 0.756863, 0.247059, 1)
+Button/colors/font_outline_color = Color(0.894118, 0.196078, 0.0901961, 1)
+Button/constants/outline_size = 64
