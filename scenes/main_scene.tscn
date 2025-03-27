@@ -271,7 +271,6 @@ collide_with_bodies = false
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="World Border"]
 position = Vector2(50, 961)
 rotation = -0.285068
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7dd0l")
 
 [node name="SpDecorL01a" type="Sprite2D" parent="World Border/CollisionShape2D5"]
