@@ -292,7 +292,7 @@ rotation = 0.273296
 shape = SubResource("RectangleShape2D_7dd0l")
 
 [node name="Respawn" type="Node2D" parent="."]
-position = Vector2(270, 350)
+position = Vector2(275, 350)
 
 [node name="Killzone" type="Area2D" parent="." groups=["killzone"]]
 position = Vector2(287, 1001)
