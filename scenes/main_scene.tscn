@@ -218,7 +218,7 @@ bullet_time_fade_to_normal = 1.0
 collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Drawing Controller/TrampolineDrawingZone"]
-polygon = PackedVector2Array(-40, 400, 577, 400, 577, 520, 389, 1180, 151, 1180, -40, 520)
+polygon = PackedVector2Array(-40, 400, 577, 400, 577, 620, 389, 1280, 151, 1280, -40, 620)
 
 [node name="Trampoline" type="Node2D" parent="Drawing Controller"]
 script = ExtResource("3_0votk")
@@ -269,9 +269,25 @@ collide_with_bodies = false
 [node name="World Border" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="World Border"]
-position = Vector2(50, 861)
+position = Vector2(50, 961)
 rotation = -0.285068
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7dd0l")
+
+[node name="SpDecorL01a" type="Sprite2D" parent="World Border/CollisionShape2D5"]
+position = Vector2(0.939209, -77.8789)
+rotation = 0.285068
+texture = ExtResource("45_d64rk")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="World Border"]
+position = Vector2(494, 961)
+rotation = 0.273296
+shape = SubResource("RectangleShape2D_7dd0l")
+
+[node name="SpDecorR01a" type="Sprite2D" parent="World Border/CollisionShape2D6"]
+position = Vector2(2.02759, -48.3414)
+rotation = -0.273296
+texture = ExtResource("44_mpve1")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="World Border"]
 position = Vector2(-8, 454)
@@ -286,20 +302,14 @@ shape = SubResource("RectangleShape2D_7dd0l")
 position = Vector2(552, 461)
 shape = SubResource("RectangleShape2D_7dd0l")
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="World Border"]
-position = Vector2(494, 833)
-rotation = 0.273296
-shape = SubResource("RectangleShape2D_7dd0l")
-
 [node name="Respawn" type="Node2D" parent="."]
 position = Vector2(275, 350)
 
 [node name="Killzone" type="Area2D" parent="." groups=["killzone"]]
-position = Vector2(287, 1001)
+position = Vector2(284, 1118)
 rotation = 1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(9.99982, -42)
 shape = SubResource("RectangleShape2D_c8x6e")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -344,6 +354,9 @@ wait_time = 3.0
 layout_mode = 1
 anchors_preset = -1
 offset_left = 10.0
+offset_top = 70.0
+offset_right = 84.0
+offset_bottom = 115.0
 theme_override_font_sizes/font_size = 32
 text = "0 Pts"
 script = ExtResource("4_6jsyi")
@@ -360,9 +373,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -116.0
-offset_top = 11.0
+offset_top = 66.0
 offset_right = -44.0
-offset_bottom = 71.0
+offset_bottom = 126.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 30
 icon = ExtResource("12_eatnr")
@@ -449,8 +462,9 @@ text = "Restart"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI"]
 layout_mode = 1
+offset_top = 70.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 115.0
 
 [node name="LivesLabel" type="Label" parent="CanvasLayer/UI/HBoxContainer" node_paths=PackedStringArray("lives_icons")]
 layout_mode = 2
@@ -511,14 +525,6 @@ texture = ExtResource("39_54u4h")
 z_index = 1
 position = Vector2(274, -30)
 texture = ExtResource("40_ju2fr")
-
-[node name="SpDecorR01a" type="Sprite2D" parent="Game Art"]
-position = Vector2(509, 787)
-texture = ExtResource("44_mpve1")
-
-[node name="SpDecorL01a" type="Sprite2D" parent="Game Art"]
-position = Vector2(29, 786)
-texture = ExtResource("45_d64rk")
 
 [connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="Drawing Controller/Trampoline" method="_on_trampoline_drawn"]
