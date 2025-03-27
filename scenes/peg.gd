@@ -25,6 +25,8 @@ func _ready() -> void:
 	sprite.set_texture(random_sprite)
 	
 	peg_scaler = Vector2(final_peg_scaler, final_peg_scaler)
+	
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PEG_SPAWN)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
