@@ -24,7 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://csv76dhn5eelv" path="res://assets/animations/onboarding/frame_05.png" id="12_dclty"]
 [ext_resource type="Texture2D" uid="uid://3owkmw8ye8b" path="res://assets/SP_Pause_01a.PNG" id="12_eatnr"]
 [ext_resource type="Texture2D" uid="uid://ds32eaop42gjv" path="res://assets/animations/onboarding/frame_06.png" id="13_7wsyd"]
+[ext_resource type="Texture2D" uid="uid://dfd2tcty5a2x1" path="res://assets/SP_Decor_L_02a.PNG" id="13_8dxha"]
 [ext_resource type="Texture2D" uid="uid://dbpnk55nfqaa7" path="res://assets/animations/onboarding/frame_07.png" id="14_4ihjl"]
+[ext_resource type="Texture2D" uid="uid://dn2gbd5bj58yc" path="res://assets/SP_Decor_R_02a.PNG" id="14_j4epa"]
 [ext_resource type="Texture2D" uid="uid://barq4onq7ir1u" path="res://assets/animations/onboarding/frame_08.png" id="15_a47hc"]
 [ext_resource type="Texture2D" uid="uid://bjvd6bhcupalr" path="res://assets/animations/onboarding/frame_09.png" id="16_3q2wk"]
 [ext_resource type="Texture2D" uid="uid://bn71uxuhxl65u" path="res://assets/animations/onboarding/frame_10.png" id="17_aksj2"]
@@ -43,13 +45,11 @@
 [ext_resource type="Texture2D" uid="uid://c3re1atccpbvu" path="res://assets/animations/onboarding/frame_23.png" id="30_6lvpr"]
 [ext_resource type="Texture2D" uid="uid://b7ibvt8eupdes" path="res://assets/animations/onboarding/frame_24.png" id="31_jcdlf"]
 [ext_resource type="Script" uid="uid://bkp6vvmbv7f15" path="res://scenes/onboarding_animation.gd" id="32_lnep7"]
-[ext_resource type="Texture2D" uid="uid://b6kjy6bhs11s3" path="res://assets/SP_Background_01a.PNG" id="38_8gekx"]
 [ext_resource type="Texture2D" uid="uid://cyiq31v2tmbq6" path="res://assets/SP_Backboard_01a.PNG" id="39_54u4h"]
-[ext_resource type="Texture2D" uid="uid://ooapla6txu0v" path="res://assets/SP_Decor_Top_01a.PNG" id="40_ju2fr"]
 [ext_resource type="Texture2D" uid="uid://ncy6mrf7a5xh" path="res://assets/SP_Scorebar_01a.PNG" id="42_n15j5"]
 [ext_resource type="Texture2D" uid="uid://blwl0qcafaeka" path="res://assets/SP_Lives_01a.PNG" id="43_68d3q"]
-[ext_resource type="Texture2D" uid="uid://bupyoo1432yvs" path="res://assets/SP_Decor_R_01a.PNG" id="44_mpve1"]
-[ext_resource type="Texture2D" uid="uid://duv6b4jdjqwds" path="res://assets/SP_Decor_L_01a.PNG" id="45_d64rk"]
+[ext_resource type="Texture2D" uid="uid://1fwc8h17gbx1" path="res://assets/SP_Background_02a.PNG" id="48_ruju6"]
+[ext_resource type="Texture2D" uid="uid://da6ba8txavw4d" path="res://assets/SP_Decor_Top_02a.PNG" id="50_5nybl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3krh7"]
 
@@ -271,13 +271,13 @@ collide_with_bodies = false
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="World Border"]
 position = Vector2(50, 961)
 rotation = -0.285068
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7dd0l")
 
 [node name="SpDecorL01a" type="Sprite2D" parent="World Border/CollisionShape2D5"]
 position = Vector2(0.939209, -77.8789)
 rotation = 0.285068
-texture = ExtResource("45_d64rk")
+scale = Vector2(0.44316, 0.44316)
+texture = ExtResource("13_8dxha")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="World Border"]
 position = Vector2(494, 961)
@@ -287,7 +287,8 @@ shape = SubResource("RectangleShape2D_7dd0l")
 [node name="SpDecorR01a" type="Sprite2D" parent="World Border/CollisionShape2D6"]
 position = Vector2(2.02759, -48.3414)
 rotation = -0.273296
-texture = ExtResource("44_mpve1")
+scale = Vector2(0.416185, 0.416185)
+texture = ExtResource("14_j4epa")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="World Border"]
 position = Vector2(-8, 454)
@@ -514,7 +515,8 @@ script = ExtResource("32_lnep7")
 [node name="SpBackground01a" type="Sprite2D" parent="Game Art"]
 z_index = -5
 position = Vector2(269, 494)
-texture = ExtResource("38_8gekx")
+scale = Vector2(0.573142, 0.573142)
+texture = ExtResource("48_ruju6")
 
 [node name="SpBackboard01a" type="Sprite2D" parent="Game Art"]
 z_index = -4
@@ -523,8 +525,9 @@ texture = ExtResource("39_54u4h")
 
 [node name="SpDecorTop01a" type="Sprite2D" parent="Game Art"]
 z_index = 1
-position = Vector2(274, -30)
-texture = ExtResource("40_ju2fr")
+position = Vector2(274, -354)
+scale = Vector2(0.418465, 0.418465)
+texture = ExtResource("50_5nybl")
 
 [connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="Drawing Controller/Trampoline" method="_on_trampoline_drawn"]
