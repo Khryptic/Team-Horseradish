@@ -186,12 +186,15 @@ func _on_mouse_released():
 		#Engine.time_scale = 1
 
 func get_trampoline_lives(length: float) -> int:
-	if (length > large_length):
-		return 1
-	elif (length > med_length):
-		return 2
-	else:
-		return 3
+	
+	return 3
+	
+	#if (length > large_length):
+	#	return 1
+	#elif (length > med_length):
+	#	return 2
+	#else:
+	#	return 3
 
 func get_trampoline_endpoint(start_pos: Vector2, mouse_pos: Vector2) -> Vector2:
 	
