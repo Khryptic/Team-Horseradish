@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=59 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="Script" uid="uid://2js5lt72ualx" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" uid="uid://clxxj87sfihfh" path="res://scripts/game_controller.gd" id="1_wfcph"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://dbpnk55nfqaa7" path="res://assets/animations/onboarding/frame_07.png" id="14_4ihjl"]
 [ext_resource type="Texture2D" uid="uid://dn2gbd5bj58yc" path="res://assets/SP_Decor_R_02a.PNG" id="14_j4epa"]
 [ext_resource type="Texture2D" uid="uid://barq4onq7ir1u" path="res://assets/animations/onboarding/frame_08.png" id="15_a47hc"]
+[ext_resource type="Script" uid="uid://bm8665gf4chex" path="res://scenes/mobile_safe_area.gd" id="15_j4epa"]
 [ext_resource type="Texture2D" uid="uid://bjvd6bhcupalr" path="res://assets/animations/onboarding/frame_09.png" id="16_3q2wk"]
 [ext_resource type="Texture2D" uid="uid://bn71uxuhxl65u" path="res://assets/animations/onboarding/frame_10.png" id="17_aksj2"]
 [ext_resource type="Texture2D" uid="uid://d4ljcpi67s3xk" path="res://assets/animations/onboarding/frame_11.png" id="18_02l60"]
@@ -328,6 +329,98 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="MobileSafeArea" type="Control" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("15_j4epa")
+
+[node name="TopCurtainDecor" type="TextureRect" parent="CanvasLayer/UI/MobileSafeArea"]
+z_index = -4
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -348.5
+offset_top = -819.0
+offset_right = 348.5
+offset_bottom = 178.0
+grow_horizontal = 2
+texture = ExtResource("50_5nybl")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/UI/MobileSafeArea"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 90.0
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 32
+text = "0 Pts"
+script = ExtResource("4_6jsyi")
+
+[node name="SpScorebar01a" type="Sprite2D" parent="CanvasLayer/UI/MobileSafeArea/ScoreLabel"]
+z_index = -1
+position = Vector2(73, 25)
+scale = Vector2(1.28199, 1)
+texture = ExtResource("42_n15j5")
+
+[node name="PauseButton" type="Button" parent="CanvasLayer/UI/MobileSafeArea"]
+layout_mode = 2
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -116.0
+offset_top = 8.0
+offset_right = -44.0
+offset_bottom = 68.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+icon = ExtResource("12_eatnr")
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI/MobileSafeArea"]
+layout_mode = 2
+offset_top = 12.0
+offset_right = 40.0
+offset_bottom = 57.0
+
+[node name="LivesLabel" type="Label" parent="CanvasLayer/UI/MobileSafeArea/HBoxContainer" node_paths=PackedStringArray("lives_icons")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+script = ExtResource("5_8hi1r")
+lives_icons = [NodePath("life_icon1"), NodePath("life_icon2"), NodePath("life_icon3")]
+life_icon_end_tween = Vector2(270, 350)
+tween_duration = 1
+
+[node name="life_icon1" type="Sprite2D" parent="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel"]
+position = Vector2(234, 31)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("11_segjr")
+
+[node name="life_icon2" type="Sprite2D" parent="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel"]
+position = Vector2(269, 31)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("11_segjr")
+
+[node name="life_icon3" type="Sprite2D" parent="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel"]
+position = Vector2(304, 31)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("11_segjr")
+
+[node name="Delay" type="Timer" parent="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel"]
+one_shot = true
+autostart = true
+ignore_time_scale = true
+
+[node name="SpLives01a" type="Sprite2D" parent="CanvasLayer/UI/MobileSafeArea/HBoxContainer"]
+z_index = -1
+position = Vector2(268, 32)
+texture = ExtResource("43_68d3q")
+
 [node name="GameOverLabel" type="Label" parent="CanvasLayer/UI"]
 visible = false
 layout_mode = 1
@@ -350,37 +443,6 @@ script = ExtResource("5_ufrqt")
 
 [node name="Timer" type="Timer" parent="CanvasLayer/UI/GameOverLabel"]
 wait_time = 3.0
-
-[node name="ScoreLabel" type="Label" parent="CanvasLayer/UI"]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 10.0
-offset_top = 70.0
-offset_right = 84.0
-offset_bottom = 115.0
-theme_override_font_sizes/font_size = 32
-text = "0 Pts"
-script = ExtResource("4_6jsyi")
-
-[node name="SpScorebar01a" type="Sprite2D" parent="CanvasLayer/UI/ScoreLabel"]
-z_index = -1
-position = Vector2(73, 25)
-scale = Vector2(1.28199, 1)
-texture = ExtResource("42_n15j5")
-
-[node name="PauseButton" type="Button" parent="CanvasLayer/UI"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -116.0
-offset_top = 66.0
-offset_right = -44.0
-offset_bottom = 126.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 30
-icon = ExtResource("12_eatnr")
-flat = true
 
 [node name="Pause Menu" type="Panel" parent="CanvasLayer/UI"]
 process_mode = 2
@@ -461,45 +523,6 @@ theme = SubResource("Theme_p0sd6")
 theme_override_font_sizes/font_size = 30
 text = "Restart"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI"]
-layout_mode = 1
-offset_top = 70.0
-offset_right = 40.0
-offset_bottom = 115.0
-
-[node name="LivesLabel" type="Label" parent="CanvasLayer/UI/HBoxContainer" node_paths=PackedStringArray("lives_icons")]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-script = ExtResource("5_8hi1r")
-lives_icons = [NodePath("life_icon1"), NodePath("life_icon2"), NodePath("life_icon3")]
-life_icon_end_tween = Vector2(270, 350)
-tween_duration = 1
-
-[node name="life_icon1" type="Sprite2D" parent="CanvasLayer/UI/HBoxContainer/LivesLabel"]
-position = Vector2(234, 31)
-scale = Vector2(0.8125, 0.8125)
-texture = ExtResource("11_segjr")
-
-[node name="life_icon2" type="Sprite2D" parent="CanvasLayer/UI/HBoxContainer/LivesLabel"]
-position = Vector2(269, 31)
-scale = Vector2(0.8125, 0.8125)
-texture = ExtResource("11_segjr")
-
-[node name="life_icon3" type="Sprite2D" parent="CanvasLayer/UI/HBoxContainer/LivesLabel"]
-position = Vector2(304, 31)
-scale = Vector2(0.8125, 0.8125)
-texture = ExtResource("11_segjr")
-
-[node name="Delay" type="Timer" parent="CanvasLayer/UI/HBoxContainer/LivesLabel"]
-one_shot = true
-autostart = true
-ignore_time_scale = true
-
-[node name="SpLives01a" type="Sprite2D" parent="CanvasLayer/UI/HBoxContainer"]
-z_index = -1
-position = Vector2(268, 32)
-texture = ExtResource("43_68d3q")
-
 [node name="OnboardingAnimation" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="OnboardingAnimation"]
@@ -523,12 +546,6 @@ z_index = -4
 position = Vector2(270, 216)
 texture = ExtResource("39_54u4h")
 
-[node name="SpDecorTop01a" type="Sprite2D" parent="Game Art"]
-z_index = 1
-position = Vector2(274, -354)
-scale = Vector2(0.418465, 0.418465)
-texture = ExtResource("50_5nybl")
-
 [connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="Drawing Controller/Trampoline" method="_on_trampoline_drawn"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="Drawing Controller/Drawing Guide" method="_on_trampoline_drawn"]
@@ -540,8 +557,8 @@ texture = ExtResource("50_5nybl")
 [connection signal="body_exited" from="Drawing Controller/Trampoline/Area2D" to="Drawing Controller/Trampoline" method="_on_body_exited"]
 [connection signal="animation_finished" from="Drawing Controller/Trampoline/AnimatedSprite2D" to="Drawing Controller/Trampoline" method="_on_animation_finished"]
 [connection signal="body_entered" from="Drawing Controller/Drawing Guide" to="Drawing Controller/Drawing Guide" method="_on_body_entered"]
+[connection signal="pressed" from="CanvasLayer/UI/MobileSafeArea/PauseButton" to="CanvasLayer/UI/Pause Menu" method="_on_pause_button_pressed"]
+[connection signal="timeout" from="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel/Delay" to="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel" method="_tween_life_icon_to_starting_position"]
 [connection signal="timeout" from="CanvasLayer/UI/GameOverLabel/Timer" to="CanvasLayer/UI/GameOverLabel" method="_on_timer_timeout"]
-[connection signal="pressed" from="CanvasLayer/UI/PauseButton" to="CanvasLayer/UI/Pause Menu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Pause Menu/ResumeButton" to="CanvasLayer/UI/Pause Menu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Pause Menu/RestartButton" to="CanvasLayer/UI/Pause Menu" method="_on_restart_button_pressed"]
-[connection signal="timeout" from="CanvasLayer/UI/HBoxContainer/LivesLabel/Delay" to="CanvasLayer/UI/HBoxContainer/LivesLabel" method="_tween_life_icon_to_starting_position"]
