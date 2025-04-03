@@ -2,6 +2,7 @@ extends StaticBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $AnimationScale/Sprite2D
+@onready var circle_shader: Sprite2D = $CircleShader
 @export var final_peg_scaler: float
 
 var is_light_on : bool = true
@@ -80,6 +81,8 @@ func _on_peg_hit():
 	is_light_on = false
 	
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PEG_HIT)
+
+	
 
 func _remove_peg():
 	if(!is_light_on):
