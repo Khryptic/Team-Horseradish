@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://2js5lt72ualx" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" uid="uid://clxxj87sfihfh" path="res://scripts/game_controller.gd" id="1_wfcph"]
-[ext_resource type="Script" uid="uid://b2mb5f60jhuoi" path="res://scenes/camera_2d.gd" id="2_ruju6"]
+[ext_resource type="Script" path="res://scenes/camera_2d.gd" id="2_ruju6"]
 [ext_resource type="Script" uid="uid://bhxr8msyhd47i" path="res://scenes/trampoline.gd" id="3_0votk"]
 [ext_resource type="Script" uid="uid://b4ct6ueroj65m" path="res://scripts/score_label.gd" id="4_6jsyi"]
 [ext_resource type="Texture2D" uid="uid://bak37mkleqku4" path="res://assets/Red_X.png" id="4_dl6a1"]
@@ -271,6 +271,9 @@ collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="DrawCooldownTimer" type="Timer" parent="Drawing Controller"]
+wait_time = 0.15
 
 [node name="World Border" type="StaticBody2D" parent="."]
 
@@ -564,6 +567,7 @@ texture = ExtResource("39_54u4h")
 [connection signal="body_exited" from="Drawing Controller/Trampoline/Area2D" to="Drawing Controller/Trampoline" method="_on_body_exited"]
 [connection signal="animation_finished" from="Drawing Controller/Trampoline/AnimatedSprite2D" to="Drawing Controller/Trampoline" method="_on_animation_finished"]
 [connection signal="body_entered" from="Drawing Controller/Drawing Guide" to="Drawing Controller/Drawing Guide" method="_on_body_entered"]
+[connection signal="timeout" from="Drawing Controller/DrawCooldownTimer" to="Drawing Controller" method="_on_draw_cooldown_timer_timeout"]
 [connection signal="safe_area_updated" from="CanvasLayer/UI/MobileSafeArea" to="Camera2D" method="_on_mobile_safe_area_updated"]
 [connection signal="pressed" from="CanvasLayer/UI/MobileSafeArea/PauseButton" to="CanvasLayer/UI/Pause Menu" method="_on_pause_button_pressed"]
 [connection signal="timeout" from="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel/Delay" to="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel" method="_tween_life_icon_to_starting_position"]
