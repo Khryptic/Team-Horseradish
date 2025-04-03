@@ -7,7 +7,7 @@ class_name Trampoline extends Node2D
 @export var crit_lower_percentage: float
 @export var crit_upper_percentage: float
 
-@export var added_impulse: float
+@export var steep_trampoline_upward_strength: float
 
 @onready var area2d: Area2D = $Area2D
 @onready var hitbox: CollisionShape2D = $Area2D/CollisionShape2D
@@ -107,11 +107,12 @@ func _on_body_entered(body: Node2D) -> void:
 		animation.play("Bounce")
 	
 		
-	# Add some bias if trampoline is too steeo
+	# Add some bias if trampoline is too steep
 	var segment_angle = segment_vec.angle()
-	if (segment_angle >= abs(deg_to_rad(45.0)) && segment_angle <= abs(deg_to_rad(90.0))):
+	if ((segment_angle >= deg_to_rad(45.0) && segment_angle <= deg_to_rad(90.0)) ||
+		(segment_angle <= deg_to_rad(-45.0) && segment_angle >= deg_to_rad(-90.0))):
 		# Impulse must be a negtive or else the ball will shoot downwards
-		body.apply_impulse(Vector2(0.0, added_impulse))
+		body.apply_impulse(Vector2(0.0, -steep_trampoline_upward_strength))
 		
 	# Remove a trampoline life
 	lives -= 1
