@@ -1,4 +1,4 @@
-extends StaticBody2D
+class_name Peg extends StaticBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $AnimationScale/Sprite2D
