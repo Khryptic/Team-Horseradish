@@ -2,7 +2,6 @@ extends StaticBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $AnimationScale/Sprite2D
-@onready var circle_shader: Sprite2D = $CircleShader
 @export var final_peg_scaler: float
 
 var is_light_on : bool = true
