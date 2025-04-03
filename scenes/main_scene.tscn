@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=60 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="Script" uid="uid://2js5lt72ualx" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" uid="uid://clxxj87sfihfh" path="res://scripts/game_controller.gd" id="1_wfcph"]
@@ -118,6 +118,8 @@ size = Vector2(18, 1099)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c8x6e"]
 size = Vector2(17.0038, 1052)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j4epa"]
 
 [sub_resource type="Theme" id="Theme_p0sd6"]
 
@@ -331,6 +333,7 @@ mouse_filter = 2
 
 [node name="MobileSafeArea" type="Control" parent="CanvasLayer/UI"]
 layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -379,6 +382,7 @@ offset_right = -44.0
 offset_bottom = 68.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j4epa")
 icon = ExtResource("12_eatnr")
 flat = true
 
