@@ -7,9 +7,5 @@ func _ready():
 
 func _on_mobile_safe_area_updated(safe_area: Rect2):
 
-    print("Safe area updated: ", safe_area)
-
     # Just move the camera up so there is more space at the top
     position.y = base_pos.y - safe_area.position.y
-
-    print("Final camera position: ", position)
