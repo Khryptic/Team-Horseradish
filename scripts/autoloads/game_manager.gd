@@ -45,6 +45,15 @@ func start_new_level():
 	ScoreManager.total_score = 0
 	ScoreManager.reset_mult_count()
 	
+func start_random_level():
+	CURRENT_STATE = GAME_STATE.TRANSITION
+
+	lives = 3
+	lives_changed.emit()
+	get_tree().reload_current_scene()
+	ScoreManager.total_score = 0
+	ScoreManager.reset_mult_count()
+	
 func emit_respawn_ball():
 	respawn_ball.emit()
 	CURRENT_STATE = GAME_STATE.PLAYING

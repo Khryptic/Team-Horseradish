@@ -1,5 +1,7 @@
 extends Control
 
+signal safe_area_updated(safe_area: Rect2)
+
 func _ready() -> void:
 
     var window: Window = get_window()
@@ -14,3 +16,5 @@ func _ready() -> void:
         # Update the position and size of the control box to match the safe area
         position = viewport_safe_area.position
         size = viewport_safe_area.size
+
+        safe_area_updated.emit(viewport_safe_area)
