@@ -267,6 +267,9 @@ hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
 
+[node name="DrawCooldownTimer" type="Timer" parent="Drawing Controller"]
+wait_time = 0.2
+
 [node name="World Border" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="World Border"]
@@ -331,6 +334,7 @@ mouse_filter = 2
 
 [node name="MobileSafeArea" type="Control" parent="CanvasLayer/UI"]
 layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -557,6 +561,7 @@ texture = ExtResource("39_54u4h")
 [connection signal="body_exited" from="Drawing Controller/Trampoline/Area2D" to="Drawing Controller/Trampoline" method="_on_body_exited"]
 [connection signal="animation_finished" from="Drawing Controller/Trampoline/AnimatedSprite2D" to="Drawing Controller/Trampoline" method="_on_animation_finished"]
 [connection signal="body_entered" from="Drawing Controller/Drawing Guide" to="Drawing Controller/Drawing Guide" method="_on_body_entered"]
+[connection signal="timeout" from="Drawing Controller/DrawCooldownTimer" to="Drawing Controller" method="_on_draw_cooldown_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/UI/MobileSafeArea/PauseButton" to="CanvasLayer/UI/Pause Menu" method="_on_pause_button_pressed"]
 [connection signal="timeout" from="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel/Delay" to="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel" method="_tween_life_icon_to_starting_position"]
 [connection signal="timeout" from="CanvasLayer/UI/GameOverLabel/Timer" to="CanvasLayer/UI/GameOverLabel" method="_on_timer_timeout"]
