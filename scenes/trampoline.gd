@@ -66,6 +66,7 @@ func update_hitbox():
 	area2d.global_position = lerp(point_a, point_b, 0.5)
 	area2d.rotation = atan2(point_b.y - point_a.y, point_b.x - point_a.x)
 	hitbox_shape.size.x = point_a.distance_to(point_b)
+	area2d.monitoring = true
 
 func update_sprite():
 	animation.global_position = lerp(point_a, point_b, 0.5)
@@ -116,6 +117,8 @@ func _on_body_entered(body: Node2D) -> void:
 		
 	# Remove a trampoline life
 	lives -= 1
+
+	if(lives <= 0): area2d.monitoring = false
 	
 	# Check for last peg
 	increase_final_peg_size.emit()
