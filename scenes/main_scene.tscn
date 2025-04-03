@@ -229,7 +229,7 @@ polygon = PackedVector2Array(-40, 400, 577, 400, 577, 620, 389, 1280, 151, 1280,
 [node name="Trampoline" type="Node2D" parent="Drawing Controller"]
 script = ExtResource("3_0votk")
 trampoline_strength = 1000.0
-coyote_time_distance = 50.0
+coyote_time_distance = 40.0
 normal_speed_mult = 1.0
 crit_speed_mult = 1.2
 crit_lower_percentage = 0.3
