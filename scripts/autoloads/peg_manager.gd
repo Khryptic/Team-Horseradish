@@ -14,10 +14,12 @@ const PEG_SPAWNING_DURATION: float = 1.0; #total time (sec) that pegs will spawn
 var time_since_last_peg_added: float 
 var pegs_added: int # amount of pegs that have been added to the scene
 
-
+var specific_level_to_play : int
 
 func _ready() -> void:
 	_load_peg_layouts()
+	specific_level_to_play = 0
+
 
 func _process(delta: float) -> void:
 	#add pegs to scene
@@ -61,14 +63,19 @@ func _add_pegs_to_scene():
 		print("No peg layouts available.")
 		return
 
-	# Random layout
-	var randomNum: int = randi() % (all_peg_layouts.size() - 1)
-	
-	# make sure it is not the same layout as last one
-	if (randomNum >= current_layout_number):
-		randomNum += 1
-	current_peg_layout = all_peg_layouts[randomNum]
-	current_layout_number = randomNum;
+	if (specific_level_to_play == 0): # if there is no level requested play random level
+		# Random layout
+		var randomNum: int = randi() % (all_peg_layouts.size() - 1)
+
+		# make sure it is not the same layout as last one
+		if (randomNum >= current_layout_number):
+			randomNum += 1
+		current_peg_layout = all_peg_layouts[randomNum]
+		current_layout_number = randomNum;
+	else:
+		current_peg_layout = all_peg_layouts[specific_level_to_play -1]
+		current_layout_number = specific_level_to_play -1
+
 
 	time_since_last_peg_added = 0
 	
@@ -106,3 +113,7 @@ func unlight_peg():
 	lit_pegs -= 1
 	if (lit_pegs == 0):
 		GameManager.emit_round_clear()
+		
+func play_specific_level(level_num : int):
+	specific_level_to_play = level_num
+	print(specific_level_to_play)
