@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dsw8yxb6dghpl"]
+[gd_scene load_steps=18 format=3 uid="uid://dsw8yxb6dghpl"]
 
 [ext_resource type="Texture2D" uid="uid://1fwc8h17gbx1" path="res://assets/SP_Background_02a.PNG" id="1_dc4i4"]
 [ext_resource type="Script" uid="uid://bc5l667di73es" path="res://scripts/title_screen.gd" id="1_fgkus"]
@@ -13,6 +13,38 @@
 [ext_resource type="Texture2D" uid="uid://ccyai47c6iacn" path="res://assets/SP_Logo_01a.PNG" id="8_mykxm"]
 [ext_resource type="PackedScene" uid="uid://cdlqcginhikef" path="res://scenes/mega_peg.tscn" id="9_tklts"]
 [ext_resource type="Theme" uid="uid://bh1w2lowvxtp2" path="res://assets/text/red_button.tres" id="10_mynnq"]
+
+[sub_resource type="Environment" id="Environment_frs5l"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.98
+glow_strength = 0.85
+glow_bloom = 0.3
+
+[sub_resource type="Animation" id="Animation_mynnq"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpButton01a:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpButton01a:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_frs5l"]
 resource_name = "button_press"
@@ -40,31 +72,6 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.150033, 0.3, 0.4)
 }
 
-[sub_resource type="Animation" id="Animation_mynnq"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpButton01a:scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SpButton01a:scale:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e8tpv"]
 _data = {
 &"RESET": SubResource("Animation_mynnq"),
@@ -78,6 +85,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_frs5l")
 
 [node name="Backdrop" type="Node" parent="."]
 

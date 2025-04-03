@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=64 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="Script" uid="uid://2js5lt72ualx" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" uid="uid://clxxj87sfihfh" path="res://scripts/game_controller.gd" id="1_wfcph"]
@@ -22,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://cwtn6l3vierxl" path="res://assets/animations/onboarding/frame_04.png" id="11_jfear"]
 [ext_resource type="Texture2D" uid="uid://b8n8uohq25vie" path="res://assets/SP_Ball_01a.PNG" id="11_segjr"]
 [ext_resource type="Texture2D" uid="uid://csv76dhn5eelv" path="res://assets/animations/onboarding/frame_05.png" id="12_dclty"]
-[ext_resource type="Texture2D" uid="uid://3owkmw8ye8b" path="res://assets/SP_Pause_01a.PNG" id="12_eatnr"]
 [ext_resource type="Texture2D" uid="uid://ds32eaop42gjv" path="res://assets/animations/onboarding/frame_06.png" id="13_7wsyd"]
 [ext_resource type="Texture2D" uid="uid://dfd2tcty5a2x1" path="res://assets/SP_Decor_L_02a.PNG" id="13_8dxha"]
 [ext_resource type="Texture2D" uid="uid://dbpnk55nfqaa7" path="res://assets/animations/onboarding/frame_07.png" id="14_4ihjl"]
@@ -33,6 +32,9 @@
 [ext_resource type="Texture2D" uid="uid://bn71uxuhxl65u" path="res://assets/animations/onboarding/frame_10.png" id="17_aksj2"]
 [ext_resource type="Texture2D" uid="uid://d4ljcpi67s3xk" path="res://assets/animations/onboarding/frame_11.png" id="18_02l60"]
 [ext_resource type="Texture2D" uid="uid://cuv2xfh6sbo8n" path="res://assets/animations/onboarding/frame_12.png" id="19_dmf0w"]
+[ext_resource type="Texture2D" uid="uid://brjxovofhn0gt" path="res://assets/SP_ButtonBase_Small_01a.PNG" id="19_ruju6"]
+[ext_resource type="Texture2D" uid="uid://bxxeo86vv3qh4" path="res://assets/SP_Button_Small_01a.PNG" id="20_5nybl"]
+[ext_resource type="Theme" uid="uid://cy8vxdk1uodmj" path="res://assets/text/yellow_button.tres" id="20_cq0lk"]
 [ext_resource type="Texture2D" uid="uid://codphbcjtjn50" path="res://assets/animations/onboarding/frame_13.png" id="20_lknbj"]
 [ext_resource type="Texture2D" uid="uid://cqw52x6bgusid" path="res://assets/animations/onboarding/frame_14.png" id="21_1r15n"]
 [ext_resource type="Texture2D" uid="uid://c6komfudas2cs" path="res://assets/animations/onboarding/frame_15.png" id="22_ao3l2"]
@@ -51,6 +53,13 @@
 [ext_resource type="Texture2D" uid="uid://blwl0qcafaeka" path="res://assets/SP_Lives_01a.PNG" id="43_68d3q"]
 [ext_resource type="Texture2D" uid="uid://1fwc8h17gbx1" path="res://assets/SP_Background_02a.PNG" id="48_ruju6"]
 [ext_resource type="Texture2D" uid="uid://da6ba8txavw4d" path="res://assets/SP_Decor_Top_02a.PNG" id="50_5nybl"]
+
+[sub_resource type="Environment" id="Environment_j4epa"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.98
+glow_strength = 0.85
+glow_bloom = 0.3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3krh7"]
 
@@ -118,6 +127,10 @@ size = Vector2(18, 1099)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c8x6e"]
 size = Vector2(17.0038, 1052)
+
+[sub_resource type="FontVariation" id="FontVariation_5nybl"]
+variation_embolden = 2.0
+spacing_glyph = 9
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j4epa"]
 
@@ -205,6 +218,9 @@ animations = [{
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wfcph")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_j4epa")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(269, 494)
@@ -372,19 +388,30 @@ position = Vector2(73, 25)
 scale = Vector2(1.28199, 1)
 texture = ExtResource("42_n15j5")
 
-[node name="PauseButton" type="Button" parent="CanvasLayer/UI/MobileSafeArea"]
-layout_mode = 2
+[node name="SpButtonBaseSmall01a" type="Sprite2D" parent="CanvasLayer/UI/MobileSafeArea"]
+z_index = -1
+position = Vector2(464, 45)
+scale = Vector2(0.22305, 0.22305)
+texture = ExtResource("19_ruju6")
+
+[node name="PauseButton" type="Button" parent="CanvasLayer/UI/MobileSafeArea/SpButtonBaseSmall01a"]
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -116.0
-offset_top = 8.0
-offset_right = -44.0
-offset_bottom = 68.0
+offset_left = -476.399
+offset_top = -130.016
+offset_right = -153.399
+offset_bottom = 126.984
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 30
+scale = Vector2(1, 1)
+theme = ExtResource("20_cq0lk")
+theme_override_fonts/font = SubResource("FontVariation_5nybl")
+theme_override_font_sizes/font_size = 125
 theme_override_styles/focus = SubResource("StyleBoxEmpty_j4epa")
-icon = ExtResource("12_eatnr")
+text = "II"
+icon = ExtResource("20_5nybl")
 flat = true
+icon_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI/MobileSafeArea"]
 layout_mode = 2
@@ -561,7 +588,7 @@ texture = ExtResource("39_54u4h")
 [connection signal="body_exited" from="Drawing Controller/Trampoline/Area2D" to="Drawing Controller/Trampoline" method="_on_body_exited"]
 [connection signal="animation_finished" from="Drawing Controller/Trampoline/AnimatedSprite2D" to="Drawing Controller/Trampoline" method="_on_animation_finished"]
 [connection signal="body_entered" from="Drawing Controller/Drawing Guide" to="Drawing Controller/Drawing Guide" method="_on_body_entered"]
-[connection signal="pressed" from="CanvasLayer/UI/MobileSafeArea/PauseButton" to="CanvasLayer/UI/Pause Menu" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/MobileSafeArea/SpButtonBaseSmall01a/PauseButton" to="CanvasLayer/UI/Pause Menu" method="_on_pause_button_pressed"]
 [connection signal="timeout" from="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel/Delay" to="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel" method="_tween_life_icon_to_starting_position"]
 [connection signal="timeout" from="CanvasLayer/UI/GameOverLabel/Timer" to="CanvasLayer/UI/GameOverLabel" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/UI/Pause Menu/ResumeButton" to="CanvasLayer/UI/Pause Menu" method="_on_resume_button_pressed"]
