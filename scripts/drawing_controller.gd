@@ -27,7 +27,9 @@ var old_mouse_pos: Vector2 # the mouse pos from the previous frame
 var _is_mouse_down: bool
 
 var is_start_point_in_drawing_zone: bool = false # if the mouse was in drawing zone on mouse down
-# this is needed in case the player starts drawing outside of drawing zone and releases mouse in zone 
+# this is needed in case the player starts drawing outside of drawing zone and releases mouse in zone
+
+var can_draw: bool = true # Prevents players from spam-drawing trampolines 
 
 #var is_ball_in_drawing_zone: bool # if the ball is in the drawing zone, activate bullet time
 
@@ -144,9 +146,10 @@ func _on_mouse_released():
 	if (is_start_point_in_drawing_zone):
 		
 		var end_point := get_trampoline_endpoint(starting_mouse_pos, get_global_mouse_position())
-
+		
 		# Prevent trampoline from being too small
-		if (absf(end_point.x - starting_mouse_pos.x) < 10):
+		if (absf(end_point.x - starting_mouse_pos.x) < 10 ||
+			can_draw == false):
 			is_start_point_in_drawing_zone = false
 			return
 		
@@ -164,6 +167,7 @@ func _on_mouse_released():
 					
 		# Emit the signal
 		trampoline_drawn.emit(trampoline)
+		StartCooldownTimer()
 
 		is_start_point_in_drawing_zone = false
 		GameManager.clear_on_pegs()
@@ -228,3 +232,10 @@ func get_trampoline_endpoint(start_pos: Vector2, mouse_pos: Vector2) -> Vector2:
 			end_point = start_pos + direction * max_trampoline_length
 
 	return end_point
+
+func StartCooldownTimer():
+	$DrawCooldownTimer.start()
+	can_draw = false
+
+func _on_draw_cooldown_timer_timeout() -> void:
+	can_draw = true
