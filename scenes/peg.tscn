@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4r8scy3ax4gh"]
+[gd_scene load_steps=9 format=3 uid="uid://b4r8scy3ax4gh"]
 
 [ext_resource type="Script" uid="uid://0px015qt4a8q" path="res://scenes/peg.gd" id="1_qelap"]
 [ext_resource type="Script" uid="uid://djyrt5rvwu58r" path="res://scripts/peg_sensor.gd" id="2_5mbo7"]
@@ -33,8 +33,6 @@ _data = {
 &"ball_hit": SubResource("Animation_pj18k")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_upqsn"]
-
 [node name="StaticBody2D" type="StaticBody2D" groups=["peg"]]
 script = ExtResource("1_qelap")
 final_peg_scaler = 1.5
@@ -60,11 +58,6 @@ shape = SubResource("CircleShape2D_spoja")
 libraries = {
 &"": SubResource("AnimationLibrary_603km")
 }
-
-[node name="BoundaryHitbox" type="CollisionShape2D" parent="."]
-visible = false
-scale = Vector2(1.5, 1.5)
-shape = SubResource("CircleShape2D_upqsn")
 
 [connection signal="area_entered" from="peg_sensor" to="peg_sensor" method="_on_area_entered"]
 [connection signal="body_entered" from="peg_sensor" to="peg_sensor" method="_on_body_entered"]
