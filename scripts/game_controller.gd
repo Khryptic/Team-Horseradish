@@ -21,7 +21,7 @@ func _process(_delta: float) -> void:
 func _spawn_ball() -> void:
 	
 	var new_ball := ball_prefab.instantiate()
-	new_ball.position = respawn_point.global_position
+	new_ball.global_position = respawn_point.global_position
 	call_deferred("add_child", new_ball)
 	new_ball.connect("ball_died", _on_ball_died)
 	ball_ref = new_ball

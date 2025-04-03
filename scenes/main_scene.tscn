@@ -307,7 +307,7 @@ position = Vector2(552, 461)
 shape = SubResource("RectangleShape2D_7dd0l")
 
 [node name="Respawn" type="Node2D" parent="."]
-position = Vector2(275, 350)
+position = Vector2(275, 450)
 
 [node name="Killzone" type="Area2D" parent="." groups=["killzone"]]
 position = Vector2(284, 1118)
