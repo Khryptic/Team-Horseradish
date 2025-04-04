@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://b4r8scy3ax4gh"]
 
-[ext_resource type="Script" uid="uid://0px015qt4a8q" path="res://scenes/peg.gd" id="1_qelap"]
+[ext_resource type="Script" uid="uid://0px015qt4a8q" path="res://pegs/peg.gd" id="1_qelap"]
 [ext_resource type="Script" uid="uid://djyrt5rvwu58r" path="res://scripts/peg_sensor.gd" id="2_5mbo7"]
 [ext_resource type="Texture2D" uid="uid://bxrrcrdmvu6tk" path="res://assets/SP_Peg_01e.PNG" id="2_358lv"]
 [ext_resource type="Shader" uid="uid://b7t64afbbv3dg" path="res://scenes/growing_circle.gdshader" id="4_78d3w"]

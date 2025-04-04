@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpkg1i4wbf3yn"]
+
+[ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://pegs/peg.tscn" id="1_x2tc5"]
+
+[node name="StaticBody2D" instance=ExtResource("1_x2tc5")]
+
+[node name="Sprite2D" parent="AnimationScale" index="0"]
+scale = Vector2(0.438, 0.438)
+
+[node name="CollisionShape2D" parent="." index="1"]
+scale = Vector2(2.5, 2.5)
+
+[node name="peg_sensor" parent="." index="2"]
+points_worth = 50
+
+[node name="CollisionShape2D" parent="peg_sensor" index="0"]
+scale = Vector2(2.5, 2.5)
+
+[node name="AnimationPlayer" parent="." index="3"]
+speed_scale = 0.3
+
+[node name="CircleShader" parent="." index="4"]
+scale = Vector2(2.5, 2.5)

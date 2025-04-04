@@ -79,7 +79,7 @@ func _add_pegs_to_scene():
 	if "pegs" in current_peg_layout:
 		var default_pegs = current_peg_layout.pegs
 		for peg_location in default_pegs:
-			var peg = preload("res://scenes/peg.tscn").instantiate()
+			var peg = preload("res://pegs/peg.tscn").instantiate()
 			peg.position = Vector2(peg_location.x, peg_location.y)
 			current_pegs.append(peg)
 		
@@ -87,7 +87,7 @@ func _add_pegs_to_scene():
 	if "mega_pegs" in current_peg_layout:
 		var mega_pegs = current_peg_layout.mega_pegs
 		for peg_location in mega_pegs:
-			var peg = preload("res://scenes/mega_peg.tscn").instantiate()
+			var peg = preload("res://pegs/mega_peg.tscn").instantiate()
 			peg.position = Vector2(peg_location.x, peg_location.y)
 			current_pegs.append(peg)
 			
@@ -111,7 +111,7 @@ func _add_random_pegs_to_scene():
 	# Add normal pegs to scene
 	for n in rng.randi_range(6, 15):
 		addedPegIndex = 0
-		var peg = preload("res://scenes/peg.tscn").instantiate()
+		var peg = preload("res://pegs/peg.tscn").instantiate()
 		peg.position = Vector2(rng.randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
 		
 		# Check for overlap
