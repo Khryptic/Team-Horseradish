@@ -4,11 +4,11 @@ extends Button
 @export var level_num : int
 
 func _on_pressed():
-	$"../../AnimationPlayer".play("button_press")
+	if (is_instance_valid($"../../AnimationPlayer")):
+		$"../../AnimationPlayer".play("button_press")
 
 
 func _on_animation_player_animation_finished(button_press):
-	print(level_num)
 	if (level_num > 0):
 
 		PegManager.play_specific_level(level_num)

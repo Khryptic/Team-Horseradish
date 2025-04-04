@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://dsw8yxb6dghpl"]
+[gd_scene load_steps=19 format=3 uid="uid://dsw8yxb6dghpl"]
 
 [ext_resource type="Texture2D" uid="uid://1fwc8h17gbx1" path="res://assets/SP_Background_02a.PNG" id="1_dc4i4"]
 [ext_resource type="Script" uid="uid://bc5l667di73es" path="res://scripts/title_screen.gd" id="1_fgkus"]
 [ext_resource type="Texture2D" uid="uid://45w6y722xdmh" path="res://assets/SP_Backboard_02a.PNG" id="2_e54dn"]
 [ext_resource type="Texture2D" uid="uid://pm7wycilri6y" path="res://assets/SP_Button_01a.PNG" id="3_3yumr"]
 [ext_resource type="Texture2D" uid="uid://pe73cpf25bmg" path="res://assets/SP_ButtonBase_01a.PNG" id="5_cs5ya"]
+[ext_resource type="Script" uid="uid://0px015qt4a8q" path="res://scenes/peg.gd" id="5_mynnq"]
 [ext_resource type="Texture2D" uid="uid://btcgl4lr1kpv" path="res://assets/SP_Decor_Bottom_01a.PNG" id="6_3yumr"]
 [ext_resource type="Theme" uid="uid://cy8vxdk1uodmj" path="res://assets/text/yellow_button.tres" id="6_frs5l"]
 [ext_resource type="Texture2D" uid="uid://da6ba8txavw4d" path="res://assets/SP_Decor_Top_02a.PNG" id="7_cs5ya"]
@@ -110,33 +111,53 @@ texture = ExtResource("8_mykxm")
 
 [node name="StaticBody2D" parent="Backdrop" instance=ExtResource("9_tklts")]
 position = Vector2(175, 155)
+script = ExtResource("5_mynnq")
+final_peg_scaler = 1.5
 
 [node name="StaticBody2D2" parent="Backdrop" instance=ExtResource("9_tklts")]
 position = Vector2(361, 435)
+script = ExtResource("5_mynnq")
+final_peg_scaler = 1.5
 
 [node name="StaticBody2D3" parent="Backdrop" instance=ExtResource("9_tklts")]
 position = Vector2(169, 433)
+script = ExtResource("5_mynnq")
+final_peg_scaler = 1.5
 
 [node name="StaticBody2D4" parent="Backdrop" instance=ExtResource("9_tklts")]
 position = Vector2(361, 155)
+script = ExtResource("5_mynnq")
+final_peg_scaler = 1.5
 
 [node name="StaticBody2D5" parent="Backdrop" instance=ExtResource("9_tklts")]
 position = Vector2(270, 155)
+script = ExtResource("5_mynnq")
+final_peg_scaler = 1.5
 
 [node name="StaticBody2D6" parent="Backdrop" instance=ExtResource("9_tklts")]
 position = Vector2(270, 435)
+script = ExtResource("5_mynnq")
+final_peg_scaler = 1.5
 
 [node name="StaticBody2D7" parent="Backdrop" instance=ExtResource("9_tklts")]
 position = Vector2(84, 154)
+script = ExtResource("5_mynnq")
+final_peg_scaler = 1.5
 
 [node name="StaticBody2D8" parent="Backdrop" instance=ExtResource("9_tklts")]
 position = Vector2(452, 435)
+script = ExtResource("5_mynnq")
+final_peg_scaler = 1.5
 
 [node name="StaticBody2D9" parent="Backdrop" instance=ExtResource("9_tklts")]
 position = Vector2(452, 154)
+script = ExtResource("5_mynnq")
+final_peg_scaler = 1.5
 
 [node name="StaticBody2D10" parent="Backdrop" instance=ExtResource("9_tklts")]
 position = Vector2(84, 435)
+script = ExtResource("5_mynnq")
+final_peg_scaler = 1.5
 
 [node name="SpButtonBase01a" type="Sprite2D" parent="."]
 z_index = 1

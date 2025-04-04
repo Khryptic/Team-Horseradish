@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://cdlqcginhikef"]
 
-[ext_resource type="Script" uid="uid://c48d0phcyevqp" path="res://scenes/mega_peg.gd" id="1_m0gp4"]
+[ext_resource type="Script" path="res://scenes/mega_peg.gd" id="1_m0gp4"]
 [ext_resource type="Texture2D" uid="uid://bxrrcrdmvu6tk" path="res://assets/SP_Peg_01e.PNG" id="2_2cpos"]
 [ext_resource type="Script" uid="uid://djyrt5rvwu58r" path="res://scripts/peg_sensor.gd" id="3_tb85w"]
-[ext_resource type="Shader" uid="uid://b7t64afbbv3dg" path="res://scenes/growing_circle.gdshader" id="4_6a52d"]
+[ext_resource type="Shader" path="res://scenes/growing_circle.gdshader" id="4_6a52d"]
 [ext_resource type="Texture2D" uid="uid://b2ylubuw38xjv" path="res://assets/white_square.png" id="5_0ovwf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_co7yk"]

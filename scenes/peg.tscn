@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://0px015qt4a8q" path="res://scenes/peg.gd" id="1_qelap"]
 [ext_resource type="Script" uid="uid://djyrt5rvwu58r" path="res://scripts/peg_sensor.gd" id="2_5mbo7"]
 [ext_resource type="Texture2D" uid="uid://bxrrcrdmvu6tk" path="res://assets/SP_Peg_01e.PNG" id="2_358lv"]
-[ext_resource type="Shader" uid="uid://b7t64afbbv3dg" path="res://scenes/growing_circle.gdshader" id="4_78d3w"]
+[ext_resource type="Shader" path="res://scenes/growing_circle.gdshader" id="4_78d3w"]
 [ext_resource type="Texture2D" uid="uid://b2ylubuw38xjv" path="res://assets/white_square.png" id="5_22ts5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v7ta1"]
