@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dsw8yxb6dghpl"]
+[gd_scene load_steps=18 format=3 uid="uid://dsw8yxb6dghpl"]
 
 [ext_resource type="Texture2D" uid="uid://1fwc8h17gbx1" path="res://assets/SP_Background_02a.PNG" id="1_dc4i4"]
 [ext_resource type="Script" uid="uid://bc5l667di73es" path="res://scripts/title_screen.gd" id="1_fgkus"]
@@ -13,6 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://ccyai47c6iacn" path="res://assets/SP_Logo_01a.PNG" id="8_mykxm"]
 [ext_resource type="PackedScene" uid="uid://cdlqcginhikef" path="res://scenes/mega_peg.tscn" id="9_tklts"]
 [ext_resource type="Theme" uid="uid://bh1w2lowvxtp2" path="res://assets/text/red_button.tres" id="10_mynnq"]
+
+[sub_resource type="Environment" id="Environment_frs5l"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.98
+glow_strength = 0.85
+glow_bloom = 0.3
 
 [sub_resource type="Animation" id="Animation_mynnq"]
 length = 0.001
@@ -78,6 +85,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_frs5l")
 
 [node name="Backdrop" type="Node" parent="."]
 

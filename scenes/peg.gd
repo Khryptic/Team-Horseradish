@@ -1,4 +1,4 @@
-extends StaticBody2D
+class_name Peg extends StaticBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $AnimationScale/Sprite2D
@@ -7,14 +7,27 @@ extends StaticBody2D
 var is_light_on : bool = true
 
 # Load different peg textures
-const peg_yellow = preload("res://assets/SP_Peg_01a.PNG")
-const peg_blue = preload("res://assets/SP_Peg_01b.PNG")
-const peg_red = preload("res://assets/SP_Peg_01c.PNG")
-const peg_green = preload("res://assets/SP_Peg_01d.PNG")
-const peg_purple = preload("res://assets/SP_Peg_01e.PNG")
-var peg_sprites = [peg_yellow, peg_blue, peg_red, peg_green, peg_purple]
-var random_sprite = peg_sprites[randi() % peg_sprites.size()]
+const peg_yellow = preload("res://assets/SP_Peg_02a.PNG")
+const peg_yellow_on = preload("res://assets/SP_Peg_04a.PNG")
+const peg_blue = preload("res://assets/SP_Peg_02b.PNG")
+const peg_blue_on = preload("res://assets/SP_Peg_04b.PNG")
+const peg_red = preload("res://assets/SP_Peg_02c.PNG")
+const peg_red_on = preload("res://assets/SP_Peg_04c.PNG")
+const peg_green = preload("res://assets/SP_Peg_02d.PNG")
+const peg_green_on = preload("res://assets/SP_Peg_04d.PNG")
+const peg_purple = preload("res://assets/SP_Peg_02e.PNG")
+const peg_purple_on = preload("res://assets/SP_Peg_04e.PNG")
 var peg_scaler: Vector2
+
+enum PegColor {
+	YELLOW,
+	BLUE,
+	RED,
+	GREEN,
+	PURPLE
+}
+
+var random_sprite = PegColor.values().pick_random()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,7 +35,19 @@ func _ready() -> void:
 	GameManager.clear_pegs.connect(_remove_peg)
 
 	# Get random peg sprite
-	sprite.set_texture(random_sprite)
+	# sprite.set_texture(random_sprite)
+
+	match random_sprite:
+		PegColor.YELLOW:
+			sprite.set_texture(peg_yellow)
+		PegColor.BLUE:
+			sprite.set_texture(peg_blue)
+		PegColor.RED:
+			sprite.set_texture(peg_red)
+		PegColor.GREEN:
+			sprite.set_texture(peg_green)
+		PegColor.PURPLE:
+			sprite.set_texture(peg_purple)
 	
 	peg_scaler = Vector2(final_peg_scaler, final_peg_scaler)
 	
@@ -37,7 +62,17 @@ func _on_peg_hit():
 	animation_player.stop()
 	animation_player.play("ball_hit")
 
-	sprite.self_modulate = Color8(80, 80, 80, 255)
+	match random_sprite:
+		PegColor.YELLOW:
+			sprite.set_texture(peg_yellow_on)
+		PegColor.BLUE:
+			sprite.set_texture(peg_blue_on)
+		PegColor.RED:
+			sprite.set_texture(peg_red_on)
+		PegColor.GREEN:
+			sprite.set_texture(peg_green_on)
+		PegColor.PURPLE:
+			sprite.set_texture(peg_purple_on)
 
 	if is_light_on:
 		ScoreManager.increase_mult(1)
@@ -45,6 +80,8 @@ func _on_peg_hit():
 	is_light_on = false
 	
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PEG_HIT)
+
+	
 
 func _remove_peg():
 	if(!is_light_on):

@@ -8,7 +8,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-	_add_random_set_of_pegs()
+	_add_random_set_of_pegs(false)
 	GameManager.start_new_level
 	GameManager.respawn_ball.connect(_spawn_ball)
 
@@ -38,8 +38,12 @@ func _on_ball_died() -> void:
 func _on_drawing_controller_trampoline_drawn(_trampoline: Trampoline) -> void:
 	if(ball_ref != null): ball_ref.setFreeze(false)
 
-func _add_random_set_of_pegs():
-	PegManager._add_pegs_to_scene()
+func _add_random_set_of_pegs(add_random: bool):
+	if (add_random):
+		PegManager._add_random_pegs_to_scene()
+		
+	else:
+		PegManager._add_pegs_to_scene()
 
 func _on_trampoline_increase_final_peg_size() -> void:
 	if (PegManager.current_pegs.size() == 1 && PegManager.has_peg_increased_size == false):
