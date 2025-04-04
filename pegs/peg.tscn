@@ -113,6 +113,7 @@ libraries = {
 }
 
 [node name="CircleShader" type="Sprite2D" parent="."]
+z_index = -1
 material = SubResource("ShaderMaterial_aoiy4")
 instance_shader_parameters/color = Color(0.918624, 0.914199, 0, 1)
 instance_shader_parameters/opacity = 0.0
