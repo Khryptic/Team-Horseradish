@@ -32,6 +32,14 @@ enum PegColor {
 	PURPLE
 }
 
+var peg_colors := {
+	PegColor.YELLOW: Color(1, 1, 0.3725490196),
+	PegColor.BLUE: Color(0.1843137255, 1, 1),
+	PegColor.RED: Color(1, 0.3725490196, 0.3725490196),
+	PegColor.GREEN: Color(0.5647058824, 1, 0.1843137255),
+	PegColor.PURPLE: Color(1, 0.8, 1)
+}
+
 var random_sprite = PegColor.values().pick_random()
 
 # Called when the node enters the scene tree for the first time.
@@ -92,6 +100,7 @@ func spawn_score_orb():
 	var orb: RigidBody2D = score_orb.instantiate()
 	$/root/Game/CanvasLayer.call_deferred("add_child", orb)
 	orb.global_position = get_viewport_transform() * global_position
+	orb.modulate = peg_colors[random_sprite]
 	
 	var rand_angle = randf_range(0, 2*PI)
 	var rand_dir: Vector2 = Vector2(cos(rand_angle), sin(rand_angle))
