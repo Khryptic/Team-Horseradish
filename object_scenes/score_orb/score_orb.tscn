@@ -14,7 +14,7 @@ linear_damp = 40.0
 script = ExtResource("2_60sx3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.025, 0.025)
 texture = ExtResource("1_rj5hv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
