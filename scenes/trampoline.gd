@@ -103,9 +103,14 @@ func _on_body_entered(body: Node2D) -> void:
 		body.linear_velocity = segment_normal * trampoline_strength * crit_speed_mult
 		ball.crit()
 		animation.play("Crit")
+
+		Input.vibrate_handheld(25, 0.3)
+
 	else:
 		body.linear_velocity = segment_normal * trampoline_strength * normal_speed_mult
 		animation.play("Bounce")
+
+		Input.vibrate_handheld(10, 0.1)
 	
 		
 	# Add some bias if trampoline is too steep

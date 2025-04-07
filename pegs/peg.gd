@@ -62,6 +62,8 @@ func _on_peg_hit():
 	animation_player.stop()
 	animation_player.play("ball_hit")
 
+	Input.vibrate_handheld(1, 0.1)
+
 	match random_sprite:
 		PegColor.YELLOW:
 			sprite.set_texture(peg_yellow_on)
