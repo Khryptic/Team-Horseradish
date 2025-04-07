@@ -3,7 +3,9 @@ extends Node2D
 @onready var ball_prefab = preload("res://scenes/bounce_ball.tscn")
 @onready var respawn_point = $Respawn
 
-@export var ball_ref: Ball
+@export var score_label: Label
+
+var ball_ref: Ball
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

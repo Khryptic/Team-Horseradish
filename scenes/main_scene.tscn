@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=65 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="Script" uid="uid://2js5lt72ualx" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" uid="uid://clxxj87sfihfh" path="res://scripts/game_controller.gd" id="1_wfcph"]
@@ -54,7 +54,6 @@
 [ext_resource type="Texture2D" uid="uid://1fwc8h17gbx1" path="res://assets/SP_Background_02a.PNG" id="48_ruju6"]
 [ext_resource type="Texture2D" uid="uid://da6ba8txavw4d" path="res://assets/SP_Decor_Top_02a.PNG" id="50_5nybl"]
 [ext_resource type="Texture2D" uid="uid://45w6y722xdmh" path="res://assets/SP_Backboard_02a.PNG" id="54_cq0lk"]
-[ext_resource type="PackedScene" uid="uid://berce0fu5mvnh" path="res://object_scenes/score_orb/score_orb.tscn" id="55_j2yw6"]
 
 [sub_resource type="Environment" id="Environment_j4epa"]
 background_mode = 3
@@ -218,8 +217,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("score_label")]
 script = ExtResource("1_wfcph")
+score_label = NodePath("CanvasLayer/UI/MobileSafeArea/ScoreLabel")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_j4epa")
@@ -583,14 +583,6 @@ z_index = -4
 position = Vector2(270, 200)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("54_cq0lk")
-
-[node name="ScoreOrb" parent="." instance=ExtResource("55_j2yw6")]
-position = Vector2(151, 273)
-linear_velocity = Vector2(400, -800)
-linear_damp = 5.0
-destination = Vector2(400, 600)
-acceleration_towards_destination = 3000.0
-max_speed = 800.0
 
 [connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="Drawing Controller/Trampoline" method="_on_trampoline_drawn"]

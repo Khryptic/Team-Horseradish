@@ -3,6 +3,10 @@ class_name Peg extends StaticBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $AnimationScale/Sprite2D
 @export var final_peg_scaler: float
+@export var min_orb_speed: float
+@export var max_orb_speed: float
+@export var min_orb_count: int
+@export var max_orb_count: int
 
 var is_light_on : bool = true
 
@@ -17,6 +21,7 @@ const peg_green = preload("res://assets/SP_Peg_02d.PNG")
 const peg_green_on = preload("res://assets/SP_Peg_04d.PNG")
 const peg_purple = preload("res://assets/SP_Peg_02e.PNG")
 const peg_purple_on = preload("res://assets/SP_Peg_04e.PNG")
+const score_orb = preload("res://object_scenes/score_orb/score_orb.tscn")
 var peg_scaler: Vector2
 
 enum PegColor {
@@ -83,10 +88,22 @@ func _on_peg_hit():
 	
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PEG_HIT)
 
+func spawn_score_orb():
+	var orb: RigidBody2D = score_orb.instantiate()
+	$/root/Game/CanvasLayer.call_deferred("add_child", orb)
+	orb.global_position = get_viewport_transform() * global_position
 	
+	var rand_angle = randf_range(0, 2*PI)
+	var rand_dir: Vector2 = Vector2(cos(rand_angle), sin(rand_angle))
+	var rand_speed = randf_range(min_orb_speed, max_orb_speed)
+	orb.linear_velocity = rand_dir.normalized() * rand_speed
 
 func _remove_peg():
 	if(!is_light_on):
+		
+		for i in range(randi_range(min_orb_count, max_orb_count)):
+			spawn_score_orb()
+
 		queue_free()
 		PegManager._remove_peg(self) #tell peg manager to stop keeping reference of this peg bcus its dead now
 

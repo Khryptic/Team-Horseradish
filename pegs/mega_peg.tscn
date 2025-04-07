@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://pegs/peg.tscn" id="1_x2tc5"]
 
 [node name="StaticBody2D" instance=ExtResource("1_x2tc5")]
+min_orb_count = 5
+max_orb_count = 12
 
 [node name="Sprite2D" parent="AnimationScale" index="0"]
 scale = Vector2(0.438, 0.438)
