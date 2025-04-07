@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bhtyicp6kh8yv" path="res://assets/SP_ButtonBase_01b.PNG" id="7_u26n3"]
 [ext_resource type="Texture2D" uid="uid://ctyd3ahdbra0" path="res://assets/SP_Button_01b.PNG" id="8_ib7db"]
 [ext_resource type="Texture2D" uid="uid://ccyai47c6iacn" path="res://assets/SP_Logo_01a.PNG" id="8_mykxm"]
-[ext_resource type="PackedScene" uid="uid://cdlqcginhikef" path="res://scenes/peg_types/mega_peg.tscn" id="9_tklts"]
+[ext_resource type="PackedScene" uid="uid://cpkg1i4wbf3yn" path="res://pegs/mega_peg.tscn" id="9_tklts"]
 [ext_resource type="Theme" uid="uid://bh1w2lowvxtp2" path="res://assets/text/red_button.tres" id="10_mynnq"]
 
 [sub_resource type="Environment" id="Environment_frs5l"]

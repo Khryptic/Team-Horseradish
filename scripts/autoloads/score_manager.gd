@@ -16,7 +16,7 @@ func _process(_delta: float) -> void:
 	pass
 
 # Point multiplier functions
-func add_points(amount: int, mult: int):
+func add_points(amount: int):
 	score_just_earned += amount
 	
 func reset_mult_text():

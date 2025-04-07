@@ -9,7 +9,6 @@ extends Node2D
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	_add_random_set_of_pegs(false)
-	GameManager.start_new_level
 	GameManager.respawn_ball.connect(_spawn_ball)
 
 
