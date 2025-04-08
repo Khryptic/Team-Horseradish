@@ -123,7 +123,7 @@ func _on_body_entered(body: Node2D) -> void:
 	# Remove a trampoline life
 	lives -= 1
 
-	if(lives <= 0): area2d.monitoring = false
+	if(lives <= 0): area2d.set_deferred("monitoring", false)
 	
 	# Check for last peg
 	increase_final_peg_size.emit()
