@@ -2,6 +2,7 @@ class_name Peg extends StaticBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $AnimationScale/Sprite2D
+@onready var circle_shader: Sprite2D = $CircleShader
 @export var final_peg_scaler: float
 @export var min_orb_speed: float
 @export var max_orb_speed: float
@@ -40,12 +41,14 @@ var peg_colors := {
 	PegColor.PURPLE: Color(1, 0.8, 1)
 }
 
-var random_sprite = PegColor.values().pick_random()
+@onready var random_sprite = PegColor.values().pick_random()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_node("peg_sensor").peg_hit.connect(_on_peg_hit)
 	GameManager.clear_pegs.connect(_remove_peg)
+
+	circle_shader.set_instance_shader_parameter('color', peg_colors[random_sprite])
 
 	# Get random peg sprite
 	# sprite.set_texture(random_sprite)
