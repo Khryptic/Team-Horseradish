@@ -8,7 +8,7 @@ extends RigidBody2D
 var destination: Vector2
 
 func _ready():
-	destination = score_label.position
+	destination = score_label.global_position
 
 func _physics_process(_delta: float) -> void:
 
