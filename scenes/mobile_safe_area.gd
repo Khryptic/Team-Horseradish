@@ -15,6 +15,6 @@ func _ready() -> void:
 
         # Update the position and size of the control box to match the safe area
         position = viewport_safe_area.position
-        size = viewport_safe_area.size
+        set_deferred("size", viewport_safe_area.size) 
 
         safe_area_updated.emit(viewport_safe_area)

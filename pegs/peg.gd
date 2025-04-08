@@ -100,11 +100,24 @@ func _on_peg_hit():
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PEG_HIT)
 
 func spawn_score_orb():
+	# Create score orb
 	var orb: RigidBody2D = score_orb.instantiate()
-	$/root/Game/CanvasLayer.call_deferred("add_child", orb)
-	orb.global_position = get_viewport_transform() * global_position
+	
+	# Parent the new orb to the canvas layer so it renders above UI
+	var canvas: CanvasLayer = $/root/Game/CanvasLayer
+	canvas.call_deferred("add_child", orb)
+
+	# Convert the peg's global position to the canvas layer's coordinate space
+	var camera = get_viewport().get_camera_2d()
+	var canvas_position = canvas.transform.affine_inverse() * camera.global_transform.affine_inverse() * global_position
+	
+	# Set the orb's position in the canvas
+	orb.global_position = canvas_position
+	
+	# Set the orb color
 	orb.modulate = peg_colors[random_sprite]
 	
+	# Set a random starting velocity with a random direction and speed
 	var rand_angle = randf_range(0, 2*PI)
 	var rand_dir: Vector2 = Vector2(cos(rand_angle), sin(rand_angle))
 	var rand_speed = randf_range(min_orb_speed, max_orb_speed)
