@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=67 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="Script" uid="uid://2js5lt72ualx" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" uid="uid://clxxj87sfihfh" path="res://scripts/game_controller.gd" id="1_wfcph"]
@@ -46,7 +46,9 @@
 [ext_resource type="Texture2D" uid="uid://dh83umwd2titk" path="res://assets/animations/onboarding/frame_18.png" id="25_v2vu4"]
 [ext_resource type="Texture2D" uid="uid://byppba4dfm12f" path="res://assets/animations/onboarding/frame_19.png" id="26_xyux1"]
 [ext_resource type="Texture2D" uid="uid://bp6emwgvyxnfm" path="res://assets/animations/onboarding/frame_20.png" id="27_xbwu8"]
+[ext_resource type="Texture2D" uid="uid://bxio2qppj135v" path="res://assets/SP_Label_Paused_01a.PNG" id="28_8pjrr"]
 [ext_resource type="Texture2D" uid="uid://b83ekn367wbms" path="res://assets/animations/onboarding/frame_21.png" id="28_odf7m"]
+[ext_resource type="Texture2D" uid="uid://c64p6spffb4bl" path="res://assets/SP_MenuBG_01a.PNG" id="29_0xxsb"]
 [ext_resource type="Texture2D" uid="uid://chtcuscufnh0" path="res://assets/animations/onboarding/frame_22.png" id="29_l7llg"]
 [ext_resource type="Texture2D" uid="uid://c3re1atccpbvu" path="res://assets/animations/onboarding/frame_23.png" id="30_6lvpr"]
 [ext_resource type="Texture2D" uid="uid://b7ibvt8eupdes" path="res://assets/animations/onboarding/frame_24.png" id="31_jcdlf"]
@@ -484,7 +486,6 @@ wait_time = 3.0
 
 [node name="Pause Menu" type="Panel" parent="CanvasLayer/UI"]
 process_mode = 2
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -527,6 +528,11 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 40
 text = "Paused"
 
+[node name="SpLabelPaused01a" type="Sprite2D" parent="CanvasLayer/UI/Pause Menu/PausedHeader"]
+position = Vector2(92, 230)
+scale = Vector2(0.475575, 0.475575)
+texture = ExtResource("28_8pjrr")
+
 [node name="ResumeButton" type="Button" parent="CanvasLayer/UI/Pause Menu"]
 layout_mode = 1
 anchors_preset = 8
@@ -560,6 +566,12 @@ grow_vertical = 2
 theme = SubResource("Theme_p0sd6")
 theme_override_font_sizes/font_size = 30
 text = "Restart"
+
+[node name="SpMenuBg01a" type="Sprite2D" parent="CanvasLayer/UI/Pause Menu"]
+z_index = -1
+position = Vector2(197, 138)
+scale = Vector2(0.247126, 0.327126)
+texture = ExtResource("29_0xxsb")
 
 [node name="OnboardingAnimation" type="Node2D" parent="."]
 
