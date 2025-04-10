@@ -64,6 +64,13 @@ func start_round():
 
 	
 func emit_round_clear():
+	if (PegManager.specific_level_to_play > 0): # after level cleared immediately go to next level
+		if (PegManager.specific_level_to_play >= PegManager.all_peg_layouts.size()): # when last level is beaten
+			#SceneManager.change_scene(SceneManager.SCENE.LEVEL_SELECT_MENU) #return to menu
+			PegManager.specific_level_to_play = 0 # go to arcade mode
+			return
+		else:
+			PegManager.specific_level_to_play += 1 # go to next level
 	ScoreManager.reset_mult_count()
 	round_clear.emit()
 	CURRENT_STATE = GAME_STATE.TRANSITION

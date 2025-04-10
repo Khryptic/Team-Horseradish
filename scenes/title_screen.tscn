@@ -166,6 +166,7 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("1_fgkus")
+scene_to_change_to = 2
 
 [node name="SpButtonBase01a2" type="Sprite2D" parent="."]
 z_index = 1
@@ -195,6 +196,7 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("1_fgkus")
+scene_to_change_to = 1
 
 [node name="SpDecorBottom01a" type="Sprite2D" parent="."]
 position = Vector2(276, 993)

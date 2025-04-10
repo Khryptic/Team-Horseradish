@@ -3,7 +3,7 @@ extends Node
 signal multiply_score_just_earned(mult_score_just_earned)
 
 var total_score: int = 0
-var mult = 1;
+var mult = 0;
 var score_just_earned: int = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -31,6 +31,6 @@ func reset_mult_count():
 	emit_signal("multiply_score_just_earned", score_just_earned * mult)
 	total_score += score_just_earned * mult
 	score_just_earned = 0
-	mult = 1
+	mult = 0
 	reset_mult_text()
 	

@@ -1,16 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://b4r8scy3ax4gh"]
+[gd_scene load_steps=12 format=3 uid="uid://cdlqcginhikef"]
 
-[ext_resource type="Script" uid="uid://0px015qt4a8q" path="res://pegs/peg.gd" id="1_qelap"]
-[ext_resource type="Script" uid="uid://djyrt5rvwu58r" path="res://scripts/peg_sensor.gd" id="2_5mbo7"]
-[ext_resource type="PackedScene" uid="uid://berce0fu5mvnh" path="res://object_scenes/score_orb/score_orb.tscn" id="2_34oau"]
-[ext_resource type="Texture2D" uid="uid://bxrrcrdmvu6tk" path="res://assets/peg_sprites/SP_Peg_01e.PNG" id="2_358lv"]
-[ext_resource type="Resource" uid="uid://ke3b1rmnr7r5" path="res://assets/peg_sprites/sprite_resources/yellow.tres" id="3_m7he3"]
-[ext_resource type="Shader" uid="uid://b7t64afbbv3dg" path="res://scenes/growing_circle.gdshader" id="4_78d3w"]
-[ext_resource type="Texture2D" uid="uid://b2ylubuw38xjv" path="res://assets/white_square.png" id="5_22ts5"]
+[ext_resource type="Script" path="res://scenes/mega_peg.gd" id="1_m0gp4"]
+[ext_resource type="Texture2D" uid="uid://bxrrcrdmvu6tk" path="res://assets/SP_Peg_01e.PNG" id="2_2cpos"]
+[ext_resource type="Script" uid="uid://djyrt5rvwu58r" path="res://scripts/peg_sensor.gd" id="3_tb85w"]
+[ext_resource type="Shader" path="res://scenes/growing_circle.gdshader" id="4_6a52d"]
+[ext_resource type="Texture2D" uid="uid://b2ylubuw38xjv" path="res://assets/white_square.png" id="5_0ovwf"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_v7ta1"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_co7yk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_spoja"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_pclom"]
 
 [sub_resource type="Animation" id="Animation_40v21"]
 length = 0.001
@@ -79,45 +77,34 @@ tracks/2/keys = {
 "values": [1.0, 1.0, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_m7he3"]
-resource_name = "peg_destroy"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_603km"]
 _data = {
 &"RESET": SubResource("Animation_40v21"),
-&"ball_hit": SubResource("Animation_pj18k"),
-&"peg_destroy": SubResource("Animation_m7he3")
+&"ball_hit": SubResource("Animation_pj18k")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_aoiy4"]
-shader = ExtResource("4_78d3w")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8lfpk"]
+shader = ExtResource("4_6a52d")
 
 [node name="StaticBody2D" type="StaticBody2D" groups=["peg"]]
-script = ExtResource("1_qelap")
-score_orb_scene = ExtResource("2_34oau")
-peg_sprite = ExtResource("3_m7he3")
-final_peg_scaler = 1.5
-min_orb_speed = 500.0
-max_orb_speed = 800.0
-min_orb_count = 2
-max_orb_count = 4
+script = ExtResource("1_m0gp4")
 
 [node name="AnimationScale" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimationScale"]
 position = Vector2(-3.57628e-07, -3.57628e-07)
 scale = Vector2(0.175439, 0.175439)
-texture = ExtResource("2_358lv")
+texture = ExtResource("2_2cpos")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_v7ta1")
+shape = SubResource("CircleShape2D_co7yk")
 
 [node name="peg_sensor" type="Area2D" parent="."]
-script = ExtResource("2_5mbo7")
+script = ExtResource("3_tb85w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="peg_sensor"]
 scale = Vector2(1.00331, 1.00331)
-shape = SubResource("CircleShape2D_spoja")
+shape = SubResource("CircleShape2D_pclom")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -125,13 +112,12 @@ libraries = {
 }
 
 [node name="CircleShader" type="Sprite2D" parent="."]
-z_index = -1
-material = SubResource("ShaderMaterial_aoiy4")
+material = SubResource("ShaderMaterial_8lfpk")
 instance_shader_parameters/color = Color(0.918624, 0.914199, 0, 1)
 instance_shader_parameters/opacity = 0.0
 instance_shader_parameters/ring_size = 0.0
 instance_shader_parameters/ring_thickness = 0.025
-texture = ExtResource("5_22ts5")
+texture = ExtResource("5_0ovwf")
 
 [connection signal="area_entered" from="peg_sensor" to="peg_sensor" method="_on_area_entered"]
 [connection signal="body_entered" from="peg_sensor" to="peg_sensor" method="_on_body_entered"]

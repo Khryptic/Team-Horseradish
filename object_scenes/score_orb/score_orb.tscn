@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://berce0fu5mvnh"]
 
-[ext_resource type="Texture2D" uid="uid://8ntjp1y34rrj" path="res://assets/score_orb.png" id="1_rj5hv"]
+[ext_resource type="Texture2D" uid="uid://8ntjp1y34rrj" path="res://assets/peg_sprites/score_orb.png" id="1_rj5hv"]
 [ext_resource type="Script" uid="uid://x53yx2iqrc3u" path="res://object_scenes/score_orb/score_orb.gd" id="2_60sx3"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_orykl"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://2js5lt72ualx" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" uid="uid://clxxj87sfihfh" path="res://scripts/game_controller.gd" id="1_wfcph"]
-[ext_resource type="Script" uid="uid://b2mb5f60jhuoi" path="res://scenes/camera_2d.gd" id="2_ruju6"]
+[ext_resource type="Script" path="res://scenes/camera_2d.gd" id="2_ruju6"]
 [ext_resource type="Script" uid="uid://bhxr8msyhd47i" path="res://scenes/trampoline.gd" id="3_0votk"]
 [ext_resource type="Script" uid="uid://b4ct6ueroj65m" path="res://scripts/score_label.gd" id="4_6jsyi"]
 [ext_resource type="Texture2D" uid="uid://bak37mkleqku4" path="res://assets/Red_X.png" id="4_dl6a1"]
@@ -332,7 +332,7 @@ position = Vector2(552, 461)
 shape = SubResource("RectangleShape2D_7dd0l")
 
 [node name="Respawn" type="Node2D" parent="."]
-position = Vector2(275, 350)
+position = Vector2(270, 450)
 
 [node name="Killzone" type="Area2D" parent="." groups=["killzone"]]
 position = Vector2(284, 1118)
@@ -495,7 +495,7 @@ anchor_bottom = 0.5
 offset_left = -194.0
 offset_top = -173.0
 offset_right = 202.0
-offset_bottom = 141.0
+offset_bottom = 236.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_l14nw")
@@ -541,9 +541,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -150.0
-offset_top = -106.0
+offset_top = -133.5
 offset_right = 150.0
-offset_bottom = -26.0
+offset_bottom = -53.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_p0sd6")
@@ -558,9 +558,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -150.0
-offset_top = -2.0
+offset_top = -30.5
 offset_right = 150.0
-offset_bottom = 78.0
+offset_bottom = 49.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_p0sd6")
@@ -572,6 +572,22 @@ z_index = -1
 position = Vector2(197, 138)
 scale = Vector2(0.247126, 0.327126)
 texture = ExtResource("29_0xxsb")
+[node name="HomeButton" type="Button" parent="CanvasLayer/UI/Pause Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 69.5
+offset_right = 150.0
+offset_bottom = 149.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_p0sd6")
+theme_override_font_sizes/font_size = 30
+text = "Exit"
 
 [node name="OnboardingAnimation" type="Node2D" parent="."]
 
@@ -587,7 +603,7 @@ script = ExtResource("32_lnep7")
 
 [node name="SpBackground01a" type="Sprite2D" parent="Game Art"]
 z_index = -5
-position = Vector2(269, 494)
+position = Vector2(270, 500)
 scale = Vector2(0.573142, 0.573142)
 texture = ExtResource("48_ruju6")
 
@@ -615,3 +631,4 @@ texture = ExtResource("54_cq0lk")
 [connection signal="timeout" from="CanvasLayer/UI/GameOverLabel/Timer" to="CanvasLayer/UI/GameOverLabel" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/UI/Pause Menu/ResumeButton" to="CanvasLayer/UI/Pause Menu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Pause Menu/RestartButton" to="CanvasLayer/UI/Pause Menu" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Pause Menu/HomeButton" to="CanvasLayer/UI/Pause Menu" method="_on_home_button_pressed"]
