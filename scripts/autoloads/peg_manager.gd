@@ -157,6 +157,7 @@ func _add_random_pegs_to_scene():
 		
 func _remove_peg(peg : StaticBody2D):
 	current_pegs.erase(peg)
+
 	if (current_pegs.size() <= 0):
 		call_deferred("_add_pegs_to_scene")
 		has_peg_increased_size = false

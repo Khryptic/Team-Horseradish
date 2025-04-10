@@ -81,6 +81,8 @@ func _remove_peg():
 			spawn_score_orb()
 
 		queue_free()
+
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PEG_DESTROY)
 		PegManager._remove_peg(self) #tell peg manager to stop keeping reference of this peg bcus its dead now
 		
 
