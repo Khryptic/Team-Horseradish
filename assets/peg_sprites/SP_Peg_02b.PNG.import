@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eanuw6bclsbl"
-path="res://.godot/imported/SP_Peg_03b.PNG-e65e01d6ae6f9ac9a8f1bfdb8dcb2bce.ctex"
+uid="uid://8olw1w4pi0qi"
+path="res://.godot/imported/SP_Peg_02b.PNG-051c403367d98956db5f49013fa63284.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/SP_Peg_03b.PNG"
-dest_files=["res://.godot/imported/SP_Peg_03b.PNG-e65e01d6ae6f9ac9a8f1bfdb8dcb2bce.ctex"]
+source_file="res://assets/peg_sprites/SP_Peg_02b.PNG"
+dest_files=["res://.godot/imported/SP_Peg_02b.PNG-051c403367d98956db5f49013fa63284.ctex"]
 
 [params]
 
