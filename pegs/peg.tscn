@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4r8scy3ax4gh"]
+[gd_scene load_steps=13 format=3 uid="uid://b4r8scy3ax4gh"]
 
-[ext_resource type="Script" uid="uid://0px015qt4a8q" path="res://scenes/peg.gd" id="1_qelap"]
+[ext_resource type="Script" uid="uid://0px015qt4a8q" path="res://pegs/peg.gd" id="1_qelap"]
 [ext_resource type="Script" uid="uid://djyrt5rvwu58r" path="res://scripts/peg_sensor.gd" id="2_5mbo7"]
 [ext_resource type="Texture2D" uid="uid://bxrrcrdmvu6tk" path="res://assets/SP_Peg_01e.PNG" id="2_358lv"]
 [ext_resource type="Shader" path="res://scenes/growing_circle.gdshader" id="4_78d3w"]
@@ -77,10 +77,14 @@ tracks/2/keys = {
 "values": [1.0, 1.0, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_m7he3"]
+resource_name = "peg_destroy"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_603km"]
 _data = {
 &"RESET": SubResource("Animation_40v21"),
-&"ball_hit": SubResource("Animation_pj18k")
+&"ball_hit": SubResource("Animation_pj18k"),
+&"peg_destroy": SubResource("Animation_m7he3")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aoiy4"]
@@ -89,6 +93,10 @@ shader = ExtResource("4_78d3w")
 [node name="StaticBody2D" type="StaticBody2D" groups=["peg"]]
 script = ExtResource("1_qelap")
 final_peg_scaler = 1.5
+min_orb_speed = 500.0
+max_orb_speed = 800.0
+min_orb_count = 2
+max_orb_count = 4
 
 [node name="AnimationScale" type="Node2D" parent="."]
 
@@ -113,6 +121,7 @@ libraries = {
 }
 
 [node name="CircleShader" type="Sprite2D" parent="."]
+z_index = -1
 material = SubResource("ShaderMaterial_aoiy4")
 instance_shader_parameters/color = Color(0.918624, 0.914199, 0, 1)
 instance_shader_parameters/opacity = 0.0

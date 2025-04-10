@@ -217,8 +217,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("score_label")]
 script = ExtResource("1_wfcph")
+score_label = NodePath("CanvasLayer/UI/MobileSafeArea/ScoreLabel")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_j4epa")

@@ -189,7 +189,7 @@ func _on_mouse_released():
 		#is_ball_in_drawing_zone = false
 		#Engine.time_scale = 1
 
-func get_trampoline_lives(length: float) -> int:
+func get_trampoline_lives(_length: float) -> int:
 	
 	return 3
 	
