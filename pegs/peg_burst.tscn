@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnkpheuwd4p0t"]
+[gd_scene load_steps=4 format=3 uid="uid://cnkpheuwd4p0t"]
 
-[ext_resource type="Texture2D" uid="uid://c0orfgx26q5oq" path="res://assets/SP_Peg_Shards_01a.PNG" id="1_xu472"]
+[ext_resource type="Texture2D" uid="uid://c0orfgx26q5oq" path="res://assets/peg_sprites/SP_Peg_Shards_01a.PNG" id="1_xu472"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1cwn6"]
 particles_animation = true
@@ -8,34 +8,28 @@ particles_anim_h_frames = 6
 particles_anim_v_frames = 3
 particles_anim_loop = false
 
-[sub_resource type="Curve" id="Curve_40c7b"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.11237, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="Gradient" id="Gradient_xu472"]
+offsets = PackedFloat32Array(0.433333, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="CurveTexture" id="CurveTexture_su8kq"]
-curve = SubResource("Curve_40c7b")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_btdfm"]
-particle_flag_disable_z = true
-angle_min = 720.0
-angle_max = 720.0
-direction = Vector3(0, -15.075, 0)
-initial_velocity_max = 26.7
-angular_velocity_min = 33.1
-angular_velocity_max = 132.41
-gravity = Vector3(0, 61.99, 0)
-radial_accel_min = -2.23517e-06
-radial_accel_max = 81.61
-scale_min = 0.05
-scale_max = 0.1
-alpha_curve = SubResource("CurveTexture_su8kq")
-anim_offset_max = 1.0
-collision_mode = 1
-collision_friction = 0.0
-collision_bounce = 0.75
-
-[node name="peg_burst" type="GPUParticles2D"]
+[node name="peg_burst" type="CPUParticles2D"]
 material = SubResource("CanvasItemMaterial_1cwn6")
-amount = 18
+emitting = false
+amount = 12
 texture = ExtResource("1_xu472")
-process_material = SubResource("ParticleProcessMaterial_btdfm")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.15
+emission_shape = 1
+emission_sphere_radius = 9.3
+direction = Vector2(1, 1)
+spread = 180.0
+initial_velocity_min = 215.0
+initial_velocity_max = 346.0
+angular_velocity_max = 174.55
+angle_max = 29.1
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+color_ramp = SubResource("Gradient_xu472")
+anim_offset_max = 1.0

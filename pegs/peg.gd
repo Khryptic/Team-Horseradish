@@ -82,6 +82,8 @@ func _remove_peg():
 
 		queue_free()
 		PegManager._remove_peg(self) #tell peg manager to stop keeping reference of this peg bcus its dead now
+		
+
 
 func increase_size():
 	$AnimationScale/Sprite2D.scale *= peg_scaler

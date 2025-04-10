@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="PegSprite" load_steps=4 format=3 uid="uid://wlri8ljy8851"]
+[gd_resource type="Resource" script_class="PegSprite" load_steps=5 format=3 uid="uid://wlri8ljy8851"]
 
-[ext_resource type="Texture2D" uid="uid://dn2w00treuqcs" path="res://assets/peg_sprites/SP_Peg_04e.PNG" id="1_ag36k"]
+[ext_resource type="Texture2D" uid="uid://c2gafp8m2kw67" path="res://assets/peg_sprites/SP_Peg_Shards_01e.PNG" id="1_grudd"]
 [ext_resource type="Script" uid="uid://bksf80rkut52h" path="res://pegs/peg_sprite.gd" id="1_ontcm"]
-[ext_resource type="Texture2D" uid="uid://dpywuloblqcup" path="res://assets/peg_sprites/SP_Peg_02e.PNG" id="3_ag36k"]
+[ext_resource type="Texture2D" uid="uid://dn2w00treuqcs" path="res://assets/peg_sprites/SP_Peg_04e.PNG" id="2_dpbf1"]
+[ext_resource type="Texture2D" uid="uid://dpywuloblqcup" path="res://assets/peg_sprites/SP_Peg_02e.PNG" id="4_i44r0"]
 
 [resource]
 script = ExtResource("1_ontcm")
-sprite = ExtResource("3_ag36k")
-hit_sprite = ExtResource("1_ag36k")
+sprite = ExtResource("4_i44r0")
+hit_sprite = ExtResource("2_dpbf1")
+burst_sprite = ExtResource("1_grudd")
 color = Color(1, 0.74902, 1, 1)
 metadata/_custom_type_script = "uid://bksf80rkut52h"

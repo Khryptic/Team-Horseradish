@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b56yiydcigf87"
-path="res://.godot/imported/SP_Peg_Shards_01d.PNG-37b8acec7e0439512e4a94fab27bfd09.ctex"
+uid="uid://w7ig2oucw6n"
+path="res://.godot/imported/SP_Peg_Shards_01c.PNG-114dc1a3b220fbd20e15aeb97c187fe3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/SP_Peg_Shards_01d.PNG"
-dest_files=["res://.godot/imported/SP_Peg_Shards_01d.PNG-37b8acec7e0439512e4a94fab27bfd09.ctex"]
+source_file="res://assets/peg_sprites/SP_Peg_Shards_01c.PNG"
+dest_files=["res://.godot/imported/SP_Peg_Shards_01c.PNG-114dc1a3b220fbd20e15aeb97c187fe3.ctex"]
 
 [params]
 
