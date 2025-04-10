@@ -23,6 +23,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	#add pegs to scene
+	if (SceneManager.CURRENT_SCENE != SceneManager.SCENE.GAME):
+		return
+	
 	time_since_last_peg_added += delta
 	if (pegs_added < current_pegs.size()):
 		while time_since_last_peg_added > 0:
@@ -155,4 +158,3 @@ func unlight_peg():
 		
 func play_specific_level(level_num : int):
 	specific_level_to_play = level_num
-	print(specific_level_to_play)

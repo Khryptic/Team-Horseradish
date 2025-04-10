@@ -1,4 +1,5 @@
 extends Button
+class_name SceneChangingButton # ik its a great name :D
 
 @export var scene_to_change_to : SceneManager.SCENE
 @export var level_num : int

@@ -5,6 +5,7 @@ enum SCENE{
 	LEVEL_SELECT_MENU,
 	GAME,
 }
+var CURRENT_SCENE = SCENE.TITLE_SCREEN
 
 # This may break if paths are changed
 var scene_dict = {
@@ -15,6 +16,7 @@ var scene_dict = {
 
 func change_scene(scene_to_change_to: SCENE):
 	if scene_to_change_to in scene_dict:
+		CURRENT_SCENE = scene_to_change_to
 		get_tree().change_scene_to_packed(scene_dict[scene_to_change_to])
 	else:
 		print("Error: Scene not found in dictionary.")
