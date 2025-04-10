@@ -13,8 +13,6 @@ class_name Peg extends StaticBody2D
 @export var min_orb_count: int
 @export var max_orb_count: int
 
-@export var safe_area: Area2D
-
 var is_light_on : bool = true
 
 # Load different peg textures
@@ -32,8 +30,6 @@ func _ready() -> void:
 	peg_scaler = Vector2(final_peg_scaler, final_peg_scaler)
 	
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PEG_SPAWN)
-	
-	safe_area = $SafeArea
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -91,6 +87,3 @@ func increase_size():
 	$AnimationScale/Sprite2D.scale *= peg_scaler
 	$CollisionShape2D.scale *= peg_scaler
 	$peg_sensor/CollisionShape2D.scale *= peg_scaler
-	
-func get_safe_area():
-	return safe_area

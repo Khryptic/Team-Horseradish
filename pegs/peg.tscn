@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b4r8scy3ax4gh"]
+[gd_scene load_steps=15 format=3 uid="uid://b4r8scy3ax4gh"]
 
 [ext_resource type="Script" uid="uid://0px015qt4a8q" path="res://pegs/peg.gd" id="1_qelap"]
 [ext_resource type="Script" uid="uid://djyrt5rvwu58r" path="res://scripts/peg_sensor.gd" id="2_5mbo7"]
@@ -92,10 +92,7 @@ _data = {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aoiy4"]
 shader = ExtResource("4_78d3w")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_m7he3"]
-radius = 14.0
-
-[node name="StaticBody2D" type="StaticBody2D" node_paths=PackedStringArray("safe_area") groups=["peg"]]
+[node name="StaticBody2D" type="StaticBody2D" groups=["peg"]]
 script = ExtResource("1_qelap")
 score_orb_scene = ExtResource("2_34oau")
 peg_sprite = ExtResource("3_m7he3")
@@ -104,7 +101,6 @@ min_orb_speed = 500.0
 max_orb_speed = 800.0
 min_orb_count = 2
 max_orb_count = 4
-safe_area = NodePath("SafeArea")
 
 [node name="AnimationScale" type="Node2D" parent="."]
 
@@ -136,11 +132,6 @@ instance_shader_parameters/opacity = 0.0
 instance_shader_parameters/ring_size = 0.0
 instance_shader_parameters/ring_thickness = 0.025
 texture = ExtResource("5_22ts5")
-
-[node name="SafeArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeArea"]
-shape = SubResource("CircleShape2D_m7he3")
 
 [connection signal="area_entered" from="peg_sensor" to="peg_sensor" method="_on_area_entered"]
 [connection signal="body_entered" from="peg_sensor" to="peg_sensor" method="_on_body_entered"]

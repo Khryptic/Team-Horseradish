@@ -122,31 +122,34 @@ func _add_random_pegs_to_scene():
 	var rng = RandomNumberGenerator.new()
 	
 	# Add normal pegs to scene
-	for n in rng.randi_range(6, 15):
+	for n in rng.randi_range(6, 12):
 		var peg = preload("res://pegs/peg.tscn").instantiate()
 		peg.global_position = Vector2(rng.randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
+		peg.peg_sprite = basic_peg_sprites.pick_random()
 		
 		## Check for overlap
 		for p in current_pegs:
+			while(peg.position.x >= p.position.x - 40 &&
+				peg.position.x <= p.position.x + 40 &&
+				peg.position.y >= p.position.y - 40 &&
+				peg.position.y <= p.position.y + 40):
+					peg.position = Vector2(rng.randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
 			
-			if(peg.safe_area.overlaps_area(p.safe_area)):
-				print("yes")
+		current_pegs.append(peg)
+
+	# Add mega pegs to scene
+	for n in rng.randi_range(0, 4):
+		var peg = preload("res://pegs/mega_peg.tscn").instantiate()
+		peg.global_position = Vector2(rng.randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
+		
+		# Check for overlap
+		for p in current_pegs:
+			while(peg.position.x >= p.position.x - 80 &&
+				peg.position.x <= p.position.x + 80 &&
+				peg.position.y >= p.position.y - 80 &&
+				peg.position.y <= p.position.y + 80):
+					peg.position = Vector2(rng.randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
 			
-			#if (peg.position.x >= oldPeg.position.x + 80 &&
-				#oldPeg.position.x >= (upperBound.x - 80)):
-				#peg.position.x -= ballPad
-				#
-			#elif (peg.position.x <= oldPeg.position.x - 80 &&
-				#oldPeg.position.x <= (lowerBound.x + 80)):
-				#peg.position.x += ballPad
-				#
-			#if (peg.position.y >= oldPeg.position.y + 80 &&
-				#oldPeg.position.y >= (upperBound.y - 80)):
-				#peg.position.y -= ballPad
-				#
-			#elif (peg.position.y <= oldPeg.position.y - 80 &&
-				#oldPeg.position.y <= (lowerBound.y + 80)):
-				#peg.position.y += ballPad
 		current_pegs.append(peg)
 	
 	peg_spawn_delay = PEG_SPAWNING_DURATION / current_pegs.size()
