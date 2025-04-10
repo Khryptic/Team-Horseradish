@@ -22,3 +22,9 @@ func _on_restart_button_pressed():
 	# Commented out due to error when restarting; not sure if this is still necessary
 	#$"../../../Drawing Controller".trampoline_segment_collider.a = Vector2(-10000, -10000)
 	#$"../../../Drawing Controller".trampoline_segment_collider.b = Vector2(-10000, -10000)
+
+
+func _on_home_button_pressed() -> void:
+	hide()
+	get_tree().paused = false
+	SceneManager.change_scene(SceneManager.SCENE.TITLE_SCREEN)

@@ -23,6 +23,7 @@ GameManager="*res://scripts/autoloads/game_manager.gd"
 Math="*res://scripts/autoloads/math.gd"
 AudioManager="*res://scenes/audio_manager.tscn"
 AndroidImmersiveManager="*res://scripts/autoloads/android_immersive_manager.gd"
+SceneManager="*res://scripts/autoloads/scene_manager.gd"
 PegManager="*res://scripts/autoloads/peg_manager.tscn"
 
 [display]
