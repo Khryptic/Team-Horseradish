@@ -1,5 +1,7 @@
 extends Node
 
+@export var basic_peg_sprites: Array[PegSprite]
+
 var all_peg_layouts = [] 
 var current_peg_layout = [] 
 var unlit_pegs: int
@@ -91,6 +93,7 @@ func _add_pegs_to_scene():
 		for peg_location in default_pegs:
 			var peg = preload("res://pegs/peg.tscn").instantiate()
 			peg.position = Vector2(peg_location.x, peg_location.y)
+			peg.peg_sprite = basic_peg_sprites.pick_random()
 			current_pegs.append(peg)
 		
 	# Queue all mega pegs to be added to scene
@@ -99,6 +102,7 @@ func _add_pegs_to_scene():
 		for peg_location in mega_pegs:
 			var peg = preload("res://pegs/mega_peg.tscn").instantiate()
 			peg.position = Vector2(peg_location.x, peg_location.y)
+			peg.peg_sprite = basic_peg_sprites.pick_random()
 			current_pegs.append(peg)
 			
 	

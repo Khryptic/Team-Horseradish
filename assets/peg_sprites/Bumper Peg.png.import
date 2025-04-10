@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlvo26al8gu2b"
-path="res://.godot/imported/SP_Peg_03d.PNG-42fdef9481315056f63eee18a04089ce.ctex"
+uid="uid://clq2i7tydoirs"
+path="res://.godot/imported/Bumper Peg.png-71ec3eb40553fc38f008c362f2c6b6f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/SP_Peg_03d.PNG"
-dest_files=["res://.godot/imported/SP_Peg_03d.PNG-42fdef9481315056f63eee18a04089ce.ctex"]
+source_file="res://assets/peg_sprites/Bumper Peg.png"
+dest_files=["res://.godot/imported/Bumper Peg.png-71ec3eb40553fc38f008c362f2c6b6f0.ctex"]
 
 [params]
 
