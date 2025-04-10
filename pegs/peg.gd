@@ -1,17 +1,17 @@
 class_name Peg extends StaticBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var sprite: Sprite2D = $AnimationScale/Sprite2D
+@onready var sprite2D: Sprite2D = $AnimationScale/Sprite2D
 @onready var circle_shader: Sprite2D = $CircleShader
+
+@export var score_orb_scene: PackedScene
+@export var peg_sprite: PegSprite
+
 @export var final_peg_scaler: float
 @export var min_orb_speed: float
 @export var max_orb_speed: float
 @export var min_orb_count: int
 @export var max_orb_count: int
-
-@export var score_orb_scene: PackedScene
-@export var peg_sprite: CompressedTexture2D
-@export var hit_peg_sprite: CompressedTexture2D
 
 var is_light_on : bool = true
 
@@ -21,7 +21,8 @@ var peg_scaler: Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
-	sprite.set_texture(peg_sprite)
+	sprite2D.set_texture(peg_sprite.sprite)
+	circle_shader.set_instance_shader_parameter('color', peg_sprite.color)
 
 	get_node("peg_sensor").peg_hit.connect(_on_peg_hit)
 	GameManager.clear_pegs.connect(_remove_peg)
@@ -36,7 +37,7 @@ func _process(_delta: float) -> void:
 
 func _on_peg_hit():
 
-	sprite.set_texture(hit_peg_sprite)
+	sprite2D.set_texture(peg_sprite.hit_sprite)
 
 	animation_player.stop()
 	animation_player.play("ball_hit")
@@ -53,6 +54,8 @@ func _on_peg_hit():
 func spawn_score_orb():
 	# Create score orb
 	var orb: RigidBody2D = score_orb_scene.instantiate()
+
+	orb.modulate = peg_sprite.color
 	
 	# Parent the new orb to the canvas layer so it renders above UI
 	var canvas: CanvasLayer = $/root/Game/CanvasLayer
