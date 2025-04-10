@@ -1,0 +1,13 @@
+[gd_scene load_steps=8 format=3 uid="uid://crhfskuwvjs2t"]
+
+[ext_resource type="Script" uid="uid://dlbsfgiupj80x" path="res://scripts/autoloads/peg_manager.gd" id="1_qrecy"]
+[ext_resource type="Script" uid="uid://bksf80rkut52h" path="res://pegs/peg_sprite.gd" id="2_y4eho"]
+[ext_resource type="Resource" uid="uid://ke3b1rmnr7r5" path="res://assets/peg_sprites/sprite_resources/yellow.tres" id="3_wl00g"]
+[ext_resource type="Resource" uid="uid://dd4r8qngjt68" path="res://assets/peg_sprites/sprite_resources/blue.tres" id="4_h3y13"]
+[ext_resource type="Resource" uid="uid://jg5asrdpatns" path="res://assets/peg_sprites/sprite_resources/red.tres" id="5_lqepq"]
+[ext_resource type="Resource" uid="uid://deett5klatsr5" path="res://assets/peg_sprites/sprite_resources/green.tres" id="6_bqfy8"]
+[ext_resource type="Resource" uid="uid://wlri8ljy8851" path="res://assets/peg_sprites/sprite_resources/purple.tres" id="7_bg6fh"]
+
+[node name="PegManager" type="Node2D"]
+script = ExtResource("1_qrecy")
+basic_peg_sprites = Array[ExtResource("2_y4eho")]([ExtResource("3_wl00g"), ExtResource("4_h3y13"), ExtResource("5_lqepq"), ExtResource("6_bqfy8"), ExtResource("7_bg6fh")])

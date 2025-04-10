@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8ntjp1y34rrj"
-path="res://.godot/imported/score_orb.png-3e3e7542bd5cf21d97e0b23cdd13353e.ctex"
+uid="uid://cjwie0d05eyvv"
+path="res://.godot/imported/SP_Peg_04c.PNG-0a74543e7864163a8692e95069e2e392.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/score_orb.png"
-dest_files=["res://.godot/imported/score_orb.png-3e3e7542bd5cf21d97e0b23cdd13353e.ctex"]
+source_file="res://assets/peg_sprites/SP_Peg_04c.PNG"
+dest_files=["res://.godot/imported/SP_Peg_04c.PNG-0a74543e7864163a8692e95069e2e392.ctex"]
 
 [params]
 
