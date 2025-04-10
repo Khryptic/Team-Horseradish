@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://2js5lt72ualx" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" uid="uid://clxxj87sfihfh" path="res://scripts/game_controller.gd" id="1_wfcph"]
-[ext_resource type="Script" path="res://scenes/camera_2d.gd" id="2_ruju6"]
+[ext_resource type="Script" uid="uid://b2mb5f60jhuoi" path="res://scenes/camera_2d.gd" id="2_ruju6"]
 [ext_resource type="Script" uid="uid://bhxr8msyhd47i" path="res://scenes/trampoline.gd" id="3_0votk"]
 [ext_resource type="Script" uid="uid://b4ct6ueroj65m" path="res://scripts/score_label.gd" id="4_6jsyi"]
 [ext_resource type="Texture2D" uid="uid://bak37mkleqku4" path="res://assets/Red_X.png" id="4_dl6a1"]
