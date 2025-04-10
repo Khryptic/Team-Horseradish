@@ -103,41 +103,44 @@ func _add_random_pegs_to_scene():
 	# Reset pegs
 	current_pegs.clear()
 	pegs_added = 0
+	time_since_last_peg_added = 0
 	
 	var lowerBound = Vector2(40.0, 100.0)
 	var upperBound = Vector2(450.0, 300.0)
-	var ballPad = 50.0
-	var addedPegIndex = 0
 	
 	# To set new pegs
 	var rng = RandomNumberGenerator.new()
 	
 	# Add normal pegs to scene
 	for n in rng.randi_range(6, 15):
-		addedPegIndex = 0
 		var peg = preload("res://pegs/peg.tscn").instantiate()
-		peg.position = Vector2(rng.randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
+		peg.global_position = Vector2(rng.randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
 		
-		# Check for overlap
+		## Check for overlap
 		for p in current_pegs:
-			var oldPeg = current_pegs.get(addedPegIndex)
-			if (peg.position.x >= oldPeg.position.x + 80 &&
-				oldPeg.position.x >= (upperBound.x - 80)):
-				peg.position.x -= ballPad
-				
-			elif (peg.position.x <= oldPeg.position.x - 80 &&
-				oldPeg.position.x <= (lowerBound.x + 80)):
-				peg.position.x += ballPad
-				
-			if (peg.position.y >= oldPeg.position.y + 80 &&
-				oldPeg.position.y >= (upperBound.y - 80)):
-				peg.position.y -= ballPad
-				
-			elif (peg.position.y <= oldPeg.position.y - 80 &&
-				oldPeg.position.y <= (lowerBound.y + 80)):
-				peg.position.y += ballPad
-			addedPegIndex += 1
+			
+			if(peg.safe_area.overlaps_area(p.safe_area)):
+				print("yes")
+			
+			#if (peg.position.x >= oldPeg.position.x + 80 &&
+				#oldPeg.position.x >= (upperBound.x - 80)):
+				#peg.position.x -= ballPad
+				#
+			#elif (peg.position.x <= oldPeg.position.x - 80 &&
+				#oldPeg.position.x <= (lowerBound.x + 80)):
+				#peg.position.x += ballPad
+				#
+			#if (peg.position.y >= oldPeg.position.y + 80 &&
+				#oldPeg.position.y >= (upperBound.y - 80)):
+				#peg.position.y -= ballPad
+				#
+			#elif (peg.position.y <= oldPeg.position.y - 80 &&
+				#oldPeg.position.y <= (lowerBound.y + 80)):
+				#peg.position.y += ballPad
 		current_pegs.append(peg)
+	
+	peg_spawn_delay = PEG_SPAWNING_DURATION / current_pegs.size()
+	lit_pegs = current_pegs.size()
 		
 func _remove_peg(peg : StaticBody2D):
 	current_pegs.erase(peg)

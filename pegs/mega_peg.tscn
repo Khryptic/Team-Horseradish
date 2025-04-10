@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpkg1i4wbf3yn"]
+[gd_scene load_steps=3 format=3 uid="uid://cpkg1i4wbf3yn"]
 
 [ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://pegs/peg.tscn" id="1_x2tc5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g6216"]
+radius = 34.0
 
 [node name="StaticBody2D" instance=ExtResource("1_x2tc5")]
 min_orb_count = 5
@@ -23,3 +26,6 @@ speed_scale = 0.3
 
 [node name="CircleShader" parent="." index="4"]
 scale = Vector2(2.5, 2.5)
+
+[node name="CollisionShape2D" parent="SafeArea" index="0"]
+shape = SubResource("CircleShape2D_g6216")
