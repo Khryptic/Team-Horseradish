@@ -1,21 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://b4r8scy3ax4gh"]
+[gd_scene load_steps=15 format=3 uid="uid://b4r8scy3ax4gh"]
 
 [ext_resource type="Script" uid="uid://0px015qt4a8q" path="res://pegs/peg.gd" id="1_qelap"]
 [ext_resource type="Script" uid="uid://djyrt5rvwu58r" path="res://scripts/peg_sensor.gd" id="2_5mbo7"]
 [ext_resource type="PackedScene" uid="uid://berce0fu5mvnh" path="res://object_scenes/score_orb/score_orb.tscn" id="2_34oau"]
 [ext_resource type="Texture2D" uid="uid://bxrrcrdmvu6tk" path="res://assets/peg_sprites/SP_Peg_01e.PNG" id="2_358lv"]
-[ext_resource type="Texture2D" uid="uid://cjo8n5llgggkm" path="res://assets/peg_sprites/SP_Peg_01a.PNG" id="2_m7he3"]
-[ext_resource type="Texture2D" uid="uid://dtm1lc4x1rp1k" path="res://assets/peg_sprites/SP_Peg_04a.PNG" id="3_081kc"]
+[ext_resource type="Resource" uid="uid://ke3b1rmnr7r5" path="res://assets/peg_sprites/sprite_resources/yellow.tres" id="3_m7he3"]
 [ext_resource type="Shader" uid="uid://b7t64afbbv3dg" path="res://scenes/growing_circle.gdshader" id="4_78d3w"]
-[ext_resource type="Script" uid="uid://bksf80rkut52h" path="res://pegs/peg_sprite.gd" id="4_qunqk"]
 [ext_resource type="Texture2D" uid="uid://b2ylubuw38xjv" path="res://assets/white_square.png" id="5_22ts5"]
-
-[sub_resource type="Resource" id="Resource_081kc"]
-script = ExtResource("4_qunqk")
-sprite = ExtResource("2_m7he3")
-hit_sprite = ExtResource("3_081kc")
-color = Color(1, 1, 0.372549, 1)
-metadata/_custom_type_script = "uid://bksf80rkut52h"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v7ta1"]
 
@@ -104,7 +95,7 @@ shader = ExtResource("4_78d3w")
 [node name="StaticBody2D" type="StaticBody2D" groups=["peg"]]
 script = ExtResource("1_qelap")
 score_orb_scene = ExtResource("2_34oau")
-peg_sprite = SubResource("Resource_081kc")
+peg_sprite = ExtResource("3_m7he3")
 final_peg_scaler = 1.5
 min_orb_speed = 500.0
 max_orb_speed = 800.0
