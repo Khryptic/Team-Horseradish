@@ -46,6 +46,7 @@ func _process(_delta: float) -> void:
 	# check if bullet time is running out
 	bullet_time_since_activation += _delta * (1 / Engine.time_scale)
 	if (bullet_time_since_activation >= bullet_time_duration):
+
 		# if bullet time duration has passed, tween back
 		# to full speed based off bullet_time_fade_to_normal
 		var time : float = bullet_time_since_activation - bullet_time_duration
@@ -84,6 +85,7 @@ func _on_mouse_down():
 		#slow down time while drawing
 		Engine.time_scale = bullet_time_scale
 		bullet_time_since_activation = 0 
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.BULLET_TIME)
 		
 		is_start_point_in_drawing_zone = true
 	else:

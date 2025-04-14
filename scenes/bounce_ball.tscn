@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://8rc6608bm1lk" path="res://scenes/bounce_ball.gd" id="1_fptfq"]
 [ext_resource type="Texture2D" uid="uid://r4vxdfyqksup" path="res://assets/Smoke Particle.png" id="2_hopmu"]
-[ext_resource type="Texture2D" uid="uid://b8n8uohq25vie" path="res://assets/SP_Ball_01a.PNG" id="3_pvrn1"]
+[ext_resource type="Texture2D" uid="uid://crg8gvjixgsix" path="res://assets/SP_Ball_02a.PNG" id="3_bo6mo"]
 [ext_resource type="Texture2D" uid="uid://ciqn4q06eejde" path="res://assets/star.png" id="4_iya0n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nkdlc"]
@@ -167,8 +167,8 @@ process_material = SubResource("ParticleProcessMaterial_amtwl")
 shape = SubResource("CircleShape2D_kyilt")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-scale = Vector2(0.8125, 0.8125)
-texture = ExtResource("3_pvrn1")
+scale = Vector2(0.173333, 0.173333)
+texture = ExtResource("3_bo6mo")
 
 [node name="StarParticles" type="GPUParticles2D" parent="."]
 z_index = -1
