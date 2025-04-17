@@ -141,7 +141,7 @@ position = Vector2(84, 435)
 
 [node name="SpButtonBase01a" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(274, 607)
+position = Vector2(274, 595)
 scale = Vector2(0.275724, 0.286334)
 texture = ExtResource("5_cs5ya")
 
@@ -171,7 +171,7 @@ scene_to_change_to = 2
 
 [node name="SpButtonBase01a2" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(274, 749)
+position = Vector2(274, 735)
 scale = Vector2(0.275724, 0.286334)
 texture = ExtResource("7_u26n3")
 
@@ -202,9 +202,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="SpButtonBase01a3" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(274, 890.715)
+position = Vector2(274, 875)
 scale = Vector2(0.275724, 0.286334)
-texture = ExtResource("7_u26n3")
+texture = ExtResource("5_cs5ya")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SpButtonBase01a3"]
 libraries = {
