@@ -14,6 +14,7 @@ enum GAME_STATE{
 
 var lives: int = 3
 var CURRENT_STATE : GAME_STATE
+var using_random: bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
