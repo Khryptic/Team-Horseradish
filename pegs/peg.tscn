@@ -38,7 +38,7 @@ texture = ExtResource("2_358lv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_v7ta1")
 
-[node name="PegSensor" type="Area2D" parent="."]
+[node name="PegSensor" type="Area2D" parent="." groups=["peg"]]
 script = ExtResource("2_5mbo7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PegSensor"]

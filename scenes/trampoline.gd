@@ -109,6 +109,7 @@ func _on_body_entered(body: Node2D) -> void:
 	else:
 		body.linear_velocity = segment_normal * trampoline_strength * normal_speed_mult
 		animation.play("Bounce")
+		ball.bounce()
 
 		Input.vibrate_handheld(10, 0.1)
 	
