@@ -10,7 +10,7 @@ var ball_ref: Ball
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-	_add_random_set_of_pegs(false)
+	_add_pegs(GameManager.using_random)
 	GameManager.respawn_ball.connect(_spawn_ball)
 
 
@@ -39,7 +39,7 @@ func _on_ball_died() -> void:
 func _on_drawing_controller_trampoline_drawn(_trampoline: Trampoline) -> void:
 	if(ball_ref != null): ball_ref.setFreeze(false)
 
-func _add_random_set_of_pegs(add_random: bool):
+func _add_pegs(add_random: bool):
 	if (add_random):
 		PegManager._add_random_pegs_to_scene()
 		

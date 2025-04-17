@@ -22,7 +22,6 @@ func _ready() -> void:
 	_load_peg_layouts()
 	specific_level_to_play = 0
 
-
 func _process(delta: float) -> void:
 	#add pegs to scene
 	if (SceneManager.CURRENT_SCENE != SceneManager.SCENE.GAME):
@@ -159,9 +158,13 @@ func _remove_peg(peg : StaticBody2D):
 	current_pegs.erase(peg)
 
 	if (current_pegs.size() <= 0):
-		call_deferred("_add_pegs_to_scene")
-		has_peg_increased_size = false
+		if (GameManager.using_random == false):
+			call_deferred("_add_pegs_to_scene")
 		
+		else:
+			call_deferred("_add_random_pegs_to_scene")
+		
+		has_peg_increased_size = false
 func unlight_peg():
 	lit_pegs -= 1
 	if (lit_pegs == 0):
