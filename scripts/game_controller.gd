@@ -4,14 +4,15 @@ extends Node2D
 @onready var respawn_point = $Respawn
 
 @export var score_label: Label
+@export var title_label: Label
 
 var ball_ref: Ball
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-	_add_random_set_of_pegs(false)
 	GameManager.respawn_ball.connect(_spawn_ball)
+	start_new_level()
 
 
 
@@ -39,7 +40,28 @@ func _on_ball_died() -> void:
 func _on_drawing_controller_trampoline_drawn(_trampoline: Trampoline) -> void:
 	if(ball_ref != null): ball_ref.setFreeze(false)
 
+func start_new_level():
+	
+	
+	var timer = Timer.new()
+	timer.wait_time = 2 # amount of seconds to display
+	timer.one_shot = true
+	add_child(timer)
+	timer.start()
+	
+	if (PegManager.specific_level_to_play == 0):
+		title_label.text = "Arcade"
+		timer.timeout.connect(_add_random_set_of_pegs.bind(true))
+
+	else:
+		title_label.text = "Level " + str(PegManager.specific_level_to_play)
+		timer.timeout.connect(_add_random_set_of_pegs.bind(false))
+
+	title_label.show()
+
+	
 func _add_random_set_of_pegs(add_random: bool):
+	title_label.hide()
 	if (add_random):
 		PegManager._add_random_pegs_to_scene()
 		
