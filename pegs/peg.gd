@@ -3,8 +3,10 @@ class_name Peg extends StaticBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite2D: Sprite2D = $AnimationScale/Sprite2D
 @onready var circle_shader: Sprite2D = $CircleShader
+@onready var peg_sensor: Area2D = $PegSensor
 
 @export var score_orb_scene: PackedScene
+@export var burst_particles_scene: PackedScene
 @export var peg_sprite: PegSprite
 
 @export var final_peg_scaler: float
@@ -24,16 +26,12 @@ func _ready() -> void:
 	sprite2D.set_texture(peg_sprite.sprite)
 	circle_shader.set_instance_shader_parameter('color', peg_sprite.color)
 
-	get_node("peg_sensor").peg_hit.connect(_on_peg_hit)
+	peg_sensor.peg_hit.connect(_on_peg_hit)
 	GameManager.clear_pegs.connect(_remove_peg)
 
 	peg_scaler = Vector2(final_peg_scaler, final_peg_scaler)
 	
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PEG_SPAWN)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
 
 func _on_peg_hit(_body: RigidBody2D):
 
@@ -80,14 +78,19 @@ func _remove_peg():
 		for i in range(randi_range(min_orb_count, max_orb_count)):
 			spawn_score_orb()
 
-		queue_free()
-
 		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PEG_DESTROY)
 		PegManager._remove_peg(self) #tell peg manager to stop keeping reference of this peg bcus its dead now
-		
+
+		# Play the peg destroy animation
+		var particles: GPUParticles2D = burst_particles_scene.instantiate()
+		get_tree().current_scene.add_child(particles)
+		particles.texture = peg_sprite.burst_sprite
+		particles.global_position = global_position
+
+		queue_free()
 
 
 func increase_size():
 	$AnimationScale/Sprite2D.scale *= peg_scaler
 	$CollisionShape2D.scale *= peg_scaler
-	$peg_sensor/CollisionShape2D.scale *= peg_scaler
+	$PegSensor/CollisionShape2D.scale *= peg_scaler
