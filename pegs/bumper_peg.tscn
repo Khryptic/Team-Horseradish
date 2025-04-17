@@ -80,6 +80,9 @@ texture = ExtResource("4_x54hs")
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_ul7bx")
 
+[node name="PegSensor" parent="." index="2"]
+points_worth = 20
+
 [node name="CollisionShape2D" parent="PegSensor" index="0"]
 shape = SubResource("CircleShape2D_x54hs")
 
