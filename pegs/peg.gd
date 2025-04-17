@@ -35,7 +35,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-func _on_peg_hit():
+func _on_peg_hit(_body: RigidBody2D):
 
 	sprite2D.set_texture(peg_sprite.hit_sprite)
 

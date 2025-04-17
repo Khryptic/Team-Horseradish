@@ -42,26 +42,24 @@ func _on_drawing_controller_trampoline_drawn(_trampoline: Trampoline) -> void:
 
 func start_new_level():
 	
-	
+	#set timer
 	var timer = Timer.new()
 	timer.wait_time = 2 # amount of seconds to display
 	timer.one_shot = true
 	add_child(timer)
 	timer.start()
-	
+	timer.timeout.connect(_add_pegs.bind(GameManager.using_random))
+
+	#show label
 	if (PegManager.specific_level_to_play == 0):
 		title_label.text = "Arcade"
-		timer.timeout.connect(_add_random_set_of_pegs.bind(true))
-
 	else:
 		title_label.text = "Level " + str(PegManager.specific_level_to_play)
-		timer.timeout.connect(_add_random_set_of_pegs.bind(false))
-
 	title_label.show()
 
-	
-func _add_random_set_of_pegs(add_random: bool):
+func _add_pegs(add_random: bool):
 	title_label.hide()
+
 	if (add_random):
 		PegManager._add_random_pegs_to_scene()
 		

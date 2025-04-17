@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ccyai47c6iacn" path="res://assets/SP_Logo_01a.PNG" id="8_mykxm"]
 [ext_resource type="PackedScene" uid="uid://cpkg1i4wbf3yn" path="res://pegs/mega_peg.tscn" id="9_tklts"]
 [ext_resource type="Theme" uid="uid://bh1w2lowvxtp2" path="res://assets/text/red_button.tres" id="10_mynnq"]
+[ext_resource type="Texture2D" uid="uid://c1lv0ni8gkf0j" path="res://assets/SP_Button_01c.PNG" id="12_mynnq"]
 
 [sub_resource type="Environment" id="Environment_frs5l"]
 background_mode = 3
@@ -204,6 +205,39 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("1_fgkus")
 scene_to_change_to = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SpButtonBase01a3" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(274, 890.715)
+scale = Vector2(0.275724, 0.286334)
+texture = ExtResource("7_u26n3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpButtonBase01a3"]
+libraries = {
+&"": SubResource("AnimationLibrary_e8tpv")
+}
+speed_scale = 1.5
+
+[node name="SpButton01a" type="Sprite2D" parent="SpButtonBase01a3"]
+position = Vector2(1.14441e-05, 0)
+texture = ExtResource("12_mynnq")
+
+[node name="Button2" type="Button" parent="SpButtonBase01a3/SpButton01a"]
+z_index = 2
+offset_left = -511.381
+offset_top = -230.5
+offset_right = 511.619
+offset_bottom = 237.5
+theme = ExtResource("10_mynnq")
+text = "ARCADE"
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("1_fgkus")
+scene_to_change_to = 2
+randomLayout = true
+metadata/_edit_use_anchors_ = true
 
 [node name="SpDecorBottom01a" type="Sprite2D" parent="."]
 position = Vector2(276, 993)
@@ -219,3 +253,5 @@ texture = ExtResource("7_cs5ya")
 [connection signal="pressed" from="SpButtonBase01a/SpButton01a/Button2" to="SpButtonBase01a/SpButton01a/Button2" method="_on_pressed"]
 [connection signal="animation_finished" from="SpButtonBase01a2/AnimationPlayer" to="SpButtonBase01a2/SpButton01a/Button2" method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="SpButtonBase01a2/SpButton01a/Button2" to="SpButtonBase01a2/SpButton01a/Button2" method="_on_pressed"]
+[connection signal="animation_finished" from="SpButtonBase01a3/AnimationPlayer" to="SpButtonBase01a3/SpButton01a/Button2" method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="SpButtonBase01a3/SpButton01a/Button2" to="SpButtonBase01a3/SpButton01a/Button2" method="_on_pressed"]
