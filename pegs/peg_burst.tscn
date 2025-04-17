@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://niw0py85w02l"]
+[gd_scene load_steps=9 format=3 uid="uid://niw0py85w02l"]
 
 [ext_resource type="Texture2D" uid="uid://c0orfgx26q5oq" path="res://assets/peg_sprites/SP_Peg_Shards_01a.PNG" id="1_xu472"]
 [ext_resource type="Script" uid="uid://dndljyyv38coh" path="res://pegs/peg_burst.gd" id="2_1cwn6"]
@@ -8,6 +8,13 @@ particles_animation = true
 particles_anim_h_frames = 6
 particles_anim_v_frames = 3
 particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_1cwn6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.502591, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_40c7b"]
+curve = SubResource("Curve_1cwn6")
 
 [sub_resource type="Curve" id="Curve_su8kq"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.502591, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -22,22 +29,22 @@ particle_flag_disable_z = true
 angle_min = -180.0
 angle_max = 180.0
 spread = 180.0
-initial_velocity_min = 300.0
-initial_velocity_max = 500.0
+initial_velocity_min = 250.0
+initial_velocity_max = 400.0
 angular_velocity_min = -180.0
 angular_velocity_max = 180.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.25
 scale_max = 0.25
 scale_curve = SubResource("CurveTexture_0bido")
+alpha_curve = SubResource("CurveTexture_40c7b")
 anim_offset_max = 1.0
 
 [node name="BurstParticles" type="GPUParticles2D"]
 material = SubResource("CanvasItemMaterial_40c7b")
 emitting = false
-amount = 10
 texture = ExtResource("1_xu472")
-lifetime = 0.25
+lifetime = 0.35
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 0
