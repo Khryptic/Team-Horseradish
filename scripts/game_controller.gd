@@ -12,6 +12,7 @@ var ball_ref: Ball
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	GameManager.respawn_ball.connect(_spawn_ball)
+	GameManager.round_clear.connect(_on_round_cleared)
 	start_new_level()
 
 
@@ -41,6 +42,8 @@ func _on_drawing_controller_trampoline_drawn(_trampoline: Trampoline) -> void:
 	if(ball_ref != null): ball_ref.setFreeze(false)
 
 func start_new_level():
+	#reset score
+	ScoreManager.reset_all()
 	
 	#set timer
 	var timer = Timer.new()
@@ -71,3 +74,17 @@ func _on_trampoline_increase_final_peg_size() -> void:
 		var peg = PegManager.current_pegs[0]
 		peg.increase_size()
 		PegManager.has_peg_increased_size = true
+		
+func _on_round_cleared():
+	#show label
+	title_label.text = "Round cleared"
+	title_label.show()
+	
+	#set timer
+	var round_clear_timer = Timer.new()
+	round_clear_timer.wait_time = 3 # amount of seconds to display
+	round_clear_timer.one_shot = true
+	add_child(round_clear_timer)
+	round_clear_timer.start()
+	round_clear_timer.timeout.connect(start_new_level)
+	pass

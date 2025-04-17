@@ -31,14 +31,14 @@ script = ExtResource("2_xlrns")
 limit = 10
 type = 2
 sound_effect = ExtResource("5_aoitu")
-volume = -20
+volume = 0
 pitch_scale = 1.0
 pitch_randomness = 0.1
 metadata/_custom_type_script = "uid://juefpgyxybth"
 
 [sub_resource type="Resource" id="Resource_nnvwk"]
 script = ExtResource("2_xlrns")
-limit = 5
+limit = 1
 type = 3
 sound_effect = ExtResource("6_yknyo")
 volume = 0
