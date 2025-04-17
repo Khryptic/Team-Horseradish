@@ -1,6 +1,7 @@
 extends Node2D
 
 signal trampoline_drawn(trampoline: Trampoline)
+signal bullet_time_activated
 
 @onready var trampoline: Trampoline = $"Trampoline"
 @onready var drawing_guide: Area2D = $"Drawing Guide"
@@ -86,6 +87,7 @@ func _on_mouse_down():
 		Engine.time_scale = bullet_time_scale
 		bullet_time_since_activation = 0 
 		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.BULLET_TIME)
+		bullet_time_activated.emit()
 		
 		is_start_point_in_drawing_zone = true
 	else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=76 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="Script" uid="uid://2js5lt72ualx" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" uid="uid://clxxj87sfihfh" path="res://scripts/game_controller.gd" id="1_wfcph"]
@@ -132,6 +132,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7dd0l"]
 size = Vector2(18, 1099)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5q2x"]
+size = Vector2(658, 272)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c8x6e"]
 size = Vector2(17.0038, 1052)
@@ -396,6 +399,13 @@ shape = SubResource("RectangleShape2D_7dd0l")
 
 [node name="Respawn" type="Node2D" parent="."]
 position = Vector2(270, 450)
+
+[node name="DangerZone" type="Area2D" parent="."]
+position = Vector2(-8, -131)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DangerZone"]
+position = Vector2(286, 982)
+shape = SubResource("RectangleShape2D_c5q2x")
 
 [node name="Killzone" type="Area2D" parent="." groups=["killzone"]]
 position = Vector2(284, 1118)
@@ -701,6 +711,7 @@ position = Vector2(270, 200)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("54_cq0lk")
 
+[connection signal="bullet_time_activated" from="Drawing Controller" to="." method="_on_drawing_controller_bullet_time_activated"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="Drawing Controller/Trampoline" method="_on_trampoline_drawn"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="Drawing Controller/Drawing Guide" method="_on_trampoline_drawn"]
@@ -713,6 +724,7 @@ texture = ExtResource("54_cq0lk")
 [connection signal="animation_finished" from="Drawing Controller/Trampoline/AnimatedSprite2D" to="Drawing Controller/Trampoline" method="_on_animation_finished"]
 [connection signal="body_entered" from="Drawing Controller/Drawing Guide" to="Drawing Controller/Drawing Guide" method="_on_body_entered"]
 [connection signal="timeout" from="Drawing Controller/DrawCooldownTimer" to="Drawing Controller" method="_on_draw_cooldown_timer_timeout"]
+[connection signal="area_entered" from="DangerZone" to="." method="_on_danger_zone_area_entered"]
 [connection signal="safe_area_updated" from="CanvasLayer/UI/MobileSafeArea" to="Camera2D" method="_on_mobile_safe_area_updated"]
 [connection signal="pressed" from="CanvasLayer/UI/MobileSafeArea/SpButtonBaseSmall01a/PauseButton" to="CanvasLayer/UI/Pause Menu" method="_on_pause_button_pressed"]
 [connection signal="timeout" from="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel/Delay" to="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel" method="_tween_life_icon_to_starting_position"]
