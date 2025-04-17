@@ -15,10 +15,10 @@ color = Color(1, 0.372549, 0.372549, 1)
 metadata/_custom_type_script = "uid://bksf80rkut52h"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x54hs"]
-radius = 15.0
+radius = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ul7bx"]
-radius = 15.0
+radius = 20.0
 
 [sub_resource type="Animation" id="Animation_40v21"]
 length = 0.001
@@ -78,7 +78,7 @@ peg_sprite = SubResource("Resource_x54hs")
 scale = Vector2(0.975, 0.975)
 
 [node name="Sprite2D" parent="AnimationScale" index="0"]
-scale = Vector2(0.263, 0.263)
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("4_x54hs")
 
 [node name="CollisionShape2D" parent="." index="1"]
@@ -92,3 +92,7 @@ shape = SubResource("CircleShape2D_ul7bx")
 libraries = {
 &"": SubResource("AnimationLibrary_ul7bx")
 }
+speed_scale = 0.6
+
+[node name="CircleShader" parent="." index="4"]
+scale = Vector2(2, 2)

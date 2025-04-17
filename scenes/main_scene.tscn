@@ -703,7 +703,6 @@ texture = ExtResource("54_cq0lk")
 
 [node name="StaticBody2D" parent="." instance=ExtResource("55_j2yw6")]
 position = Vector2(315, 343)
-bumper_strength = 500
 
 [connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="Drawing Controller/Trampoline" method="_on_trampoline_drawn"]
