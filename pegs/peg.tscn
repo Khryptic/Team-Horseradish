@@ -8,7 +8,7 @@
 [ext_resource type="Shader" uid="uid://b7t64afbbv3dg" path="res://scenes/growing_circle.gdshader" id="4_78d3w"]
 [ext_resource type="Texture2D" uid="uid://b2ylubuw38xjv" path="res://assets/white_square.png" id="5_22ts5"]
 [ext_resource type="AnimationLibrary" uid="uid://c6ueb1fb3b0vf" path="res://pegs/animations/peg.res" id="6_34oau"]
-[ext_resource type="PackedScene" uid="uid://niw0py85w02l" path="res://pegs/peg_burst.tscn" id="9_qunqk"]
+[ext_resource type="PackedScene" uid="uid://niw0py85w02l" path="res://object_scenes/peg_burst/peg_burst.tscn" id="9_qunqk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v7ta1"]
 
