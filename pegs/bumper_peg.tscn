@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bdm6k8sgiutv3"]
+[gd_scene load_steps=12 format=3 uid="uid://bdm6k8sgiutv3"]
 
 [ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://pegs/peg.tscn" id="1_bi4ts"]
 [ext_resource type="Script" uid="uid://br3onfw0vemv5" path="res://pegs/bumper_peg.gd" id="2_p8cnk"]
@@ -14,10 +14,10 @@ hit_sprite = ExtResource("3_x54hs")
 color = Color(1, 0.372549, 0.372549, 1)
 metadata/_custom_type_script = "uid://bksf80rkut52h"
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_x54hs"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ul7bx"]
 radius = 20.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ul7bx"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_x54hs"]
 radius = 20.0
 
 [sub_resource type="Animation" id="Animation_40v21"]
@@ -59,14 +59,10 @@ tracks/2/keys = {
 "values": [Vector2(0.975, 0.975)]
 }
 
-[sub_resource type="Animation" id="Animation_m7he3"]
-resource_name = "peg_destroy"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ul7bx"]
 _data = {
 &"RESET": SubResource("Animation_40v21"),
-&"ball_hit": ExtResource("6_x54hs"),
-&"peg_destroy": SubResource("Animation_m7he3")
+&"ball_hit": ExtResource("6_x54hs")
 }
 
 [node name="StaticBody2D" instance=ExtResource("1_bi4ts")]
@@ -82,11 +78,10 @@ scale = Vector2(0.35, 0.35)
 texture = ExtResource("4_x54hs")
 
 [node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("CircleShape2D_x54hs")
-
-[node name="CollisionShape2D" parent="peg_sensor" index="0"]
-scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_ul7bx")
+
+[node name="CollisionShape2D" parent="PegSensor" index="0"]
+shape = SubResource("CircleShape2D_x54hs")
 
 [node name="AnimationPlayer" parent="." index="3"]
 libraries = {
