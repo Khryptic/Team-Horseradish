@@ -18,6 +18,9 @@ scale = Vector2(0.438, 0.438)
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_g6216")
 
+[node name="PegSensor" parent="." index="2"]
+points_worth = 50
+
 [node name="CollisionShape2D" parent="PegSensor" index="0"]
 shape = SubResource("CircleShape2D_b7g00")
 
