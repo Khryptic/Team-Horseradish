@@ -18,8 +18,8 @@ metadata/_custom_type_script = "uid://bksf80rkut52h"
 
 [node name="StaticBody2D" instance=ExtResource("1_gvws8")]
 script = ExtResource("2_5cm7c")
-unchained_sprite = ExtResource("3_xa0c6")
-peg_sprite = SubResource("Resource_wyeeq")
+chained_sprite = SubResource("Resource_wyeeq")
+peg_sprite = ExtResource("3_xa0c6")
 min_orb_count = 5
 max_orb_count = 8
 

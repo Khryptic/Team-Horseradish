@@ -13,18 +13,12 @@ func _ready():
 
 func _on_peg_hit(_body: RigidBody2D):
 
-	if(is_chained and is_light_on):
+	# If the peg is not chained, treat it like a normal peg
+	if(!is_chained):
+		super._on_peg_hit(_body)
 		
-		
-		is_light_on = false
-
-	super._on_peg_hit(_body)
-
-
-	if(is_chained):
-		
-		# Use chained sprites
-		sprite2D.set_texture(peg_sprite.hit_sprite)
+	else:
+		sprite2D.set_texture(chained_sprite.hit_sprite)
 
 		animation_player.stop()
 		animation_player.play("ball_hit")
@@ -33,12 +27,34 @@ func _on_peg_hit(_body: RigidBody2D):
 
 		if is_light_on:
 			ScoreManager.increase_mult(1)
-			PegManager.unlight_peg()
+
+		is_light_on = false
 		
 		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PEG_HIT)
 
-	else:
-		super._on_peg_hit(_body)
-
 func _remove_peg():
+	
+	if(is_chained):
+
+		if(!is_light_on):
+	
+			is_chained = false
+			is_light_on = true
+
+			sprite2D.set_texture(peg_sprite.sprite)
+			circle_shader.set_instance_shader_parameter('color', peg_sprite.color)
+
+			peg_sensor.points_worth = 30
+
+			AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PEG_DESTROY)
+
+			# Play the peg destroy animation
+			var particles: GPUParticles2D = burst_particles_scene.instantiate()
+			get_tree().current_scene.add_child(particles)
+			particles.texture = chained_sprite.burst_sprite
+			particles.global_position = global_position
+
+	# Not chained, so call the parent method
+	else:
+		super._remove_peg()
 
