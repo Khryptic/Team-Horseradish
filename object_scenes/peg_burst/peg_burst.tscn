@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://niw0py85w02l"]
 
-[ext_resource type="Texture2D" uid="uid://c0orfgx26q5oq" path="res://assets/peg_sprites/SP_Peg_Shards_01a.PNG" id="1_xu472"]
+[ext_resource type="Texture2D" uid="uid://c0orfgx26q5oq" path="res://assets/sprites/particles/SP_Peg_Shards_01a.PNG" id="1_xu472"]
 [ext_resource type="Script" uid="uid://dndljyyv38coh" path="res://object_scenes/peg_burst/peg_burst.gd" id="2_1cwn6"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_40c7b"]

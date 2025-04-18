@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PegSprite" load_steps=5 format=3 uid="uid://dd4r8qngjt68"]
 
-[ext_resource type="Texture2D" uid="uid://45awnclcffep" path="res://assets/peg_sprites/SP_Peg_Shards_01b.PNG" id="1_dfjs2"]
+[ext_resource type="Texture2D" uid="uid://45awnclcffep" path="res://assets/sprites/particles/SP_Peg_Shards_01b.PNG" id="1_dfjs2"]
 [ext_resource type="Script" uid="uid://bksf80rkut52h" path="res://pegs/peg_sprite.gd" id="2_dfjs2"]
 [ext_resource type="Texture2D" uid="uid://c2x47cnsg0gei" path="res://assets/peg_sprites/SP_Peg_04b.PNG" id="2_hp12w"]
 [ext_resource type="Texture2D" uid="uid://8olw1w4pi0qi" path="res://assets/peg_sprites/SP_Peg_02b.PNG" id="4_suwg8"]

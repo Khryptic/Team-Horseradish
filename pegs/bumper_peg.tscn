@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://pegs/peg.tscn" id="1_bi4ts"]
 [ext_resource type="Script" uid="uid://br3onfw0vemv5" path="res://pegs/bumper_peg.gd" id="2_p8cnk"]
-[ext_resource type="Texture2D" uid="uid://w7ig2oucw6n" path="res://assets/peg_sprites/SP_Peg_Shards_01c.PNG" id="3_24wtl"]
+[ext_resource type="Texture2D" uid="uid://w7ig2oucw6n" path="res://assets/sprites/particles/SP_Peg_Shards_01c.PNG" id="3_24wtl"]
 [ext_resource type="Script" uid="uid://bksf80rkut52h" path="res://pegs/peg_sprite.gd" id="3_p8cnk"]
 [ext_resource type="Texture2D" uid="uid://dp6342m1gamni" path="res://assets/peg_sprites/SP_BumperPeg_02a.PNG" id="4_hdp4o"]
 [ext_resource type="Texture2D" uid="uid://cq12bec2x0xs7" path="res://assets/peg_sprites/SP_BumperPeg_01a.PNG" id="6_3pxdi"]

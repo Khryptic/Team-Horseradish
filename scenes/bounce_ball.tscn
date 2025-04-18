@@ -1,10 +1,10 @@
 [gd_scene load_steps=65 format=3 uid="uid://dgbmfdltn82fg"]
 
 [ext_resource type="Script" uid="uid://8rc6608bm1lk" path="res://scenes/bounce_ball.gd" id="1_fptfq"]
-[ext_resource type="Texture2D" uid="uid://r4vxdfyqksup" path="res://assets/Smoke Particle.png" id="2_hopmu"]
-[ext_resource type="Texture2D" uid="uid://crg8gvjixgsix" path="res://assets/SP_Ball_02a.PNG" id="3_bo6mo"]
+[ext_resource type="Texture2D" uid="uid://r4vxdfyqksup" path="res://assets/sprites/particles/Smoke Particle.png" id="2_hopmu"]
+[ext_resource type="Texture2D" uid="uid://crg8gvjixgsix" path="res://assets/sprites/SP_Ball_02a.PNG" id="3_bo6mo"]
 [ext_resource type="Texture2D" uid="uid://csx4a1geg1j2m" path="res://assets/animations/ball/A_Ball_Idle_01a.png" id="4_akmme"]
-[ext_resource type="Texture2D" uid="uid://ciqn4q06eejde" path="res://assets/star.png" id="4_iya0n"]
+[ext_resource type="Texture2D" uid="uid://ciqn4q06eejde" path="res://assets/sprites/particles/star.png" id="4_iya0n"]
 [ext_resource type="Texture2D" uid="uid://ceeljsf5dywd1" path="res://assets/animations/ball/A_Ball_Bounce_01a.png" id="4_ya6bb"]
 [ext_resource type="Texture2D" uid="uid://irqhrdha0v1m" path="res://assets/animations/ball/A_Ball_BulletTime_01a.png" id="5_f6er1"]
 [ext_resource type="Texture2D" uid="uid://baucodnuckwyf" path="res://assets/animations/ball/A_Ball_Crit_01a.png" id="6_nsc8c"]
