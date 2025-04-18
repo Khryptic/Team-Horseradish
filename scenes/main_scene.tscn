@@ -1,11 +1,10 @@
-[gd_scene load_steps=77 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=75 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="Script" uid="uid://2js5lt72ualx" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" uid="uid://clxxj87sfihfh" path="res://scripts/game_controller.gd" id="1_wfcph"]
 [ext_resource type="Script" uid="uid://b2mb5f60jhuoi" path="res://scenes/camera_2d.gd" id="2_ruju6"]
 [ext_resource type="Script" uid="uid://bhxr8msyhd47i" path="res://scenes/trampoline.gd" id="3_0votk"]
 [ext_resource type="Script" uid="uid://b4ct6ueroj65m" path="res://scripts/score_label.gd" id="4_6jsyi"]
-[ext_resource type="Texture2D" uid="uid://bak37mkleqku4" path="res://assets/Red_X.png" id="4_dl6a1"]
 [ext_resource type="Texture2D" uid="uid://btptsh5gf68i6" path="res://assets/animations/trampoline/SP_Trampoline_Frame1_01a.PNG" id="4_jix7a"]
 [ext_resource type="Script" uid="uid://bb088g00pxb0s" path="res://scenes/drawing_guide.gd" id="4_pd01j"]
 [ext_resource type="Texture2D" uid="uid://dxtrnt3f30q80" path="res://assets/animations/trampoline/SP_Trampoline_Frame4_01a.PNG" id="5_8dxha"]
@@ -61,7 +60,6 @@
 [ext_resource type="Texture2D" uid="uid://1fwc8h17gbx1" path="res://assets/SP_Background_02a.PNG" id="48_ruju6"]
 [ext_resource type="Texture2D" uid="uid://da6ba8txavw4d" path="res://assets/SP_Decor_Top_02a.PNG" id="50_5nybl"]
 [ext_resource type="Texture2D" uid="uid://45w6y722xdmh" path="res://assets/SP_Backboard_02a.PNG" id="54_cq0lk"]
-[ext_resource type="PackedScene" uid="uid://bdm6k8sgiutv3" path="res://pegs/bumper_peg.tscn" id="62_qw8n7"]
 
 [sub_resource type="Environment" id="Environment_j4epa"]
 background_mode = 3
@@ -339,12 +337,6 @@ animation = &"Crit"
 
 [node name="Drawing Guide" type="Area2D" parent="Drawing Controller"]
 script = ExtResource("4_pd01j")
-
-[node name="Red X" type="Sprite2D" parent="Drawing Controller/Drawing Guide"]
-visible = false
-position = Vector2(-100, -100)
-scale = Vector2(0.04, 0.04)
-texture = ExtResource("4_dl6a1")
 
 [node name="Line2D" type="Line2D" parent="Drawing Controller/Drawing Guide"]
 
@@ -712,16 +704,6 @@ z_index = -4
 position = Vector2(270, 200)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("54_cq0lk")
-
-[node name="StaticBody2D" parent="." instance=ExtResource("62_qw8n7")]
-position = Vector2(110, 352)
-min_orb_count = 5
-max_orb_count = 9
-
-[node name="StaticBody2D2" parent="." instance=ExtResource("62_qw8n7")]
-position = Vector2(420, 356)
-min_orb_count = 5
-max_orb_count = 9
 
 [connection signal="bullet_time_activated" from="Drawing Controller" to="." method="_on_drawing_controller_bullet_time_activated"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]

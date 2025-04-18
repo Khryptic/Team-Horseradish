@@ -1,6 +1,5 @@
 extends Area2D
 
-@onready var red_x: Sprite2D = $"Red X"
 @onready var line: Line2D = $Line2D
 
 var point_a: Vector2:
