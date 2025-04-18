@@ -299,7 +299,6 @@ base_pos = Vector2(0, -70)
 [node name="Drawing Controller" type="Node2D" parent="."]
 script = ExtResource("1_lq30c")
 max_trampoline_length = 301
-med_length = 250
 bullet_time_scale = 0.2
 bullet_time_duration = 0.25
 bullet_time_fade_to_normal = 1.0
@@ -341,14 +340,6 @@ script = ExtResource("4_pd01j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Drawing Guide"]
 shape = SubResource("SegmentShape2D_nw457")
-
-[node name="MouseRayCast" type="RayCast2D" parent="Drawing Controller"]
-position = Vector2(-72, 21)
-enabled = false
-collision_mask = 2
-hit_from_inside = true
-collide_with_areas = true
-collide_with_bodies = false
 
 [node name="DrawCooldownTimer" type="Timer" parent="Drawing Controller"]
 wait_time = 0.15
