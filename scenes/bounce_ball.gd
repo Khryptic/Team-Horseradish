@@ -13,6 +13,7 @@ signal ball_died
 func _ready() -> void:
 	setFreeze(true)
 	GameManager.round_clear.connect(tween_to_spawn_point)
+	
 
 func _process(_delta: float) -> void:
 		

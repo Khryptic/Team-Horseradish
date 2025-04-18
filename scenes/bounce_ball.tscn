@@ -479,9 +479,9 @@ texture = ExtResource("3_bo6mo")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
 scale = Vector2(0.173333, 0.173333)
 sprite_frames = SubResource("SpriteFrames_ox0j1")
-animation = &"Hit"
+animation = &"Crit"
 autoplay = "Idle"
-frame = 4
+frame = 3
 frame_progress = 1.0
 
 [node name="StarParticles" type="GPUParticles2D" parent="."]
