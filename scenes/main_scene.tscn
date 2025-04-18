@@ -284,7 +284,6 @@ animations = [{
 }]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("score_label", "title_label")]
-position = Vector2(0, 1)
 script = ExtResource("1_wfcph")
 score_label = NodePath("CanvasLayer/UI/MobileSafeArea/ScoreLabel")
 title_label = NodePath("CanvasLayer/UI/GameOverLabel")
