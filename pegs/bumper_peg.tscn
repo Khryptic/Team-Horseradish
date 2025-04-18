@@ -1,17 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://bdm6k8sgiutv3"]
+[gd_scene load_steps=13 format=3 uid="uid://bdm6k8sgiutv3"]
 
 [ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://pegs/peg.tscn" id="1_bi4ts"]
 [ext_resource type="Script" uid="uid://br3onfw0vemv5" path="res://pegs/bumper_peg.gd" id="2_p8cnk"]
+[ext_resource type="Texture2D" uid="uid://w7ig2oucw6n" path="res://assets/peg_sprites/SP_Peg_Shards_01c.PNG" id="3_24wtl"]
 [ext_resource type="Script" uid="uid://bksf80rkut52h" path="res://pegs/peg_sprite.gd" id="3_p8cnk"]
-[ext_resource type="Texture2D" uid="uid://bjtvwf3kl5sw7" path="res://assets/peg_sprites/Bumper Peg Hit.png" id="3_x54hs"]
-[ext_resource type="Texture2D" uid="uid://clq2i7tydoirs" path="res://assets/peg_sprites/Bumper Peg.png" id="4_x54hs"]
+[ext_resource type="Texture2D" uid="uid://dp6342m1gamni" path="res://assets/peg_sprites/SP_BumperPeg_02a.PNG" id="4_hdp4o"]
+[ext_resource type="Texture2D" uid="uid://cq12bec2x0xs7" path="res://assets/peg_sprites/SP_BumperPeg_01a.PNG" id="6_3pxdi"]
 [ext_resource type="Animation" uid="uid://c3o68ptjeyk77" path="res://pegs/animations/bumper_hit.res" id="6_x54hs"]
 
 [sub_resource type="Resource" id="Resource_x54hs"]
 script = ExtResource("3_p8cnk")
-sprite = ExtResource("4_x54hs")
-hit_sprite = ExtResource("3_x54hs")
-color = Color(1, 0.372549, 0.372549, 1)
+sprite = ExtResource("6_3pxdi")
+hit_sprite = ExtResource("4_hdp4o")
+burst_sprite = ExtResource("3_24wtl")
+color = Color(1, 1, 0.313726, 1)
 metadata/_custom_type_script = "uid://bksf80rkut52h"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ul7bx"]
@@ -74,8 +76,8 @@ peg_sprite = SubResource("Resource_x54hs")
 scale = Vector2(0.975, 0.975)
 
 [node name="Sprite2D" parent="AnimationScale" index="0"]
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("4_x54hs")
+scale = Vector2(0.266, 0.266)
+texture = ExtResource("6_3pxdi")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_ul7bx")
