@@ -93,4 +93,4 @@ func _on_danger_zone_area_entered(body):
 	ball_ref.danger()
 
 func _on_drawing_controller_bullet_time_activated():
-	ball_ref.bullet_time_activated()
+	if (ball_ref != null): ball_ref.bullet_time_activated()
