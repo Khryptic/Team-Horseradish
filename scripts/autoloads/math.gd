@@ -23,3 +23,15 @@ func closest_point_on_line(a: Vector2, b: Vector2, point: Vector2, is_clamped: b
 		t = clamp(t, 0.0, 1.0)
 		
 	return a + ab * t
+
+## Calculates the intersection point between a segment and a polygon.
+## If there are multiple, returns the first one.
+## If there is no intersection, returns null
+func segment_intersects_polygon(a: Vector2, b: Vector2, polygon: PackedVector2Array) -> Variant:
+	
+	for i in polygon.size():
+		var intersection = Geometry2D.segment_intersects_segment(polygon[i], polygon[(i + 1) % polygon.size()], a, b)
+		if(intersection != null):
+			return intersection
+
+	return null

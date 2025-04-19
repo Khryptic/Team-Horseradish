@@ -62,7 +62,6 @@ func _load_peg_layouts():
 
 # Queues new list of pegs to be added to the scene
 func _add_pegs_to_scene():
-	
 	if all_peg_layouts.is_empty():
 		print("No peg layouts available.")
 		return
@@ -157,14 +156,9 @@ func _add_random_pegs_to_scene():
 func _remove_peg(peg : StaticBody2D):
 	current_pegs.erase(peg)
 
-	if (current_pegs.size() <= 0):
-		if (GameManager.using_random == false):
-			call_deferred("_add_pegs_to_scene")
-		
-		else:
-			call_deferred("_add_random_pegs_to_scene")
-		
+	if (current_pegs.size() <= 0):	
 		has_peg_increased_size = false
+		
 func unlight_peg():
 	lit_pegs -= 1
 	if (lit_pegs == 0):

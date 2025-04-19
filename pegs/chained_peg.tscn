@@ -1,0 +1,27 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3rp7ktvn88i4"]
+
+[ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://pegs/peg.tscn" id="1_gvws8"]
+[ext_resource type="Script" uid="uid://mvkkpwumnuro" path="res://pegs/chained_peg.gd" id="2_5cm7c"]
+[ext_resource type="Resource" uid="uid://dd4r8qngjt68" path="res://assets/peg_sprites/sprite_resources/blue.tres" id="3_xa0c6"]
+[ext_resource type="Texture2D" uid="uid://b8vdkwfklql85" path="res://assets/peg_sprites/Peg_Shards_Chain.png" id="4_kqajf"]
+[ext_resource type="Texture2D" uid="uid://bmcn3uj4wop16" path="res://assets/peg_sprites/Chained Peg Hit.png" id="5_jiws7"]
+[ext_resource type="Script" uid="uid://bksf80rkut52h" path="res://pegs/peg_sprite.gd" id="6_s6q5v"]
+[ext_resource type="Texture2D" uid="uid://bavogaf1n401f" path="res://assets/peg_sprites/Chained Peg.png" id="7_srn5q"]
+
+[sub_resource type="Resource" id="Resource_wyeeq"]
+script = ExtResource("6_s6q5v")
+sprite = ExtResource("7_srn5q")
+hit_sprite = ExtResource("5_jiws7")
+burst_sprite = ExtResource("4_kqajf")
+color = Color(0.674815, 0.674815, 0.674815, 1)
+metadata/_custom_type_script = "uid://bksf80rkut52h"
+
+[node name="StaticBody2D" instance=ExtResource("1_gvws8")]
+script = ExtResource("2_5cm7c")
+chained_sprite = SubResource("Resource_wyeeq")
+peg_sprite = ExtResource("3_xa0c6")
+min_orb_count = 5
+max_orb_count = 8
+
+[node name="Sprite2D" parent="AnimationScale" index="0"]
+texture = ExtResource("7_srn5q")

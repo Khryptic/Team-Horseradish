@@ -20,6 +20,7 @@ func add_points(amount: int):
 	
 func reset_mult_text():
 	pass
+
 func get_mult():
 	return mult
 	
@@ -34,3 +35,8 @@ func reset_mult_count():
 	mult = 0
 	reset_mult_text()
 	
+func reset_all():
+	mult = 0
+	total_score = 0
+	score_just_earned = 0
+	pass

@@ -1,7 +1,7 @@
 extends Area2D
 
 var floating_text = preload("res://scenes/floating_text.tscn")
-signal peg_hit()
+signal peg_hit(body: RigidBody2D)
 
 @export var points_worth : int = 10
 
@@ -24,7 +24,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("ball"):
 		_display_hit_text()
 		ScoreManager.add_points(points_worth)
-		emit_signal("peg_hit")
+		emit_signal("peg_hit", body as RigidBody2D)
 
 
 func _display_hit_text():
