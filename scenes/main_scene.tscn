@@ -490,7 +490,7 @@ theme_override_font_sizes/font_size = 32
 script = ExtResource("5_8hi1r")
 lives_icons = [NodePath("life_icon1"), NodePath("life_icon2"), NodePath("life_icon3")]
 life_icon_end_tween = Vector2(270, 350)
-tween_duration = 1
+tween_duration = 0.9
 
 [node name="life_icon1" type="Sprite2D" parent="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel"]
 position = Vector2(233, 31)

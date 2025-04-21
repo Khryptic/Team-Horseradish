@@ -2,7 +2,7 @@ extends Label
 
 @export var lives_icons: Array[Sprite2D] # Stores Icons for lives
 @export var life_icon_end_tween : Vector2
-@export var tween_duration : int
+@export var tween_duration : float
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameManager.lives_changed.connect(_tween_life_icon_to_starting_position)
