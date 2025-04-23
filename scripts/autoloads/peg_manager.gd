@@ -1,6 +1,13 @@
 extends Node
 
+@export var tscn_peg: PackedScene
+@export var tscn_mega_peg: PackedScene
+@export var tscn_bumper_peg: PackedScene
+@export var tscn_cracked_peg: PackedScene
+@export var tscn_chained_peg: PackedScene
+
 @export var basic_peg_sprites: Array[PegSprite]
+@export var cracked_peg_sprites: Array[PegSprite]
 
 var all_peg_layouts = [] 
 var current_peg_layout = [] 
@@ -89,7 +96,7 @@ func _add_pegs_to_scene():
 	if "pegs" in current_peg_layout:
 		var default_pegs = current_peg_layout.pegs
 		for peg_location in default_pegs:
-			var peg = preload("res://pegs/peg.tscn").instantiate()
+			var peg = tscn_peg.instantiate()
 			peg.position = Vector2(peg_location.x, peg_location.y)
 			peg.peg_sprite = basic_peg_sprites.pick_random()
 			current_pegs.append(peg)
@@ -98,7 +105,7 @@ func _add_pegs_to_scene():
 	if "mega_pegs" in current_peg_layout:
 		var mega_pegs = current_peg_layout.mega_pegs
 		for peg_location in mega_pegs:
-			var peg = preload("res://pegs/mega_peg.tscn").instantiate()
+			var peg = tscn_mega_peg.instantiate()
 			peg.position = Vector2(peg_location.x, peg_location.y)
 			peg.peg_sprite = basic_peg_sprites.pick_random()
 			current_pegs.append(peg)
@@ -121,7 +128,7 @@ func _add_random_pegs_to_scene():
 	
 	# Add normal pegs to scene
 	for n in rng.randi_range(6, 12):
-		var peg = preload("res://pegs/peg.tscn").instantiate()
+		var peg = tscn_peg.instantiate()
 		peg.global_position = Vector2(rng.randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
 		peg.peg_sprite = basic_peg_sprites.pick_random()
 		
@@ -137,7 +144,7 @@ func _add_random_pegs_to_scene():
 
 	# Add mega pegs to scene
 	for n in rng.randi_range(0, 4):
-		var peg = preload("res://pegs/mega_peg.tscn").instantiate()
+		var peg = tscn_mega_peg.instantiate()
 		peg.global_position = Vector2(rng.randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
 		
 		# Check for overlap
