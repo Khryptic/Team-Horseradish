@@ -26,7 +26,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-
+	if (ScoreManager.total_score < tweening_total_score):
+		tweening_total_score = ScoreManager.total_score
+		tweening_score_just_earned = 0
+		Current_Animation_State = AnimationState.Static
+	
 	match Current_Animation_State:
 		
 		AnimationState.Static: 

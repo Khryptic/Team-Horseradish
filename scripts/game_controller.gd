@@ -77,7 +77,7 @@ func _on_trampoline_increase_final_peg_size() -> void:
 		
 func _on_round_cleared():
 	#show label
-	title_label.text = "Round cleared"
+	title_label.text = "Round cleared\n" + str(PegManager.star_goals)
 	title_label.show()
 	
 	#set timer
