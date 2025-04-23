@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://45w6y722xdmh" path="res://assets/sprites/background/SP_Backboard_02a.PNG" id="2_e54dn"]
 [ext_resource type="Texture2D" uid="uid://pm7wycilri6y" path="res://assets/sprites/gui/SP_Button_01a.PNG" id="3_3yumr"]
 [ext_resource type="Texture2D" uid="uid://pe73cpf25bmg" path="res://assets/sprites/gui/SP_ButtonBase_01a.PNG" id="5_cs5ya"]
-[ext_resource type="Resource" uid="uid://jg5asrdpatns" path="res://assets/peg_sprites/sprite_resources/red.tres" id="5_mynnq"]
+[ext_resource type="Resource" uid="uid://jg5asrdpatns" path="res://assets/peg_sprites/sprite_resources/normal_red.tres" id="5_mynnq"]
 [ext_resource type="Texture2D" uid="uid://btcgl4lr1kpv" path="res://assets/sprites/background/SP_Decor_Bottom_01a.PNG" id="6_3yumr"]
 [ext_resource type="Theme" uid="uid://cy8vxdk1uodmj" path="res://assets/text/yellow_button.tres" id="6_frs5l"]
 [ext_resource type="Texture2D" uid="uid://da6ba8txavw4d" path="res://assets/sprites/background/SP_Decor_Top_02a.PNG" id="7_cs5ya"]

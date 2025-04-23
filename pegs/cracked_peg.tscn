@@ -1,16 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://bw0ywae2t2c2e"]
+[gd_scene load_steps=7 format=3 uid="uid://bw0ywae2t2c2e"]
 
 [ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://pegs/peg.tscn" id="1_hstww"]
 [ext_resource type="Script" uid="uid://gsny2jtwclvv" path="res://pegs/cracked_peg.gd" id="2_pv8vp"]
 [ext_resource type="Texture2D" uid="uid://c0orfgx26q5oq" path="res://assets/sprites/particles/SP_Peg_Shards_01a.PNG" id="3_y5bxn"]
-[ext_resource type="Texture2D" uid="uid://dtm1lc4x1rp1k" path="res://assets/peg_sprites/SP_Peg_04a.PNG" id="4_ey0sy"]
+[ext_resource type="Texture2D" uid="uid://chdyn8sis8cll" path="res://assets/peg_sprites/SP_CrackedPeg_01a.png" id="4_vwvus"]
 [ext_resource type="Script" uid="uid://bksf80rkut52h" path="res://pegs/peg_sprite.gd" id="5_tjy3h"]
-[ext_resource type="Texture2D" uid="uid://ds7g1e5iecsd7" path="res://assets/peg_sprites/Cracked Peg.png" id="6_kivdc"]
 
 [sub_resource type="Resource" id="Resource_gcl17"]
 script = ExtResource("5_tjy3h")
-sprite = ExtResource("6_kivdc")
-hit_sprite = ExtResource("4_ey0sy")
+sprite = ExtResource("4_vwvus")
+hit_sprite = ExtResource("4_vwvus")
 burst_sprite = ExtResource("3_y5bxn")
 color = Color(1, 1, 0.372549, 1)
 metadata/_custom_type_script = "uid://bksf80rkut52h"
@@ -22,7 +21,7 @@ min_orb_count = 10
 max_orb_count = 15
 
 [node name="Sprite2D" parent="AnimationScale" index="0"]
-texture = ExtResource("6_kivdc")
+texture = ExtResource("4_vwvus")
 
 [node name="PegSensor" parent="." index="2"]
 points_worth = 100

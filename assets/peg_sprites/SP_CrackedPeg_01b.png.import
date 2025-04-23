@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds7g1e5iecsd7"
-path="res://.godot/imported/Cracked Peg.png-b5c3f1564c6c32468a9315cba7b881e3.ctex"
+uid="uid://c6xttr4mh8nm0"
+path="res://.godot/imported/SP_CrackedPeg_01b.png-5fae57abdd60efbd1ce71832b54eb7f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/peg_sprites/Cracked Peg.png"
-dest_files=["res://.godot/imported/Cracked Peg.png-b5c3f1564c6c32468a9315cba7b881e3.ctex"]
+source_file="res://assets/peg_sprites/SP_CrackedPeg_01b.png"
+dest_files=["res://.godot/imported/SP_CrackedPeg_01b.png-5fae57abdd60efbd1ce71832b54eb7f5.ctex"]
 
 [params]
 

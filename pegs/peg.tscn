@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://djyrt5rvwu58r" path="res://scripts/peg_sensor.gd" id="2_5mbo7"]
 [ext_resource type="PackedScene" uid="uid://berce0fu5mvnh" path="res://object_scenes/score_orb/score_orb.tscn" id="2_34oau"]
 [ext_resource type="Texture2D" uid="uid://bxrrcrdmvu6tk" path="res://assets/peg_sprites/SP_Peg_01e.PNG" id="2_358lv"]
-[ext_resource type="Resource" uid="uid://ke3b1rmnr7r5" path="res://assets/peg_sprites/sprite_resources/yellow.tres" id="3_m7he3"]
+[ext_resource type="Resource" uid="uid://ke3b1rmnr7r5" path="res://assets/peg_sprites/sprite_resources/normal_yellow.tres" id="3_m7he3"]
 [ext_resource type="Shader" uid="uid://b7t64afbbv3dg" path="res://scenes/growing_circle.gdshader" id="4_78d3w"]
 [ext_resource type="Texture2D" uid="uid://b2ylubuw38xjv" path="res://assets/sprites/white_square.png" id="5_22ts5"]
 [ext_resource type="AnimationLibrary" uid="uid://c6ueb1fb3b0vf" path="res://pegs/animations/peg.res" id="6_34oau"]
