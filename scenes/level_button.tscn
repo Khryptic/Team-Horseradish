@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://crnpjvtcs5dec"]
 
-[ext_resource type="Texture2D" uid="uid://bhtyicp6kh8yv" path="res://assets/SP_ButtonBase_01b.PNG" id="1_6g3el"]
-[ext_resource type="Texture2D" uid="uid://ctyd3ahdbra0" path="res://assets/SP_Button_01b.PNG" id="2_ium1h"]
+[ext_resource type="Texture2D" uid="uid://bhtyicp6kh8yv" path="res://assets/sprites/gui/SP_ButtonBase_01b.PNG" id="1_6g3el"]
+[ext_resource type="Texture2D" uid="uid://ctyd3ahdbra0" path="res://assets/sprites/gui/SP_Button_01b.PNG" id="2_ium1h"]
 [ext_resource type="Theme" uid="uid://bh1w2lowvxtp2" path="res://assets/text/red_button.tres" id="3_nfgsp"]
 [ext_resource type="Script" uid="uid://bc5l667di73es" path="res://scripts/title_screen.gd" id="4_b0rp6"]
 

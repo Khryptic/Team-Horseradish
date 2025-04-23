@@ -25,8 +25,8 @@ func _spawn_ball() -> void:
 	
 	var new_ball := ball_prefab.instantiate()
 	new_ball.global_position = respawn_point.global_position
-	call_deferred("add_child", new_ball)
-	new_ball.connect("ball_died", _on_ball_died)
+	add_child.call_deferred(new_ball)
+	new_ball.ball_died.connect(_on_ball_died)
 	ball_ref = new_ball
 
 
@@ -88,3 +88,10 @@ func _on_round_cleared():
 	round_clear_timer.start()
 	round_clear_timer.timeout.connect(start_new_level)
 	pass
+
+func _on_drawing_controller_bullet_time_activated():
+	if (ball_ref != null): ball_ref.bullet_time_activated()
+
+func _on_danger_zone_body_entered(body:Node2D) -> void:
+	if (body.is_in_group("ball") and ball_ref != null):
+		ball_ref.danger()

@@ -8,10 +8,12 @@ signal ball_died
 @onready var star_particles: GPUParticles2D = $StarParticles
 @onready var smoke_particles: GPUParticles2D = $RigidBody2D/SmokeParticles
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var face_animations: AnimatedSprite2D = $RigidBody2D/AnimatedSprite2D
 
 func _ready() -> void:
 	setFreeze(true)
 	GameManager.round_clear.connect(tween_to_spawn_point)
+	
 
 func _process(_delta: float) -> void:
 		
@@ -23,7 +25,14 @@ func _process(_delta: float) -> void:
 		GameManager.clear_on_pegs()
 
 func _on_area_entered(area: Node2D) -> void:
-	if(!area.is_in_group("killzone")): return
+	if(area.is_in_group("peg")):
+		if face_animations.animation == "Hit":
+			face_animations.frame = 0
+		else:
+			face_animations.play("Hit")
+
+	if(!area.is_in_group("killzone")): 
+		return
 	
 	ball_died.emit()
 	queue_free()
@@ -41,7 +50,17 @@ func crit() -> void:
 	star_particles.rotation = rigidbody.linear_velocity.angle() + PI/2
 	animation_player.stop()
 	animation_player.play("crit")
+	face_animations.play("Crit")
 
+func bounce() -> void:
+	face_animations.play("Bounce")
+
+func bullet_time_activated() -> void:
+	face_animations.play("Bullet Time")
+
+func danger() -> void:
+	face_animations.play("Scared")
+	
 func _physics_process(_delta: float) -> void:
 	if(rigidbody.linear_velocity.y >= maxFallSpeed):
 		rigidbody.linear_velocity.y = maxFallSpeed
@@ -50,8 +69,10 @@ func tween_to_spawn_point():
 	rigidbody.set_collision_layer_value(1,false)
 	var tween = rigidbody.create_tween()
 	var end_point: Vector2 = Vector2(0,0) # REPLACE WITH REFERENCE
-	tween.tween_property(rigidbody, "position", end_point, 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_callback(_on_tween_finished)
+	tween.tween_property(rigidbody, "position", end_point, 0.6).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_callback(_on_tween_finished)	
+	face_animations.play("Idle")
+
 
 
 func _on_tween_finished():
