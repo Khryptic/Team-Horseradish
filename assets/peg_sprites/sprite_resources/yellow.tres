@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://dtm1lc4x1rp1k" path="res://assets/peg_sprites/SP_Peg_04a.PNG" id="2_o54iv"]
 [ext_resource type="Texture2D" uid="uid://d4fxiudo7daxl" path="res://assets/peg_sprites/SP_Peg_02a.PNG" id="4_yp1x6"]
 
-
 [resource]
 script = ExtResource("2_5vedc")
 sprite = ExtResource("4_yp1x6")

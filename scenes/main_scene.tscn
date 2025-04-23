@@ -695,7 +695,6 @@ position = Vector2(270, 200)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("54_cq0lk")
 
-[connection signal="bullet_time_activated" from="Drawing Controller" to="." method="_on_drawing_controller_bullet_time_activated"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="Drawing Controller/Trampoline" method="_on_trampoline_drawn"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="Drawing Controller/Drawing Guide" method="_on_trampoline_drawn"]
