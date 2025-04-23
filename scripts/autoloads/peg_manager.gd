@@ -96,19 +96,13 @@ func _add_pegs_to_scene():
 	if "pegs" in current_peg_layout:
 		var default_pegs = current_peg_layout.pegs
 		for peg_location in default_pegs:
-			var peg = tscn_peg.instantiate()
-			peg.position = Vector2(peg_location.x, peg_location.y)
-			peg.peg_sprite = basic_peg_sprites.pick_random()
-			current_pegs.append(peg)
+			add_peg_to_scene(tscn_peg, basic_peg_sprites.pick_random(), Vector2(peg_location.x, peg_location.y))
 		
 	# Queue all mega pegs to be added to scene
 	if "mega_pegs" in current_peg_layout:
 		var mega_pegs = current_peg_layout.mega_pegs
 		for peg_location in mega_pegs:
-			var peg = tscn_mega_peg.instantiate()
-			peg.position = Vector2(peg_location.x, peg_location.y)
-			peg.peg_sprite = basic_peg_sprites.pick_random()
-			current_pegs.append(peg)
+			add_peg_to_scene(tscn_mega_peg, basic_peg_sprites.pick_random(), Vector2(peg_location.x, peg_location.y))
 			
 	
 	peg_spawn_delay = PEG_SPAWNING_DURATION / current_pegs.size()
@@ -120,42 +114,13 @@ func _add_random_pegs_to_scene():
 	pegs_added = 0
 	time_since_last_peg_added = 0
 	
-	var lowerBound = Vector2(40.0, 100.0)
-	var upperBound = Vector2(450.0, 300.0)
-	
-	# To set new pegs
-	var rng = RandomNumberGenerator.new()
-	
 	# Add normal pegs to scene
-	for n in rng.randi_range(6, 12):
-		var peg = tscn_peg.instantiate()
-		peg.global_position = Vector2(rng.randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
-		peg.peg_sprite = basic_peg_sprites.pick_random()
-		
-		## Check for overlap
-		for p in current_pegs:
-			while(peg.position.x >= p.position.x - 40 &&
-				peg.position.x <= p.position.x + 40 &&
-				peg.position.y >= p.position.y - 40 &&
-				peg.position.y <= p.position.y + 40):
-					peg.position = Vector2(rng.randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
-			
-		current_pegs.append(peg)
+	for n in randi_range(6, 12):
+		add_random_peg(tscn_peg, basic_peg_sprites.pick_random(), 40)
 
 	# Add mega pegs to scene
-	for n in rng.randi_range(0, 4):
-		var peg = tscn_mega_peg.instantiate()
-		peg.global_position = Vector2(rng.randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
-		
-		# Check for overlap
-		for p in current_pegs:
-			while(peg.position.x >= p.position.x - 80 &&
-				peg.position.x <= p.position.x + 80 &&
-				peg.position.y >= p.position.y - 80 &&
-				peg.position.y <= p.position.y + 80):
-					peg.position = Vector2(rng.randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
-			
-		current_pegs.append(peg)
+	for n in randi_range(0, 4):
+		add_random_peg(tscn_mega_peg, basic_peg_sprites.pick_random(), 80)
 	
 	peg_spawn_delay = PEG_SPAWNING_DURATION / current_pegs.size()
 	lit_pegs = current_pegs.size()
@@ -173,3 +138,28 @@ func unlight_peg():
 		
 func play_specific_level(level_num : int):
 	specific_level_to_play = level_num
+
+func add_peg_to_scene(peg_scene: PackedScene, sprite: PegSprite, location: Vector2):
+	var peg = peg_scene.instantiate()
+	peg.position = location
+	peg.peg_sprite = sprite
+	current_pegs.append(peg)
+
+func add_random_peg(peg_scene: PackedScene, sprite: PegSprite, max_overlap: int):
+
+	const lowerBound := Vector2i(40, 100)
+	const upperBound := Vector2i(450, 300)
+
+	var peg = peg_scene.instantiate()
+	peg.global_position = Vector2(randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
+	peg.peg_sprite = sprite
+	
+	## Check for overlap
+	for p in current_pegs:
+		while(peg.position.x >= p.position.x - max_overlap &&
+			peg.position.x <= p.position.x + max_overlap &&
+			peg.position.y >= p.position.y - max_overlap &&
+			peg.position.y <= p.position.y + max_overlap):
+				peg.position = Vector2(randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
+
+	current_pegs.append(peg)
