@@ -104,6 +104,7 @@ func _on_danger_zone_body_entered(body:Node2D) -> void:
 		
 func _show_level_cleared_menu():
 	title_label.hide()
+	GameManager.CURRENT_STATE = GameManager.GAME_STATE.LEVEL_END_MENU
 	
 	#get references to labels
 	var goal1_label = level_clear_menu.get_node("StarGoal1") as Label
@@ -111,7 +112,10 @@ func _show_level_cleared_menu():
 	var goal3_label = level_clear_menu.get_node("StarGoal3") as Label
 	var level_clear_score_label = level_clear_menu.get_node("Score") as Label
 	var level_clear_label = level_clear_menu.get_node("LevelClear") as Label
-	
+	var star_sprite1 = level_clear_menu.get_node("Star") as Sprite2D
+	var star_sprite2 = level_clear_menu.get_node("Star2") as Sprite2D
+	var star_sprite3 = level_clear_menu.get_node("Star3") as Sprite2D
+
 	# show menu and update star goals and score count
 	level_clear_menu.show()
 	goal1_label.text = str(int(PegManager.star_goals[0]))
@@ -120,6 +124,24 @@ func _show_level_cleared_menu():
 	level_clear_score_label.text = str(int(ScoreManager.total_score))
 	level_clear_label.text = "Level " + str(PegManager.specific_level_to_play) + " Cleared!"
 
+	# If the score is higher than star count for that given star make it glow or not
+	if (ScoreManager.total_score >= PegManager.star_goals[0]):
+		star_sprite1.modulate = "#ffffff"
+	else:
+		star_sprite1.modulate = "#333333"
+		
+	if (ScoreManager.total_score >= PegManager.star_goals[1]):
+		star_sprite2.modulate = "#ffffff"
+	else:
+		star_sprite2.modulate = "#333333"
+		
+	if (ScoreManager.total_score >= PegManager.star_goals[2]):
+		star_sprite3.modulate = "#ffffff"
+	else:
+		star_sprite3.modulate = "#333333"
+	
+	#add code to update stars complete to save in future here
+	
 
 func _on_level_cleared_menu_restart_button_pressed() -> void:
 	# if restart is pressed than restart level just played
@@ -128,6 +150,7 @@ func _on_level_cleared_menu_restart_button_pressed() -> void:
 	ScoreManager.reset_mult_count()
 	PegManager.reset()
 	GameManager.start_new_level()
+	GameManager.CURRENT_STATE = GameManager.GAME_STATE.TRANSITION
 	pass # Replace with function body.
 
 
@@ -136,8 +159,11 @@ func _on_level_cleared_menu_resume_button_pressed() -> void:
 	print("hey i got clicked")
 	level_clear_menu.hide()
 	GameManager.load_next_level()
+	GameManager.CURRENT_STATE = GameManager.GAME_STATE.TRANSITION
+
 	pass # Replace with function body.
 
 
 func _on_level_cleared_menu_home_button_pressed() -> void:
 	SceneManager.change_scene(SceneManager.SCENE.LEVEL_SELECT_MENU)
+	GameManager.CURRENT_STATE = GameManager.GAME_STATE.TRANSITION

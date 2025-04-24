@@ -10,7 +10,8 @@ signal start_level()
 enum GAME_STATE{
 	PLAYING,
 	PAUSED,
-	TRANSITION
+	TRANSITION,
+	LEVEL_END_MENU
 }
 
 var lives: int = 3
