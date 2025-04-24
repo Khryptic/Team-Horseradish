@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bmfgcwojmntej"]
+[gd_scene load_steps=17 format=3 uid="uid://bmfgcwojmntej"]
 
 [ext_resource type="Script" uid="uid://ccnh37nh74872" path="res://scripts/autoloads/audio_manager.gd" id="1_23jae"]
 [ext_resource type="Script" uid="uid://juefpgyxybth" path="res://scripts/sound_effect_settings.gd" id="2_xlrns"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dhu0pdnx17nyt" path="res://assets/sfx/peg_break.mp3" id="6_kq7b2"]
 [ext_resource type="AudioStream" uid="uid://ek3vtg75008x" path="res://assets/sfx/bullet_time_enter.mp3" id="7_02gw7"]
 [ext_resource type="AudioStream" uid="uid://ppictfoye5ut" path="res://assets/sfx/button_click.mp3" id="8_02gw7"]
+[ext_resource type="AudioStream" uid="uid://ddujh2ulp2xeu" path="res://assets/sfx/bumper_sound.mp3" id="9_ujhup"]
 
 [sub_resource type="Resource" id="Resource_pdi4h"]
 script = ExtResource("2_xlrns")
@@ -67,6 +68,16 @@ pitch_scale = 1.0
 pitch_randomness = 0.0
 metadata/_custom_type_script = "uid://juefpgyxybth"
 
+[sub_resource type="Resource" id="Resource_if78k"]
+script = ExtResource("2_xlrns")
+limit = 5
+type = 6
+sound_effect = Array[AudioStreamMP3]([ExtResource("9_ujhup")])
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://juefpgyxybth"
+
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_23jae")
-sound_effects = Array[ExtResource("2_xlrns")]([SubResource("Resource_pdi4h"), SubResource("Resource_krcch"), SubResource("Resource_m6ggh"), SubResource("Resource_ujhup"), SubResource("Resource_064dn"), SubResource("Resource_ic5jq")])
+sound_effects = Array[ExtResource("2_xlrns")]([SubResource("Resource_pdi4h"), SubResource("Resource_krcch"), SubResource("Resource_m6ggh"), SubResource("Resource_ujhup"), SubResource("Resource_064dn"), SubResource("Resource_ic5jq"), SubResource("Resource_if78k")])
