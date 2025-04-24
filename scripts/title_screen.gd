@@ -8,6 +8,7 @@ class_name SceneChangingButton # ik its a great name :D
 func _on_pressed():
 	if (is_instance_valid($"../../AnimationPlayer")):
 		$"../../AnimationPlayer".play("button_press")
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.CLICK)
 	GameManager.using_random = randomLayout
 
 func _on_animation_player_animation_finished(_button_press):

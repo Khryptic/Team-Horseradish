@@ -31,7 +31,7 @@ func _ready() -> void:
 
 	peg_scaler = Vector2(final_peg_scaler, final_peg_scaler)
 	
-	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PEG_SPAWN)
+	AudioManager.create_2d_audio_at_location(position, SoundEffect.SOUND_EFFECT_TYPE.PEG_SPAWN)
 
 func _on_peg_hit(_body: RigidBody2D):
 
@@ -47,7 +47,7 @@ func _on_peg_hit(_body: RigidBody2D):
 		PegManager.unlight_peg()
 	is_light_on = false
 	
-	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PEG_HIT)
+	AudioManager.create_2d_audio_at_location(position, SoundEffect.SOUND_EFFECT_TYPE.PEG_HIT)
 
 func spawn_score_orb():
 	# Create score orb
@@ -78,7 +78,7 @@ func _remove_peg():
 		for i in range(randi_range(min_orb_count, max_orb_count)):
 			spawn_score_orb()
 
-		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PEG_DESTROY)
+		AudioManager.create_2d_audio_at_location(position, SoundEffect.SOUND_EFFECT_TYPE.PEG_DESTROY)
 		PegManager._remove_peg(self) #tell peg manager to stop keeping reference of this peg bcus its dead now
 
 		# Play the peg destroy animation
