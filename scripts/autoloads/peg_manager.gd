@@ -71,6 +71,24 @@ func _load_peg_layouts():
 		var json_data = file.get_as_text()
 		var parsed_data = JSON.parse_string(json_data)
 		if parsed_data is Array:
+
+			# Check that the peg level IDs are all valid
+			var level_ids: Dictionary[String, bool]
+			
+			for level in parsed_data:
+
+				if !level.has("id"):
+					printerr("Error: Level ID not found in level: ", level)
+					get_tree().quit()
+					return
+
+				if level_ids.has(level.id):
+					printerr("Error: Duplicate level ID found: ", level.id)
+					get_tree().quit()
+					return
+				
+				level_ids[level.id] = true
+
 			all_peg_layouts = parsed_data
 		else:
 			print("Error: Failed to parse JSON data.")
