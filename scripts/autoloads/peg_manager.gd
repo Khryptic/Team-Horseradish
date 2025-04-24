@@ -8,6 +8,7 @@ extends Node
 
 @export var basic_peg_sprites: Array[PegSprite]
 @export var cracked_peg_sprites: Array[PegSprite]
+@export var bumper_peg_sprite: PegSprite
 
 var all_peg_layouts = [] 
 var current_peg_layout = [] 
@@ -104,9 +105,20 @@ func _add_pegs_to_scene():
 	
 	for peg_type in peg_types.keys():
 		if peg_type in current_peg_layout:
+
 			var locations = current_peg_layout[peg_type]
 			for location in locations:
-				add_peg_to_scene(peg_types[peg_type], basic_peg_sprites.pick_random(), Vector2(location.x, location.y))	
+
+				# Pick sprite based on peg type
+				var sprite: PegSprite
+				if(peg_type == "pegs" or peg_type == "mega_pegs" or peg_type == "chained_pegs"):
+					sprite = basic_peg_sprites.pick_random()
+				elif(peg_type == "bumper_pegs"):
+					sprite = bumper_peg_sprite
+				elif("cracked_pegs"):
+					sprite = cracked_peg_sprites.pick_random()
+
+				add_peg_to_scene(peg_types[peg_type], sprite, Vector2(location.x, location.y))	
 	
 	peg_spawn_delay = PEG_SPAWNING_DURATION / current_pegs.size()
 	lit_pegs = current_pegs.size()
