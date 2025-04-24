@@ -1,8 +1,11 @@
 extends Panel
 
 func _on_pause_button_pressed():
+	if (GameManager.CURRENT_STATE == GameManager.GAME_STATE.LEVEL_END_MENU):
+		return
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) # lets mouse exit window
-
+	
 	get_tree().paused = true
 	show()
 
