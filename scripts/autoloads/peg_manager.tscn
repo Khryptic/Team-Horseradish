@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://crhfskuwvjs2t"]
+[gd_scene load_steps=19 format=3 uid="uid://crhfskuwvjs2t"]
 
 [ext_resource type="Script" uid="uid://dlbsfgiupj80x" path="res://scripts/autoloads/peg_manager.gd" id="1_qrecy"]
 [ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://pegs/peg.tscn" id="2_1qa0f"]
@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://b2bhc4cj6i3hd" path="res://assets/peg_sprites/sprite_resources/cracked_red.tres" id="15_xj8in"]
 [ext_resource type="Resource" uid="uid://blrh8ms0n6tf8" path="res://assets/peg_sprites/sprite_resources/cracked_green.tres" id="16_8ithe"]
 [ext_resource type="Resource" uid="uid://sl7ggt37oql0" path="res://assets/peg_sprites/sprite_resources/cracked_purple.tres" id="17_2f00y"]
+[ext_resource type="Resource" uid="uid://bbxjvtddvp5ut" path="res://assets/peg_sprites/sprite_resources/bumper.tres" id="18_4hlup"]
 
 [node name="PegManager" type="Node2D"]
 script = ExtResource("1_qrecy")
@@ -27,3 +28,4 @@ tscn_cracked_peg = ExtResource("5_ycgpg")
 tscn_chained_peg = ExtResource("6_huw6i")
 basic_peg_sprites = Array[ExtResource("2_y4eho")]([ExtResource("3_wl00g"), ExtResource("4_h3y13"), ExtResource("5_lqepq"), ExtResource("6_bqfy8"), ExtResource("7_bg6fh")])
 cracked_peg_sprites = Array[ExtResource("2_y4eho")]([ExtResource("13_6vcn2"), ExtResource("14_wfett"), ExtResource("15_xj8in"), ExtResource("16_8ithe"), ExtResource("17_2f00y")])
+bumper_peg_sprite = ExtResource("18_4hlup")

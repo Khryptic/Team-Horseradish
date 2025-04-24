@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dim5x00vyumhf"]
+[gd_scene load_steps=13 format=3 uid="uid://braa52j21gsq"]
 
 [ext_resource type="Script" uid="uid://ccnh37nh74872" path="res://scripts/autoloads/audio_manager.gd" id="1_23jae"]
 [ext_resource type="Script" uid="uid://juefpgyxybth" path="res://scripts/sound_effect_settings.gd" id="2_xlrns"]

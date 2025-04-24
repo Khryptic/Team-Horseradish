@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://c6usj5s4g5bdm"]
+[gd_scene load_steps=76 format=3 uid="uid://c6usj5s4g5bdm"]
 
 [ext_resource type="Script" uid="uid://2js5lt72ualx" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
 [ext_resource type="Script" uid="uid://clxxj87sfihfh" path="res://scripts/game_controller.gd" id="1_wfcph"]
@@ -57,6 +57,7 @@
 [ext_resource type="Texture2D" uid="uid://bhtyicp6kh8yv" path="res://assets/sprites/gui/SP_ButtonBase_01b.PNG" id="32_taqkn"]
 [ext_resource type="Texture2D" uid="uid://ctyd3ahdbra0" path="res://assets/sprites/gui/SP_Button_01b.PNG" id="33_qnap4"]
 [ext_resource type="Theme" uid="uid://bh1w2lowvxtp2" path="res://assets/text/red_button.tres" id="34_1sx6m"]
+[ext_resource type="Texture2D" uid="uid://blypkuv656wh5" path="res://assets/sprites/gui/SP_Star_01a.png" id="34_c5q2x"]
 [ext_resource type="Texture2D" uid="uid://1fwc8h17gbx1" path="res://assets/sprites/background/SP_Background_02a.PNG" id="48_ruju6"]
 [ext_resource type="Texture2D" uid="uid://da6ba8txavw4d" path="res://assets/sprites/background/SP_Decor_Top_02a.PNG" id="50_5nybl"]
 [ext_resource type="Texture2D" uid="uid://45w6y722xdmh" path="res://assets/sprites/background/SP_Backboard_02a.PNG" id="54_cq0lk"]
@@ -283,10 +284,11 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("score_label", "title_label")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("score_label", "title_label", "level_clear_menu")]
 script = ExtResource("1_wfcph")
 score_label = NodePath("CanvasLayer/UI/MobileSafeArea/ScoreLabel")
-title_label = NodePath("CanvasLayer/UI/GameOverLabel")
+title_label = NodePath("CanvasLayer/UI/LevelEndLabel")
+level_clear_menu = NodePath("CanvasLayer/UI/LevelEndMenu")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_j4epa")
@@ -518,7 +520,7 @@ position = Vector2(268, 32)
 scale = Vector2(0.210526, 0.210526)
 texture = ExtResource("25_j2yw6")
 
-[node name="GameOverLabel" type="Label" parent="CanvasLayer/UI"]
+[node name="LevelEndLabel" type="Label" parent="CanvasLayer/UI"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -538,7 +540,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("5_ufrqt")
 
-[node name="Timer" type="Timer" parent="CanvasLayer/UI/GameOverLabel"]
+[node name="Timer" type="Timer" parent="CanvasLayer/UI/LevelEndLabel"]
 wait_time = 3.0
 
 [node name="Pause Menu" type="Panel" parent="CanvasLayer/UI"]
@@ -671,6 +673,242 @@ theme_override_font_sizes/font_size = 200
 text = "Exit"
 flat = true
 
+[node name="LevelEndMenu" type="Panel" parent="CanvasLayer/UI"]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = -259.0
+offset_right = 202.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0uct7")
+
+[node name="SpMenuBg01a" type="Sprite2D" parent="CanvasLayer/UI/LevelEndMenu"]
+z_index = -1
+position = Vector2(197, 159)
+scale = Vector2(0.407127, 0.407125)
+texture = ExtResource("29_0xxsb")
+
+[node name="LevelClear" type="Label" parent="CanvasLayer/UI/LevelEndMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -184.5
+offset_right = 178.0
+offset_bottom = -101.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Level Clear!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="CanvasLayer/UI/LevelEndMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = -110.5
+offset_right = 174.0
+offset_bottom = -27.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "3490 pts"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StarGoal1" type="Label" parent="CanvasLayer/UI/LevelEndMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.0
+offset_top = 132.5
+offset_right = -126.0
+offset_bottom = 212.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "2000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StarGoal2" type="Label" parent="CanvasLayer/UI/LevelEndMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = 132.5
+offset_right = 65.0
+offset_bottom = 212.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "3000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StarGoal3" type="Label" parent="CanvasLayer/UI/LevelEndMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 118.0
+offset_top = 132.5
+offset_right = 268.0
+offset_bottom = 212.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "4000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Sprite2D" parent="CanvasLayer/UI/LevelEndMenu"]
+z_index = 1
+position = Vector2(63, 502)
+scale = Vector2(0.235725, 0.244796)
+texture = ExtResource("30_c5q2x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UI/LevelEndMenu/Restart"]
+libraries = {
+&"": SubResource("AnimationLibrary_e8tpv")
+}
+speed_scale = 1.5
+
+[node name="SpButton01a" type="Sprite2D" parent="CanvasLayer/UI/LevelEndMenu/Restart"]
+position = Vector2(1.14441e-05, 0)
+texture = ExtResource("31_qw8n7")
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/UI/LevelEndMenu/Restart/SpButton01a"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1019.13
+offset_top = -391.152
+offset_right = 25.8654
+offset_bottom = -66.1516
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("20_cq0lk")
+theme_override_font_sizes/font_size = 200
+text = "Restart"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Continue" type="Sprite2D" parent="CanvasLayer/UI/LevelEndMenu"]
+z_index = 1
+position = Vector2(313, 503)
+scale = Vector2(0.235725, 0.244796)
+texture = ExtResource("30_c5q2x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UI/LevelEndMenu/Continue"]
+libraries = {
+&"": SubResource("AnimationLibrary_e8tpv")
+}
+speed_scale = 1.5
+
+[node name="SpButton01a" type="Sprite2D" parent="CanvasLayer/UI/LevelEndMenu/Continue"]
+position = Vector2(1.14441e-05, 0)
+texture = ExtResource("31_qw8n7")
+
+[node name="ContinueButton" type="Button" parent="CanvasLayer/UI/LevelEndMenu/Continue/SpButton01a"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1019.13
+offset_top = -391.152
+offset_right = 25.8654
+offset_bottom = -66.1516
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("20_cq0lk")
+theme_override_font_sizes/font_size = 200
+text = "Continue"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Menu" type="Sprite2D" parent="CanvasLayer/UI/LevelEndMenu"]
+z_index = 1
+position = Vector2(184, 632)
+scale = Vector2(0.235725, 0.244796)
+texture = ExtResource("30_c5q2x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UI/LevelEndMenu/Menu"]
+libraries = {
+&"": SubResource("AnimationLibrary_e8tpv")
+}
+speed_scale = 1.5
+
+[node name="SpButton01a" type="Sprite2D" parent="CanvasLayer/UI/LevelEndMenu/Menu"]
+position = Vector2(1.14441e-05, 0)
+texture = ExtResource("31_qw8n7")
+
+[node name="MenuButton" type="Button" parent="CanvasLayer/UI/LevelEndMenu/Menu/SpButton01a"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1019.13
+offset_top = -391.152
+offset_right = 25.8654
+offset_bottom = -66.1516
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("20_cq0lk")
+theme_override_font_sizes/font_size = 200
+text = "Levels"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Star" type="Sprite2D" parent="CanvasLayer/UI/LevelEndMenu"]
+modulate = Color(0.2, 0.2, 0.2, 1)
+position = Vector2(-1, 257)
+scale = Vector2(0.313973, 0.313973)
+texture = ExtResource("34_c5q2x")
+
+[node name="Star2" type="Sprite2D" parent="CanvasLayer/UI/LevelEndMenu"]
+modulate = Color(0.2, 0.2, 0.2, 1)
+position = Vector2(188, 257)
+scale = Vector2(0.313973, 0.313973)
+texture = ExtResource("34_c5q2x")
+
+[node name="Star3" type="Sprite2D" parent="CanvasLayer/UI/LevelEndMenu"]
+modulate = Color(0.2, 0.2, 0.2, 1)
+position = Vector2(385, 257)
+scale = Vector2(0.313973, 0.313973)
+texture = ExtResource("34_c5q2x")
+
 [node name="OnboardingAnimation" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="OnboardingAnimation"]
@@ -722,7 +960,10 @@ texture = ExtResource("50_5nybl")
 [connection signal="safe_area_updated" from="CanvasLayer/UI/MobileSafeArea" to="Camera2D" method="_on_mobile_safe_area_updated"]
 [connection signal="pressed" from="CanvasLayer/UI/MobileSafeArea/SpButtonBaseSmall01a/PauseButton" to="CanvasLayer/UI/Pause Menu" method="_on_pause_button_pressed"]
 [connection signal="timeout" from="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel/Delay" to="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel" method="_tween_life_icon_to_starting_position"]
-[connection signal="timeout" from="CanvasLayer/UI/GameOverLabel/Timer" to="CanvasLayer/UI/GameOverLabel" method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/UI/LevelEndLabel/Timer" to="CanvasLayer/UI/LevelEndLabel" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/UI/Pause Menu/ResumeButton/SpButton01a/ResumeButton" to="CanvasLayer/UI/Pause Menu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Pause Menu/RestartButton/SpButton01a/RestartButton" to="CanvasLayer/UI/Pause Menu" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Pause Menu/ExitButton/SpButton01a/HomeButton" to="CanvasLayer/UI/Pause Menu" method="_on_home_button_pressed"]
+[connection signal="focus_entered" from="CanvasLayer/UI/LevelEndMenu/Restart/SpButton01a/RestartButton" to="." method="_on_level_cleared_menu_restart_button_pressed"]
+[connection signal="focus_entered" from="CanvasLayer/UI/LevelEndMenu/Continue/SpButton01a/ContinueButton" to="." method="_on_level_cleared_menu_resume_button_pressed"]
+[connection signal="focus_entered" from="CanvasLayer/UI/LevelEndMenu/Menu/SpButton01a/MenuButton" to="." method="_on_level_cleared_menu_home_button_pressed"]

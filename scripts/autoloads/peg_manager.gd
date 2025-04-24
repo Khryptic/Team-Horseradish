@@ -11,7 +11,7 @@ extends Node
 @export var bumper_peg_sprite: PegSprite
 
 var all_peg_layouts = [] 
-var current_peg_layout = [] 
+var current_peg_layout: Dictionary = {} 
 var unlit_pegs: int
 var current_pegs = []
 var current_layout_number: int = 99999
@@ -33,6 +33,7 @@ var time_since_last_peg_added: float
 var pegs_added: int # amount of pegs that have been added to the scene
 
 var specific_level_to_play : int
+var star_goals = [] # [0] = 1 star requirment [1,2] = 2,3 star score requirements
 
 func _ready() -> void:
 	_load_peg_layouts()
@@ -70,6 +71,24 @@ func _load_peg_layouts():
 		var json_data = file.get_as_text()
 		var parsed_data = JSON.parse_string(json_data)
 		if parsed_data is Array:
+
+			# Check that the peg level IDs are all valid
+			var level_ids: Dictionary[String, bool]
+			
+			for level in parsed_data:
+
+				if !level.has("id"):
+					printerr("Error: Level ID not found in level: ", level)
+					get_tree().quit()
+					return
+
+				if level_ids.has(level.id):
+					printerr("Error: Duplicate level ID found: ", level.id)
+					get_tree().quit()
+					return
+				
+				level_ids[level.id] = true
+
 			all_peg_layouts = parsed_data
 		else:
 			print("Error: Failed to parse JSON data.")
@@ -98,9 +117,16 @@ func _add_pegs_to_scene():
 
 	time_since_last_peg_added = 0
 	
+	star_goals.clear()
 	current_pegs.clear()
 	pegs_added = 0
 	
+	# get star goal requirements for this layout of pegs
+	if "star_goals" in current_peg_layout:
+		for star_goal in current_peg_layout.star_goals:
+			star_goals.push_back(star_goal)
+
+
 	# Queue all normal pegs to be added to scene
 	
 	for peg_type in peg_types.keys():
@@ -129,13 +155,27 @@ func _add_random_pegs_to_scene():
 	pegs_added = 0
 	time_since_last_peg_added = 0
 	
+	# Only include 2 types of pegs (always regular pegs)
 	# Add normal pegs to scene
 	for n in randi_range(6, 12):
 		add_random_peg(tscn_peg, basic_peg_sprites.pick_random(), 40)
-
-	# Add mega pegs to scene
-	for n in randi_range(0, 4):
-		add_random_peg(tscn_mega_peg, basic_peg_sprites.pick_random(), 80)
+	
+	var types = [1, 2, 3]
+	var pegIndex = randi_range(0, types.size() - 1)
+	var peg = types[pegIndex]
+	match (peg):
+		1:
+			# Add mega pegs to scene
+			for n in randi_range(1, 4):
+				add_random_peg(tscn_mega_peg, basic_peg_sprites.pick_random(), 60)
+		2:
+			# Add bumper pegs to scene
+			for n in randi_range(1, 3):
+				add_random_peg(tscn_bumper_peg, bumper_peg_sprite, 50)
+		3:
+				# Add chained pegs to scene
+			for n in randi_range(1, 3):
+				add_random_peg(tscn_chained_peg, basic_peg_sprites.pick_random(), 40)
 	
 	peg_spawn_delay = PEG_SPAWNING_DURATION / current_pegs.size()
 	lit_pegs = current_pegs.size()
@@ -169,12 +209,24 @@ func add_random_peg(peg_scene: PackedScene, sprite: PegSprite, max_overlap: int)
 	peg.global_position = Vector2(randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
 	peg.peg_sprite = sprite
 	
+	var timer = 0
+	
 	## Check for overlap
-	for p in current_pegs:
-		while(peg.position.x >= p.position.x - max_overlap &&
-			peg.position.x <= p.position.x + max_overlap &&
-			peg.position.y >= p.position.y - max_overlap &&
-			peg.position.y <= p.position.y + max_overlap):
-				peg.position = Vector2(randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
+	if (current_pegs.size() == 0):
+		peg.position = Vector2(randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
+	
+	else:
+		var index = -1
+		while (index < current_pegs.size() - 1 && timer < 300000000):
+			index += 1
+			timer += 1
+			var p = current_pegs[index]
+			while(peg.position.x >= p.position.x - max_overlap &&
+				peg.position.x <= p.position.x + max_overlap &&
+				peg.position.y >= p.position.y - max_overlap &&
+				peg.position.y <= p.position.y + max_overlap):
+					peg.position = Vector2(randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
+					index = -1
 
-	current_pegs.append(peg)
+	if (timer < 300000000):
+		current_pegs.append(peg)
