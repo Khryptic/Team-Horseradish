@@ -18,6 +18,14 @@ var lit_pegs: int
 
 var has_peg_increased_size: bool = false
 
+@onready var peg_types: Dictionary = {
+	"pegs": tscn_peg,
+	"mega_pegs": tscn_mega_peg,
+	"bumper_pegs": tscn_bumper_peg,
+	"cracked_pegs": tscn_cracked_peg,
+	"chained_pegs": tscn_chained_peg
+}
+
 var peg_spawn_delay: float #time between each peg spawning
 const PEG_SPAWNING_DURATION: float = 1.0; #total time (sec) that pegs will spawn on screen
 var time_since_last_peg_added: float 
@@ -93,17 +101,12 @@ func _add_pegs_to_scene():
 	pegs_added = 0
 	
 	# Queue all normal pegs to be added to scene
-	if "pegs" in current_peg_layout:
-		var default_pegs = current_peg_layout.pegs
-		for peg_location in default_pegs:
-			add_peg_to_scene(tscn_peg, basic_peg_sprites.pick_random(), Vector2(peg_location.x, peg_location.y))
-		
-	# Queue all mega pegs to be added to scene
-	if "mega_pegs" in current_peg_layout:
-		var mega_pegs = current_peg_layout.mega_pegs
-		for peg_location in mega_pegs:
-			add_peg_to_scene(tscn_mega_peg, basic_peg_sprites.pick_random(), Vector2(peg_location.x, peg_location.y))
-			
+	
+	for peg_type in peg_types.keys():
+		if peg_type in current_peg_layout:
+			var locations = current_peg_layout[peg_type]
+			for location in locations:
+				add_peg_to_scene(peg_types[peg_type], basic_peg_sprites.pick_random(), Vector2(location.x, location.y))	
 	
 	peg_spawn_delay = PEG_SPAWNING_DURATION / current_pegs.size()
 	lit_pegs = current_pegs.size()
