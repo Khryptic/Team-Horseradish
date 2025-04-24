@@ -3,6 +3,7 @@ class_name SoundEffect
 
 # To add new sound effect make sure to add type to this enum
 enum SOUND_EFFECT_TYPE{
+	CLICK,
 	PEG_HIT,
 	TRAMPOLINE_BOUNCE,
 	PEG_SPAWN,
