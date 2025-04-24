@@ -80,7 +80,7 @@ func _on_trampoline_increase_final_peg_size() -> void:
 		
 func _on_round_cleared():
 	#check high score
-	var current_level_id: String = PegManager.all_peg_layouts[PegManager.specific_level_to_play].id - 1
+	var current_level_id: String = PegManager.all_peg_layouts[PegManager.specific_level_to_play - 1].id
 
 	if ScoreManager.total_score > SaveManager.high_scores.get_or_add(current_level_id, 0):
 		SaveManager.high_scores[current_level_id] = ScoreManager.total_score
