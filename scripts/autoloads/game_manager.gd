@@ -5,6 +5,7 @@ signal clear_pegs()
 signal game_over()
 signal respawn_ball()
 signal round_clear()
+signal start_level()
 
 enum GAME_STATE{
 	PLAYING,
@@ -45,7 +46,7 @@ func start_new_level():
 	get_tree().reload_current_scene()
 	ScoreManager.total_score = 0
 	ScoreManager.reset_mult_count()
-	
+		
 func start_random_level():
 	CURRENT_STATE = GAME_STATE.TRANSITION
 
@@ -65,13 +66,14 @@ func start_round():
 
 	
 func emit_round_clear():
-	if (PegManager.specific_level_to_play > 0): # after level cleared immediately go to next level
-		if (PegManager.specific_level_to_play >= PegManager.all_peg_layouts.size()): # when last level is beaten
-			#SceneManager.change_scene(SceneManager.SCENE.LEVEL_SELECT_MENU) #return to menu
-			PegManager.specific_level_to_play = 0 # go to arcade mode
-		else:
-			PegManager.specific_level_to_play += 1 # go to next level
-
 	ScoreManager.reset_mult_count()
 	round_clear.emit()
 	CURRENT_STATE = GAME_STATE.TRANSITION
+
+func load_next_level():
+	if (PegManager.specific_level_to_play > 0): # after level cleared immediately go to next level
+		if (PegManager.specific_level_to_play >= PegManager.all_peg_layouts.size()): # when last level is beaten
+			SceneManager.change_scene(SceneManager.SCENE.LEVEL_SELECT_MENU) #return to menu
+		else:
+			PegManager.specific_level_to_play += 1 # go to next level
+			start_new_level()

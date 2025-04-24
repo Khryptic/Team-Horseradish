@@ -33,6 +33,7 @@ var time_since_last_peg_added: float
 var pegs_added: int # amount of pegs that have been added to the scene
 
 var specific_level_to_play : int
+var star_goals = [] # [0] = 1 star requirment [1,2] = 2,3 star score requirements
 
 func _ready() -> void:
 	_load_peg_layouts()
@@ -98,9 +99,16 @@ func _add_pegs_to_scene():
 
 	time_since_last_peg_added = 0
 	
+	star_goals.clear()
 	current_pegs.clear()
 	pegs_added = 0
 	
+	# get star goal requirements for this layout of pegs
+	if "star_goals" in current_peg_layout:
+		for star_goal in current_peg_layout.star_goals:
+			star_goals.push_back(star_goal)
+
+
 	# Queue all normal pegs to be added to scene
 	
 	for peg_type in peg_types.keys():
