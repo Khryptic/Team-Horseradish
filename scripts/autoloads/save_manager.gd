@@ -5,7 +5,7 @@ const save_path = "user://save_data.save"
 var most_recently_played_level: int = 0
 var arcade_high_score: int = 0
 
-# If a level's high score is 0, it means the level has not been beaten yet.
+# If a level's high score isn't in the dictionary, it means the level has not been beaten yet.
 var high_scores: Dictionary[String, int]
 
 func _ready():

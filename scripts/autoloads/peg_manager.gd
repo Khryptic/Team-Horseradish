@@ -11,7 +11,7 @@ extends Node
 @export var bumper_peg_sprite: PegSprite
 
 var all_peg_layouts = [] 
-var current_peg_layout = [] 
+var current_peg_layout: Dictionary = {} 
 var unlit_pegs: int
 var current_pegs = []
 var current_layout_number: int = 99999
