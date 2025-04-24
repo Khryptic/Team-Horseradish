@@ -25,6 +25,7 @@ AudioManager="*res://scenes/audio_manager.tscn"
 AndroidImmersiveManager="*res://scripts/autoloads/android_immersive_manager.gd"
 SceneManager="*res://scripts/autoloads/scene_manager.gd"
 PegManager="*res://scripts/autoloads/peg_manager.tscn"
+SaveManager="*res://scripts/autoloads/save_manager.gd"
 
 [display]
 
