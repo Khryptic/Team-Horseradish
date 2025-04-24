@@ -40,6 +40,7 @@ func _ready() -> void:
 	specific_level_to_play = 0
 
 func _process(delta: float) -> void:
+
 	#add pegs to scene
 	if (SceneManager.CURRENT_SCENE != SceneManager.SCENE.GAME):
 		return

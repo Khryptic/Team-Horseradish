@@ -80,11 +80,14 @@ func _on_trampoline_increase_final_peg_size() -> void:
 		
 func _on_round_cleared():
 	#check high score
-	var current_level_id: String = PegManager.all_peg_layouts[PegManager.specific_level_to_play - 1].id
+	if (!GameManager.using_random and PegManager.current_peg_layout):
 
-	if ScoreManager.total_score > SaveManager.high_scores.get_or_add(current_level_id, 0):
-		SaveManager.high_scores[current_level_id] = ScoreManager.total_score
-		SaveManager.save_game()
+		var currentID: String = PegManager.current_peg_layout.id
+
+		if ScoreManager.total_score > SaveManager.high_scores.get_or_add(currentID, 0):
+			SaveManager.high_scores[currentID] = ScoreManager.total_score
+			print("Saving high score for level " + currentID + ": " + str(ScoreManager.total_score))
+			SaveManager.save_game()
 
 	#show label
 	title_label.text = "Level cleared!"
