@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bmfgcwojmntej"]
+[gd_scene load_steps=18 format=3 uid="uid://bmfgcwojmntej"]
 
 [ext_resource type="Script" uid="uid://ccnh37nh74872" path="res://scripts/autoloads/audio_manager.gd" id="1_23jae"]
 [ext_resource type="Script" uid="uid://juefpgyxybth" path="res://scripts/sound_effect_settings.gd" id="2_xlrns"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://ek3vtg75008x" path="res://assets/sfx/bullet_time_enter.mp3" id="7_02gw7"]
 [ext_resource type="AudioStream" uid="uid://ppictfoye5ut" path="res://assets/sfx/button_click.mp3" id="8_02gw7"]
 [ext_resource type="AudioStream" uid="uid://ddujh2ulp2xeu" path="res://assets/sfx/bumper_sound.mp3" id="9_ujhup"]
+[ext_resource type="AudioStream" uid="uid://dt7me3d7uoug7" path="res://assets/sfx/bumper_sound_alt.mp3" id="10_064dn"]
 
 [sub_resource type="Resource" id="Resource_pdi4h"]
 script = ExtResource("2_xlrns")
@@ -72,7 +73,7 @@ metadata/_custom_type_script = "uid://juefpgyxybth"
 script = ExtResource("2_xlrns")
 limit = 5
 type = 6
-sound_effect = Array[AudioStreamMP3]([ExtResource("9_ujhup")])
+sound_effect = Array[AudioStreamMP3]([ExtResource("9_ujhup"), ExtResource("10_064dn")])
 volume = 0
 pitch_scale = 1.0
 pitch_randomness = 0.0

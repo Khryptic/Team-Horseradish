@@ -161,7 +161,7 @@ func _add_random_pegs_to_scene():
 	for n in randi_range(6, 12):
 		add_random_peg(tscn_peg, basic_peg_sprites.pick_random(), 40)
 	
-	var types = [1, 2, 3]
+	var types = [1, 2, 3, 4]
 	var pegIndex = randi_range(0, types.size() - 1)
 	var peg = types[pegIndex]
 	match (peg):
@@ -174,9 +174,13 @@ func _add_random_pegs_to_scene():
 			for n in randi_range(1, 3):
 				add_random_peg(tscn_bumper_peg, bumper_peg_sprite, 50)
 		3:
-				# Add chained pegs to scene
-			for n in randi_range(1, 3):
+			# Add chained pegs to scene
+			for n in randi_range(2, 5):
 				add_random_peg(tscn_chained_peg, basic_peg_sprites.pick_random(), 40)
+		4:
+			# Add cracked pegs to scene
+			for n in randi_range(3, 6):
+				add_random_peg(tscn_cracked_peg, cracked_peg_sprites.pick_random(), 40)
 	
 	peg_spawn_delay = PEG_SPAWNING_DURATION / current_pegs.size()
 	lit_pegs = current_pegs.size()
