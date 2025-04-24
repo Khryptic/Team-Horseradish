@@ -933,6 +933,17 @@ position = Vector2(270, 200)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("54_cq0lk")
 
+[node name="SpDecorTop02a2" type="Sprite2D" parent="Game Art"]
+position = Vector2(912, 654.323)
+scale = Vector2(0.44964, 0.547401)
+texture = ExtResource("50_5nybl")
+
+[node name="SpDecorTop02a3" type="Sprite2D" parent="Game Art"]
+position = Vector2(-371, 653.323)
+scale = Vector2(0.44964, 0.547401)
+texture = ExtResource("50_5nybl")
+
+[connection signal="bullet_time_activated" from="Drawing Controller" to="." method="_on_drawing_controller_bullet_time_activated"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="Drawing Controller/Trampoline" method="_on_trampoline_drawn"]
 [connection signal="trampoline_drawn" from="Drawing Controller" to="Drawing Controller/Drawing Guide" method="_on_trampoline_drawn"]
