@@ -245,8 +245,19 @@ scale = Vector2(0.418465, 0.418465)
 texture = ExtResource("6_3yumr")
 
 [node name="SpDecorTop02a" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(269, -347)
 scale = Vector2(0.44964, 0.44964)
+texture = ExtResource("7_cs5ya")
+
+[node name="SpDecorTop02a2" type="Sprite2D" parent="."]
+position = Vector2(912, 654.323)
+scale = Vector2(0.44964, 0.547401)
+texture = ExtResource("7_cs5ya")
+
+[node name="SpDecorTop02a3" type="Sprite2D" parent="."]
+position = Vector2(-371, 653.323)
+scale = Vector2(0.44964, 0.547401)
 texture = ExtResource("7_cs5ya")
 
 [connection signal="animation_finished" from="SpButtonBase01a/AnimationPlayer" to="SpButtonBase01a/SpButton01a/Button2" method="_on_animation_player_animation_finished"]
