@@ -129,13 +129,27 @@ func _add_random_pegs_to_scene():
 	pegs_added = 0
 	time_since_last_peg_added = 0
 	
+	# Only include 2 types of pegs (always regular pegs)
 	# Add normal pegs to scene
 	for n in randi_range(6, 12):
 		add_random_peg(tscn_peg, basic_peg_sprites.pick_random(), 40)
-
-	# Add mega pegs to scene
-	for n in randi_range(0, 4):
-		add_random_peg(tscn_mega_peg, basic_peg_sprites.pick_random(), 80)
+	
+	var types = [1, 2, 3]
+	var pegIndex = randi_range(0, types.size() - 1)
+	var peg = types[pegIndex]
+	match (peg):
+		1:
+			# Add mega pegs to scene
+			for n in randi_range(1, 4):
+				add_random_peg(tscn_mega_peg, basic_peg_sprites.pick_random(), 60)
+		2:
+			# Add bumper pegs to scene
+			for n in randi_range(1, 3):
+				add_random_peg(tscn_bumper_peg, bumper_peg_sprite, 50)
+		3:
+				# Add chained pegs to scene
+			for n in randi_range(1, 3):
+				add_random_peg(tscn_chained_peg, basic_peg_sprites.pick_random(), 40)
 	
 	peg_spawn_delay = PEG_SPAWNING_DURATION / current_pegs.size()
 	lit_pegs = current_pegs.size()
@@ -169,12 +183,24 @@ func add_random_peg(peg_scene: PackedScene, sprite: PegSprite, max_overlap: int)
 	peg.global_position = Vector2(randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
 	peg.peg_sprite = sprite
 	
+	var timer = 0
+	
 	## Check for overlap
-	for p in current_pegs:
-		while(peg.position.x >= p.position.x - max_overlap &&
-			peg.position.x <= p.position.x + max_overlap &&
-			peg.position.y >= p.position.y - max_overlap &&
-			peg.position.y <= p.position.y + max_overlap):
-				peg.position = Vector2(randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
+	if (current_pegs.size() == 0):
+		peg.position = Vector2(randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
+	
+	else:
+		var index = -1
+		while (index < current_pegs.size() - 1 && timer < 300000000):
+			index += 1
+			timer += 1
+			var p = current_pegs[index]
+			while(peg.position.x >= p.position.x - max_overlap &&
+				peg.position.x <= p.position.x + max_overlap &&
+				peg.position.y >= p.position.y - max_overlap &&
+				peg.position.y <= p.position.y + max_overlap):
+					peg.position = Vector2(randi_range(lowerBound.x, upperBound.x), randi_range(lowerBound.y, upperBound.y))
+					index = -1
 
-	current_pegs.append(peg)
+	if (timer < 300000000):
+		current_pegs.append(peg)
