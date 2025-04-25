@@ -24,4 +24,4 @@ max_orb_count = 15
 texture = ExtResource("4_vwvus")
 
 [node name="PegSensor" parent="." index="2"]
-points_worth = 100
+points_worth = 40
