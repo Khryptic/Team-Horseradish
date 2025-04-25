@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8vdkwfklql85"
-path="res://.godot/imported/Peg_Shards_Chain.png-9340880085ea694217bdc5449ae3da72.ctex"
+uid="uid://bhar4pa0kksdc"
+path="res://.godot/imported/SP_Armored_Shards.png-340291ea1f62309c2dc521a7456a3057.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/peg_sprites/Peg_Shards_Chain.png"
-dest_files=["res://.godot/imported/Peg_Shards_Chain.png-9340880085ea694217bdc5449ae3da72.ctex"]
+source_file="res://assets/sprites/particles/SP_Armored_Shards.png"
+dest_files=["res://.godot/imported/SP_Armored_Shards.png-340291ea1f62309c2dc521a7456a3057.ctex"]
 
 [params]
 

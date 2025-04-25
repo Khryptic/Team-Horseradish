@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmcn3uj4wop16"
-path="res://.godot/imported/Chained Peg Hit.png-d1a7715fb91f142989716f38e4b652cf.ctex"
+uid="uid://dlwwpsps0o1ie"
+path="res://.godot/imported/SP_Armored_Peg_01a.PNG-007594ad18e589a530d9e7e7857fafdb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/peg_sprites/Chained Peg Hit.png"
-dest_files=["res://.godot/imported/Chained Peg Hit.png-d1a7715fb91f142989716f38e4b652cf.ctex"]
+source_file="res://assets/peg_sprites/SP_Armored_Peg_01a.PNG"
+dest_files=["res://.godot/imported/SP_Armored_Peg_01a.PNG-007594ad18e589a530d9e7e7857fafdb.ctex"]
 
 [params]
 

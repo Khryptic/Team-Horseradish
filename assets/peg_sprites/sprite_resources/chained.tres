@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PegSprite" load_steps=5 format=3 uid="uid://dg6kmmavfrfkx"]
+
+[ext_resource type="Texture2D" uid="uid://bhar4pa0kksdc" path="res://assets/sprites/particles/SP_Armored_Shards.png" id="1_by0wt"]
+[ext_resource type="Texture2D" uid="uid://ci8er0t0hiaks" path="res://assets/peg_sprites/SP_Armored_Peg_02a.PNG" id="2_qtkc8"]
+[ext_resource type="Script" uid="uid://bksf80rkut52h" path="res://pegs/peg_sprite.gd" id="3_y2tcc"]
+[ext_resource type="Texture2D" uid="uid://dlwwpsps0o1ie" path="res://assets/peg_sprites/SP_Armored_Peg_01a.PNG" id="4_tegc6"]
+
+[resource]
+script = ExtResource("3_y2tcc")
+sprite = ExtResource("4_tegc6")
+hit_sprite = ExtResource("2_qtkc8")
+burst_sprite = ExtResource("1_by0wt")
+color = Color(0.589267, 0.605366, 0.684343, 1)
+metadata/_custom_type_script = "uid://bksf80rkut52h"
