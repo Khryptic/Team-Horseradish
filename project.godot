@@ -10,11 +10,12 @@ config_version=5
 
 [application]
 
-config/name="Team Horseradish"
+config/name="Trampolinko"
+config/version="1.0.0"
 run/main_scene="uid://dsw8yxb6dghpl"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://bov2ojrfukrya"
 
 [autoload]
 
