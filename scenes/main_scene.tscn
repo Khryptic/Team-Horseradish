@@ -347,6 +347,8 @@ shape = SubResource("SegmentShape2D_nw457")
 wait_time = 0.15
 
 [node name="World Border" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="World Border"]
 position = Vector2(50, 961)

@@ -10,16 +10,22 @@ signal ball_died
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var face_animations: AnimatedSprite2D = $RigidBody2D/AnimatedSprite2D
 
+var isPhaseModeOn: bool = false;
+
 func _ready() -> void:
 	setFreeze(true)
 	GameManager.round_clear.connect(tween_to_spawn_point)
+	rigidbody.set_collision_mask_value(2,true)
 	
 
 func _process(_delta: float) -> void:
 		
 	if(smoke_particles.emitting):
 		smoke_particles.global_rotation = 0;
-
+	
+	if(isPhaseModeOn && rigidbody.linear_velocity.y > 0):
+		toggle_phase_mode(false)		
+		
 	# Anti-softlock
 	if is_ball_stopped():
 		GameManager.clear_on_pegs()
@@ -51,6 +57,8 @@ func crit() -> void:
 	animation_player.stop()
 	animation_player.play("crit")
 	face_animations.play("Crit")
+	
+	toggle_phase_mode(true)
 
 func bounce() -> void:
 	face_animations.play("Bounce")
@@ -79,3 +87,10 @@ func _on_tween_finished():
 	rigidbody.set_collision_layer_value(1,true)
 	setFreeze(true)
 	
+func toggle_phase_mode(value: bool):
+	isPhaseModeOn = value
+	rigidbody.set_collision_mask_value(1,!isPhaseModeOn)
+	if (isPhaseModeOn == true):
+		modulate.a= 0.5;
+	else:
+		modulate.a= 1.0;
