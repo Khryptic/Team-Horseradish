@@ -1,0 +1,722 @@
+[gd_scene load_steps=75 format=3 uid="uid://c6usj5s4g5bdm"]
+
+[ext_resource type="Script" uid="uid://2js5lt72ualx" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
+[ext_resource type="Script" uid="uid://clxxj87sfihfh" path="res://scripts/game_controller.gd" id="1_wfcph"]
+[ext_resource type="Script" uid="uid://b2mb5f60jhuoi" path="res://scenes/camera_2d.gd" id="2_ruju6"]
+[ext_resource type="Script" uid="uid://bhxr8msyhd47i" path="res://scenes/trampoline.gd" id="3_0votk"]
+[ext_resource type="Script" uid="uid://b4ct6ueroj65m" path="res://scripts/score_label.gd" id="4_6jsyi"]
+[ext_resource type="Texture2D" uid="uid://bak37mkleqku4" path="res://assets/Red_X.png" id="4_dl6a1"]
+[ext_resource type="Texture2D" uid="uid://btptsh5gf68i6" path="res://assets/animations/trampoline/SP_Trampoline_Frame1_01a.PNG" id="4_jix7a"]
+[ext_resource type="Script" uid="uid://bb088g00pxb0s" path="res://scenes/drawing_guide.gd" id="4_pd01j"]
+[ext_resource type="Texture2D" uid="uid://dxtrnt3f30q80" path="res://assets/animations/trampoline/SP_Trampoline_Frame4_01a.PNG" id="5_8dxha"]
+[ext_resource type="Script" uid="uid://b1cpknm80nuw" path="res://scripts/lives_label.gd" id="5_8hi1r"]
+[ext_resource type="Script" uid="uid://b5mtusnk4rv3g" path="res://scenes/game_over_label.gd" id="5_ufrqt"]
+[ext_resource type="Texture2D" uid="uid://bpexar6iilhar" path="res://assets/animations/trampoline/SP_Trampoline_Frame5_01a.PNG" id="6_j4epa"]
+[ext_resource type="Script" uid="uid://bqu2vmr40ikb2" path="res://scenes/pause_menu.gd" id="7_l14nw"]
+[ext_resource type="Texture2D" uid="uid://bwbrwopbu87cc" path="res://assets/animations/trampoline/SP_Trampoline_Frame6_01a.PNG" id="7_ruju6"]
+[ext_resource type="Texture2D" uid="uid://d3pvyk74f7kwv" path="res://assets/animations/trampoline/SP_Trampoline_Frame7_01a.PNG" id="8_5nybl"]
+[ext_resource type="Texture2D" uid="uid://nmsfukoqg1fd" path="res://assets/animations/onboarding/frame_01.png" id="8_qn465"]
+[ext_resource type="Texture2D" uid="uid://cg36sknb2leqe" path="res://assets/animations/trampoline/SP_Trampoline_Frame2_01a.PNG" id="9_cq0lk"]
+[ext_resource type="Texture2D" uid="uid://dtis5qie62vpq" path="res://assets/animations/onboarding/frame_02.png" id="9_oamqr"]
+[ext_resource type="Texture2D" uid="uid://dbqxl2k3dj2nr" path="res://assets/animations/onboarding/frame_03.png" id="10_0olpm"]
+[ext_resource type="Texture2D" uid="uid://ckjhmp5xryrl1" path="res://assets/animations/trampoline/SP_Trampoline_Frame3_01a.PNG" id="10_j2yw6"]
+[ext_resource type="Texture2D" uid="uid://cwtn6l3vierxl" path="res://assets/animations/onboarding/frame_04.png" id="11_jfear"]
+[ext_resource type="Texture2D" uid="uid://csv76dhn5eelv" path="res://assets/animations/onboarding/frame_05.png" id="12_dclty"]
+[ext_resource type="Texture2D" uid="uid://ds32eaop42gjv" path="res://assets/animations/onboarding/frame_06.png" id="13_7wsyd"]
+[ext_resource type="Texture2D" uid="uid://dfd2tcty5a2x1" path="res://assets/SP_Decor_L_02a.PNG" id="13_8dxha"]
+[ext_resource type="Texture2D" uid="uid://dbpnk55nfqaa7" path="res://assets/animations/onboarding/frame_07.png" id="14_4ihjl"]
+[ext_resource type="Texture2D" uid="uid://dn2gbd5bj58yc" path="res://assets/SP_Decor_R_02a.PNG" id="14_j4epa"]
+[ext_resource type="Texture2D" uid="uid://barq4onq7ir1u" path="res://assets/animations/onboarding/frame_08.png" id="15_a47hc"]
+[ext_resource type="Script" uid="uid://bm8665gf4chex" path="res://scenes/mobile_safe_area.gd" id="15_j4epa"]
+[ext_resource type="Texture2D" uid="uid://bjvd6bhcupalr" path="res://assets/animations/onboarding/frame_09.png" id="16_3q2wk"]
+[ext_resource type="Texture2D" uid="uid://bn71uxuhxl65u" path="res://assets/animations/onboarding/frame_10.png" id="17_aksj2"]
+[ext_resource type="Texture2D" uid="uid://d4ljcpi67s3xk" path="res://assets/animations/onboarding/frame_11.png" id="18_02l60"]
+[ext_resource type="Texture2D" uid="uid://jwiwd7qxwelt" path="res://assets/SP_Scorebar_02a.PNG" id="19_cq0lk"]
+[ext_resource type="Texture2D" uid="uid://cuv2xfh6sbo8n" path="res://assets/animations/onboarding/frame_12.png" id="19_dmf0w"]
+[ext_resource type="Texture2D" uid="uid://brjxovofhn0gt" path="res://assets/SP_ButtonBase_Small_01a.PNG" id="19_ruju6"]
+[ext_resource type="Texture2D" uid="uid://bxxeo86vv3qh4" path="res://assets/SP_Button_Small_01a.PNG" id="20_5nybl"]
+[ext_resource type="Theme" uid="uid://cy8vxdk1uodmj" path="res://assets/text/yellow_button.tres" id="20_cq0lk"]
+[ext_resource type="Texture2D" uid="uid://codphbcjtjn50" path="res://assets/animations/onboarding/frame_13.png" id="20_lknbj"]
+[ext_resource type="Texture2D" uid="uid://cqw52x6bgusid" path="res://assets/animations/onboarding/frame_14.png" id="21_1r15n"]
+[ext_resource type="Texture2D" uid="uid://c6komfudas2cs" path="res://assets/animations/onboarding/frame_15.png" id="22_ao3l2"]
+[ext_resource type="Texture2D" uid="uid://be62q6a6t3ee1" path="res://assets/animations/onboarding/frame_16.png" id="23_le7li"]
+[ext_resource type="Texture2D" uid="uid://crg8gvjixgsix" path="res://assets/SP_Ball_02a.PNG" id="24_cq0lk"]
+[ext_resource type="Texture2D" uid="uid://c10srx6efe3wv" path="res://assets/animations/onboarding/frame_17.png" id="24_rlyuv"]
+[ext_resource type="Texture2D" uid="uid://gkuxu4jbbj0o" path="res://assets/SP_Lives_02a.PNG" id="25_j2yw6"]
+[ext_resource type="Texture2D" uid="uid://dh83umwd2titk" path="res://assets/animations/onboarding/frame_18.png" id="25_v2vu4"]
+[ext_resource type="Texture2D" uid="uid://byppba4dfm12f" path="res://assets/animations/onboarding/frame_19.png" id="26_xyux1"]
+[ext_resource type="Texture2D" uid="uid://bp6emwgvyxnfm" path="res://assets/animations/onboarding/frame_20.png" id="27_xbwu8"]
+[ext_resource type="Texture2D" uid="uid://bxio2qppj135v" path="res://assets/SP_Label_Paused_01a.PNG" id="28_8pjrr"]
+[ext_resource type="Texture2D" uid="uid://b83ekn367wbms" path="res://assets/animations/onboarding/frame_21.png" id="28_odf7m"]
+[ext_resource type="Texture2D" uid="uid://c64p6spffb4bl" path="res://assets/SP_MenuBG_01a.PNG" id="29_0xxsb"]
+[ext_resource type="Texture2D" uid="uid://chtcuscufnh0" path="res://assets/animations/onboarding/frame_22.png" id="29_l7llg"]
+[ext_resource type="Texture2D" uid="uid://c3re1atccpbvu" path="res://assets/animations/onboarding/frame_23.png" id="30_6lvpr"]
+[ext_resource type="Texture2D" uid="uid://pe73cpf25bmg" path="res://assets/SP_ButtonBase_01a.PNG" id="30_c5q2x"]
+[ext_resource type="Texture2D" uid="uid://b7ibvt8eupdes" path="res://assets/animations/onboarding/frame_24.png" id="31_jcdlf"]
+[ext_resource type="Texture2D" uid="uid://pm7wycilri6y" path="res://assets/SP_Button_01a.PNG" id="31_qw8n7"]
+[ext_resource type="Script" uid="uid://bkp6vvmbv7f15" path="res://scenes/onboarding_animation.gd" id="32_lnep7"]
+[ext_resource type="Texture2D" uid="uid://bhtyicp6kh8yv" path="res://assets/SP_ButtonBase_01b.PNG" id="32_taqkn"]
+[ext_resource type="Texture2D" uid="uid://ctyd3ahdbra0" path="res://assets/SP_Button_01b.PNG" id="33_qnap4"]
+[ext_resource type="Theme" uid="uid://bh1w2lowvxtp2" path="res://assets/text/red_button.tres" id="34_1sx6m"]
+[ext_resource type="Texture2D" uid="uid://1fwc8h17gbx1" path="res://assets/SP_Background_02a.PNG" id="48_ruju6"]
+[ext_resource type="Texture2D" uid="uid://da6ba8txavw4d" path="res://assets/SP_Decor_Top_02a.PNG" id="50_5nybl"]
+[ext_resource type="Texture2D" uid="uid://45w6y722xdmh" path="res://assets/SP_Backboard_02a.PNG" id="54_cq0lk"]
+
+[sub_resource type="Environment" id="Environment_j4epa"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.98
+glow_strength = 0.85
+glow_bloom = 0.3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3krh7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8pjrr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jix7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8dxha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_j4epa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ruju6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5nybl")
+}],
+"loop": false,
+"name": &"Bounce",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jix7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cq0lk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_j2yw6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8dxha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_j4epa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ruju6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5nybl")
+}],
+"loop": false,
+"name": &"Crit",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jix7a")
+}],
+"loop": true,
+"name": &"Static",
+"speed": 12.0
+}]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_nw457"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dd0l"]
+size = Vector2(18, 1099)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8x6e"]
+size = Vector2(17.0038, 1052)
+
+[sub_resource type="FontVariation" id="FontVariation_5nybl"]
+variation_embolden = 2.0
+spacing_glyph = 9
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j4epa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0uct7"]
+
+[sub_resource type="Animation" id="Animation_mynnq"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpButton01a:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpButton01a:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_frs5l"]
+resource_name = "button_press"
+length = 0.4955
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpButton01a:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.95, -0.25, 0, 0.25, 0, 1.055, -0.25, 0, 0.25, 0, 0.965, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.150033, 0.3, 0.4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpButton01a:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.915, -0.25, 0, 0.25, 0, 1.055, -0.25, 0, 0.25, 0, 0.965, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.150033, 0.3, 0.4)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e8tpv"]
+_data = {
+&"RESET": SubResource("Animation_mynnq"),
+&"button_press": SubResource("Animation_frs5l")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a07ey"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_qn465")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_oamqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0olpm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_jfear")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_dclty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7wsyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_4ihjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_a47hc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_3q2wk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_aksj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_02l60")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_dmf0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_lknbj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_1r15n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ao3l2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_le7li")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_rlyuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_v2vu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_xyux1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_xbwu8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_odf7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_l7llg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_6lvpr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_jcdlf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("score_label", "title_label")]
+script = ExtResource("1_wfcph")
+score_label = NodePath("CanvasLayer/UI/MobileSafeArea/ScoreLabel")
+title_label = NodePath("CanvasLayer/UI/GameOverLabel")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_j4epa")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("2_ruju6")
+base_pos = Vector2(0, -70)
+
+[node name="Drawing Controller" type="Node2D" parent="."]
+script = ExtResource("1_lq30c")
+max_trampoline_length = 301
+med_length = 250
+bullet_time_scale = 0.2
+bullet_time_duration = 0.25
+bullet_time_fade_to_normal = 1.0
+
+[node name="TrampolineDrawingZone" type="Area2D" parent="Drawing Controller"]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Drawing Controller/TrampolineDrawingZone"]
+polygon = PackedVector2Array(-40, 400, 577, 400, 577, 620, 389, 1280, 151, 1280, -40, 620)
+
+[node name="Trampoline" type="Node2D" parent="Drawing Controller"]
+script = ExtResource("3_0votk")
+trampoline_strength = 1000.0
+coyote_time_distance = 40.0
+normal_speed_mult = 1.0
+crit_speed_mult = 1.2
+crit_lower_percentage = 0.3
+crit_upper_percentage = 0.7
+steep_trampoline_upward_strength = 500.0
+
+[node name="Line2D" type="Line2D" parent="Drawing Controller/Trampoline"]
+scale = Vector2(1.01169, 1)
+width = 0.0
+default_color = Color(1, 1, 1, 0)
+
+[node name="Area2D" type="Area2D" parent="Drawing Controller/Trampoline" groups=["trampoline"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Trampoline/Area2D"]
+shape = SubResource("RectangleShape2D_3krh7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Drawing Controller/Trampoline"]
+sprite_frames = SubResource("SpriteFrames_8pjrr")
+animation = &"Crit"
+
+[node name="Drawing Guide" type="Area2D" parent="Drawing Controller"]
+script = ExtResource("4_pd01j")
+
+[node name="Red X" type="Sprite2D" parent="Drawing Controller/Drawing Guide"]
+visible = false
+position = Vector2(-100, -100)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("4_dl6a1")
+
+[node name="Line2D" type="Line2D" parent="Drawing Controller/Drawing Guide"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Drawing Guide"]
+shape = SubResource("SegmentShape2D_nw457")
+
+[node name="MouseRayCast" type="RayCast2D" parent="Drawing Controller"]
+position = Vector2(-72, 21)
+enabled = false
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="DrawCooldownTimer" type="Timer" parent="Drawing Controller"]
+wait_time = 0.15
+
+[node name="World Border" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="World Border"]
+position = Vector2(50, 961)
+rotation = -0.285068
+shape = SubResource("RectangleShape2D_7dd0l")
+
+[node name="SpDecorL01a" type="Sprite2D" parent="World Border/CollisionShape2D5"]
+position = Vector2(0.939209, -77.8789)
+rotation = 0.285068
+scale = Vector2(0.44316, 0.44316)
+texture = ExtResource("13_8dxha")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="World Border"]
+position = Vector2(494, 961)
+rotation = 0.273296
+shape = SubResource("RectangleShape2D_7dd0l")
+
+[node name="SpDecorR01a" type="Sprite2D" parent="World Border/CollisionShape2D6"]
+position = Vector2(2.02759, -48.3414)
+rotation = -0.273296
+scale = Vector2(0.416185, 0.416185)
+texture = ExtResource("14_j4epa")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="World Border"]
+position = Vector2(-8, 454)
+shape = SubResource("RectangleShape2D_7dd0l")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="World Border"]
+position = Vector2(232, -11)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_7dd0l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Border"]
+position = Vector2(552, 461)
+shape = SubResource("RectangleShape2D_7dd0l")
+
+[node name="Respawn" type="Node2D" parent="."]
+position = Vector2(270, 450)
+
+[node name="Killzone" type="Area2D" parent="." groups=["killzone"]]
+position = Vector2(284, 1118)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource("RectangleShape2D_c8x6e")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -4.0
+offset_right = 5.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MobileSafeArea" type="Control" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("15_j4epa")
+
+[node name="TopCurtainDecor" type="TextureRect" parent="CanvasLayer/UI/MobileSafeArea"]
+z_index = -4
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -348.5
+offset_top = -819.0
+offset_right = 348.5
+offset_bottom = 178.0
+grow_horizontal = 2
+texture = ExtResource("50_5nybl")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/UI/MobileSafeArea"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 90.0
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 32
+text = "0 Pts"
+script = ExtResource("4_6jsyi")
+
+[node name="SpScorebar01a" type="Sprite2D" parent="CanvasLayer/UI/MobileSafeArea/ScoreLabel"]
+z_index = -1
+position = Vector2(73, 25)
+scale = Vector2(0.294428, 0.229665)
+texture = ExtResource("19_cq0lk")
+
+[node name="SpButtonBaseSmall01a" type="Sprite2D" parent="CanvasLayer/UI/MobileSafeArea"]
+z_index = -1
+position = Vector2(464, 45)
+scale = Vector2(0.22305, 0.22305)
+texture = ExtResource("19_ruju6")
+
+[node name="PauseButton" type="Button" parent="CanvasLayer/UI/MobileSafeArea/SpButtonBaseSmall01a"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -476.399
+offset_top = -130.016
+offset_right = -153.399
+offset_bottom = 126.984
+grow_horizontal = 0
+theme = ExtResource("20_cq0lk")
+theme_override_fonts/font = SubResource("FontVariation_5nybl")
+theme_override_font_sizes/font_size = 125
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j4epa")
+text = "II"
+icon = ExtResource("20_5nybl")
+flat = true
+icon_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI/MobileSafeArea"]
+layout_mode = 2
+offset_top = 12.0
+offset_right = 40.0
+offset_bottom = 57.0
+
+[node name="LivesLabel" type="Label" parent="CanvasLayer/UI/MobileSafeArea/HBoxContainer" node_paths=PackedStringArray("lives_icons")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+script = ExtResource("5_8hi1r")
+lives_icons = [NodePath("life_icon1"), NodePath("life_icon2"), NodePath("life_icon3")]
+life_icon_end_tween = Vector2(270, 350)
+tween_duration = 1
+
+[node name="life_icon1" type="Sprite2D" parent="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel"]
+position = Vector2(233, 31)
+scale = Vector2(0.213333, 0.213333)
+texture = ExtResource("24_cq0lk")
+
+[node name="life_icon2" type="Sprite2D" parent="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel"]
+position = Vector2(268, 31)
+scale = Vector2(0.213333, 0.213333)
+texture = ExtResource("24_cq0lk")
+
+[node name="life_icon3" type="Sprite2D" parent="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel"]
+position = Vector2(303, 32)
+scale = Vector2(0.213333, 0.213333)
+texture = ExtResource("24_cq0lk")
+
+[node name="Delay" type="Timer" parent="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel"]
+one_shot = true
+autostart = true
+ignore_time_scale = true
+
+[node name="SpLives01a" type="Sprite2D" parent="CanvasLayer/UI/MobileSafeArea/HBoxContainer"]
+z_index = -1
+position = Vector2(268, 32)
+scale = Vector2(0.210526, 0.210526)
+texture = ExtResource("25_j2yw6")
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Game Over!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_ufrqt")
+
+[node name="Timer" type="Timer" parent="CanvasLayer/UI/GameOverLabel"]
+wait_time = 3.0
+
+[node name="Pause Menu" type="Panel" parent="CanvasLayer/UI"]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = -173.0
+offset_right = 202.0
+offset_bottom = 236.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0uct7")
+script = ExtResource("7_l14nw")
+
+[node name="SpLabelPaused01a" type="Sprite2D" parent="CanvasLayer/UI/Pause Menu"]
+position = Vector2(202, 183)
+scale = Vector2(0.475575, 0.475575)
+texture = ExtResource("28_8pjrr")
+
+[node name="SpMenuBg01a" type="Sprite2D" parent="CanvasLayer/UI/Pause Menu"]
+z_index = -1
+position = Vector2(197, 159)
+scale = Vector2(0.407127, 0.407125)
+texture = ExtResource("29_0xxsb")
+
+[node name="ResumeButton" type="Sprite2D" parent="CanvasLayer/UI/Pause Menu"]
+z_index = 1
+position = Vector2(198, 91)
+scale = Vector2(0.235725, 0.244796)
+texture = ExtResource("30_c5q2x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UI/Pause Menu/ResumeButton"]
+libraries = {
+&"": SubResource("AnimationLibrary_e8tpv")
+}
+speed_scale = 1.5
+
+[node name="SpButton01a" type="Sprite2D" parent="CanvasLayer/UI/Pause Menu/ResumeButton"]
+position = Vector2(1.14441e-05, 0)
+texture = ExtResource("31_qw8n7")
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/UI/Pause Menu/ResumeButton/SpButton01a"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1019.13
+offset_top = -391.152
+offset_right = 25.8654
+offset_bottom = -66.1516
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("20_cq0lk")
+theme_override_font_sizes/font_size = 200
+text = "Resume"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="RestartButton" type="Sprite2D" parent="CanvasLayer/UI/Pause Menu"]
+z_index = 1
+position = Vector2(198, 220)
+scale = Vector2(0.235725, 0.244796)
+texture = ExtResource("32_taqkn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UI/Pause Menu/RestartButton"]
+libraries = {
+&"": SubResource("AnimationLibrary_e8tpv")
+}
+speed_scale = 1.5
+
+[node name="SpButton01a" type="Sprite2D" parent="CanvasLayer/UI/Pause Menu/RestartButton"]
+position = Vector2(1.14441e-05, 0)
+texture = ExtResource("33_qnap4")
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/UI/Pause Menu/RestartButton/SpButton01a"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -870.425
+offset_top = -353.051
+offset_right = -114.425
+offset_bottom = -104.051
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("34_1sx6m")
+theme_override_font_sizes/font_size = 200
+text = "Restart"
+flat = true
+
+[node name="ExitButton" type="Sprite2D" parent="CanvasLayer/UI/Pause Menu"]
+z_index = 1
+position = Vector2(198, 348)
+scale = Vector2(0.235725, 0.244796)
+texture = ExtResource("30_c5q2x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UI/Pause Menu/ExitButton"]
+libraries = {
+&"": SubResource("AnimationLibrary_e8tpv")
+}
+speed_scale = 1.5
+
+[node name="SpButton01a" type="Sprite2D" parent="CanvasLayer/UI/Pause Menu/ExitButton"]
+position = Vector2(1.14441e-05, 0)
+texture = ExtResource("31_qw8n7")
+
+[node name="HomeButton" type="Button" parent="CanvasLayer/UI/Pause Menu/ExitButton/SpButton01a"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -687.158
+offset_top = -348.966
+offset_right = -300.158
+offset_bottom = -99.9659
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("20_cq0lk")
+theme_override_font_sizes/font_size = 200
+text = "Exit"
+flat = true
+
+[node name="OnboardingAnimation" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="OnboardingAnimation"]
+position = Vector2(273, 671)
+rotation = -0.26455
+scale = Vector2(0.193919, 0.193919)
+sprite_frames = SubResource("SpriteFrames_a07ey")
+autoplay = "default"
+script = ExtResource("32_lnep7")
+
+[node name="Game Art" type="Node2D" parent="."]
+
+[node name="SpBackground01a" type="Sprite2D" parent="Game Art"]
+z_index = -5
+position = Vector2(270, 500)
+scale = Vector2(0.573142, 0.573142)
+texture = ExtResource("48_ruju6")
+
+[node name="SpBackboard01a" type="Sprite2D" parent="Game Art"]
+z_index = -4
+position = Vector2(270, 200)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("54_cq0lk")
+
+[connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
+[connection signal="trampoline_drawn" from="Drawing Controller" to="Drawing Controller/Trampoline" method="_on_trampoline_drawn"]
+[connection signal="trampoline_drawn" from="Drawing Controller" to="Drawing Controller/Drawing Guide" method="_on_trampoline_drawn"]
+[connection signal="trampoline_drawn" from="Drawing Controller" to="OnboardingAnimation/AnimatedSprite2D" method="_on_drawing_controller_trampoline_drawn"]
+[connection signal="body_entered" from="Drawing Controller/TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_entered"]
+[connection signal="body_exited" from="Drawing Controller/TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_exited"]
+[connection signal="increase_final_peg_size" from="Drawing Controller/Trampoline" to="." method="_on_trampoline_increase_final_peg_size"]
+[connection signal="body_entered" from="Drawing Controller/Trampoline/Area2D" to="Drawing Controller/Trampoline" method="_on_body_entered"]
+[connection signal="body_exited" from="Drawing Controller/Trampoline/Area2D" to="Drawing Controller/Trampoline" method="_on_body_exited"]
+[connection signal="animation_finished" from="Drawing Controller/Trampoline/AnimatedSprite2D" to="Drawing Controller/Trampoline" method="_on_animation_finished"]
+[connection signal="body_entered" from="Drawing Controller/Drawing Guide" to="Drawing Controller/Drawing Guide" method="_on_body_entered"]
+[connection signal="timeout" from="Drawing Controller/DrawCooldownTimer" to="Drawing Controller" method="_on_draw_cooldown_timer_timeout"]
+[connection signal="safe_area_updated" from="CanvasLayer/UI/MobileSafeArea" to="Camera2D" method="_on_mobile_safe_area_updated"]
+[connection signal="pressed" from="CanvasLayer/UI/MobileSafeArea/SpButtonBaseSmall01a/PauseButton" to="CanvasLayer/UI/Pause Menu" method="_on_pause_button_pressed"]
+[connection signal="timeout" from="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel/Delay" to="CanvasLayer/UI/MobileSafeArea/HBoxContainer/LivesLabel" method="_tween_life_icon_to_starting_position"]
+[connection signal="timeout" from="CanvasLayer/UI/GameOverLabel/Timer" to="CanvasLayer/UI/GameOverLabel" method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/UI/Pause Menu/ResumeButton/SpButton01a/ResumeButton" to="CanvasLayer/UI/Pause Menu" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Pause Menu/RestartButton/SpButton01a/RestartButton" to="CanvasLayer/UI/Pause Menu" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Pause Menu/ExitButton/SpButton01a/HomeButton" to="CanvasLayer/UI/Pause Menu" method="_on_home_button_pressed"]

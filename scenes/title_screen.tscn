@@ -1,0 +1,268 @@
+[gd_scene load_steps=20 format=3 uid="uid://dsw8yxb6dghpl"]
+
+[ext_resource type="Texture2D" uid="uid://1fwc8h17gbx1" path="res://assets/sprites/background/SP_Background_02a.PNG" id="1_dc4i4"]
+[ext_resource type="Script" uid="uid://bc5l667di73es" path="res://scripts/title_screen.gd" id="1_fgkus"]
+[ext_resource type="Texture2D" uid="uid://45w6y722xdmh" path="res://assets/sprites/background/SP_Backboard_02a.PNG" id="2_e54dn"]
+[ext_resource type="Texture2D" uid="uid://pm7wycilri6y" path="res://assets/sprites/gui/SP_Button_01a.PNG" id="3_3yumr"]
+[ext_resource type="Texture2D" uid="uid://pe73cpf25bmg" path="res://assets/sprites/gui/SP_ButtonBase_01a.PNG" id="5_cs5ya"]
+[ext_resource type="Resource" uid="uid://jg5asrdpatns" path="res://assets/peg_sprites/sprite_resources/normal_red.tres" id="5_mynnq"]
+[ext_resource type="Texture2D" uid="uid://btcgl4lr1kpv" path="res://assets/sprites/background/SP_Decor_Bottom_01a.PNG" id="6_3yumr"]
+[ext_resource type="Theme" uid="uid://cy8vxdk1uodmj" path="res://assets/text/yellow_button.tres" id="6_frs5l"]
+[ext_resource type="Texture2D" uid="uid://da6ba8txavw4d" path="res://assets/sprites/background/SP_Decor_Top_02a.PNG" id="7_cs5ya"]
+[ext_resource type="Texture2D" uid="uid://bhtyicp6kh8yv" path="res://assets/sprites/gui/SP_ButtonBase_01b.PNG" id="7_u26n3"]
+[ext_resource type="Texture2D" uid="uid://ctyd3ahdbra0" path="res://assets/sprites/gui/SP_Button_01b.PNG" id="8_ib7db"]
+[ext_resource type="Texture2D" uid="uid://ccyai47c6iacn" path="res://assets/sprites/gui/SP_Logo_01a.PNG" id="8_mykxm"]
+[ext_resource type="PackedScene" uid="uid://cpkg1i4wbf3yn" path="res://pegs/mega_peg.tscn" id="9_tklts"]
+[ext_resource type="Theme" uid="uid://bh1w2lowvxtp2" path="res://assets/text/red_button.tres" id="10_mynnq"]
+[ext_resource type="Texture2D" uid="uid://c1lv0ni8gkf0j" path="res://assets/sprites/gui/SP_Button_01c.PNG" id="12_mynnq"]
+
+[sub_resource type="Environment" id="Environment_frs5l"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.98
+glow_strength = 0.85
+glow_bloom = 0.3
+
+[sub_resource type="Animation" id="Animation_mynnq"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpButton01a:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpButton01a:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_frs5l"]
+resource_name = "button_press"
+length = 0.4955
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpButton01a:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.95, -0.25, 0, 0.25, 0, 1.055, -0.25, 0, 0.25, 0, 0.965, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.150033, 0.3, 0.4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpButton01a:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.915, -0.25, 0, 0.25, 0, 1.055, -0.25, 0, 0.25, 0, 0.965, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.150033, 0.3, 0.4)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e8tpv"]
+_data = {
+&"RESET": SubResource("Animation_mynnq"),
+&"button_press": SubResource("Animation_frs5l")
+}
+
+[node name="title_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_frs5l")
+
+[node name="Backdrop" type="Node" parent="."]
+
+[node name="SpBackground02a" type="Sprite2D" parent="Backdrop"]
+z_index = -1
+position = Vector2(278, 435)
+scale = Vector2(0.416067, 0.526183)
+texture = ExtResource("1_dc4i4")
+
+[node name="SpBackboard02a" type="Sprite2D" parent="Backdrop"]
+z_index = -1
+position = Vector2(270, 283)
+scale = Vector2(0.403116, 0.403116)
+texture = ExtResource("2_e54dn")
+
+[node name="SpLogo01a" type="Sprite2D" parent="Backdrop"]
+position = Vector2(269, 304)
+scale = Vector2(0.413793, 0.413793)
+texture = ExtResource("8_mykxm")
+
+[node name="StaticBody2D" parent="Backdrop" instance=ExtResource("9_tklts")]
+position = Vector2(175, 155)
+
+[node name="StaticBody2D2" parent="Backdrop" instance=ExtResource("9_tklts")]
+position = Vector2(361, 435)
+
+[node name="StaticBody2D3" parent="Backdrop" instance=ExtResource("9_tklts")]
+position = Vector2(169, 433)
+
+[node name="StaticBody2D4" parent="Backdrop" instance=ExtResource("9_tklts")]
+position = Vector2(361, 155)
+
+[node name="StaticBody2D5" parent="Backdrop" instance=ExtResource("9_tklts")]
+position = Vector2(270, 155)
+peg_sprite = ExtResource("5_mynnq")
+
+[node name="StaticBody2D6" parent="Backdrop" instance=ExtResource("9_tklts")]
+position = Vector2(270, 435)
+peg_sprite = ExtResource("5_mynnq")
+
+[node name="StaticBody2D7" parent="Backdrop" instance=ExtResource("9_tklts")]
+position = Vector2(84, 154)
+peg_sprite = ExtResource("5_mynnq")
+
+[node name="StaticBody2D8" parent="Backdrop" instance=ExtResource("9_tklts")]
+position = Vector2(452, 435)
+peg_sprite = ExtResource("5_mynnq")
+
+[node name="StaticBody2D9" parent="Backdrop" instance=ExtResource("9_tklts")]
+position = Vector2(452, 154)
+peg_sprite = ExtResource("5_mynnq")
+
+[node name="StaticBody2D10" parent="Backdrop" instance=ExtResource("9_tklts")]
+position = Vector2(84, 435)
+peg_sprite = ExtResource("5_mynnq")
+
+[node name="SpButtonBase01a" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(274, 595)
+scale = Vector2(0.275724, 0.286334)
+texture = ExtResource("5_cs5ya")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpButtonBase01a"]
+libraries = {
+&"": SubResource("AnimationLibrary_e8tpv")
+}
+speed_scale = 1.5
+
+[node name="SpButton01a" type="Sprite2D" parent="SpButtonBase01a"]
+position = Vector2(1.14441e-05, 0)
+texture = ExtResource("3_3yumr")
+
+[node name="Button2" type="Button" parent="SpButtonBase01a/SpButton01a"]
+z_index = 2
+offset_left = -511.381
+offset_top = -230.5
+offset_right = 511.619
+offset_bottom = 237.5
+theme = ExtResource("6_frs5l")
+text = "PLAY"
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("1_fgkus")
+scene_to_change_to = 2
+
+[node name="SpButtonBase01a2" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(274, 735)
+scale = Vector2(0.275724, 0.286334)
+texture = ExtResource("7_u26n3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpButtonBase01a2"]
+libraries = {
+&"": SubResource("AnimationLibrary_e8tpv")
+}
+speed_scale = 1.5
+
+[node name="SpButton01a" type="Sprite2D" parent="SpButtonBase01a2"]
+position = Vector2(1.14441e-05, 0)
+texture = ExtResource("8_ib7db")
+
+[node name="Button2" type="Button" parent="SpButtonBase01a2/SpButton01a"]
+z_index = 2
+offset_left = -511.381
+offset_top = -230.5
+offset_right = 511.619
+offset_bottom = 237.5
+theme = ExtResource("10_mynnq")
+text = "LEVELS"
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("1_fgkus")
+scene_to_change_to = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SpButtonBase01a3" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(274, 875)
+scale = Vector2(0.275724, 0.286334)
+texture = ExtResource("5_cs5ya")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpButtonBase01a3"]
+libraries = {
+&"": SubResource("AnimationLibrary_e8tpv")
+}
+speed_scale = 1.5
+
+[node name="SpButton01a" type="Sprite2D" parent="SpButtonBase01a3"]
+position = Vector2(1.14441e-05, 0)
+texture = ExtResource("12_mynnq")
+
+[node name="Button2" type="Button" parent="SpButtonBase01a3/SpButton01a"]
+z_index = 2
+offset_left = -511.381
+offset_top = -230.5
+offset_right = 511.619
+offset_bottom = 237.5
+theme = ExtResource("10_mynnq")
+text = "ARCADE"
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("1_fgkus")
+scene_to_change_to = 2
+randomLayout = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SpDecorBottom01a" type="Sprite2D" parent="."]
+position = Vector2(276, 993)
+scale = Vector2(0.418465, 0.418465)
+texture = ExtResource("6_3yumr")
+
+[node name="SpDecorTop02a" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(269, -347)
+scale = Vector2(0.44964, 0.44964)
+texture = ExtResource("7_cs5ya")
+
+[node name="SpDecorTop02a2" type="Sprite2D" parent="."]
+position = Vector2(912, 654.323)
+scale = Vector2(0.44964, 0.547401)
+texture = ExtResource("7_cs5ya")
+
+[node name="SpDecorTop02a3" type="Sprite2D" parent="."]
+position = Vector2(-371, 653.323)
+scale = Vector2(0.44964, 0.547401)
+texture = ExtResource("7_cs5ya")
+
+[connection signal="animation_finished" from="SpButtonBase01a/AnimationPlayer" to="SpButtonBase01a/SpButton01a/Button2" method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="SpButtonBase01a/SpButton01a/Button2" to="SpButtonBase01a/SpButton01a/Button2" method="_on_pressed"]
+[connection signal="animation_finished" from="SpButtonBase01a2/AnimationPlayer" to="SpButtonBase01a2/SpButton01a/Button2" method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="SpButtonBase01a2/SpButton01a/Button2" to="SpButtonBase01a2/SpButton01a/Button2" method="_on_pressed"]
+[connection signal="animation_finished" from="SpButtonBase01a3/AnimationPlayer" to="SpButtonBase01a3/SpButton01a/Button2" method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="SpButtonBase01a3/SpButton01a/Button2" to="SpButtonBase01a3/SpButton01a/Button2" method="_on_pressed"]

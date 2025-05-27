@@ -1,15 +1,15 @@
 [gd_scene load_steps=386 format=3 uid="uid://8rlq77lfpm27"]
 
-[ext_resource type="Texture2D" uid="uid://uwrciioajf50" path="res://samples/softbody2d/Asparagus.png" id="1_bb0nr"]
-[ext_resource type="Script" path="res://addons/softbody2d/softbody2d.gd" id="2_2dapw"]
+[ext_resource type="Texture2D" uid="uid://b4nrl2ucn51r6" path="res://samples/softbody2d/Asparagus.png" id="1_bb0nr"]
+[ext_resource type="Script" uid="uid://dtk67o4f5ekvi" path="res://addons/softbody2d/softbody2d.gd" id="2_2dapw"]
 [ext_resource type="PackedScene" uid="uid://e43003nmrylg" path="res://samples/softbody2d/pickable_rigidbody.tscn" id="3_6ern4"]
 [ext_resource type="PhysicsMaterial" uid="uid://2kay8j53abmv" path="res://samples/softbody2d/softbody2d_phys_slippery.tres" id="3_durpg"]
-[ext_resource type="Texture2D" uid="uid://dp4gm1sqadkyt" path="res://samples/softbody2d/Butter.png" id="4_xackp"]
+[ext_resource type="Texture2D" uid="uid://d0c1qfgxvnhh5" path="res://samples/softbody2d/Butter.png" id="4_xackp"]
 [ext_resource type="PhysicsMaterial" uid="uid://deqagbq7eod2b" path="res://samples/softbody2d/softbody2d_phys_bouncy.tres" id="5_221ya"]
-[ext_resource type="Texture2D" uid="uid://ck74jr1mnd8y" path="res://samples/softbody2d/Boiled_Egg_Half.png" id="6_du2cs"]
-[ext_resource type="Texture2D" uid="uid://s0laqqc3aky2" path="res://samples/softbody2d/softbody2d.png" id="8_r18ij"]
-[ext_resource type="Texture2D" uid="uid://d3h2p840dgby1" path="res://samples/softbody2d/softbody2d_full.png" id="9_56vnr"]
-[ext_resource type="Texture2D" uid="uid://dpyuasjj5bpxo" path="res://samples/softbody2d/softbody2d_inner.png" id="9_ia0mn"]
+[ext_resource type="Texture2D" uid="uid://cqohdvs4q6ro0" path="res://samples/softbody2d/Boiled_Egg_Half.png" id="6_du2cs"]
+[ext_resource type="Texture2D" uid="uid://bm5kig2s74hlo" path="res://samples/softbody2d/softbody2d.png" id="8_r18ij"]
+[ext_resource type="Texture2D" uid="uid://cwc5ney1rflwx" path="res://samples/softbody2d/softbody2d_full.png" id="9_56vnr"]
+[ext_resource type="Texture2D" uid="uid://bujrg7636g4ur" path="res://samples/softbody2d/softbody2d_inner.png" id="9_ia0mn"]
 
 [sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_nwvnu"]
 resource_local_to_scene = true

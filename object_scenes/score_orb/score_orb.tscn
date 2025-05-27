@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://berce0fu5mvnh"]
+
+[ext_resource type="Texture2D" uid="uid://8ntjp1y34rrj" path="res://assets/peg_sprites/score_orb.png" id="1_rj5hv"]
+[ext_resource type="Script" uid="uid://x53yx2iqrc3u" path="res://object_scenes/score_orb/score_orb.gd" id="2_60sx3"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_orykl"]
+b = Vector2(0, 0)
+
+[node name="ScoreOrb" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.0
+linear_damp = 5.0
+script = ExtResource("2_60sx3")
+acceleration_towards_destination = 3000.0
+max_speed = 800.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.784314)
+z_as_relative = false
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rj5hv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_orykl")
+disabled = true

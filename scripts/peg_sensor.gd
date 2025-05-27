@@ -1,9 +1,9 @@
 extends Area2D
 
 var floating_text = preload("res://scenes/floating_text.tscn")
-signal peg_hit()
+signal peg_hit(body: RigidBody2D)
 
-var points_worth : int = 10
+@export var points_worth : int = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
@@ -23,13 +23,12 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("ball"):
 		_display_hit_text()
-		ScoreManager.add_points(points_worth, ScoreManager.get_mult())
-		ScoreManager.increase_mult()
-		emit_signal("peg_hit")
+		ScoreManager.add_points(points_worth)
+		emit_signal("peg_hit", body as RigidBody2D)
 
 
 func _display_hit_text():
 	var text = floating_text.instantiate()
 	var text_label = text.get_node("Label") as Label
-	text_label.text = str(points_worth * ScoreManager.get_mult())
+	text_label.text = str(points_worth)
 	add_child(text)

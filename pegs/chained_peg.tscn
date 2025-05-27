@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3rp7ktvn88i4"]
+
+[ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://pegs/peg.tscn" id="1_gvws8"]
+[ext_resource type="Script" uid="uid://mvkkpwumnuro" path="res://pegs/chained_peg.gd" id="2_5cm7c"]
+[ext_resource type="Resource" uid="uid://dd4r8qngjt68" path="res://assets/peg_sprites/sprite_resources/normal_blue.tres" id="3_xa0c6"]
+[ext_resource type="Resource" uid="uid://dg6kmmavfrfkx" path="res://assets/peg_sprites/sprite_resources/chained.tres" id="3_ya2j2"]
+[ext_resource type="Texture2D" uid="uid://dlwwpsps0o1ie" path="res://assets/peg_sprites/SP_Armored_Peg_01a.PNG" id="5_gvws8"]
+[ext_resource type="Texture2D" uid="uid://cevh1hr3xrr7f" path="res://assets/peg_sprites/SP_Peg_01b.PNG" id="6_5cm7c"]
+
+[node name="StaticBody2D" instance=ExtResource("1_gvws8")]
+script = ExtResource("2_5cm7c")
+chained_sprite = ExtResource("3_ya2j2")
+peg_sprite = ExtResource("3_xa0c6")
+min_orb_count = 5
+max_orb_count = 8
+
+[node name="OverlaySprite2D" type="Sprite2D" parent="AnimationScale" index="0"]
+z_index = 2
+position = Vector2(-4.2037e-07, -4.2037e-07)
+scale = Vector2(0.175, 0.175)
+texture = ExtResource("5_gvws8")
+
+[node name="Sprite2D" parent="AnimationScale" index="1"]
+z_index = 1
+texture = ExtResource("6_5cm7c")
+
+[node name="PegSensor" parent="." index="2"]
+points_worth = 30

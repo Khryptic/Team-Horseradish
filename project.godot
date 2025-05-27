@@ -10,23 +10,30 @@ config_version=5
 
 [application]
 
-config/name="Team Horseradish"
-run/main_scene="res://scenes/main_scene.tscn"
+config/name="Trampolinko"
+config/version="1.0.0"
+run/main_scene="uid://dsw8yxb6dghpl"
 config/quit_on_go_back=false
-config/features=PackedStringArray("4.3", "Mobile")
-config/icon="res://icon.svg"
+config/features=PackedStringArray("4.4", "Mobile")
+config/icon="uid://bov2ojrfukrya"
 
 [autoload]
 
 ScoreManager="*res://scripts/autoloads/score_manager.gd"
 GameManager="*res://scripts/autoloads/game_manager.gd"
+Math="*res://scripts/autoloads/math.gd"
+AudioManager="*res://scenes/audio_manager.tscn"
+AndroidImmersiveManager="*res://scripts/autoloads/android_immersive_manager.gd"
+SceneManager="*res://scripts/autoloads/scene_manager.gd"
+PegManager="*res://scripts/autoloads/peg_manager.tscn"
+SaveManager="*res://scripts/autoloads/save_manager.gd"
 
 [display]
 
 window/size/viewport_width=540
 window/size/viewport_height=960
-window/size/resizable=false
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 window/handheld/orientation=1
 
 [dotnet]
@@ -40,6 +47,9 @@ enabled=PackedStringArray("res://addons/softbody2d/plugin.cfg")
 [global_group]
 
 ball=""
+trampoline=""
+killzone=""
+peg=""
 
 [input]
 
@@ -48,6 +58,11 @@ Draw={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(319, 20),"global_position":Vector2(328, 66),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="Ball Physics"
+2d_physics/layer_2="Drawing Zone"
 
 [rendering]
 

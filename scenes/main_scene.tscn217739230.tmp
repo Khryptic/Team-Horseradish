@@ -1,0 +1,437 @@
+[gd_scene load_steps=51 format=3 uid="uid://c6usj5s4g5bdm"]
+
+[ext_resource type="Script" uid="uid://2js5lt72ualx" path="res://scripts/drawing_controller.gd" id="1_lq30c"]
+[ext_resource type="Script" uid="uid://clxxj87sfihfh" path="res://scripts/game_controller.gd" id="1_wfcph"]
+[ext_resource type="Script" uid="uid://bhxr8msyhd47i" path="res://scenes/trampoline.gd" id="3_0votk"]
+[ext_resource type="PackedScene" uid="uid://dgbmfdltn82fg" path="res://scenes/bounce_ball.tscn" id="3_j3r7q"]
+[ext_resource type="Script" uid="uid://b4ct6ueroj65m" path="res://scripts/score_label.gd" id="4_6jsyi"]
+[ext_resource type="Texture2D" uid="uid://bak37mkleqku4" path="res://assets/Red_X.png" id="4_dl6a1"]
+[ext_resource type="Texture2D" uid="uid://btptsh5gf68i6" path="res://assets/animations/trampoline/A_Trampoline_Frame1_01a.PNG" id="4_jkquj"]
+[ext_resource type="Script" uid="uid://bb088g00pxb0s" path="res://scenes/drawing_guide.gd" id="4_pd01j"]
+[ext_resource type="Script" uid="uid://b1cpknm80nuw" path="res://scripts/lives_label.gd" id="5_8hi1r"]
+[ext_resource type="Script" uid="uid://b5mtusnk4rv3g" path="res://scenes/game_over_label.gd" id="5_ufrqt"]
+[ext_resource type="Script" uid="uid://bqu2vmr40ikb2" path="res://scenes/pause_menu.gd" id="7_l14nw"]
+[ext_resource type="Texture2D" uid="uid://nmsfukoqg1fd" path="res://assets/animations/onboarding/frame_01.png" id="8_qn465"]
+[ext_resource type="Texture2D" uid="uid://dtis5qie62vpq" path="res://assets/animations/onboarding/frame_02.png" id="9_oamqr"]
+[ext_resource type="Texture2D" uid="uid://dbqxl2k3dj2nr" path="res://assets/animations/onboarding/frame_03.png" id="10_0olpm"]
+[ext_resource type="Texture2D" uid="uid://cwtn6l3vierxl" path="res://assets/animations/onboarding/frame_04.png" id="11_jfear"]
+[ext_resource type="Texture2D" uid="uid://csv76dhn5eelv" path="res://assets/animations/onboarding/frame_05.png" id="12_dclty"]
+[ext_resource type="Texture2D" uid="uid://3owkmw8ye8b" path="res://assets/SP_Pause_01a.PNG" id="12_eatnr"]
+[ext_resource type="Texture2D" uid="uid://ds32eaop42gjv" path="res://assets/animations/onboarding/frame_06.png" id="13_7wsyd"]
+[ext_resource type="Texture2D" uid="uid://dbpnk55nfqaa7" path="res://assets/animations/onboarding/frame_07.png" id="14_4ihjl"]
+[ext_resource type="Texture2D" uid="uid://barq4onq7ir1u" path="res://assets/animations/onboarding/frame_08.png" id="15_a47hc"]
+[ext_resource type="Texture2D" uid="uid://bjvd6bhcupalr" path="res://assets/animations/onboarding/frame_09.png" id="16_3q2wk"]
+[ext_resource type="Texture2D" uid="uid://bn71uxuhxl65u" path="res://assets/animations/onboarding/frame_10.png" id="17_aksj2"]
+[ext_resource type="Texture2D" uid="uid://d4ljcpi67s3xk" path="res://assets/animations/onboarding/frame_11.png" id="18_02l60"]
+[ext_resource type="Texture2D" uid="uid://cuv2xfh6sbo8n" path="res://assets/animations/onboarding/frame_12.png" id="19_dmf0w"]
+[ext_resource type="Texture2D" uid="uid://codphbcjtjn50" path="res://assets/animations/onboarding/frame_13.png" id="20_lknbj"]
+[ext_resource type="Texture2D" uid="uid://cqw52x6bgusid" path="res://assets/animations/onboarding/frame_14.png" id="21_1r15n"]
+[ext_resource type="Texture2D" uid="uid://c6komfudas2cs" path="res://assets/animations/onboarding/frame_15.png" id="22_ao3l2"]
+[ext_resource type="Texture2D" uid="uid://be62q6a6t3ee1" path="res://assets/animations/onboarding/frame_16.png" id="23_le7li"]
+[ext_resource type="Texture2D" uid="uid://c10srx6efe3wv" path="res://assets/animations/onboarding/frame_17.png" id="24_rlyuv"]
+[ext_resource type="Texture2D" uid="uid://dh83umwd2titk" path="res://assets/animations/onboarding/frame_18.png" id="25_v2vu4"]
+[ext_resource type="Texture2D" uid="uid://byppba4dfm12f" path="res://assets/animations/onboarding/frame_19.png" id="26_xyux1"]
+[ext_resource type="Texture2D" uid="uid://bp6emwgvyxnfm" path="res://assets/animations/onboarding/frame_20.png" id="27_xbwu8"]
+[ext_resource type="Texture2D" uid="uid://b83ekn367wbms" path="res://assets/animations/onboarding/frame_21.png" id="28_odf7m"]
+[ext_resource type="Texture2D" uid="uid://chtcuscufnh0" path="res://assets/animations/onboarding/frame_22.png" id="29_l7llg"]
+[ext_resource type="Texture2D" uid="uid://c3re1atccpbvu" path="res://assets/animations/onboarding/frame_23.png" id="30_6lvpr"]
+[ext_resource type="Texture2D" uid="uid://b7ibvt8eupdes" path="res://assets/animations/onboarding/frame_24.png" id="31_jcdlf"]
+[ext_resource type="Script" uid="uid://bkp6vvmbv7f15" path="res://scenes/onboarding_animation.gd" id="32_lnep7"]
+[ext_resource type="Texture2D" uid="uid://b6kjy6bhs11s3" path="res://assets/SP_Background_01a.PNG" id="38_8gekx"]
+[ext_resource type="Texture2D" uid="uid://cyiq31v2tmbq6" path="res://assets/SP_Backboard_01a.PNG" id="39_54u4h"]
+[ext_resource type="Texture2D" uid="uid://ooapla6txu0v" path="res://assets/SP_Decor_Top_01a.PNG" id="40_ju2fr"]
+[ext_resource type="Texture2D" uid="uid://ncy6mrf7a5xh" path="res://assets/SP_Scorebar_01a.PNG" id="42_n15j5"]
+[ext_resource type="Texture2D" uid="uid://blwl0qcafaeka" path="res://assets/SP_Lives_01a.PNG" id="43_68d3q"]
+[ext_resource type="Texture2D" uid="uid://bupyoo1432yvs" path="res://assets/SP_Decor_R_01a.PNG" id="44_mpve1"]
+[ext_resource type="Texture2D" uid="uid://duv6b4jdjqwds" path="res://assets/SP_Decor_L_01a.PNG" id="45_d64rk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3krh7"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_nw457"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dd0l"]
+size = Vector2(18, 1099)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8x6e"]
+size = Vector2(17.0038, 1052)
+
+[sub_resource type="Theme" id="Theme_p0sd6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a07ey"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_qn465")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_oamqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0olpm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_jfear")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_dclty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7wsyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_4ihjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_a47hc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_3q2wk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_aksj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_02l60")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_dmf0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_lknbj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_1r15n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ao3l2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_le7li")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_rlyuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_v2vu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_xyux1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_xbwu8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_odf7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_l7llg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_6lvpr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_jcdlf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("ball_ref")]
+script = ExtResource("1_wfcph")
+ball_ref = NodePath("BounceBall")
+
+[node name="Drawing Controller" type="Node2D" parent="." node_paths=PackedStringArray("drawing_zone")]
+script = ExtResource("1_lq30c")
+drawing_zone = NodePath("../TrampolineDrawingZone")
+max_trampoline_length = 301
+med_length = 250
+bullet_time_scale = 0.2
+bullet_time_duration = 0.25
+bullet_time_fade_to_normal = 1.0
+
+[node name="Trampoline" type="Node2D" parent="Drawing Controller"]
+script = ExtResource("3_0votk")
+trampoline_strength = 1000.0
+coyote_time_distance = 50.0
+normal_speed_mult = 1.0
+crit_speed_mult = 1.2
+crit_lower_percentage = 0.3
+crit_upper_percentage = 0.7
+added_impulse = -500.0
+
+[node name="Line2D" type="Line2D" parent="Drawing Controller/Trampoline"]
+scale = Vector2(1.01169, 1)
+width = 50.0
+texture = ExtResource("4_jkquj")
+texture_mode = 2
+
+[node name="Area2D" type="Area2D" parent="Drawing Controller/Trampoline" groups=["trampoline"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Trampoline/Area2D"]
+shape = SubResource("RectangleShape2D_3krh7")
+
+[node name="Drawing Guide" type="Area2D" parent="Drawing Controller"]
+script = ExtResource("4_pd01j")
+
+[node name="Red X" type="Sprite2D" parent="Drawing Controller/Drawing Guide"]
+visible = false
+position = Vector2(-100, -100)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("4_dl6a1")
+
+[node name="Line2D" type="Line2D" parent="Drawing Controller/Drawing Guide"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drawing Controller/Drawing Guide"]
+shape = SubResource("SegmentShape2D_nw457")
+
+[node name="BounceBall" parent="." instance=ExtResource("3_j3r7q")]
+position = Vector2(269, 346)
+
+[node name="World Border" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="World Border"]
+position = Vector2(-8, 454)
+shape = SubResource("RectangleShape2D_7dd0l")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="World Border"]
+position = Vector2(232, -11)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_7dd0l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Border"]
+position = Vector2(552, 461)
+shape = SubResource("RectangleShape2D_7dd0l")
+
+[node name="Respawn" type="Node2D" parent="."]
+position = Vector2(269, 346)
+
+[node name="Killzone" type="Area2D" parent="." groups=["killzone"]]
+position = Vector2(287, 1001)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(9.99982, -42)
+shape = SubResource("RectangleShape2D_c8x6e")
+
+[node name="TrampolineDrawingZone" type="Area2D" parent="."]
+position = Vector2(287, 400)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TrampolineDrawingZone"]
+position = Vector2(0, -3)
+polygon = PackedVector2Array(-327, 0, 290, 0, 290, 110, 130, 680, -170, 680, -327, 110)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -4.0
+offset_right = 5.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Game Over!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_ufrqt")
+
+[node name="Timer" type="Timer" parent="CanvasLayer/UI/GameOverLabel"]
+wait_time = 3.0
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 10.0
+theme_override_font_sizes/font_size = 32
+text = "Score: 0
+Mult: 1x"
+script = ExtResource("4_6jsyi")
+
+[node name="LivesLabel" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_bottom = -10.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Lives: 3"
+script = ExtResource("5_8hi1r")
+
+[node name="PauseButton" type="Button" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -116.0
+offset_top = 11.0
+offset_right = -44.0
+offset_bottom = 71.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+icon = ExtResource("12_eatnr")
+flat = true
+
+[node name="Pause Menu" type="Panel" parent="CanvasLayer/UI"]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = -173.0
+offset_right = 202.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_l14nw")
+
+[node name="PausedHeader" type="Panel" parent="CanvasLayer/UI/Pause Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -95.0
+offset_top = -39.0
+offset_right = 95.0
+offset_bottom = 30.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/Pause Menu/PausedHeader"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = -11.5
+offset_right = 28.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Paused"
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/UI/Pause Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -106.0
+offset_right = 150.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_p0sd6")
+theme_override_font_sizes/font_size = 30
+text = "Resume"
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/UI/Pause Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -2.0
+offset_right = 150.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_p0sd6")
+theme_override_font_sizes/font_size = 30
+text = "Restart"
+
+[node name="OnboardingAnimation" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="OnboardingAnimation"]
+position = Vector2(273, 671)
+rotation = -0.26455
+scale = Vector2(0.193919, 0.193919)
+sprite_frames = SubResource("SpriteFrames_a07ey")
+autoplay = "default"
+script = ExtResource("32_lnep7")
+
+[node name="Game Art" type="Node2D" parent="."]
+
+[node name="SpBackground01a" type="Sprite2D" parent="Game Art"]
+z_index = -5
+position = Vector2(269, 494)
+texture = ExtResource("38_8gekx")
+
+[node name="SpBackboard01a" type="Sprite2D" parent="Game Art"]
+z_index = -4
+position = Vector2(270, 216)
+texture = ExtResource("39_54u4h")
+
+[node name="SpDecorTop01a" type="Sprite2D" parent="Game Art"]
+z_index = 1
+position = Vector2(274, -30)
+texture = ExtResource("40_ju2fr")
+
+[node name="SpScorebar01a" type="Sprite2D" parent="Game Art"]
+z_index = 1
+position = Vector2(88, 21)
+scale = Vector2(1.28199, 1)
+texture = ExtResource("42_n15j5")
+
+[node name="SpLives01a" type="Sprite2D" parent="Game Art"]
+z_index = 1
+position = Vector2(273, 28)
+texture = ExtResource("43_68d3q")
+
+[node name="SpDecorR01a" type="Sprite2D" parent="Game Art"]
+position = Vector2(509, 787)
+texture = ExtResource("44_mpve1")
+
+[node name="SpDecorL01a" type="Sprite2D" parent="Game Art"]
+position = Vector2(29, 787)
+texture = ExtResource("45_d64rk")
+
+[connection signal="trampoline_drawn" from="Drawing Controller" to="." method="_on_drawing_controller_trampoline_drawn"]
+[connection signal="trampoline_drawn" from="Drawing Controller" to="Drawing Controller/Trampoline" method="_on_trampoline_drawn"]
+[connection signal="trampoline_drawn" from="Drawing Controller" to="Drawing Controller/Drawing Guide" method="_on_trampoline_drawn"]
+[connection signal="trampoline_drawn" from="Drawing Controller" to="OnboardingAnimation/AnimatedSprite2D" method="_on_drawing_controller_trampoline_drawn"]
+[connection signal="increase_final_peg_size" from="Drawing Controller/Trampoline" to="." method="_on_trampoline_increase_final_peg_size"]
+[connection signal="body_entered" from="Drawing Controller/Trampoline/Area2D" to="Drawing Controller/Trampoline" method="_on_body_entered"]
+[connection signal="body_exited" from="Drawing Controller/Trampoline/Area2D" to="Drawing Controller/Trampoline" method="_on_body_exited"]
+[connection signal="body_entered" from="Drawing Controller/Drawing Guide" to="Drawing Controller/Drawing Guide" method="_on_body_entered"]
+[connection signal="body_entered" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_entered"]
+[connection signal="body_exited" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_body_exited"]
+[connection signal="mouse_entered" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_mouse_entered"]
+[connection signal="mouse_exited" from="TrampolineDrawingZone" to="Drawing Controller" method="_on_trampoline_drawing_zone_mouse_exited"]
+[connection signal="timeout" from="CanvasLayer/UI/GameOverLabel/Timer" to="CanvasLayer/UI/GameOverLabel" method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/UI/PauseButton" to="CanvasLayer/UI/Pause Menu" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Pause Menu/ResumeButton" to="CanvasLayer/UI/Pause Menu" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Pause Menu/RestartButton" to="CanvasLayer/UI/Pause Menu" method="_on_restart_button_pressed"]

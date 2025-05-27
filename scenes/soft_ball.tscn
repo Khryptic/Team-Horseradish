@@ -1,6 +1,6 @@
 [gd_scene load_steps=58 format=3 uid="uid://bwi5qc03k5ayp"]
 
-[ext_resource type="Script" path="res://addons/softbody2d/softbody2d.gd" id="2_7tqa6"]
+[ext_resource type="Script" uid="uid://dtk67o4f5ekvi" path="res://addons/softbody2d/softbody2d.gd" id="2_7tqa6"]
 [ext_resource type="Texture2D" uid="uid://bes0x54t2wx71" path="res://assets/temp_ball.png" id="2_57npg"]
 [ext_resource type="PhysicsMaterial" uid="uid://deqagbq7eod2b" path="res://samples/softbody2d/softbody2d_phys_bouncy.tres" id="3_ljv75"]
 

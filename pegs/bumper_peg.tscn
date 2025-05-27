@@ -1,0 +1,98 @@
+[gd_scene load_steps=13 format=3 uid="uid://bdm6k8sgiutv3"]
+
+[ext_resource type="PackedScene" uid="uid://b4r8scy3ax4gh" path="res://pegs/peg.tscn" id="1_bi4ts"]
+[ext_resource type="Script" uid="uid://br3onfw0vemv5" path="res://pegs/bumper_peg.gd" id="2_p8cnk"]
+[ext_resource type="Texture2D" uid="uid://w7ig2oucw6n" path="res://assets/sprites/particles/SP_Peg_Shards_01c.PNG" id="3_24wtl"]
+[ext_resource type="Script" uid="uid://bksf80rkut52h" path="res://pegs/peg_sprite.gd" id="3_p8cnk"]
+[ext_resource type="Texture2D" uid="uid://dp6342m1gamni" path="res://assets/peg_sprites/SP_BumperPeg_02a.PNG" id="4_hdp4o"]
+[ext_resource type="Texture2D" uid="uid://cq12bec2x0xs7" path="res://assets/peg_sprites/SP_BumperPeg_01a.PNG" id="6_3pxdi"]
+[ext_resource type="Animation" uid="uid://c3o68ptjeyk77" path="res://pegs/animations/bumper_hit.res" id="6_x54hs"]
+
+[sub_resource type="Resource" id="Resource_x54hs"]
+script = ExtResource("3_p8cnk")
+sprite = ExtResource("6_3pxdi")
+hit_sprite = ExtResource("4_hdp4o")
+burst_sprite = ExtResource("3_24wtl")
+color = Color(1, 1, 0.313726, 1)
+metadata/_custom_type_script = "uid://bksf80rkut52h"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ul7bx"]
+radius = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x54hs"]
+radius = 20.0
+
+[sub_resource type="Animation" id="Animation_40v21"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CircleShader:instance_shader_parameters/ring_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CircleShader:instance_shader_parameters/opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationScale:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.975, 0.975)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ul7bx"]
+_data = {
+&"RESET": SubResource("Animation_40v21"),
+&"ball_hit": ExtResource("6_x54hs")
+}
+
+[node name="StaticBody2D" instance=ExtResource("1_bi4ts")]
+script = ExtResource("2_p8cnk")
+bumper_strength = 1000
+peg_sprite = SubResource("Resource_x54hs")
+
+[node name="AnimationScale" parent="." index="0"]
+scale = Vector2(0.975, 0.975)
+
+[node name="Sprite2D" parent="AnimationScale" index="0"]
+scale = Vector2(0.266, 0.266)
+texture = ExtResource("6_3pxdi")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_ul7bx")
+
+[node name="PegSensor" parent="." index="2"]
+points_worth = 20
+
+[node name="CollisionShape2D" parent="PegSensor" index="0"]
+shape = SubResource("CircleShape2D_x54hs")
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_ul7bx")
+}
+speed_scale = 0.6
+
+[node name="CircleShader" parent="." index="4"]
+scale = Vector2(2, 2)

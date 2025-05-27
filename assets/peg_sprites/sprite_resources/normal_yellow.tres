@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PegSprite" load_steps=5 format=3 uid="uid://ke3b1rmnr7r5"]
+
+[ext_resource type="Texture2D" uid="uid://c0orfgx26q5oq" path="res://assets/sprites/particles/SP_Peg_Shards_01a.PNG" id="1_paiig"]
+[ext_resource type="Texture2D" uid="uid://dtm1lc4x1rp1k" path="res://assets/peg_sprites/SP_Peg_04a.PNG" id="2_sm2ov"]
+[ext_resource type="Script" uid="uid://bksf80rkut52h" path="res://pegs/peg_sprite.gd" id="3_j1wmo"]
+[ext_resource type="Texture2D" uid="uid://d4fxiudo7daxl" path="res://assets/peg_sprites/SP_Peg_02a.PNG" id="4_yruqx"]
+
+[resource]
+script = ExtResource("3_j1wmo")
+sprite = ExtResource("4_yruqx")
+hit_sprite = ExtResource("2_sm2ov")
+burst_sprite = ExtResource("1_paiig")
+color = Color(1, 1, 0.372549, 1)
+metadata/_custom_type_script = "uid://bksf80rkut52h"
